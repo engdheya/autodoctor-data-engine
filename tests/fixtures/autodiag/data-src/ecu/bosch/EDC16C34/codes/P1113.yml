@@ -1,0 +1,18 @@
+code: P1113
+system: fuel
+subsystem: ''
+category: ''
+definition: Intake Air Temperature Sensor Circuit High Input
+description: ''
+severity: ''
+mil: ''
+related_code: []
+detection_condition: []
+causes: []
+repairs: []
+evidence:
+- obdcodex
+protocol:
+- obd2
+standard:
+- saej2012.2002

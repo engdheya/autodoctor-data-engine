@@ -1,0 +1,38 @@
+{
+  "ecu": [
+    {"hdr": "7E0", "type": "engine"},
+    {"hdr": "7E1", "type": "transmission"}
+  ],
+  "commands": [
+    {
+      "hdr": "700",
+      "rax": "708",
+      "cmd": {"22": "0103"},
+      "freq": 30,
+      "filter": {"from": 2007},
+      "signals": [
+        {
+          "id": "CAMRY_ENG_ODO",
+          "path": "Engine",
+          "fmt": {"bix": 8, "len": 24, "max": 16777215, "unit": "kilometers"},
+          "name": "Odometer",
+          "suggestedMetric": "odometer"
+        }
+      ]
+    },
+    {
+      "hdr": "700",
+      "rax": "708",
+      "cmd": {"22": "1002"},
+      "freq": 1,
+      "signals": [
+        {
+          "id": "CAMRY_12V_V",
+          "path": "Battery",
+          "fmt": {"len": 16, "max": 79, "mul": 12.207, "div": 10000, "unit": "volts"},
+          "name": "Battery voltage"
+        }
+      ]
+    }
+  ]
+}

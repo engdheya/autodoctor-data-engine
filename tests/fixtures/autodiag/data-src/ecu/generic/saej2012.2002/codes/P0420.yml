@@ -1,0 +1,20 @@
+# Synthetic conflict fixture: this file deliberately gives P0420 a different
+# meaning than the OBDex fixture so the conflict detector has something to find.
+code: P0420
+system: ''
+subsystem: ''
+category: powertrain
+definition: Catalyst Monitor Circuit High Input
+description: ''
+severity: ''
+mil: ''
+related_code: []
+detection_condition: []
+causes: []
+repairs: []
+evidence:
+- obdcodex
+protocol:
+- obd2
+standard:
+- saej2012.2002

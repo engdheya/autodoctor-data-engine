@@ -1,0 +1,98 @@
+# Minimal OBDex-shaped fixture (two DTC families in one file for brevity).
+# Three codes: P0301 and P0420 are rich and bilingual, P0100 only English.
+
+- code: P0301
+  category: powertrain
+  title:
+    en: Cylinder 1 Misfire Detected
+    de: Fehlzündung Zylinder 1 erkannt
+  description:
+    en: The engine control module detects misfires on cylinder 1 by monitoring crankshaft speed variations.
+    de: Das Motorsteuergerät erkennt Fehlzündungen an Zylinder 1 über Drehzahlschwankungen.
+  affected_components:
+    - spark_plug
+    - ignition_coil
+    - fuel_injector
+  common_causes:
+    - id: spark_plug_worn
+      likelihood: high
+      label:
+        en: Spark plug worn or fouled
+        de: Zündkerze verschlissen oder verrußt
+    - id: ignition_coil_faulty
+      likelihood: medium
+      label:
+        en: Ignition coil faulty
+        de: Zündspule defekt
+  symptoms:
+    - en: Check engine light on
+      de: Motorkontrollleuchte an
+    - en: Rough idle
+      de: Unruhiger Leerlauf
+  repair:
+    difficulty: medium
+    diy_possible: true
+    estimated_cost_eur: [40, 300]
+    estimated_hours: [0.5, 2]
+  flags:
+    mil: true
+    emissions_relevant: true
+    drive_cycle_required: true
+    limp_mode_possible: true
+  references:
+    - sae:J2012
+  related_codes: [P0300, P0302, P0304]
+  sources:
+    - https://www.law.cornell.edu/regulations/california/13-CCR-1968.2
+    - https://example.org/misfire-diagnostics
+  reviewed: '2026-01-15'
+
+- code: P0420
+  category: powertrain
+  title:
+    en: Catalyst System Efficiency Below Threshold (Bank 1)
+  description:
+    en: The oxygen storage capacity of the main catalytic converter has degraded below the OBD threshold.
+  common_causes:
+    - id: catalyst_degraded
+      likelihood: high
+      label:
+        en: Catalytic converter degraded
+  repair:
+    difficulty: hard
+    diy_possible: false
+    estimated_cost_eur: [400, 2000]
+    estimated_hours: [1, 4]
+  flags:
+    mil: true
+    emissions_relevant: true
+  references:
+    - sae:J2012
+  related_codes: [P0430]
+  sources:
+    - https://example.org/catalyst-efficiency
+
+- code: P0100
+  category: powertrain
+  title:
+    en: Mass or Volume Air Flow Circuit Malfunction
+  description:
+    en: The mass air flow sensor circuit is out of range.
+  affected_components:
+    - mass_air_flow_sensor
+  common_causes:
+    - id: maf_wiring
+      likelihood: medium
+      label:
+        en: MAF sensor wiring or connector problem
+  repair:
+    difficulty: easy
+    diy_possible: true
+    estimated_cost_eur: [60, 400]
+    estimated_hours: [0.3, 1]
+  flags:
+    mil: true
+  references:
+    - sae:J2012
+  sources:
+    - https://example.org/maf-circuit

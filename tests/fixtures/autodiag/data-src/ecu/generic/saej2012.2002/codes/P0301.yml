@@ -1,0 +1,23 @@
+code: P0301
+system: ignition
+subsystem: misfire
+category: powertrain
+definition: Cylinder 1 Misfire Detected
+description: ''
+severity: high
+mil: true
+related_code: [P0300, P0302]
+detection_condition:
+- Misfire counter exceeds threshold during two consecutive drive cycles
+causes:
+- id: spark_plug
+  likelihood: high
+  en: Spark plug worn
+repairs: []
+evidence:
+- https://example.org/obd-code-reference
+- obdcodex
+protocol:
+- obd2
+standard:
+- saej2012.2002
