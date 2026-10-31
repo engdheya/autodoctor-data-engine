@@ -1,0 +1,132 @@
+# AutoDoctor Data Integration Engine - source registry
+#
+# Every upstream database is declared here. Nothing is imported unless it is
+# declared, has a licence record, and has passed (at least) a licence triage.
+#
+# Fields
+#   slug                  stable identifier used by the CLI and the database
+#   name                  human readable name
+#   repo_url              upstream repository
+#   local_path            where the checkout lives (relative to the project root,
+#                         supports ${ENV_VAR:-default} expansion)
+#   kind                  connector implementation family
+#   enabled               false => the connector is registered but never imported
+#   licence.code          licence of the software in the repository
+#   licence.data          licence of the data files
+#   licence.attribution_required / share_alike / redistribution_allowed
+#   licence.legal_review  pending | approved | rejected
+#   lineage               who the data ultimately derives from (independence hints)
+#   import_scope          what this source is allowed to contribute
+
+project:
+  name: AutoDoctor Data Integration Engine
+  database_filename: autodoctor.sqlite
+
+paths:
+  raw: data/raw
+  staging: data/staging
+  processed: data/processed
+  exports: data/exports
+  reports: data/reports
+  upstream: vendor/upstream
+
+sources:
+  - slug: obdex
+    name: OBDex (foerbsnavi/OBDex)
+    repo_url: https://github.com/foerbsnavi/OBDex
+    local_path: ${AUTODOCTOR_UPSTREAM_DIR:-vendor/upstream}/OBDex
+    kind: obdex
+    enabled: true
+    licence:
+      code: MIT
+      data: CC0-1.0
+      data_url: https://creativecommons.org/publicdomain/zero/1.0/
+      attribution_required: false
+      share_alike: false
+      redistribution_allowed: true
+      commercial_use_allowed: true
+      legal_review: approved
+    lineage: obdex
+    import_scope: [dtc, pid]
+    notes: >
+      Generic (SAE J2012 / ISO 15031-6) codes only. Bilingual EN/DE, common causes
+      with likelihood, symptoms, repair difficulty/cost/hours, MIL/emissions flags,
+      related codes, per-code sources. No manufacturer-specific codes by design.
+
+  - slug: wal33d
+    name: Wal33D dtc-database
+    repo_url: https://github.com/Wal33D/dtc-database
+    local_path: ${AUTODOCTOR_UPSTREAM_DIR:-vendor/upstream}/dtc-database
+    kind: wal33d
+    enabled: true
+    licence:
+      code: MIT
+      data: MIT
+      data_url: https://github.com/Wal33D/dtc-database/blob/main/LICENSE
+      attribution_required: true
+      share_alike: false
+      redistribution_allowed: true
+      commercial_use_allowed: true
+      legal_review: approved
+    lineage: wal33d
+    import_scope: [dtc]
+    notes: >
+      Ships a SQLite database (18,805 rows, 12,128 unique codes, EN only) plus the
+      raw text lists it was built from. Provides 33 manufacturer contexts but no
+      per-code causes/repairs. Manufacturer label GENERIC maps to the generic context.
+
+  - slug: autodiag
+    name: autodiag2/database
+    repo_url: https://github.com/autodiag2/database
+    local_path: ${AUTODOCTOR_UPSTREAM_DIR:-vendor/upstream}/autodiag2-database
+    kind: autodiag
+    enabled: true
+    licence:
+      code: GPL-3.0-or-later
+      data: ODbL-1.0
+      contents_licence: DbCL-1.0
+      data_url: https://opendatacommons.org/licenses/odbl/1-0/
+      attribution_required: true
+      share_alike: true
+      redistribution_allowed: true
+      commercial_use_allowed: true
+      legal_review: pending
+    lineage: obdcodex
+    import_scope: [dtc, ecu, vehicle]
+    notes: >
+      28,833 YAML code files across brand ("generic/<brand>") and ECU
+      ("<vendor>/<ecu>") contexts, 16,674 unique codes. Definitions are single-line
+      and mostly empty of causes/repairs, but the code/context/protocol/standard
+      metadata is the richest contextual signal available. ODbL is share-alike:
+      any distributed database containing these rows must stay ODbL compatible.
+
+  - slug: obdb
+    name: OBDb vehicle signal sets
+    repo_url: https://github.com/OBDb
+    local_path: ${AUTODOCTOR_UPSTREAM_DIR:-vendor/upstream}/OBDb
+    kind: obdb
+    enabled: true
+    licence:
+      code: CC-BY-SA-4.0
+      data: CC-BY-SA-4.0
+      data_url: https://creativecommons.org/licenses/by-sa/4.0/
+      attribution_required: true
+      share_alike: true
+      redistribution_allowed: true
+      commercial_use_allowed: true
+      legal_review: pending
+    lineage: obdb
+    import_scope: [vehicle, ecu, pid]
+    notes: >
+      One repository per vehicle (signalsets/v3/default.json, generations.yaml).
+      Contains Mode 21/22 parameters, ECU addressing and model-year coverage, but
+      no DTC definitions. Used only for vehicle/ECU/parameter context; a DTC is
+      never linked to a vehicle unless the source explicitly documents it.
+
+# Cross-source rules applied by the engine
+rules:
+  code_pattern: '^[PBCU][0-3][0-9A-F]{3}$'
+  uds_code_pattern: '^[0-9A-F]{6,8}$'
+  similarity_threshold: 0.85       # >= => treated as the same statement, no conflict
+  min_corroborating_lineages: 2    # independent evidence required for "verified"
+  blocked_redistribution_review: [autodiag, obdb]   # excluded from the public bundle
