@@ -145,6 +145,7 @@ Circuit Malfunction" vs BMW "Malfunction Indicator Lamp MIL Electrical").
 
 ```
 config/sources.yaml          source registry: paths, licences, lineages, import scope, rules
+ci/                          GitHub Actions definitions (activate with `cp ci/*.yml .github/workflows/`)
 db/schema.sql                the canonical SQLite schema (context-aware, provenance-first)
 src/autodoctor_data_engine/
   connectors/                one connector per upstream project (extract + normalize only)
@@ -155,6 +156,7 @@ src/autodoctor_data_engine/
   conflict_resolution/       cross-source disagreement, one conflict per statement
   merger/                    merge loader (identity, canonical choice, verification)
   provenance/                "where does this come from" queries
+  pipeline.py, staging.py    orchestrator, staging manifests and bundles
   versioning/                semver + release manifest
   database/                  schema loading, repository, build orchestration, app bundle
   reporting/                 import / quality / change reports

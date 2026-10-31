@@ -1,0 +1,84 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: lint + tests (py${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+
+      - name: Lint
+        run: ruff check src tests
+
+      - name: Test
+        run: pytest -q
+
+  docs:
+    name: docs artefacts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .
+
+      - name: CLI is installable and self-describing
+        run: |
+          autodoctor --help
+          autodoctor version --json | tee version.json
+          python - <<'PY'
+          import json, pathlib
+          payload = json.loads(pathlib.Path("version.json").read_text())
+          assert payload["engine"]["name"]
+          print("engine", payload["engine"]["version"],
+                "release", (payload.get("release") or {}).get("version"))
+          PY
+
+      - name: Documentation links exist
+        run: |
+          python - <<'PY'
+          import pathlib, re, sys
+          root = pathlib.Path(".")
+          missing = []
+          for doc in [root / "README.md", *sorted((root / "docs").glob("*.md"))]:
+              for link in re.findall(r"\]\(([^)#:]+)(?:#[^)]*)?\)", doc.read_text()):
+                  if link.startswith("http") or link.startswith("mailto"):
+                      continue
+                  if not (doc.parent / link).exists():
+                      missing.append(f"{doc}: {link}")
+          print("\n".join(missing) or "all relative links resolve")
+          sys.exit(bool(missing))
+          PY

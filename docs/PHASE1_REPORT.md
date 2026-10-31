@@ -39,21 +39,22 @@ runner. Nothing is estimated.
 | Reporting | import report, data report (markdown + JSON), change detection between builds, source inspection |
 | CLI | 15 commands (`inspect-sources`, `fetch-sources`, `import`, `validate`, `detect-duplicates`, `detect-conflicts`, `build-db`, `report`, `search`, `explain`, `detect-changes`, `export-translation-template`, `version`, `run-all`) |
 | Tests | 177 (173 offline + 4 real-source integration) |
-| CI | lint + tests on Python 3.11/3.12/3.13, docs/CLI check, weekly upstream-drift workflow |
+| CI | lint + tests on Python 3.11/3.12/3.13, docs/CLI check, weekly upstream-drift workflow — kept in `ci/` because the pushing GitHub App lacks the `workflows` permission; one `cp` activates them |
 
 ## 2. Files created
 
 ```
-config/sources.yaml                     db/schema.sql (513 lines)
+config/sources.yaml                     db/schema.sql (499 lines)
 docs/ARCHITECTURE.md                    docs/DATABASE_SCHEMA.md
 docs/DATA_SOURCES.md                    docs/LICENSES.md
 docs/DATA_DICTIONARY.md                 docs/DEVELOPMENT_PLAN.md
 docs/FLUTTER_INTEGRATION.md             docs/PHASE1_REPORT.md
 README.md  THIRD_PARTY_NOTICES.md  LICENSE  .env.example  .gitignore
-.github/workflows/ci.yml                .github/workflows/upstream-drift.yml
+ci/ci.yml                               ci/upstream-drift.yml  ci/README.md
 data/translations/README.md             data/translations/ar/example.yaml
 src/autodoctor_data_engine/**
-  config.py  models.py  pipeline.py  cli.py  identity.py  translations.py  provenance.py
+  config.py  models.py  pipeline.py  staging.py  cli.py  identity.py  translations.py
+  provenance/tracker.py
   connectors/{base,obdex,wal33d,autodiag,obdb,__init__}.py
   parsers/{yaml_loader,json_loader,sqlite_reader,delimited}.py
   normalizers/{codes,text,languages,manufacturers,keys}.py
@@ -202,7 +203,7 @@ Phase 2, in this order (see [DEVELOPMENT_PLAN](DEVELOPMENT_PLAN.md)):
 
 ```
 config/   db/schema.sql   docs/   src/autodoctor_data_engine/   tests/   data/translations/
-.github/workflows/   README.md   THIRD_PARTY_NOTICES.md   LICENSE   pyproject.toml
+ci/ (workflows)   README.md   THIRD_PARTY_NOTICES.md   LICENSE   pyproject.toml
 ```
 
 **Merge pipeline** that produced 0.1.0 — to be confirmed before it is treated as final:

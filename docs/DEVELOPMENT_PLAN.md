@@ -24,7 +24,7 @@ validated SQLite database, prove it with tests, publish a versioned release.
 | CLI (15 commands) | ✅ |
 | Tests | ✅ 177 (173 offline + 4 integration) |
 | Documentation (7 documents) | ✅ |
-| CI | ✅ `.github/workflows/ci.yml` |
+| CI | ✅ `ci/ci.yml` + `ci/upstream-drift.yml` (activate: `cp ci/*.yml .github/workflows/`) |
 | Arabic content | ⛔ not available from any source; pipeline ready, content pending |
 | Inspection procedures (`dtc_tests`) | ⛔ no source provides them; pipeline ready |
 
