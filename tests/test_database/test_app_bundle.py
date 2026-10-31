@@ -3,6 +3,9 @@
 from __future__ import annotations
 
 import json
+import sqlite3
+
+import pytest
 
 from autodoctor_data_engine.database.connection import connect
 
@@ -75,3 +78,46 @@ def test_manifest_records_the_app_bundle(built) -> None:
     assert bundle["file"].endswith(".sqlite")
     assert bundle["sha256"]
     assert bundle["bytes"] == built.app_bundle_bytes
+
+
+def test_built_bundle_keeps_the_client_views(built) -> None:
+    """The bundle must answer the same lookups as the engineering database."""
+    assert built.app_bundle_path is not None
+    conn = connect(built.app_bundle_path, readonly=True)
+    try:
+        views = {row[0] for row in conn.execute("SELECT name FROM sqlite_master WHERE type='view'")}
+        assert {"v_dtc_lookup", "v_dtc_summary"} <= views
+        assert conn.execute("SELECT COUNT(*) FROM v_dtc_summary").fetchone()[0] > 0
+        assert conn.execute("SELECT COUNT(*) FROM v_dtc_lookup").fetchone()[0] > 0
+    finally:
+        conn.close()
+
+
+def test_code_level_status_matches_its_definitions(built, db_conn) -> None:
+    rows = db_conn.execute(
+        """
+        SELECT c.code, p.verification_status AS claim_status,
+               MAX(d.verification_status = 'verified') AS has_verified
+        FROM dtc_codes c
+        JOIN dtc_definitions d ON d.dtc_code_id = c.id
+        JOIN provenance_claims p ON p.entity_type = 'dtc_code' AND p.entity_id = c.id
+        WHERE c.code = 'P0301' AND c.context_type = 'generic'
+        GROUP BY p.id
+        """
+    ).fetchall()
+    assert rows
+    assert all(row["claim_status"] == "verified" for row in rows if row["has_verified"])
+
+
+def test_a_bundle_without_its_views_is_refused(tmp_path) -> None:
+    """A published file that lost the client views must fail, not ship."""
+    from autodoctor_data_engine.database.app_export import _verify_views
+
+    broken = tmp_path / "broken-bundle.sqlite"
+    raw = sqlite3.connect(broken)
+    raw.execute("CREATE TABLE t (id INTEGER)")
+    raw.commit()
+    raw.close()
+    with pytest.raises(RuntimeError, match="missing view\\(s\\): v_dtc_lookup, v_dtc_summary"):
+        _verify_views(broken)
+    assert not broken.exists()

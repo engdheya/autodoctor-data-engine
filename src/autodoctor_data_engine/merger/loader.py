@@ -26,6 +26,8 @@ from ..models import (
     NormalizedPid,
     NormalizedVehicle,
 )
+from ..normalizers.keys import humanize_key
+from ..reviews import ReviewStore, conflict_fingerprint
 from ..staging import SourceBundle
 from ..utils.hashing import sha256_text
 
@@ -58,6 +60,7 @@ class LoadStats:
     flags: int = 0
     claims: int = 0
     conflicts: int = 0
+    conflicts_resolved: int = 0
     duplicate_groups: int = 0
     skipped: dict[str, int] = field(default_factory=dict)
 
@@ -86,6 +89,7 @@ class LoadStats:
             "flags": self.flags,
             "claims": self.claims,
             "conflicts": self.conflicts,
+            "conflicts_resolved": self.conflicts_resolved,
             "duplicate_groups": self.duplicate_groups,
             "skipped": dict(sorted(self.skipped.items())),
         }
@@ -109,6 +113,7 @@ class MergeLoader:
         self._definitions: dict[tuple[int, str, str], int] = {}
         self._file_ids: dict[tuple[str, str], int] = {}
         self._priority_by_slug: dict[str, int] = {}
+        self.review_stats: dict[str, int] = {"applied": 0, "canonical_overrides": 0, "unmatched": 0}
 
     # ------------------------------------------------------------------
     # public API
@@ -118,6 +123,7 @@ class MergeLoader:
         bundles: list[SourceBundle],
         conflicts: list[Conflict] | None = None,
         duplicate_groups: list[DuplicateGroup] | None = None,
+        reviews: ReviewStore | None = None,
     ) -> LoadStats:
         conflicts = conflicts or []
         duplicate_groups = duplicate_groups or []
@@ -144,6 +150,8 @@ class MergeLoader:
 
             self._mark_conflicts(conflicts)
             self._set_canonical_and_verification()
+            self.review_stats = self._apply_reviews(reviews)
+            self._propagate_code_status()
             self._store_duplicate_groups(duplicate_groups)
             self._compute_risk()
             self.stats.dtc_codes = self._count("dtc_codes")
@@ -449,12 +457,22 @@ class MergeLoader:
                     (code_id, component.key),
                 ).fetchone()[0]
             )
-            for language, label in component.labels.items():
+            labels = dict(component.labels)
+            derived = False
+            if not labels:
+                # the source publishes a machine key only; give the client a
+                # readable label and record that it was derived, not translated
+                labels = {"en": humanize_key(component.key)}
+                derived = True
+            for language, label in labels.items():
                 self.conn.execute(
                     "INSERT INTO dtc_component_texts (component_id, language, label) VALUES (?,?,?) "
                     "ON CONFLICT(component_id, language) DO NOTHING",
                     (component_id, language, label),
                 )
+            self._claim("dtc_component", component_id, "label", record, bundle, source_record_id,
+                        labels, is_derived=derived,
+                        notes="derived from the machine key" if derived else None)
             self.stats.components = self._count("dtc_components")
 
         # related codes ----------------------------------------------------
@@ -500,10 +518,32 @@ class MergeLoader:
             self.stats.flags = self._count("dtc_flags")
         self._claim("dtc_code", code_id, "flags", record, bundle, source_record_id, flag_values)
 
-        # references -------------------------------------------------------
+        # evidence ---------------------------------------------------------
+        # Upstream citations are data, not metadata: without them a reviewer
+        # cannot check a statement, so they get their own rows.
+        stored_evidence = 0
+        for url in record.evidence_urls:
+            cur = self.conn.execute(
+                "INSERT INTO dtc_evidence_sources (dtc_code_id, url, kind) VALUES (?,?,'source') "
+                "ON CONFLICT(dtc_code_id, url) DO NOTHING",
+                (code_id, url),
+            )
+            stored_evidence += max(int(cur.rowcount or 0), 0)
+        for reference in record.references:
+            cur = self.conn.execute(
+                "INSERT INTO dtc_evidence_sources (dtc_code_id, url, kind, label) "
+                "VALUES (?,?,'reference',?) ON CONFLICT(dtc_code_id, url) DO NOTHING",
+                (code_id, reference, reference),
+            )
+            stored_evidence += max(int(cur.rowcount or 0), 0)
         if record.references or record.evidence_urls:
-            self._claim("dtc_code", code_id, "references", record, bundle, source_record_id,
-                        {"references": record.references, "evidence": record.evidence_urls})
+            self._claim("dtc_code", code_id, "evidence", record, bundle, source_record_id,
+                        {"references": record.references, "evidence": record.evidence_urls},
+                        notes=(
+                            f"{len(record.evidence_urls)} source link(s), "
+                            f"{len(record.references)} reference(s), "
+                            f"{stored_evidence} new row(s) in dtc_evidence_sources"
+                        ))
 
     # ------------------------------------------------------------------
     # other record types
@@ -587,13 +627,14 @@ class MergeLoader:
             code_id = self._definitions_code_lookup(conflict.context_key)
             cur = self.conn.execute(
                 """
-                INSERT INTO conflicts (conflict_type, entity_type, entity_id, dtc_code_id, code,
-                    context_key, attribute, summary, similarity, status, created_at)
-                VALUES (?,?,?,?,?,?,?,?,?,'needs_review',?)
+                INSERT INTO conflicts (fingerprint, conflict_type, entity_type, entity_id,
+                    dtc_code_id, code, context_key, attribute, summary, similarity, status,
+                    created_at)
+                VALUES (?,?,?,?,?,?,?,?,?,?,'needs_review',?)
                 """,
-                (conflict.conflict_type, "dtc_definition", code_id or 0, code_id, conflict.code,
-                 conflict.context_key, conflict.attribute, conflict.summary, conflict.similarity,
-                 self.now),
+                (conflict_fingerprint(conflict), conflict.conflict_type, "dtc_definition",
+                 code_id or 0, code_id, conflict.code, conflict.context_key, conflict.attribute,
+                 conflict.summary, conflict.similarity, self.now),
             )
             conflict_id = int(cur.lastrowid)
             self.stats.conflicts += 1
@@ -621,6 +662,40 @@ class MergeLoader:
                         "WHERE dtc_code_id = ? AND language = ? AND content_hash = ?",
                         (code_id, evidence.language, evidence.content_hash),
                     )
+
+    def _propagate_code_status(self) -> None:
+        """Aggregate statement status up to the code, so the client sees one value.
+
+        A code is ``verified`` when at least one of its statements is corroborated,
+        ``conflicting`` when its sources disagree, and ``unverified`` only when
+        every statement is empty.
+        """
+        self.conn.execute(
+            """
+            UPDATE provenance_claims SET verification_status = COALESCE((
+                SELECT CASE
+                    WHEN SUM(d.verification_status = 'verified') > 0 THEN 'verified'
+                    WHEN SUM(d.verification_status = 'conflicting') > 0 THEN 'conflicting'
+                    WHEN SUM(d.verification_status = 'unverified') = COUNT(*) THEN 'unverified'
+                    ELSE 'source_reported'
+                END
+                FROM dtc_definitions d WHERE d.dtc_code_id = provenance_claims.entity_id
+            ), verification_status)
+            WHERE entity_type = 'dtc_code'
+            """
+        )
+
+    def _apply_reviews(self, reviews: ReviewStore | None) -> dict[str, int]:
+        """Re-apply human decisions so a reviewed conflict is never re-opened."""
+        if reviews is None or not reviews.decisions:
+            return {"applied": 0, "canonical_overrides": 0, "unmatched": 0}
+        stats = reviews.apply(self.conn)
+        self.stats.conflicts_resolved = int(
+            self.conn.execute(
+                "SELECT COUNT(*) FROM conflicts WHERE status <> 'needs_review'"
+            ).fetchone()[0]
+        )
+        return stats
 
     def _definitions_code_lookup(self, context_key: str) -> int | None:
         return self.repo._codes.get(context_key)

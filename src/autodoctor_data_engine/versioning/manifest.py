@@ -34,7 +34,9 @@ class Manifest:
     database_file: str
     database_sha256: str
     database_bytes: int
+    source_set: str = "private"
     sources: list[dict[str, Any]] = field(default_factory=list)
+    sources_excluded: list[dict[str, Any]] = field(default_factory=list)
     counts: dict[str, int] = field(default_factory=dict)
     validation: dict[str, Any] = field(default_factory=dict)
     checks: list[dict[str, Any]] = field(default_factory=list)
@@ -87,7 +89,9 @@ def build_manifest(
     validation: dict[str, Any],
     checks: list[dict[str, Any]],
     test_status: str,
-    schema_version: str = "1",
+    schema_version: str = "3",
+    source_set: str = "private",
+    sources_excluded: list[dict[str, Any]] | None = None,
     notes: str | None = None,
     app_bundle: dict[str, Any] | None = None,
 ) -> Manifest:
@@ -100,7 +104,9 @@ def build_manifest(
         database_file=database_path.name,
         database_sha256=sha256_file(database_path),
         database_bytes=database_path.stat().st_size,
+        source_set=source_set,
         sources=sources,
+        sources_excluded=list(sources_excluded or []),
         counts=counts,
         validation=validation,
         checks=checks,

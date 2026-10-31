@@ -18,7 +18,7 @@ from pathlib import Path
 from typing import Any
 
 from . import __version__
-from .config import ConfigError, Settings
+from .config import DEFAULT_SOURCE_SET, SOURCE_SETS, ConfigError, Settings
 from .conflict_resolution.detector import detect_conflicts
 from .database.build import BuildError, build_database
 from .database.connection import connect
@@ -41,6 +41,7 @@ from .reporting.report import (
     render_markdown,
     write_report,
 )
+from .reviews import ReviewError, ReviewStore
 from .staging import load_all_bundles
 from .translations import export_template
 from .versioning.manifest import latest_manifest
@@ -272,8 +273,9 @@ def cmd_build_db(args: argparse.Namespace) -> int:
             strict=args.strict,
             export=not args.no_export,
             app_bundle=not args.no_app_bundle,
+            source_set=args.source_set,
         )
-    except BuildError as exc:
+    except (BuildError, ConfigError) as exc:
         _print(f"error: {exc}")
         return EXIT_FAILURE
 
@@ -281,6 +283,9 @@ def cmd_build_db(args: argparse.Namespace) -> int:
         _pretty(result.summary())
     else:
         _print(f"version:        {result.version}")
+        _print(f"source set:     {result.source_set}")
+        for entry in result.sources_excluded:
+            _print(f"  excluded:     {entry['slug']} ({entry['reason']}, {entry['data_license']})")
         _print(f"database:       {result.database_path}")
         _print(f"status:         {result.test_status}")
         _print(f"export:         {result.export_path or '-'}")
@@ -290,8 +295,8 @@ def cmd_build_db(args: argparse.Namespace) -> int:
         _print(f"manifest:       {result.manifest_path or '-'}")
         _print("counts:")
         for key in ("dtc_codes", "dtc_codes_distinct", "definitions", "causes", "symptoms",
-                    "tests", "repairs", "related_codes", "pids", "conflicts", "claims",
-                    "codes_with_arabic"):
+                    "tests", "repairs", "related_codes", "pids", "conflicts",
+                    "conflicts_open", "claims", "codes_with_arabic"):
             _print(f"  {key:<22}{result.counts.get(key, 0):>10,}")
         failures = [c for c in result.checks if c.blocking and not c.passed]
         _print(f"release checks:  {len([c for c in result.checks if c.passed])}/"
@@ -450,6 +455,13 @@ def cmd_explain(args: argparse.Namespace) -> int:
                 _print(f"      [{evidence['source']}] {evidence['value'][:120]}")
         if context["counts"]:
             _print("  content: " + ", ".join(f"{k}={v}" for k, v in context["counts"].items()))
+        evidence = context.get("evidence") or []
+        if evidence:
+            _print(f"  evidence: {len(evidence)} upstream citation(s)")
+            for item in evidence[:3]:
+                _print(f"    - [{item['kind']}] {item['url'][:100]}")
+            if len(evidence) > 3:
+                _print(f"    ... {len(evidence) - 3} more")
         _print()
     return EXIT_OK
 
@@ -497,8 +509,13 @@ def cmd_translation_template(args: argparse.Namespace) -> int:
 def cmd_run_all(args: argparse.Namespace) -> int:
     settings = _settings(args)
     exit_code = EXIT_OK
+    try:
+        allowed, _report = settings.resolve_source_set(args.source_set, args.source)
+    except ConfigError as exc:
+        _print(f"configuration error: {exc}")
+        return EXIT_USAGE
     for source in settings.enabled_sources():
-        if args.source and source.slug not in args.source:
+        if source.slug not in allowed:
             continue
         _print(f"importing {source.slug} ...")
         try:
@@ -517,14 +534,159 @@ def cmd_run_all(args: argparse.Namespace) -> int:
             part=args.part,
             strict=args.strict,
             export=not args.no_export,
+            source_set=args.source_set,
         )
-    except BuildError as exc:
+    except (BuildError, ConfigError) as exc:
         _print(f"error: {exc}")
         return EXIT_FAILURE
     _print(f"  version {result.version}: {result.test_status}")
     if result.export_path:
         _print(f"  export: {result.export_path}")
     return exit_code if result.test_status == "passed" else EXIT_FAILURE
+
+
+def cmd_source_set(args: argparse.Namespace) -> int:
+    settings = _settings(args)
+    sets = args.set or list(SOURCE_SETS)
+    payload = {name: settings.source_set_report(name) for name in sets}
+    if args.json:
+        _pretty(payload)
+        return EXIT_OK
+    for name, report in payload.items():
+        _print(f"source set: {name}")
+        for entry in report["included"]:
+            _print(f"  include  {entry['slug']:<18} {entry['data_license']:<14} {entry['reason']}")
+        for entry in report["excluded"]:
+            _print(f"  EXCLUDE  {entry['slug']:<18} {entry['data_license']:<14} {entry['reason']}")
+        _print()
+    return EXIT_OK
+
+
+def cmd_list_conflicts(args: argparse.Namespace) -> int:
+    settings = _settings(args)
+    db_path = settings.database_path()
+    if not db_path.is_file():
+        _print("no database yet; run `autodoctor build-db` first")
+        return EXIT_FAILURE
+    where = ["1 = 1"]
+    params: list[Any] = []
+    if args.status and args.status != "all":
+        where.append("c.status = ?")
+        params.append(args.status)
+    if args.code:
+        where.append("UPPER(c.code) = ?")
+        params.append(args.code.upper())
+    query = f"""
+        SELECT c.id, c.fingerprint, c.conflict_type, c.code, c.context_key, c.attribute,
+               c.summary, c.similarity, c.status, c.resolution_note
+        FROM conflicts c WHERE {' AND '.join(where)}
+        ORDER BY c.code, c.context_key, c.id
+        LIMIT ?
+    """
+    params.append(args.limit)
+    conn = connect(db_path, readonly=True)
+    try:
+        rows = conn.execute(query, params).fetchall()
+        evidence: dict[int, list[dict[str, Any]]] = {}
+        for row in rows:
+            evidence[int(row["id"])] = [
+                dict(item)
+                for item in conn.execute(
+                    "SELECT source_slug, value_text FROM conflict_evidence "
+                    "WHERE conflict_id = ? ORDER BY source_slug",
+                    (int(row["id"]),),
+                )
+            ]
+        totals = {
+            status: int(
+                conn.execute(
+                    "SELECT COUNT(*) FROM conflicts WHERE status = ?", (status,)
+                ).fetchone()[0]
+            )
+            for status in ("needs_review", "resolved", "accepted_difference")
+        }
+    finally:
+        conn.close()
+    payload = {
+        "totals": totals,
+        "conflicts": [
+            {**dict(row), "evidence": evidence[int(row["id"])]} for row in rows
+        ],
+    }
+    if args.json:
+        _pretty(payload)
+        return EXIT_OK
+    _print(
+        f"conflicts: {totals['needs_review']:,} open, {totals['resolved']:,} resolved, "
+        f"{totals['accepted_difference']:,} accepted differences"
+    )
+    for conflict in payload["conflicts"]:
+        _print()
+        _print(f"{conflict['code']}  [{conflict['context_key']}]  {conflict['conflict_type']}")
+        _print(f"  fingerprint: {conflict['fingerprint']}")
+        _print(f"  status:      {conflict['status']}")
+        _print(f"  summary:     {conflict['summary']}")
+        for item in conflict["evidence"]:
+            statement = (item["value_text"] or "").replace("\n", " ")
+            if len(statement) > 110:
+                statement = statement[:107] + "..."
+            _print(f"    <- {item['source_slug']:<10} {statement}")
+        if conflict["resolution_note"]:
+            _print(f"  decision:    {conflict['resolution_note']}")
+    if not payload["conflicts"]:
+        _print("no conflicts matched")
+    _print()
+    _print("resolve one with: autodoctor review-conflict <fingerprint> "
+           "--accept --note '...' --reviewer 'name'")
+    return EXIT_OK
+
+
+def cmd_review_conflict(args: argparse.Namespace) -> int:
+    settings = _settings(args)
+    store = ReviewStore.load(settings.root)
+    db_path = settings.database_path()
+    context: dict[str, Any] = {}
+    if db_path.is_file():
+        conn = connect(db_path, readonly=True)
+        try:
+            row = conn.execute(
+                "SELECT code, context_key, conflict_type FROM conflicts WHERE fingerprint = ?",
+                (args.fingerprint,),
+            ).fetchone()
+        finally:
+            conn.close()
+        if row:
+            context = dict(row)
+    if not context and not args.force:
+        _print(
+            f"error: no conflict with fingerprint {args.fingerprint!r} in {db_path}. "
+            "Run `autodoctor list-conflicts` to see the current fingerprints, "
+            "or pass --force to record the decision anyway."
+        )
+        return EXIT_FAILURE
+
+    decision = "accepted_difference" if args.accept else "resolved"
+    if decision == "resolved" and not args.source:
+        _print("error: --resolve needs --source <slug> naming the statement to keep")
+        return EXIT_USAGE
+    try:
+        entry = store.record(
+            fingerprint=args.fingerprint,
+            decision=decision,
+            note=args.note,
+            reviewer=args.reviewer,
+            chosen_source=args.source,
+            code=context.get("code") or args.code,
+            context_key=context.get("context_key"),
+            conflict_type=context.get("conflict_type"),
+        )
+    except ReviewError as exc:
+        _print(f"error: {exc}")
+        return EXIT_USAGE
+    _print(f"recorded {entry.decision} for {entry.fingerprint} ({entry.reviewer})")
+    _print(f"stored in {store.path}")
+    _print("the next build will close this conflict instead of re-opening it")
+    return EXIT_OK
 
 
 # ---------------------------------------------------------------------------
@@ -583,6 +745,9 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--no-export", action="store_true", help="build the working database only")
     p.add_argument("--no-app-bundle", action="store_true",
                    help="skip the compact Flutter bundle")
+    p.add_argument("--source-set", choices=list(SOURCE_SETS), default=DEFAULT_SOURCE_SET,
+                   help="licence boundary of the build: 'public' only includes sources whose "
+                        "data licence and legal review allow redistribution")
     p.set_defaults(func=cmd_build_db)
 
     p = sub.add_parser("report", help="report on the database or the imports")
@@ -620,7 +785,35 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--source", action="append")
     p.add_argument("--strict", action="store_true")
     p.add_argument("--no-export", action="store_true")
+    p.add_argument("--source-set", choices=list(SOURCE_SETS), default=DEFAULT_SOURCE_SET)
     p.set_defaults(func=cmd_run_all)
+
+    p = sub.add_parser("source-set", help="show which sources a public or private build may use")
+    p.add_argument("--set", action="append", choices=list(SOURCE_SETS),
+                   help="limit to one set (default: both)")
+    p.set_defaults(func=cmd_source_set)
+
+    p = sub.add_parser("list-conflicts", help="review queue with stable conflict fingerprints")
+    p.add_argument("--status", choices=["needs_review", "resolved", "accepted_difference", "all"],
+                   default="needs_review")
+    p.add_argument("--code")
+    p.add_argument("--limit", type=int, default=10)
+    p.set_defaults(func=cmd_list_conflicts)
+
+    p = sub.add_parser("review-conflict", help="record a human decision on one conflict")
+    p.add_argument("fingerprint")
+    group = p.add_mutually_exclusive_group(required=True)
+    group.add_argument("--accept", action="store_true",
+                       help="both statements are legitimate (accepted_difference)")
+    group.add_argument("--resolve", action="store_true",
+                       help="one statement is correct; requires --source")
+    p.add_argument("--source", help="slug of the statement to keep")
+    p.add_argument("--code", help="code, when recording a decision offline")
+    p.add_argument("--note", required=True, help="why this decision was taken")
+    p.add_argument("--reviewer", required=True, help="who decided")
+    p.add_argument("--force", action="store_true",
+                   help="record a decision for a fingerprint not present in the database")
+    p.set_defaults(func=cmd_review_conflict)
 
     return parser
 

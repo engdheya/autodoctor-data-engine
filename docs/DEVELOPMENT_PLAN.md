@@ -14,38 +14,42 @@ validated SQLite database, prove it with tests, publish a versioned release.
 | Connectors for OBDex, Wal33D, autodiag2, OBDb | ✅ |
 | Immutable raw archive per commit | ✅ `data/raw/<slug>/<commit>/*.jsonl` |
 | Normalization (codes, text, languages, manufacturers, keys) | ✅ |
-| Context-aware identity (`code` is not unique) | ✅ 40,222 identities / 19,216 codes |
+| Context-aware identity (`code` is not unique) | ✅ 40,222 identities / 19,216 codes (private) |
 | Deduplication (exact / near / context variants) | ✅ 8,573 / 1,465 / 4,186 |
-| Conflict detection with evidence | ✅ 4,435 open conflicts |
-| Provenance claim per statement | ✅ 327,369 claims |
-| Validation: 20 record rules + 10 release gates | ✅ |
+| Conflict detection with evidence | ✅ 4,435 open conflicts (private) / 503 (public) |
+| Provenance claim per statement | ✅ 352,761 claims (private) / 233,432 (public) |
+| Validation: 20 record rules + 11 release gates | ✅ |
 | Merge + canonical selection + verification | ✅ 14,029 verified statements |
-| SQLite build + app bundle + manifest + SHA-256 | ✅ 147 MB / 60 MB |
-| CLI (15 commands) | ✅ |
-| Tests | ✅ 177 (173 offline + 4 integration) |
-| Documentation (7 documents) | ✅ |
+| SQLite build + app bundle + manifest + SHA-256 | ✅ 169.5 MB / 71.2 MB private, 105.8 MB / 52.1 MB public |
+| CLI (17 commands) | ✅ |
+| Tests | ✅ 210 (205 offline + 5 integration) |
+| Documentation (14 documents) | ✅ |
 | CI | ✅ `ci/ci.yml` + `ci/upstream-drift.yml` (activate: `cp ci/*.yml .github/workflows/`) |
 | Arabic content | ⛔ not available from any source; pipeline ready, content pending |
 | Inspection procedures (`dtc_tests`) | ⛔ no source provides them; pipeline ready |
 
-**Measured outcome:** 0.1.0 builds and passes 9/10 release gates, the tenth being the licence
-review (see [LICENSES](LICENSES.md)).
+**Measured outcome:** database 0.4.0 builds in two editions. The public edition passes 11/11 release
+gates; the private one passes 9/11 because `D007`/`D011` deliberately warn about the two sources
+still awaiting legal review (see [LICENSES](LICENSES.md), [PUBLICATION](PUBLICATION.md)).
 
 ## Phase 2 — Data quality and coverage (next)
 
+Plans: [PHASE2_TRANSLATION_PLAN](PHASE2_TRANSLATION_PLAN.md),
+[PHASE2_DTC_PROCEDURES_PLAN](PHASE2_DTC_PROCEDURES_PLAN.md).
+
 Ordered by value per unit of risk:
 
-1. **Licence review of autodiag2 and OBDb.** Needed before anything is public. Then split the
-   app bundle into `--source-set private` / `public` and make `D007` blocking for the public one.
+1. ~~**Licence review of autodiag2 and OBDb.**~~ ✅ the split exists (`--source-set private|public`,
+   `D011` blocking, read-only bundle assertion); what remains is the legal decision itself.
 2. **Arabic translation programme.** `export-translation-template` → translator batches →
    `data/translations/ar/` → rebuild. Priority order: the 2,000 most-read codes (generic layer,
    MIL-relevant), then manufacturer codes. Target: 100 % of the generic layer reviewed.
 3. **Inspection procedures.** Author `dtc_tests` content for the generic layer (measurement,
    freeze-frame, expected values, required tool). This is the difference between "a code means X"
    and "here is how you check X", which is the product's value.
-4. **Conflict review workflow.** 4,435 conflicts need a decision. Build a review CLI
-   (`autodoctor review conflicts --status`) that writes `accepted_difference`/`resolved` with a
-   note, and make the next build carry those decisions instead of re-raising them.
+4. ~~**Conflict review workflow.**~~ ✅ `autodoctor list-conflicts` / `review-conflict`, fingerprints
+   persisted in `data/reviews/conflicts.yaml`; see [CONFLICT_REVIEW](CONFLICT_REVIEW.md). The work
+   that remains is *making* the 4,435 decisions.
 5. **More sources** (each needs a licence entry first): manufacturer service data with an
    explicit redistribution grant, ISO 15031-6 reference tables for canonical generic wording,
    and additional OBDb vehicle repositories for parameter coverage.

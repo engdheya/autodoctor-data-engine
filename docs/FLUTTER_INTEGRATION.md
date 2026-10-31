@@ -7,12 +7,16 @@ P0301 mean, where does it come from, and how sure are we".
 
 | File | Size | Use |
 | --- | ---: | --- |
-| `data/exports/autodoctor-app-<version>.sqlite` | 60 MB | **ship this** |
-| `data/exports/autodoctor-<version>.sqlite` | 147 MB | engineering only: raw record links, claim matrix, validation log |
+| `data/exports/autodoctor-app-<version>-public.sqlite` | 52.1 MB | **ship this** (public edition: OBDex + Wal33D) |
+| `data/exports/autodoctor-app-<version>.sqlite` | 71.2 MB | private edition, internal testing only |
+| `data/exports/autodoctor-<version>-public.sqlite` | 105.8 MB | engineering only: raw record links, claim matrix, validation log |
+| `data/exports/autodoctor-<version>.sqlite` | 169.5 MB | engineering only, all four sources |
 
 The app bundle contains every content table, `provenance_summary` (one row per fact + source) and
 the two views. It does **not** contain `provenance_claims`, `source_records`, `source_files`,
-`validation_results` or duplicate evidence — that is where the other 87 MB went.
+`validation_results` or duplicate evidence — that is where the other 53.7 MB went (public edition;
+98.3 MB for the private one). A bundle without `v_dtc_lookup`/`v_dtc_summary` is refused at build
+time, so a published file always answers these queries.
 
 ## Installation
 
@@ -39,7 +43,7 @@ ORDER BY length(code), code
 LIMIT 30;
 ```
 
-**All meanings of a code** — the P1690 case, where one code has 22 meanings:
+**All meanings of a code** — the P1690 case, where one code has 34 meanings:
 
 ```sql
 SELECT code, context_type, manufacturer, title_en, title_ar, risk_level, source_count

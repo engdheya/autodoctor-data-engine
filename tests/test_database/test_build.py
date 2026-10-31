@@ -241,7 +241,8 @@ def test_manifest_matches_the_export(built) -> None:
 
 
 def test_db_versions_records_the_release(built) -> None:
-    conn = connect(built.database_path, readonly=True)
+    # the release row is written into the published artifact, not the scratch db
+    conn = connect(built.export_path, readonly=True)
     try:
         row = conn.execute("SELECT * FROM db_versions WHERE version = '0.1.0'").fetchone()
     finally:
@@ -249,6 +250,10 @@ def test_db_versions_records_the_release(built) -> None:
     assert row is not None
     assert row["test_status"] == "passed"
     assert row["published_at"]
+    # db_versions cannot store the hash of the file that contains it
+    assert row["sha256"] is None
+    assert "manifest" in row["notes"]
+    assert row["source_set"] == "private"
     assert json.loads(row["counts_json"])["dtc_codes"] > 0
 
 
@@ -301,3 +306,44 @@ def test_second_build_increments_the_version_from_disk(imported: Settings) -> No
     assert second.version == "1.1.0"
     third = build_database(imported, part="patch")
     assert third.version == "1.1.1"
+
+
+def test_upstream_evidence_links_are_stored(built, db_conn) -> None:
+    """A citation the upstream publishes must not vanish into a claim."""
+    rows = db_conn.execute(
+        """
+        SELECT e.url, e.kind FROM dtc_evidence_sources e
+        JOIN dtc_codes c ON c.id = e.dtc_code_id
+        WHERE c.code = 'P0301' AND c.context_type = 'generic'
+        """
+    ).fetchall()
+    assert rows, "OBDex publishes source links for P0301; they must reach the database"
+    sources = [row["url"] for row in rows if row["kind"] == "source"]
+    assert sources and all(url.startswith("http") for url in sources)
+    # references are kept too (they are standards identifiers, not URLs)
+    assert any(row["kind"] == "reference" for row in rows)
+
+    claim = db_conn.execute(
+        "SELECT notes FROM provenance_claims WHERE attribute = 'evidence' LIMIT 1"
+    ).fetchone()
+    assert claim and "source link" in claim["notes"]
+
+
+def test_component_keys_get_a_derived_label(built, db_conn) -> None:
+    row = db_conn.execute(
+        """
+        SELECT ct.language, ct.label, p.is_derived
+        FROM dtc_components x
+        JOIN dtc_component_texts ct ON ct.component_id = x.id
+        JOIN dtc_codes c ON c.id = x.dtc_code_id
+        JOIN provenance_claims p ON p.entity_type = 'dtc_component' AND p.entity_id = x.id
+        WHERE c.code = 'P0301' AND c.context_type = 'generic'
+        ORDER BY ct.label LIMIT 1
+        """
+    ).fetchone()
+    assert row is not None
+    assert row["language"] == "en"
+    assert row["label"][0].isupper()
+    assert "_" not in row["label"]
+    # the label is generated from the key: it must be flagged as derived
+    assert row["is_derived"] == 1

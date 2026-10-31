@@ -25,7 +25,17 @@ def _scalar(conn: sqlite3.Connection, query: str) -> int:
     return int(row[0]) if row and row[0] is not None else 0
 
 
-def run_database_checks(conn: sqlite3.Connection) -> list[DatabaseCheck]:
+def run_database_checks(
+    conn: sqlite3.Connection, *, source_set: str = "private"
+) -> list[DatabaseCheck]:
+    """Evaluate the release gates.
+
+    ``source_set`` decides how strict the licence gate is: a private build may
+    carry sources awaiting a legal review (warning), a public build may not
+    (blocking), and a public build additionally has to prove that no row from a
+    non-redistributable source survived the merge (``D011``).
+    """
+    public = source_set == "public"
     checks: list[DatabaseCheck] = []
 
     fk_problems = conn.execute("PRAGMA foreign_key_check").fetchall()
@@ -144,7 +154,7 @@ def run_database_checks(conn: sqlite3.Connection) -> list[DatabaseCheck]:
         DatabaseCheck(
             "D007_licence_review",
             "sources marked redistributable have an approved legal review",
-            False,
+            public,
             unreviewed_sources == 0,
             f"{unreviewed_sources} sources need a legal review before public distribution",
             unreviewed_sources,
@@ -202,6 +212,46 @@ def run_database_checks(conn: sqlite3.Connection) -> list[DatabaseCheck]:
             negative_estimates == 0,
             f"{negative_estimates} negative estimates",
             negative_estimates,
+        )
+    )
+
+    # Every fact reaches a table through provenance_claims -> data_sources, so the
+    # source registry is the single place where a licence leak can be detected.
+    unlicensed_sources = _scalar(
+        conn,
+        """
+        SELECT COUNT(*) FROM data_sources
+        WHERE legal_review_status <> 'approved' OR COALESCE(redistribution_allowed, 0) = 0
+        """,
+    )
+    rows_from_unlicensed = _scalar(
+        conn,
+        """
+        SELECT COUNT(*) FROM provenance_claims p
+        JOIN data_sources s ON s.id = p.source_id
+        WHERE s.legal_review_status <> 'approved' OR COALESCE(s.redistribution_allowed, 0) = 0
+        """,
+    )
+    stray_evidence = _scalar(
+        conn,
+        """
+        SELECT COUNT(*) FROM conflict_evidence e
+        WHERE e.source_slug NOT IN (SELECT slug FROM data_sources)
+        """,
+    )
+    leak = unlicensed_sources + rows_from_unlicensed + stray_evidence
+    checks.append(
+        DatabaseCheck(
+            "D011_public_source_set",
+            "a public build contains no data from a non-redistributable source",
+            public,
+            leak == 0,
+            (
+                f"{unlicensed_sources} unlicensed source(s), "
+                f"{rows_from_unlicensed} fact(s) and {stray_evidence} conflict evidence row(s) "
+                "outside the licensed set"
+            ),
+            leak,
         )
     )
 

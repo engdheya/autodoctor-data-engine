@@ -85,7 +85,7 @@ ASCII), `UNIQUE`.
 | `vehicle_variant` | meaning documented only for one variant | `vehicle_variant_id` |
 
 Consequences visible in release 0.1.0: 12,947 generic / 26,409 manufacturer / 866 ECU identities
-over 19,216 distinct codes; `P1690` exists 22 times, once per manufacturer that documents it.
+over 19,216 distinct codes; `P1690` exists 34 times, once per manufacturer that documents it.
 
 `standard` (`sae_j2012`, `iso_15031_6`, `iso_14229_1`, `manufacturer_specific`, `unknown`) is
 *reported*, not inferred from the code prefix. `severity_source` keeps the upstream's own severity
@@ -134,7 +134,8 @@ its provenance path are implemented and tested.
 file) from `derived:<rule>` and `human_translation`. `UNIQUE(entity_type, entity_id, attribute,
 source_record_id, extraction_method)` keeps re-imports idempotent.
 
-327,369 claims exist in release 0.1.0. Gate `D003` proves that every DTC has at least one and `D008`
+352,761 claims exist in the private 0.4.0 build (233,432 in the public one). Gate `D003` proves that
+every DTC has at least one and `D008`
 that every non-derived claim points at a real `source_records` row.
 
 ### `conflicts` / `conflict_evidence`
@@ -199,6 +200,9 @@ The app bundle replaces `v_dtc_summary` with a variant that derives `source_coun
 
 | Artifact | Size | Contents |
 | --- | ---: | --- |
-| `db/autodoctor.sqlite` (working) | 147 MB | everything |
-| `data/exports/autodoctor-0.1.0.sqlite` | 147 MB | published engineering copy |
-| `data/exports/autodoctor-app-0.1.0.sqlite` | 60 MB | app bundle: content tables + `provenance_summary` 199,520 rows, no claim matrix, no raw records |
+| `db/autodoctor.sqlite` (working copy) | 105.8 MB | the published public edition, byte-identical to `data/exports/autodoctor-0.4.0-public.sqlite` |
+| `data/exports/autodoctor-0.4.0.sqlite` | 169.5 MB | private engineering copy: all four sources, claim matrix, raw-record links, validation log |
+| `data/exports/autodoctor-0.4.0-public.sqlite` | 105.8 MB | public engineering copy: OBDex + Wal33D only |
+| `data/exports/autodoctor-app-0.4.0.sqlite` | 71.2 MB | private app bundle: content tables + `provenance_summary` 224,912 rows, no claim matrix, no raw records |
+| `data/exports/autodoctor-app-0.4.0-public.sqlite` | 52.1 MB | public app bundle: the file the Flutter client ships, 163,200 `provenance_summary` rows |
+| `data/samples/autodoctor-sample.sqlite` | 1.6 MB | 300 generic codes cut from the public bundle, for trying queries by hand |

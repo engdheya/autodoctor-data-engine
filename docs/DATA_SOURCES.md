@@ -54,7 +54,7 @@ contradicts the code prefix.
 * **198 codes appear both as generic and as manufacturer-specific.** `P0420` is generic "Catalyst
   System Efficiency Below Threshold Bank 1" but Audi-specific "Inefficient Catalytic Converter(s),
   Defective Front or Rear Oxygen Sensor(s), Misfiring engines". Both are kept, in two contexts.
-* **`P1690` has 22 different meanings** (Ford "Wastegate Solenoid Circuit Malfunction", BMW
+* **`P1690` has 34 different meanings** (Ford "Wastegate Solenoid Circuit Malfunction", BMW
   "Malfunction Indicator Lamp MIL Electrical", Chrysler "Fuel Injection Pump CKP Sensor Does Not
   Agree With ECM CKP Sensor", …). This single code is the reason `code` is not a unique key.
 * The compiled database has **18,805 rows while the raw text lists parse to 18,826 lines** — the

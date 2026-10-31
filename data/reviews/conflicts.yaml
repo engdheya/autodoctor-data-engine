@@ -1,0 +1,4 @@
+version: 1
+note: Human review decisions for source conflicts. Keyed by a content fingerprint; see
+  src/autodoctor_data_engine/reviews.py. Applied on every build.
+decisions: []
