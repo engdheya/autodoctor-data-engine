@@ -1,0 +1,58 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "autodoctor-data-engine"
+version = "0.1.0"
+description = "AutoDoctor AI - data integration engine for automotive diagnostic trouble codes (DTC)"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "AutoDoctor AI contributors" }]
+keywords = ["obd2", "dtc", "diagnostics", "automotive", "sqlite", "data-engineering"]
+classifiers = [
+  "Programming Language :: Python :: 3.11",
+  "Operating System :: OS Independent",
+  "Topic :: Database",
+]
+dependencies = [
+  "PyYAML>=6.0",
+  "pydantic>=2.5",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "ruff>=0.4",
+]
+
+[project.scripts]
+autodoctor = "autodoctor_data_engine.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/engdheya/autodoctor-data-engine"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+autodoctor_data_engine = ["resources/*.sql"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+markers = [
+  "integration: tests that need real upstream checkouts (deselect with -m 'not integration')",
+]
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501"]

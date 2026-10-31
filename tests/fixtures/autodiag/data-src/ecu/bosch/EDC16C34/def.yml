@@ -1,0 +1,6 @@
+model: EDC16C34
+created: 2026-07-17 23:19:47 CEST
+type: ECM
+evidence:
+- https://example.org/bosch-edc16
+mcu: infineon/C167

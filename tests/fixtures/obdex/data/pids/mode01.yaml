@@ -1,0 +1,23 @@
+- pid: "0C"
+  mode: "01"
+  bytes: 2
+  formula: "256*A + B / 4"
+  unit: "rpm"
+  range: [0, 16383.75]
+  name:
+    en: Engine RPM
+    de: Motordrehzahl
+  sources:
+    - https://en.wikipedia.org/wiki/OBD-II_PIDs
+
+- pid: "05"
+  mode: "01"
+  bytes: 1
+  formula: "A - 40"
+  unit: "°C"
+  range: [-40, 215]
+  name:
+    en: Engine coolant temperature
+    de: Kühlmitteltemperatur
+  sources:
+    - https://en.wikipedia.org/wiki/OBD-II_PIDs

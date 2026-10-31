@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OBD-II Diagnostic Trouble Code (fixture)",
+  "type": "object",
+  "required": ["code", "category", "title", "sources"]
+}

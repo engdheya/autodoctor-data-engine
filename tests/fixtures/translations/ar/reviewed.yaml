@@ -1,0 +1,7 @@
+- code: P0301
+  title: "تم اكتشاف عدم احتراق في الأسطوانة 1"
+  description: "يسجل كمبيوتر المحرك عدم احتراق في الأسطوانة رقم 1 عبر مراقبة تفاوت سرعة عمود المرفق."
+  translator: "AutoDoctor test fixture"
+  reviewer: "AutoDoctor reviewer"
+  reviewed: true
+  source_url: "https://example.org/misfire-diagnostics"

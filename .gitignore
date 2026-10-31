@@ -218,3 +218,29 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# ---------------------------------------------------------------------------
+# AutoDoctor Data Integration Engine (project specific)
+# ---------------------------------------------------------------------------
+# Generated data: raw archives, staging, exports and reports are artifacts, not
+# source. They are reproducible from a pinned commit and must never be committed
+# (size, and licence constraints on redistribution).
+data/raw/
+data/staging/
+data/processed/
+data/exports/
+data/reports/
+!data/translations/
+db/*.sqlite
+db/*.sqlite-wal
+db/*.sqlite-shm
+*.manifest.json.tmp
+failed-build-*.json
+
+# Upstream checkouts (clones or symlinks); fetch with `autodoctor fetch-sources`.
+vendor/upstream/
+vendor/upstream
+
+# Local environment
+.env
+.venv/

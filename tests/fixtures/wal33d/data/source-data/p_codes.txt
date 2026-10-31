@@ -1,0 +1,3 @@
+P0301 - Cylinder 1 Misfire Detected
+P1690 - MIL Malfunction
+P1641 - Please check DTC Memory of Air Condition ECU

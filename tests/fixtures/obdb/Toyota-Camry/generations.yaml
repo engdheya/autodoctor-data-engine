@@ -1,0 +1,11 @@
+references:
+  - "https://en.wikipedia.org/wiki/Toyota_Camry"
+generations:
+  - name: "Fifth Generation (XV30)"
+    start_year: 2001
+    end_year: 2006
+    description: "Mid-size sedan with 2.4L four-cylinder and 3.0L V6 engines."
+  - name: "Sixth Generation (XV40)"
+    start_year: 2006
+    end_year: 2011
+    description: "Introduced the Camry Hybrid."

@@ -1,0 +1,34 @@
+# Example translation batch - NOT applied to the database.
+#
+# Every entry below is `reviewed: false`, so `build-db` reports it and skips it.
+# Copy this file, translate, get a second pair of eyes, then flip `reviewed`
+# and fill in `translator` and `reviewer`.
+#
+# The file is a YAML *list*; the directory name (ar) is the language.
+# See data/translations/README.md for the workflow.
+
+- code: P0301
+  context:
+    type: generic
+  title: "تم اكتشاف عدم احتراق في الأسطوانة 1"
+  description: >
+    وحدة التحكم في المحرك ترصد عدم احتراق في الأسطوانة رقم 1. هذا عرض وليس
+    تشخيصًا نهائيًا: يجب فحص شمعة الإشعال وملف الإشعال وحاقن الوقود وقياس
+    الضغط قبل استبدال أي قطعة.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+  source_url: ""
+
+- code: P0420
+  context:
+    type: generic
+  title: "كفاءة نظام الحفاز أقل من الحد المطلوب (الصف الأول)"
+  description: >
+    نسبة الأكسجين قبل الحفاز وبعده متقاربة أكثر من المسموح، أي أن الحفاز لا
+    يخزّن الأكسجين بكفاءة. الأسباب المحتملة تشمل الحفاز نفسه، وحساس الأكسجين،
+    وتسريب في العادم، وخللًا في الاحتراق.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+  source_url: ""
