@@ -131,6 +131,8 @@ def build_database(
     app_bundle: bool = True,
     source_set: str = DEFAULT_SOURCE_SET,
     reviews: ReviewStore | None = None,
+    allow_critical_conflicts: str | None = None,
+    override_reviewer: str | None = None,
 ) -> BuildResult:
     settings.paths.ensure()
     if source_set not in SOURCE_SETS:
@@ -147,6 +149,12 @@ def build_database(
         )
 
     warnings: list[str] = []
+    if allow_critical_conflicts:
+        warnings.append(
+            "D012 overridden: unreviewed critical conflicts are being published "
+            f"deliberately (reason: {allow_critical_conflicts}; "
+            f"reviewer: {override_reviewer or 'unknown'})"
+        )
     for entry in excluded_sources:
         warnings.append(
             f"source set {source_set}: {entry['slug']} excluded ({entry['reason']}, "
@@ -223,7 +231,12 @@ def build_database(
         _store_validation_results(conn, failures)
         conn.commit()
 
-        checks = run_database_checks(conn, source_set=source_set)
+        checks = run_database_checks(
+            conn,
+            source_set=source_set,
+            allow_critical_conflicts=allow_critical_conflicts,
+            override_reviewer=override_reviewer,
+        )
         blocking_failures = failed_blocking(checks)
         try:
             optimise(conn)
@@ -326,6 +339,23 @@ def build_database(
             validation=validation_payload,
             checks=[c.__dict__ for c in checks],
             test_status=test_status,
+            notes=(
+                "D012_critical_conflicts overridden: " + allow_critical_conflicts
+                if allow_critical_conflicts
+                else None
+            ),
+            gate_overrides=(
+                [
+                    {
+                        "gate": "D012_critical_conflicts",
+                        "reason": allow_critical_conflicts,
+                        "reviewer": override_reviewer,
+                    }
+                ]
+                if allow_critical_conflicts
+                else []
+            ),
+            warnings=warnings,
             schema_version=SCHEMA_VERSION,
             app_bundle=(
                 {

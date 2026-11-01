@@ -109,6 +109,168 @@ def _band(context_type: str, risk: str | None, similarity: float | None) -> tupl
     )
 
 
+#: SQL predicate for the ``critical`` band, kept next to the Python rule so the two
+#: cannot drift. The release gate uses this; ``_band`` must agree with it (a test
+#: asserts the two counts are identical on the built database).
+CRITICAL_WHERE = (
+    "k.context_type = 'generic' "
+    "AND COALESCE(f.risk_level, '') IN ('high', 'critical') "
+    f"AND COALESCE(c.similarity, 0) < {CRITICAL_SIMILARITY}"
+)
+
+
+def unreviewed_critical_count(conn: sqlite3.Connection) -> int:
+    """Critical-band conflicts that no human has decided yet."""
+    row = conn.execute(
+        f"""
+        SELECT COUNT(*) FROM conflicts c
+        JOIN dtc_codes k ON k.id = c.dtc_code_id
+        LEFT JOIN dtc_flags f ON f.dtc_code_id = c.dtc_code_id
+        WHERE c.status = 'needs_review' AND {CRITICAL_WHERE}
+        """
+    ).fetchone()
+    return int(row[0]) if row else 0
+
+
+def unreviewed_critical_codes(conn: sqlite3.Connection, limit: int = 20) -> list[str]:
+    rows = conn.execute(
+        f"""
+        SELECT c.code FROM conflicts c
+        JOIN dtc_codes k ON k.id = c.dtc_code_id
+        LEFT JOIN dtc_flags f ON f.dtc_code_id = c.dtc_code_id
+        WHERE c.status = 'needs_review' AND {CRITICAL_WHERE}
+        ORDER BY c.code LIMIT ?
+        """,
+        (limit,),
+    ).fetchall()
+    return [str(row[0]) for row in rows]
+
+
+def _evidence_query() -> str:
+    return (
+        "SELECT conflict_id, source_slug, value_text FROM conflict_evidence ORDER BY id"
+    )
+
+
+def review_batch(
+    conn: sqlite3.Connection, *, band: str = "critical", limit: int = 50
+) -> dict[str, Any]:
+    """One batch of conflicts, with everything a reviewer needs to decide.
+
+    The batch is a *question*, not an answer: it carries both statements, the
+    source of each, the licence and commit behind it, the similarity the engine
+    measured and the fingerprint that a decision must be keyed by.
+    """
+    if band not in BANDS:
+        raise ValueError(f"unknown band {band!r}; expected one of {', '.join(BANDS)}")
+    report = triage_conflicts(conn)
+    items = [item for item in report["items"] if item["band"] == band]
+    batch = items[:limit]
+
+    sources = {
+        str(row[0]): {
+            "name": row[1],
+            "licence": row[2],
+            "repo": row[3],
+        }
+        for row in conn.execute(
+            "SELECT slug, name, data_license, repo_url FROM data_sources"
+        )
+    }
+    commits: dict[str, str] = {}
+    for row in conn.execute(
+        "SELECT s.slug, v.commit_sha FROM data_versions v JOIN data_sources s ON s.id = v.source_id "
+        "WHERE v.id = (SELECT MAX(v2.id) FROM data_versions v2 WHERE v2.source_id = s.id)"
+    ):
+        commits[str(row[0])] = str(row[1])
+
+    conflicts = []
+    for item in batch:
+        statements = []
+        for statement in item["statements"]:
+            slug = str(statement["source"])
+            statements.append(
+                {
+                    "source": slug,
+                    "source_name": sources.get(slug, {}).get("name", slug),
+                    "licence": sources.get(slug, {}).get("licence"),
+                    "repo": sources.get(slug, {}).get("repo"),
+                    "commit": commits.get(slug),
+                    "statement": statement["value"],
+                }
+            )
+        conflicts.append(
+            {
+                "fingerprint": item["fingerprint"],
+                "code": item["code"],
+                "context_key": item["context_key"],
+                "context_type": item["context_type"],
+                "attribute": item["attribute"],
+                "conflict_type": item["conflict_type"],
+                "similarity": item["similarity"],
+                "risk_level": item["risk_level"],
+                "manufacturer": item["manufacturer"],
+                "reason": item["reason"],
+                "statements": statements,
+                "decision": {
+                    "required_at": "data/reviews/conflicts.yaml",
+                    "options": [
+                        "accepted_difference - both statements are legitimate",
+                        "resolved --source <slug> - one statement is correct",
+                        "retained_as_alternatives - context makes both true",
+                        "rejected_source --source <slug> - the source is wrong here",
+                    ],
+                    "command": (
+                        f"autodoctor review-conflict {item['fingerprint']} --accept "
+                        "--note '<why>' --reviewer '<name>'"
+                    ),
+                },
+            }
+        )
+
+    return {
+        "generated_at": _now(),
+        "band": band,
+        "rule": _band_to_rule(band),
+        "queue": {"band_total": len(items), "in_batch": len(batch)},
+        "reviewer_note": (
+            "A triage band is not a decision. Nothing in this batch has been resolved "
+            "by the engine; each entry must be decided by a human and recorded in "
+            "data/reviews/conflicts.yaml before the release gate lets the build publish."
+        ),
+        "conflicts": conflicts,
+    }
+
+
+def _band_to_rule(band: str) -> str:
+    return {
+        "critical": (
+            f"generic code, risk in {list(RISK_LEVELS)}, similarity < {CRITICAL_SIMILARITY:.0%}"
+        ),
+        "high": "any other generic code",
+        "medium": f"context-specific, similarity < {VARIANT_SIMILARITY:.0%}",
+        "low": f"context-specific, similarity >= {VARIANT_SIMILARITY:.0%}",
+    }[band]
+
+
+def write_review_batch(
+    conn: sqlite3.Connection, path, *, band: str = "critical", limit: int = 50
+):
+    """Write a batch as YAML (reviewable in an editor and diffable in git)."""
+    from pathlib import Path as _Path
+
+    import yaml
+
+    path = _Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    payload = review_batch(conn, band=band, limit=limit)
+    path.write_text(
+        yaml.safe_dump(payload, sort_keys=False, allow_unicode=True, width=100),
+        encoding="utf-8",
+    )
+    return path
+
+
 def triage_conflicts(conn: sqlite3.Connection) -> dict[str, Any]:
     rows = conn.execute(
         """
@@ -283,6 +445,10 @@ def write_triage(conn: sqlite3.Connection, reports_dir) -> tuple[Any, Any]:
 
 __all__ = [
     "BANDS",
+    "CRITICAL_WHERE",
+    "review_batch",
+    "unreviewed_critical_count",
+    "write_review_batch",
     "CRITICAL_SIMILARITY",
     "VARIANT_SIMILARITY",
     "triage_conflicts",

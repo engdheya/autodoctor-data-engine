@@ -276,6 +276,8 @@ def cmd_build_db(args: argparse.Namespace) -> int:
             export=not args.no_export,
             app_bundle=not args.no_app_bundle,
             source_set=args.source_set,
+            allow_critical_conflicts=args.allow_unreviewed_critical,
+            override_reviewer=getattr(args, "override_reviewer", None),
         )
     except (BuildError, ConfigError) as exc:
         _print(f"error: {exc}")
@@ -340,6 +342,49 @@ def cmd_report(args: argparse.Namespace) -> int:
     return EXIT_OK
 
 
+def cmd_review_batch(args: argparse.Namespace) -> int:
+    from .conflict_resolution.triage import review_batch, write_review_batch
+
+    settings = _settings(args)
+    db_path = Path(args.database) if args.database else settings.database_path()
+    if not db_path.is_file():
+        _print(f"database not found: {db_path}")
+        return EXIT_FAILURE
+    conn = connect(db_path, readonly=True)
+    try:
+        batch = review_batch(conn, band=args.band, limit=args.limit)
+        if args.write:
+            target = (
+                Path(args.out)
+                if args.out
+                else settings.root / "data" / "reviews" / "batches" / f"{args.band}-{args.batch:03d}.yaml"
+            )
+            write_review_batch(conn, target, band=args.band, limit=args.limit)
+            _print(
+                f"wrote {target} ({batch['queue']['in_batch']} of "
+                f"{batch['queue']['band_total']} {args.band} conflicts)"
+            )
+            return EXIT_OK
+        if args.json:
+            _pretty(batch)
+            return EXIT_OK
+        _print(
+            f"{args.band} batch: {batch['queue']['in_batch']} of "
+            f"{batch['queue']['band_total']} conflicts"
+        )
+        for conflict in batch["conflicts"]:
+            _print(f"\n{conflict['code']}  [{conflict['context_key']}]  "
+                   f"similarity {conflict['similarity']}")
+            for statement in conflict["statements"]:
+                _print(f"  <- {statement['source']:<9} ({statement['licence']}) "
+                       f"{str(statement['statement'])[:90]}")
+            _print(f"  fingerprint: {conflict['fingerprint']}")
+            _print(f"  decide with: {conflict['decision']['command']}")
+    finally:
+        conn.close()
+    return EXIT_OK
+
+
 def cmd_triage_conflicts(args: argparse.Namespace) -> int:
     settings = _settings(args)
     db_path = Path(args.database) if args.database else settings.database_path()
@@ -357,6 +402,30 @@ def cmd_triage_conflicts(args: argparse.Namespace) -> int:
             _pretty(report)
         else:
             _print(render_triage_markdown(report, sample=args.limit))
+    finally:
+        conn.close()
+    return EXIT_OK
+
+
+def cmd_completeness(args: argparse.Namespace) -> int:
+    from .reporting.completeness import completeness_report, render_completeness, write_completeness
+
+    settings = _settings(args)
+    db_path = Path(args.database) if args.database else settings.database_path()
+    if not db_path.is_file():
+        _print(f"database not found: {db_path}")
+        return EXIT_FAILURE
+    conn = connect(db_path, readonly=True)
+    try:
+        if args.write:
+            json_path, md_path, csv_path = write_completeness(conn, args.reports)
+            _print(f"written: {json_path}\nwritten: {md_path}\nwritten: {csv_path}")
+            return EXIT_OK
+        report = completeness_report(conn)
+        if args.json:
+            _pretty(report)
+        else:
+            _print(render_completeness(report))
     finally:
         conn.close()
     return EXIT_OK
@@ -588,6 +657,8 @@ def cmd_run_all(args: argparse.Namespace) -> int:
             strict=args.strict,
             export=not args.no_export,
             source_set=args.source_set,
+            allow_critical_conflicts=args.allow_unreviewed_critical,
+            override_reviewer=getattr(args, "override_reviewer", None),
         )
     except (BuildError, ConfigError) as exc:
         _print(f"error: {exc}")
@@ -801,12 +872,34 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--source-set", choices=list(SOURCE_SETS), default=DEFAULT_SOURCE_SET,
                    help="licence boundary of the build: 'public' only includes sources whose "
                         "data licence and legal review allow redistribution")
+    p.add_argument("--allow-unreviewed-critical", metavar="REASON",
+                   help="publish despite unreviewed critical conflicts (gate D012); the reason "
+                        "is recorded in the manifest and the release notes")
+    p.add_argument("--override-reviewer", metavar="NAME",
+                   help="who accepts the D012 override")
     p.set_defaults(func=cmd_build_db)
 
     p = sub.add_parser("report", help="report on the database or the imports")
     p.add_argument("--imports", action="store_true", help="report on staged imports instead")
     p.add_argument("--write", action="store_true", help="also write the report to data/reports")
     p.set_defaults(func=cmd_report)
+
+    p = sub.add_parser("review-batch", help="export a reviewable batch of conflicts "
+                                             "(band + limit) with both statements and sources")
+    p.add_argument("--band", default="critical", choices=["critical", "high", "medium", "low"])
+    p.add_argument("--limit", type=int, default=25)
+    p.add_argument("--batch", type=int, default=1, help="batch number, used in the file name")
+    p.add_argument("--database", help="database file (default: db/autodoctor.sqlite)")
+    p.add_argument("--out", help="explicit output path")
+    p.add_argument("--write", action="store_true", help="write the YAML batch")
+    p.set_defaults(func=cmd_review_batch)
+
+    p = sub.add_parser("completeness", help="per-code completeness: what each identity has "
+                                            "and what it is missing")
+    p.add_argument("--database", help="database file (default: db/autodoctor.sqlite)")
+    p.add_argument("--reports", type=Path, default=Path("data/reports"))
+    p.add_argument("--write", action="store_true", help="write completeness.{json,md,csv}")
+    p.set_defaults(func=cmd_completeness)
 
     p = sub.add_parser("triage-conflicts", help="rank every open conflict into the order a "
                                                 "human should review it (no decision is taken)")
