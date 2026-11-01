@@ -10,7 +10,7 @@ refusing to allow a GitHub App to create or update workflow
 ```
 
 That is a permission limit of the automation, not a defect in the workflow. The
-suite it would run is green locally (231 tests, 5 skipped, `ruff check .` clean).
+suite it would run is green locally (226 tests, 5 skipped, `ruff check .` clean).
 
 ## What to do (2 minutes, either option)
 

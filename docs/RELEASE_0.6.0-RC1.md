@@ -87,5 +87,5 @@ autodoctor review-batch --band critical --limit 25 --batch 1 --write \
 autodoctor completeness --write --database data/exports/autodoctor-0.6.0-rc1-public.sqlite
 python flutter_harness/tool/verify_contract.py \
     --database data/exports/autodoctor-app-0.6.0-rc1-public.sqlite
-python -m pytest          # 231 passed, 5 skipped
+python -m pytest          # 226 passed, 5 skipped
 ```
