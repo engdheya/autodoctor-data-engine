@@ -20,6 +20,7 @@ from typing import Any
 from . import __version__
 from .config import DEFAULT_SOURCE_SET, SOURCE_SETS, ConfigError, Settings
 from .conflict_resolution.detector import detect_conflicts
+from .conflict_resolution.triage import render_triage_markdown, triage_conflicts, write_triage
 from .database.build import BuildError, build_database
 from .database.connection import connect
 from .deduplication.detector import detect_duplicates
@@ -336,6 +337,28 @@ def cmd_report(args: argparse.Namespace) -> int:
         prefix = "import-report" if args.imports else "data-report"
         json_path, md_path = write_report(settings, report, prefix=prefix)
         _print(f"\nwritten: {json_path}\nwritten: {md_path}")
+    return EXIT_OK
+
+
+def cmd_triage_conflicts(args: argparse.Namespace) -> int:
+    settings = _settings(args)
+    db_path = Path(args.database) if args.database else settings.database_path()
+    if not db_path.is_file():
+        _print(f"database not found: {db_path}")
+        return EXIT_FAILURE
+    conn = connect(db_path, readonly=True)
+    try:
+        if args.write:
+            json_path, md_path = write_triage(conn, args.reports)
+            _print(f"written: {json_path}\nwritten: {md_path}")
+            return EXIT_OK
+        report = triage_conflicts(conn)
+        if args.json:
+            _pretty(report)
+        else:
+            _print(render_triage_markdown(report, sample=args.limit))
+    finally:
+        conn.close()
     return EXIT_OK
 
 
@@ -784,6 +807,14 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--imports", action="store_true", help="report on staged imports instead")
     p.add_argument("--write", action="store_true", help="also write the report to data/reports")
     p.set_defaults(func=cmd_report)
+
+    p = sub.add_parser("triage-conflicts", help="rank every open conflict into the order a "
+                                                "human should review it (no decision is taken)")
+    p.add_argument("--database", help="database file (default: db/autodoctor.sqlite)")
+    p.add_argument("--reports", type=Path, default=Path("data/reports"))
+    p.add_argument("--limit", type=int, default=15, help="rows per band in the text report")
+    p.add_argument("--write", action="store_true", help="write conflict-triage.{json,md}")
+    p.set_defaults(func=cmd_triage_conflicts)
 
     p = sub.add_parser("coverage", help="measured coverage of a built database "
                                         "(and of what it does not contain)")

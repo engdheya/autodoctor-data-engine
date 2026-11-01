@@ -133,6 +133,7 @@ a public build that contains a fact from an unapproved source is refused by gate
 | `build-db [--version X] [--part major\|minor\|patch] [--source-set public\|private] [--source S] [--strict] [--no-export] [--no-app-bundle]` | merge, run release gates, publish one edition |
 | `report [--imports] [--write]` | database or import report (markdown + JSON) |
 | `coverage [--database F] [--write] [--json]` | measured coverage per declared field, with denominators, plus the declared scope and its gaps |
+| `triage-conflicts [--database F] [--limit N] [--write]` | ranks every open conflict into critical/high/medium/low with a written reason; decides nothing |
 | `search CODE [--json]` | the diagnostic card the Flutter app will show |
 | `explain CODE [--context K] [--lang L] [--json]` | full provenance: source, commit, file, record, licence, status, conflicts |
 | `detect-changes [--previous F] [--current F]` | diff two builds: moved sources, new/changed/vanished records, added/removed codes |
@@ -247,6 +248,9 @@ docs/                                                                 see below
 | [LICENSE_COMPLIANCE_REPORT](docs/LICENSE_COMPLIANCE_REPORT.md) | per-source licences, obligations, and proof of what the public artifact contains |
 | [DATA_COVERAGE_REPORT](docs/DATA_COVERAGE_REPORT.md) | measured coverage with explicit denominators, generated from the artifact |
 | [FLUTTER_INTEGRATION_GUIDE](docs/FLUTTER_INTEGRATION_GUIDE.md) | the 13-view client contract, search recipes, measured query cost, device checks |
+| [EXECUTION_PLAN_V1](docs/EXECUTION_PLAN_V1.md) | what is left per phase, with the measured size of every gap |
+| [CONFLICT_TRIAGE_REPORT](docs/CONFLICT_TRIAGE_REPORT.md) | the 4,435 conflicts ranked into review bands (592 critical) |
+| [LEGAL_REVIEW_REQUEST](docs/LEGAL_REVIEW_REQUEST.md) | the memo to counsel on ODbL / CC-BY-SA and commercial distribution |
 
 ## Data licensing (short version)
 
