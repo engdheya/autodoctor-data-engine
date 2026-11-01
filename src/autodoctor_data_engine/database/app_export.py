@@ -101,8 +101,135 @@ SELECT
 FROM dtc_codes c
 LEFT JOIN manufacturers m ON m.id = c.manufacturer_id
 LEFT JOIN dtc_flags f ON f.dtc_code_id = c.id;
+
+-- ---------------------------------------------------------------------------
+-- Client query contract. Portable SQLite only: no FTS module, no window
+-- functions, no JSON operators - every statement below runs on the SQLite that
+-- ships with Android and on the one bundled by sqlite3_flutter_libs.
+-- ---------------------------------------------------------------------------
+
+-- Search entry point: one row per identity, with the fields a list screen needs.
+-- `code_compact` lets the client match "P 0301" without doing string surgery in
+-- Dart: pass UPPER(REPLACE(input, ' ', '')) to `code_compact`.
+DROP VIEW IF EXISTS v_dtc_search;
+CREATE VIEW v_dtc_search AS
+SELECT
+    c.id                        AS dtc_code_id,
+    c.code,
+    UPPER(c.code)               AS code_upper,
+    REPLACE(UPPER(c.code), ' ', '') AS code_compact,
+    c.standard,
+    c.context_type,
+    c.context_key,
+    c.category,
+    c.system,
+    m.name                      AS manufacturer,
+    e.name                      AS ecu,
+    (SELECT title FROM dtc_definitions d
+      WHERE d.dtc_code_id = c.id AND d.language = 'en' AND d.is_canonical = 1 LIMIT 1) AS title_en,
+    (SELECT title FROM dtc_definitions d
+      WHERE d.dtc_code_id = c.id AND d.language = 'ar' AND d.is_canonical = 1 LIMIT 1) AS title_ar,
+    CASE WHEN EXISTS (SELECT 1 FROM dtc_causes x WHERE x.dtc_code_id = c.id)
+         THEN 'diagnosis_ready' ELSE 'definition_only' END AS content_tier,
+    (SELECT COUNT(*) FROM dtc_causes x WHERE x.dtc_code_id = c.id)   AS cause_count,
+    (SELECT COUNT(*) FROM dtc_symptoms x WHERE x.dtc_code_id = c.id) AS symptom_count,
+    (SELECT COUNT(*) FROM dtc_tests x WHERE x.dtc_code_id = c.id)    AS test_count,
+    (SELECT COUNT(*) FROM dtc_repairs x WHERE x.dtc_code_id = c.id)  AS repair_count,
+    f.risk_level,
+    f.mil,
+    f.emissions_relevant,
+    f.limp_mode_possible
+FROM dtc_codes c
+LEFT JOIN manufacturers m ON m.id = c.manufacturer_id
+LEFT JOIN ecus e ON e.id = c.ecu_id
+LEFT JOIN dtc_flags f ON f.dtc_code_id = c.id;
+
+-- Causes, one row per cause per language, with the source-provided likelihood.
+DROP VIEW IF EXISTS v_dtc_causes;
+CREATE VIEW v_dtc_causes AS
+SELECT c.dtc_code_id, c.id AS cause_id, t.language, t.label,
+       c.likelihood, c.verification_status
+FROM dtc_causes c
+JOIN dtc_cause_texts t ON t.cause_id = c.id;
+
+DROP VIEW IF EXISTS v_dtc_symptoms;
+CREATE VIEW v_dtc_symptoms AS
+SELECT s.dtc_code_id, s.id AS symptom_id, t.language, t.text, s.verification_status
+FROM dtc_symptoms s
+JOIN dtc_symptom_texts t ON t.symptom_id = s.id;
+
+DROP VIEW IF EXISTS v_dtc_repairs;
+CREATE VIEW v_dtc_repairs AS
+SELECT r.dtc_code_id, r.id AS repair_id, t.language, t.text,
+       r.difficulty, r.diy_possible, r.cost_min, r.cost_max, r.currency,
+       r.hours_min, r.hours_max, r.verification_status
+FROM dtc_repairs r
+JOIN dtc_repair_texts t ON t.repair_id = r.id;
+
+DROP VIEW IF EXISTS v_dtc_tests;
+CREATE VIEW v_dtc_tests AS
+SELECT t.dtc_code_id, t.id AS test_id, x.language, x.text, t.verification_status
+FROM dtc_tests t
+JOIN dtc_test_texts x ON x.test_id = t.id;
+
+DROP VIEW IF EXISTS v_dtc_related;
+CREATE VIEW v_dtc_related AS
+SELECT r.dtc_code_id, r.related_code, r.relation_type, r.related_dtc_code_id,
+       (SELECT title FROM dtc_definitions d
+         WHERE d.dtc_code_id = r.related_dtc_code_id AND d.language = 'en'
+           AND d.is_canonical = 1 LIMIT 1) AS related_title_en
+FROM dtc_related_codes r;
+
+-- Who said it: one row per (identity, source) with licence and commit, so the
+-- client can render attribution without a second database.
+DROP VIEW IF EXISTS v_dtc_provenance;
+CREATE VIEW v_dtc_provenance AS
+SELECT p.entity_type, p.entity_id, s.slug AS source_slug, s.name AS source_name,
+       s.data_license, s.code_license, s.repo_url, s.attribution_required,
+       version.commit_sha, version.version_label, version.retrieved_at,
+       p.verification_status, p.is_derived, p.is_translated
+FROM provenance_summary p
+JOIN data_sources s ON s.id = p.source_id
+LEFT JOIN data_versions version
+       ON version.source_id = s.id
+      AND version.id = (SELECT MAX(v2.id) FROM data_versions v2 WHERE v2.source_id = s.id);
+
+DROP VIEW IF EXISTS v_dtc_conflicts;
+CREATE VIEW v_dtc_conflicts AS
+SELECT id AS conflict_id, dtc_code_id, code, context_key, conflict_type, attribute,
+       summary, similarity, status, resolution_note
+FROM conflicts;
+
+DROP VIEW IF EXISTS v_manufacturers;
+CREATE VIEW v_manufacturers AS
+SELECT m.id AS manufacturer_id, m.name,
+       (SELECT COUNT(*) FROM dtc_codes c WHERE c.manufacturer_id = m.id) AS code_count,
+       (SELECT COUNT(*) FROM vehicles v WHERE v.manufacturer_id = m.id) AS vehicle_count
+FROM manufacturers m;
+
+DROP VIEW IF EXISTS v_pids;
+CREATE VIEW v_pids AS
+SELECT p.id AS pid_id, p.mode, p.pid, p.scope, p.bytes, p.unit, p.formula,
+       p.range_min, p.range_max, p.signal_id, p.path,
+       (SELECT name FROM pid_texts t WHERE t.pid_id = p.id AND t.language = 'en' LIMIT 1) AS name_en,
+       (SELECT name FROM pid_texts t WHERE t.pid_id = p.id AND t.language = 'ar' LIMIT 1) AS name_ar
+FROM pids p;
+
+DROP VIEW IF EXISTS v_vehicles;
+CREATE VIEW v_vehicles AS
+SELECT v.id AS vehicle_id, m.name AS manufacturer, v.model, v.generation,
+       v.year_start, v.year_end, v.description
+FROM vehicles v
+LEFT JOIN manufacturers m ON m.id = v.manufacturer_id;
 """
 
+# NOTE: this table is deliberately a normal rowid table. As a WITHOUT ROWID table
+# with this five-column primary key, SQLite 3.40's ``PRAGMA integrity_check``
+# reports a spurious "NULL value in provenance_summary.verification_status" for
+# every row (the column is NOT NULL and never null - verified by query). A
+# shipped database whose integrity check fails is unusable in production, so the
+# compactness of WITHOUT ROWID is traded for an artifact that passes the check;
+# the NOT NULL invariant is additionally asserted in ``_populate_bundle``.
 PROVENANCE_SUMMARY_SQL = """
 CREATE TABLE provenance_summary (
     entity_type         TEXT    NOT NULL,
@@ -112,7 +239,7 @@ CREATE TABLE provenance_summary (
     is_derived          INTEGER NOT NULL DEFAULT 0,
     is_translated       INTEGER NOT NULL DEFAULT 0,
     PRIMARY KEY (entity_type, entity_id, source_id, is_derived, is_translated)
-) WITHOUT ROWID;
+);
 """
 
 
@@ -225,6 +352,15 @@ def _populate_bundle(
     provenance_rows = int(
         conn.execute("SELECT COUNT(*) FROM provenance_summary").fetchone()[0]
     )
+    missing_status = int(
+        conn.execute(
+            "SELECT COUNT(*) FROM provenance_summary WHERE verification_status IS NULL"
+        ).fetchone()[0]
+    )
+    if missing_status:
+        raise RuntimeError(
+            f"{missing_status} provenance_summary rows have no verification status"
+        )
 
     for table in DROPPED_TABLES:
         exists = conn.execute(
@@ -288,7 +424,21 @@ def _shrink(path: Path) -> None:
         conn.close()
 
 
-REQUIRED_VIEWS = ("v_dtc_lookup", "v_dtc_summary")
+REQUIRED_VIEWS = (
+    "v_dtc_lookup",
+    "v_dtc_summary",
+    "v_dtc_search",
+    "v_dtc_causes",
+    "v_dtc_symptoms",
+    "v_dtc_repairs",
+    "v_dtc_tests",
+    "v_dtc_related",
+    "v_dtc_provenance",
+    "v_dtc_conflicts",
+    "v_manufacturers",
+    "v_pids",
+    "v_vehicles",
+)
 
 
 def _verify_views(path: Path) -> None:

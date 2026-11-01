@@ -121,3 +121,69 @@ def test_a_bundle_without_its_views_is_refused(tmp_path) -> None:
     with pytest.raises(RuntimeError, match="missing view\\(s\\): v_dtc_lookup, v_dtc_summary"):
         _verify_views(broken)
     assert not broken.exists()
+
+
+def test_client_query_contract_is_complete(built) -> None:
+    """Every view the Flutter client is allowed to depend on must exist."""
+    from autodoctor_data_engine.database.app_export import REQUIRED_VIEWS
+
+    conn = connect(built.app_bundle_path, readonly=True)
+    try:
+        views = {row[0] for row in conn.execute("SELECT name FROM sqlite_master WHERE type='view'")}
+        assert set(REQUIRED_VIEWS) <= views
+        for view in REQUIRED_VIEWS:
+            # a view that cannot be selected from is not part of a contract
+            assert conn.execute(f"SELECT COUNT(*) FROM {view}").fetchone()[0] >= 0
+    finally:
+        conn.close()
+
+
+def test_search_view_normalises_case_and_spacing(built) -> None:
+    conn = connect(built.app_bundle_path, readonly=True)
+    try:
+        row = conn.execute(
+            "SELECT * FROM v_dtc_search WHERE code_compact = ? AND context_type = 'generic'",
+            ("P0301",),
+        ).fetchone()
+        assert row is not None
+        assert row["title_en"]
+        assert row["content_tier"] in {"diagnosis_ready", "definition_only"}
+        # LIKE is case insensitive for ASCII, so a client may pass the raw input
+        assert conn.execute(
+            "SELECT COUNT(*) FROM v_dtc_search WHERE code LIKE 'p0301'"
+        ).fetchone()[0] >= 1
+    finally:
+        conn.close()
+
+
+def test_detail_views_answer_with_provenance(built) -> None:
+    conn = connect(built.app_bundle_path, readonly=True)
+    try:
+        row = conn.execute(
+            "SELECT * FROM v_dtc_search WHERE code = 'P0301' AND context_type = 'generic'"
+        ).fetchone()
+        causes = conn.execute(
+            "SELECT * FROM v_dtc_causes WHERE dtc_code_id = ?", (row["dtc_code_id"],)
+        ).fetchall()
+        assert causes and all(c["language"] in {"en", "de"} for c in causes)
+        assert all(c["label"] for c in causes)
+
+        provenance = conn.execute(
+            "SELECT * FROM v_dtc_provenance WHERE entity_type = 'dtc_code' AND entity_id = ?",
+            (row["dtc_code_id"],),
+        ).fetchall()
+        assert {p["source_slug"] for p in provenance} >= {"obdex", "wal33d"}
+        assert all(p["data_license"] and p["commit_sha"] for p in provenance)
+    finally:
+        conn.close()
+
+
+def test_bundle_passes_sqlite_integrity_checks(built) -> None:
+    """A shipped file must survive the checks an app (or a store review) runs."""
+    conn = connect(built.app_bundle_path, readonly=True)
+    try:
+        assert conn.execute("PRAGMA integrity_check").fetchone()[0] == "ok"
+        assert conn.execute("PRAGMA foreign_key_check").fetchall() == []
+        assert conn.execute("PRAGMA quick_check").fetchone()[0] == "ok"
+    finally:
+        conn.close()
