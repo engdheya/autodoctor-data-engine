@@ -56,9 +56,22 @@ class ProvenanceTracker:
                     "counts": self._content_counts(code_id),
                     "conflicts": self._conflicts(code_id),
                     "duplicates": self._duplicates(identity["context_key"]),
+                    "evidence": self._evidence(code_id),
                 }
             )
         return {"code": code, "found": True, "contexts": contexts}
+
+    def _evidence(self, code_id: int) -> list[dict[str, Any]]:
+        """Upstream citations (TSBs, standards, regulation texts)."""
+        try:
+            rows = self.conn.execute(
+                "SELECT url, kind, label FROM dtc_evidence_sources "
+                "WHERE dtc_code_id = ? ORDER BY kind, url",
+                (code_id,),
+            ).fetchall()
+        except sqlite3.OperationalError:  # app bundles from older schema versions
+            return []
+        return [dict(row) for row in rows]
 
     # ------------------------------------------------------------------
     def _definitions(self, code_id: int, language: str | None) -> list[dict[str, Any]]:

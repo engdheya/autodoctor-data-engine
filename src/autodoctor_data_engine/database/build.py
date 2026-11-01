@@ -18,11 +18,12 @@ from pathlib import Path
 from typing import Any
 
 from .. import __version__ as engine_version
-from ..config import Settings
+from ..config import DEFAULT_SOURCE_SET, SOURCE_SETS, Settings
 from ..conflict_resolution.detector import Conflict, detect_conflicts
 from ..deduplication.detector import DuplicateGroup, detect_duplicates
 from ..merger.loader import MergeLoader
 from ..models import NormalizedDtc, NormalizedRecord
+from ..reviews import ReviewStore
 from ..staging import SourceBundle, available_bundles, load_all_bundles
 from ..translations import TranslationEntry, load_translations
 from ..utils.gitinfo import commit_sha
@@ -30,10 +31,10 @@ from ..utils.hashing import sha256_file, sha256_text
 from ..validators.database_rules import DatabaseCheck, failed_blocking, run_database_checks
 from ..validators.rules import ValidationIssue, blockable_errors, summarize, validate_record
 from ..versioning.manifest import build_manifest, next_version, write_manifest
-from .app_export import build_app_bundle
+from .app_export import LicenceError, build_app_bundle
 from .connection import create_database, optimise
 
-SCHEMA_VERSION = "1"
+SCHEMA_VERSION = "3"
 
 
 class BuildError(RuntimeError):
@@ -55,6 +56,9 @@ class BuildResult:
     rejected: list[dict[str, Any]]
     warnings: list[str]
     test_status: str
+    source_set: str = DEFAULT_SOURCE_SET
+    sources_excluded: list[dict[str, str]] = field(default_factory=list)
+    review_stats: dict[str, int] = field(default_factory=dict)
     sources: list[dict[str, Any]] = field(default_factory=list)
     translation_entries: int = 0
     app_bundle_path: Path | None = None
@@ -67,6 +71,9 @@ class BuildResult:
     def summary(self) -> dict[str, Any]:
         return {
             "version": self.version,
+            "source_set": self.source_set,
+            "sources_excluded": self.sources_excluded,
+            "review_stats": self.review_stats,
             "database": str(self.database_path),
             "export": str(self.export_path) if self.export_path else None,
             "manifest": str(self.manifest_path) if self.manifest_path else None,
@@ -122,9 +129,17 @@ def build_database(
     strict: bool = False,
     export: bool = True,
     app_bundle: bool = True,
+    source_set: str = DEFAULT_SOURCE_SET,
+    reviews: ReviewStore | None = None,
 ) -> BuildResult:
     settings.paths.ensure()
-    bundles = load_all_bundles(settings, slugs)
+    if source_set not in SOURCE_SETS:
+        raise BuildError(
+            f"unknown source set {source_set!r}; expected one of {', '.join(SOURCE_SETS)}"
+        )
+    allowed_slugs, source_set_report = settings.resolve_source_set(source_set, slugs)
+    excluded_sources = source_set_report["excluded"]
+    bundles = load_all_bundles(settings, allowed_slugs)
     if not bundles:
         raise BuildError(
             "no staged imports found under "
@@ -132,6 +147,11 @@ def build_database(
         )
 
     warnings: list[str] = []
+    for entry in excluded_sources:
+        warnings.append(
+            f"source set {source_set}: {entry['slug']} excluded ({entry['reason']}, "
+            f"{entry['data_license']})"
+        )
     rule_counts: dict[str, dict[str, Any]] = {}
     failures: list[ValidationIssue] = []
     rejected: list[dict[str, Any]] = []
@@ -170,7 +190,7 @@ def build_database(
     # manifests are the only place that remembers them
     import_rejected = sum(
         int(manifest.get("stats", {}).get("rejected_records", 0))
-        for manifest in available_bundles(settings, slugs)
+        for manifest in available_bundles(settings, allowed_slugs)
     )
     validation_summary = dict(totals)
     validation_summary["rejected_records"] = len(rejected) + import_rejected
@@ -185,7 +205,12 @@ def build_database(
     conn = create_database(db_path, settings.paths.schema)
     try:
         loader = MergeLoader(conn, settings, include_raw=include_raw)
-        stats = loader.load(bundles, conflicts=conflicts, duplicate_groups=duplicates)
+        stats = loader.load(
+            bundles,
+            conflicts=conflicts,
+            duplicate_groups=duplicates,
+            reviews=reviews or ReviewStore.load(settings.root),
+        )
 
         translations, translation_warnings = load_translations(
             settings, include_unreviewed=include_unreviewed_translations
@@ -198,7 +223,7 @@ def build_database(
         _store_validation_results(conn, failures)
         conn.commit()
 
-        checks = run_database_checks(conn)
+        checks = run_database_checks(conn, source_set=source_set)
         blocking_failures = failed_blocking(checks)
         try:
             optimise(conn)
@@ -235,30 +260,68 @@ def build_database(
         "translations_applied": applied_translations,
     }
 
+    # a public release is a different artifact, not the same file with less
+    # content: it gets its own name so the two can never be confused
+    suffix = "-public" if source_set == "public" else ""
     export_path: Path | None = None
     manifest_path: Path | None = None
     app_bundle_path: Path | None = None
     app_bundle_bytes = 0
     if test_status == "passed" and export:
-        export_path = settings.paths.exports / f"autodoctor-{resolved_version}.sqlite"
+        export_path = settings.paths.exports / f"autodoctor-{resolved_version}{suffix}.sqlite"
         export_path.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(db_path, export_path)
+        # the release row lives in the artifact itself, and it has to be written
+        # before the manifest is hashed, otherwise the published hash would not
+        # describe the published file
+        _register_version(
+            conn_path=export_path,
+            version=resolved_version,
+            built_at=_now(),
+            engine_commit=commit_sha(settings.root),
+            sources=sources_payload,
+            counts=counts,
+            validation=validation_payload,
+            checks=[c.__dict__ for c in checks],
+            test_status=test_status,
+            # a file cannot contain the hash of itself; the authoritative
+            # artifact hash is written to the manifest next to the file
+            sha256=None,
+            export_path=export_path,
+            source_set=source_set,
+        )
         if app_bundle:
-            bundle_path = settings.paths.exports / f"autodoctor-app-{resolved_version}.sqlite"
-            bundle = build_app_bundle(export_path, bundle_path, version=resolved_version)
-            app_bundle_path = bundle.path
-            app_bundle_bytes = bundle.size_bytes
-            warnings.append(
-                f"app bundle: {bundle.path.name} ({bundle.size_bytes / 1e6:.1f} MB, "
-                f"{bundle.provenance_rows:,} provenance rows)"
+            bundle_path = (
+                settings.paths.exports / f"autodoctor-app-{resolved_version}{suffix}.sqlite"
             )
+            try:
+                built_bundle = build_app_bundle(
+                    export_path, bundle_path, version=resolved_version, source_set=source_set
+                )
+            except LicenceError as exc:
+                # the database export is already on disk: keep it for inspection,
+                # refuse the release and say why
+                test_status = "failed"
+                gate_problems.append(str(exc))
+                warnings.append(f"public bundle refused: {exc}")
+            else:
+                app_bundle_path = built_bundle.path
+                app_bundle_bytes = built_bundle.size_bytes
+                warnings.append(
+                    f"app bundle: {built_bundle.path.name} ({built_bundle.size_bytes / 1e6:.1f} MB, "
+                    f"{built_bundle.provenance_rows:,} provenance rows, "
+                    f"source set {built_bundle.source_set})"
+                )
 
+    if test_status == "passed" and export:
         manifest = build_manifest(
             version=resolved_version,
             engine_version=engine_version,
             engine_commit=commit_sha(settings.root),
             database_path=export_path,
             sources=sources_payload,
+            source_set=source_set,
+            sources_excluded=excluded_sources,
             counts=counts,
             validation=validation_payload,
             checks=[c.__dict__ for c in checks],
@@ -276,14 +339,13 @@ def build_database(
             ),
         )
         manifest_path = write_manifest(
-            manifest, settings.paths.exports / f"autodoctor-{resolved_version}.manifest.json"
+            manifest,
+            settings.paths.exports / f"autodoctor-{resolved_version}{suffix}.manifest.json",
         )
-        _register_version(conn_path=export_path, settings=settings, version=resolved_version,
-                          manifest=manifest.to_dict(), counts=counts,
-                          validation=validation_payload, checks=[c.__dict__ for c in checks],
-                          test_status=test_status, export_path=export_path)
     else:
-        report_path = settings.paths.reports / f"failed-build-{resolved_version}.json"
+        report_path = (
+            settings.paths.reports / f"failed-build-{resolved_version}{suffix}.json"
+        )
         report_path.parent.mkdir(parents=True, exist_ok=True)
         report_path.write_text(
             json.dumps(
@@ -307,7 +369,7 @@ def build_database(
     return BuildResult(
         version=resolved_version,
         database_path=db_path,
-        export_path=export_path,
+        export_path=export_path if test_status == "passed" else None,
         manifest_path=manifest_path,
         stats=stats.to_dict(),
         counts=counts,
@@ -318,6 +380,9 @@ def build_database(
         rejected=rejected,
         warnings=warnings + [f"release gate: {p}" for p in gate_problems],
         test_status=test_status,
+        source_set=source_set,
+        sources_excluded=excluded_sources,
+        review_stats=getattr(loader, "review_stats", {}),
         sources=sources_payload,
         translation_entries=applied_translations,
         app_bundle_path=app_bundle_path,
@@ -348,10 +413,10 @@ def _counts(conn) -> dict[str, int]:
         "repairs": "dtc_repairs",
         "components": "dtc_components",
         "related_codes": "dtc_related_codes",
+        "evidence": "dtc_evidence_sources",
         "pids": "pids",
         "claims": "provenance_claims",
         "conflicts": "conflicts",
-        "conflicts_open": "conflicts",
         "validation_results": "validation_results",
         "duplicate_groups": "duplicate_groups",
         "translations": "translations",
@@ -364,6 +429,9 @@ def _counts(conn) -> dict[str, int]:
     )
     counts["conflicts_open"] = int(
         conn.execute("SELECT COUNT(*) FROM conflicts WHERE status = 'needs_review'").fetchone()[0]
+    )
+    counts["conflicts_resolved"] = int(
+        conn.execute("SELECT COUNT(*) FROM conflicts WHERE status <> 'needs_review'").fetchone()[0]
     )
     counts["definitions_verified"] = int(
         conn.execute(
@@ -455,7 +523,7 @@ def _apply_translations(conn, entries: list[TranslationEntry], stats, warnings: 
     """Attach human translations; never invent one."""
     if not entries:
         return 0
-    _ensure_translation_source(conn)
+    _translation_source_id, translation_version_id = _ensure_translation_source(conn)
     applied = 0
     for entry in entries:
         row = conn.execute(
@@ -525,13 +593,13 @@ def _apply_translations(conn, entries: list[TranslationEntry], stats, warnings: 
             INSERT INTO provenance_claims (entity_type, entity_id, attribute, source_id,
                 data_version_id, source_record_id, value_hash, extraction_method, is_derived,
                 is_translated, verification_status, extracted_at, notes)
-            VALUES ('dtc_definition', ?, 'text',
-                (SELECT id FROM data_sources WHERE slug = 'local-translations'),
-                (SELECT id FROM data_versions ORDER BY id LIMIT 1),
+            VALUES ('dtc_definition', ?, 'text', ?, ?,
                 NULL, ?, 'human_translation', 1, 1, ?, ?, ?)
             """,
             (
                 int(definition_id),
+                _translation_source_id,
+                translation_version_id,
                 sha256_text(entry.file_path),
                 "verified" if entry.reviewed else "unverified",
                 _now(),
@@ -546,27 +614,31 @@ def _apply_translations(conn, entries: list[TranslationEntry], stats, warnings: 
 def _register_version(
     *,
     conn_path: Path,
-    settings: Settings,
     version: str,
-    manifest: dict[str, Any],
+    built_at: str,
+    engine_commit: str | None,
+    sources: list[dict[str, Any]],
+    sha256: str | None,
     counts: dict[str, int],
     validation: dict[str, Any],
     checks: list[dict[str, Any]],
     test_status: str,
     export_path: Path,
+    source_set: str = DEFAULT_SOURCE_SET,
 ) -> None:
     from .connection import connect
 
-    conn = connect(settings.database_path())
+    conn = connect(conn_path)
     try:
         with conn:
             conn.execute(
                 """
                 INSERT INTO db_versions (version, built_at, git_commit, schema_version,
-                    sources_json, counts_json, validation_json, sha256, export_path,
-                    test_status, published_at, notes)
-                VALUES (?,?,?,?,?,?,?,?,?,?,?,?)
+                    source_set, sources_json, counts_json, validation_json, sha256,
+                    export_path, test_status, published_at, notes)
+                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)
                 ON CONFLICT(version) DO UPDATE SET
+                    source_set = excluded.source_set,
                     counts_json = excluded.counts_json,
                     validation_json = excluded.validation_json,
                     sha256 = excluded.sha256,
@@ -576,17 +648,19 @@ def _register_version(
                 """,
                 (
                     version,
-                    manifest["built_at"],
-                    manifest.get("engine_commit"),
+                    built_at,
+                    engine_commit,
                     SCHEMA_VERSION,
-                    json.dumps(manifest.get("sources", []), ensure_ascii=False),
+                    source_set,
+                    json.dumps(sources, ensure_ascii=False),
                     json.dumps(counts, ensure_ascii=False),
                     json.dumps({**validation, "checks": checks}, ensure_ascii=False),
-                    sha256_file(export_path),
+                    sha256,
                     str(export_path),
                     test_status,
                     _now() if test_status == "passed" else None,
-                    "built by autodoctor-data-engine",
+                    "built by autodoctor-data-engine; the artifact sha256 is in the "
+                    "release manifest (a file cannot contain its own hash)",
                 ),
             )
     finally:

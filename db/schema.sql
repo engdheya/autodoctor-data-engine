@@ -309,6 +309,20 @@ CREATE TABLE IF NOT EXISTS dtc_component_texts (
     UNIQUE (component_id, language)
 );
 
+-- Upstream evidence for a statement: the TSBs, regulation texts and PDFs a
+-- source cites for its own claim. Kept per code because that is how sources
+-- publish them, and because a reviewer needs them to trust a definition.
+CREATE TABLE IF NOT EXISTS dtc_evidence_sources (
+    id          INTEGER PRIMARY KEY,
+    dtc_code_id INTEGER NOT NULL REFERENCES dtc_codes(id) ON DELETE CASCADE,
+    url         TEXT    NOT NULL,
+    kind        TEXT    NOT NULL DEFAULT 'source'
+                CHECK (kind IN ('source', 'reference', 'documentation')),
+    label       TEXT,
+    UNIQUE (dtc_code_id, url)
+);
+CREATE INDEX IF NOT EXISTS idx_evidence_code ON dtc_evidence_sources(dtc_code_id);
+
 CREATE TABLE IF NOT EXISTS dtc_flags (
     dtc_code_id        INTEGER PRIMARY KEY REFERENCES dtc_codes(id) ON DELETE CASCADE,
     mil                INTEGER CHECK (mil IN (0, 1)),
@@ -350,6 +364,9 @@ CREATE INDEX IF NOT EXISTS idx_claims_source ON provenance_claims(source_id, dat
 
 CREATE TABLE IF NOT EXISTS conflicts (
     id              INTEGER PRIMARY KEY,
+    -- stable identity of the disagreement, independent of database ids, so a
+    -- human decision can be re-applied to the next build (see data/reviews)
+    fingerprint     TEXT,
     conflict_type   TEXT    NOT NULL,
     entity_type     TEXT    NOT NULL,
     entity_id       INTEGER NOT NULL,
@@ -365,6 +382,7 @@ CREATE TABLE IF NOT EXISTS conflicts (
     created_at      TEXT    NOT NULL
 );
 CREATE INDEX IF NOT EXISTS idx_conflicts_status ON conflicts(status, conflict_type);
+CREATE INDEX IF NOT EXISTS idx_conflicts_fingerprint ON conflicts(fingerprint);
 
 CREATE TABLE IF NOT EXISTS conflict_evidence (
     id           INTEGER PRIMARY KEY,
@@ -417,6 +435,10 @@ CREATE TABLE IF NOT EXISTS duplicate_members (
 CREATE TABLE IF NOT EXISTS db_versions (
     id               INTEGER PRIMARY KEY,
     version          TEXT    NOT NULL UNIQUE,
+    -- licence boundary of the build: 'private' (internal) or 'public'
+    -- (only sources whose data licence and legal review allow redistribution)
+    source_set       TEXT    NOT NULL DEFAULT 'private'
+                     CHECK (source_set IN ('private', 'public')),
     built_at         TEXT    NOT NULL,
     git_commit       TEXT,
     schema_version   TEXT    NOT NULL DEFAULT '1',

@@ -12,7 +12,10 @@ GitHub sources ──► extract ──► raw archive ──► normalize ─�
 ```
 
 **Status:** Phase 1 complete and working end to end. Four real sources are integrated into a
-published release (`0.1.0`), with 177 automated tests.
+published engine release (`0.1.0`) building database version `0.4.0` in two separately licensed
+editions — a **private** database with all four sources and a **public** one restricted to the
+licences that are cleared for redistribution. 210 automated tests (205 pass; the 5 real-upstream
+integration tests are opt-in).
 
 ---
 
@@ -28,30 +31,45 @@ published release (`0.1.0`), with 177 automated tests.
 6. الاحتفاظ بسلسلة مصدر كاملة لكل معلومة: المستودع، الـ commit، الملف، السجل، الترخيص، وتاريخ الاستيراد.
 7. بناء قاعدة SQLite موحّدة + نسخة أصغر مخصّصة لتطبيق Flutter.
 8. إصدار نسخة مرقّمة مع Manifest و SHA-256، ولا تُنشر أي نسخة إذا فشلت بوابات الجودة.
+9. **فصل حقيقي بين قاعدة عامة وأخرى خاصة**: نسخة `private` تضم المصادر الأربعة، ونسخة `public`
+   لا تدخلها بيانات autodiag2 وOBDb قبل اكتمال المراجعة القانونية — والمنع مفروض في الكود
+   (بوابة `D011` + `--source-set public`) ومغطّى باختبارات، لا مجرّد توثيق.
+10. **أداة مراجعة التعارضات**: لكل تعارض بصمة ثابتة، وقرار المراجع يُحفظ في
+    `data/reviews/conflicts.yaml` فلا يُعاد طرح التعارض المحلول في البناء التالي.
 
 > **مبدأ أساسي:** كود العطل يشير إلى *منطقة عطل* وليس إلى قطعة تالفة. لهذا تحمل كل معلومة حالة
 > تحقق (`verified` / `source_reported` / `conflicting` / `unverified`) وتُعرض التعارضات بدل إخفائها.
 
 ---
 
-## What this engine produces (release 0.1.0, measured)
+## What this engine produces (database 0.4.0, measured 2026-11-01)
 
-| Metric | Value |
-| --- | ---: |
-| DTC identities (code + context) | 40,222 |
-| Distinct DTC codes | 19,216 |
-| Definitions (EN + DE) | 65,108 |
-| Verified definitions (≥2 independent lineages) | 14,029 |
-| Definitions flagged as conflicting | 8,971 |
-| Causes / symptoms / repairs / related codes | 28,334 / 26,283 / 9,533 / 32,361 |
-| PIDs and vehicle parameters | 712 |
-| Provenance claims | 327,369 |
-| Open conflicts for review | 4,435 |
-| Duplicate groups (exact / near / context-variants) | 8,573 / 1,465 / 4,186 |
-| Arabic definitions | 0 (no source provides Arabic; see below) |
+The two editions are built from the same code with `--source-set public|private`. Every number is
+queried from the built database, never estimated; reproduce with `autodoctor report`.
 
-Every number above is queried from the built database, never estimated. Reproduce with
-`autodoctor report`.
+| Metric | Private (4 sources) | Public (2 sources) |
+| --- | ---: | ---: |
+| DTC identities (code + context) | 40,222 | 19,089 |
+| Distinct DTC codes | 19,216 | 12,412 |
+| Definitions (EN + DE) | 65,108 | 37,871 |
+| Verified definitions (≥2 independent lineages) | 14,029 | 16,652 |
+| Definitions flagged as conflicting | 8,971 | 1,006 |
+| Causes / symptoms / repairs / related codes | 28,334 / 26,283 / 9,533 / 32,361 | identical (OBDex + Wal33D only) |
+| Components | 23,176 | 23,176 |
+| PIDs and vehicle parameters | 1,541 | 132 |
+| Vehicles / ECUs / manufacturers | 1,538 / 1,105 / 163 | 0 / 0 / 33 |
+| Evidence citations | 61,729 | 32,944 |
+| Provenance claims | 352,761 | 233,432 |
+| Open conflicts for review | 4,435 | 503 |
+| Duplicate groups (exact / near / context-variants) | 8,573 / 1,465 / 4,186 | 8,326 / 321 / 940 |
+| Validation records (warnings / errors) | 808,740 (93 / 0) | 396,996 (89 / 0) |
+| Release gates | 9 / 11 (D007, D011 warn: two sources pending review) | 11 / 11 |
+| Size (database / app bundle) | 169.5 MB / 71.2 MB | 105.8 MB / 52.1 MB |
+| Arabic definitions | 0 (no source provides Arabic; see below) | 0 |
+
+The public edition has *more* verified definitions than the private one because verification counts
+independent lineages, and the two share-alike sources mostly re-report OBDex (see
+[design decision 5](#design-decisions-that-matter)).
 
 **Arabic:** none of the four upstream databases provides Arabic. The engine therefore does not
 invent translations: it accepts reviewed human translations from `data/translations/ar/*.yaml`,
@@ -69,7 +87,7 @@ python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
 
 # 2. clone the upstream sources into vendor/upstream (or point AUTODOCTOR_UPSTREAM_DIR elsewhere)
-autodoctor fetch-sources --all        # OBDb clones a handful of vehicle repositories
+autodoctor fetch-sources              # OBDb clones a handful of vehicle repositories (--limit N)
 
 # 3. see what was found (commits, licences, layouts, problems)
 autodoctor inspect-sources
@@ -85,17 +103,22 @@ autodoctor validate
 autodoctor detect-duplicates
 autodoctor detect-conflicts
 
-# 6. merge, gate and publish
-autodoctor build-db --version 0.1.0
+# 6. see which sources each edition may contain
+autodoctor source-set            # public: obdex + wal33d; excluded: autodiag, obdb (review pending)
 
-# 7. ask questions of the result
+# 7. merge, gate and publish
+autodoctor build-db --version 0.4.0 --source-set private   # all four sources, internal use
+autodoctor build-db --version 0.4.0 --source-set public    # only licence-cleared sources
+
+# 8. ask questions of the result
 autodoctor report
 autodoctor search P0301
 autodoctor explain P0301
 autodoctor version
 ```
 
-`autodoctor run-all` performs steps 4 and 6 in one go.
+`autodoctor run-all --source-set public` performs steps 4 and 7 in one go. `build-db` **fails closed**:
+a public build that contains a fact from an unapproved source is refused by gate `D011`.
 
 ## CLI reference
 
@@ -107,14 +130,17 @@ autodoctor version
 | `validate [--source S]` | aggregate validation results of the staged imports (exit 1 on blocking failures) |
 | `detect-duplicates [--source S] [--limit N]` | exact / near duplicates and code-in-many-contexts |
 | `detect-conflicts [--source S] [--limit N]` | statements that contradict each other |
-| `build-db [--version X] [--part major\|minor\|patch] [--strict] [--no-export] [--no-app-bundle]` | merge, run release gates, publish |
+| `build-db [--version X] [--part major\|minor\|patch] [--source-set public\|private] [--source S] [--strict] [--no-export] [--no-app-bundle]` | merge, run release gates, publish one edition |
 | `report [--imports] [--write]` | database or import report (markdown + JSON) |
 | `search CODE [--json]` | the diagnostic card the Flutter app will show |
 | `explain CODE [--context K] [--lang L] [--json]` | full provenance: source, commit, file, record, licence, status, conflicts |
 | `detect-changes [--previous F] [--current F]` | diff two builds: moved sources, new/changed/vanished records, added/removed codes |
 | `export-translation-template [--lang ar] [--limit N]` | CSV of codes still missing a translation |
+| `source-set` | which sources each edition may use, and why the others are excluded |
+| `list-conflicts [--code C] [--status needs_review\|resolved\|accepted_difference\|all] [--limit N]` | review queue with stable conflict fingerprints |
+| `review-conflict FINGERPRINT (--accept \| --resolve --source S) --note … --reviewer …` | record a human decision, persisted in `data/reviews/conflicts.yaml` |
 | `version` | engine version + published release manifest |
-| `run-all` | import every enabled source, then build |
+| `run-all [--source-set public\|private] [--source S]` | import every source of the set, then build |
 
 Global flags: `--root` (project directory), `--json` (machine readable).
 
@@ -131,15 +157,25 @@ ORDER BY context_type, manufacturer;
 $ autodoctor search P0301
 P0301  [generic]
   EN: Cylinder 1 Misfire Detected
-  AR: -                       # no reviewed Arabic translation yet
-  causes: 3  symptoms: 2  tests: 0  repairs: 1  sources: 3
+  causes: 5  symptoms: 4  tests: 0  repairs: 1  sources: 2
   risk: high
+
+P0301  [manufacturer: Audi]
+  EN: Worn out spark plugs, ignition wires, coil(s), distributor cap and rotor (when applicable), …
+  causes: 0  symptoms: 0  tests: 0  repairs: 0  sources: 1
+
+Reminder: a DTC identifies a fault *area*, not a failed part. Always confirm with the listed tests.
 ```
 
+The full walkthrough — every table, every citation, verbatim output — is in
+[EXAMPLE_P0301](docs/EXAMPLE_P0301.md).
+
 `autodoctor explain P0301` then shows that this statement comes from OBDex (CC0-1.0,
-commit `a9d0220…`, `data/generic/P0xxx_enriched.yaml`) and is corroborated by Wal33D and
-autodiag2, while `P1690` is deliberately *two* different codes (Ford "Wastegate Solenoid
-Circuit Malfunction" vs BMW "Malfunction Indicator Lamp MIL Electrical").
+commit `a9d0220…`, `data/generic/P0xxx_enriched.yaml`), is corroborated by Wal33D (MIT), carries 7
+upstream citations and no conflict, while `P1690` is deliberately *34* different manufacturer meanings — e.g. Ford
+"Wastegate Solenoid Circuit Malfunction" vs BMW "Malfunction Indicator Lamp MIL Electrical".
+In the public edition autodiag2 is absent, so the audi manufacturer context — which comes from
+Wal33D — is the only manufacturer row for P0301.
 
 ## Repository layout
 
@@ -162,14 +198,14 @@ src/autodoctor_data_engine/
   reporting/                 import / quality / change reports
   pipeline.py, cli.py        orchestrator and command line
 data/  raw/ staging/ processed/ exports/ translations/ reports/   (generated, git-ignored)
-tests/                                                                177 tests
+tests/                                                                210 tests
 docs/                                                                 see below
 ```
 
 ## Design decisions that matter
 
 1. **`code` is not a unique key.** Identity is `(code, standard, context)` where context is
-   `generic`, `manufacturer`, `ecu` or `vehicle_variant`. P1690 has 22 different meanings across
+   `generic`, `manufacturer`, `ecu` or `vehicle_variant`. P1690 has 34 different meanings across
    the Wal33D manufacturer tables; the database keeps all of them.
 2. **Nothing is merged by similarity.** Exact duplicates collapse into one row with several
    provenance claims. Near duplicates are reported and both rows survive. Different contexts are
@@ -183,8 +219,10 @@ docs/                                                                 see below
    itself turn a statement into "verified".
 6. **Fail closed.** A release is only published when the database gates pass; `--strict` also
    refuses to publish while any record is quarantined.
-7. **Two artifacts.** A 147 MB engineering database (full provenance, validation, duplicate
-   evidence) and a 60 MB app bundle (content + compact provenance) for the phone.
+7. **Two editions, two artifacts each.** A *private* database (169.5 MB, all four sources, full
+   provenance, validation and duplicate evidence) and a *public* one (105.8 MB, licence-cleared
+   sources only), each with a smaller app bundle (71.2 MB / 52.1 MB: content + compact provenance)
+   for the phone. See [PUBLICATION](docs/PUBLICATION.md).
 
 ## Documentation
 
@@ -198,6 +236,12 @@ docs/                                                                 see below
 | [DEVELOPMENT_PLAN](docs/DEVELOPMENT_PLAN.md) | phases, what is done, what comes next |
 | [FLUTTER_INTEGRATION](docs/FLUTTER_INTEGRATION.md) | bundle layout, queries, update strategy |
 | [PHASE1_REPORT](docs/PHASE1_REPORT.md) | the delivery report for phase 1 |
+| [PUBLICATION](docs/PUBLICATION.md) | public vs private editions, the four licence controls, measured comparison |
+| [EXAMPLE_P0301](docs/EXAMPLE_P0301.md) | end-to-end walkthrough: import → build → search → explain for P0301 |
+| [CONFLICT_REVIEW](docs/CONFLICT_REVIEW.md) | fingerprints, `list-conflicts` / `review-conflict`, how decisions survive a rebuild |
+| [INTEGRATION_RESULTS](docs/INTEGRATION_RESULTS.md) | the four connectors run against the real upstream repositories |
+| [PHASE2_TRANSLATION_PLAN](docs/PHASE2_TRANSLATION_PLAN.md) | reviewed human Arabic: glossary, batches, gates |
+| [PHASE2_DTC_PROCEDURES_PLAN](docs/PHASE2_DTC_PROCEDURES_PLAN.md) | inspection procedures: schema, authoring, review, UI rules |
 
 ## Data licensing (short version)
 
@@ -209,12 +253,16 @@ licences.
 * autodiag2 data — ODbL-1.0 / DbCL-1.0, **share-alike**, marked *pending review*
 * OBDb data — CC-BY-SA-4.0, **share-alike**, marked *pending review*
 
-Release gate `D007` fails public distribution while any share-alike source is unreviewed. Read
-[LICENSES](docs/LICENSES.md) before publishing a bundle outside your own devices.
+Gate `D007` reports unreviewed share-alike sources and gate `D011` **refuses** to build a public
+database that contains any of their facts — the restriction is enforced by
+`--source-set public` and checked by an assertion inside `build_app_bundle`, not just documented.
+See [PUBLICATION](docs/PUBLICATION.md) and [LICENSES](docs/LICENSES.md) before publishing a bundle
+outside your own devices.
 
 ## Contributing
 
-* `pytest` must stay green; `pytest -m integration` additionally exercises the real checkouts.
+* `pytest` must stay green (210 tests); `AUTODOCTOR_INTEGRATION=1 pytest tests/test_integration_real_sources.py`
+  additionally exercises the real checkouts.
 * Never edit `data/raw/**`: it is the audit trail.
 * A new source means: a registry entry with a licence record, a connector under
   `connectors/`, fixture checkouts under `tests/fixtures/`, and tests for its real layout.

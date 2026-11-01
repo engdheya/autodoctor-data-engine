@@ -20,3 +20,18 @@ def slug_key(value: str, *, max_length: int = 80) -> str:
     if len(text) > max_length:
         text = text[:max_length].rstrip("_")
     return text or "unnamed"
+
+
+def humanize_key(key: str) -> str:
+    """Render a machine key for display without inventing meaning.
+
+    ``ignition_coil_cylinder_1`` -> ``Ignition coil cylinder 1``. The result is a
+    *derived* label: callers must mark it as such so it is never mistaken for an
+    upstream translation.
+    """
+    text = str(key).replace("_", " ").replace("-", " ").strip()
+    text = re.sub(r"\s+", " ", text)
+    return text[:1].upper() + text[1:] if text else ""
+
+
+__all__ = ["slug_key", "humanize_key"]

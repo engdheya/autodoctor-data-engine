@@ -70,3 +70,16 @@ def test_obdb_real_repositories(real_settings: Settings) -> None:
     inspection = connector.inspect()
     assert inspection.layout["dtc_definitions"] == 0
     assert inspection.layout["signals"] > 0
+
+
+@requires_integration
+def test_public_source_set_on_the_real_registry(real_settings: Settings) -> None:
+    """The licence boundary must hold for the real registry, not just fixtures."""
+    allowed, report = real_settings.resolve_source_set("public")
+    assert allowed == ["obdex", "wal33d"]
+    assert {entry["slug"] for entry in report["excluded"]} == {"autodiag", "obdb"}
+    assert all("review pending" in entry["reason"] for entry in report["excluded"])
+    # every enabled source states both its code and its data licence
+    for source in real_settings.enabled_sources():
+        assert source.licence.code, source.slug
+        assert source.licence.data, source.slug

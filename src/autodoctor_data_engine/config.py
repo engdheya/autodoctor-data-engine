@@ -12,6 +12,12 @@ import yaml
 
 _ENV_PATTERN = re.compile(r"\$\{([A-Z0-9_]+)(?::-([^}]*))?\}")
 
+#: A build is either for our own use ("private") or for redistribution
+#: ("public"). The public set only ever contains sources whose data licence
+#: allows redistribution *and* whose legal review is approved.
+SOURCE_SETS = ("private", "public")
+DEFAULT_SOURCE_SET = "private"
+
 
 class ConfigError(RuntimeError):
     """Raised when the source registry is missing or malformed."""
@@ -62,6 +68,14 @@ class LicenceInfo:
         """True when data must not be shipped in a redistributable bundle."""
         return self.legal_review != "approved" or self.redistribution_allowed is False
 
+    def reason(self) -> str:
+        """Human readable why this source is (not) redistributable."""
+        if self.redistribution_allowed is False:
+            return "redistribution not allowed by the data licence"
+        if self.legal_review == "approved":
+            return "legal review approved"
+        return f"legal review {self.legal_review}"
+
 
 @dataclass(frozen=True)
 class SourceConfig:
@@ -76,6 +90,21 @@ class SourceConfig:
     import_scope: tuple[str, ...]
     notes: str = ""
     raw: dict[str, Any] = field(default_factory=dict)
+
+    @property
+    def redistributable(self) -> bool:
+        """True only when the data may legally leave this project."""
+        return not self.licence.blocking
+
+    def set_membership(self, source_set: str) -> bool:
+        """Is this source part of the given delivery set?"""
+        if source_set == "public":
+            return self.redistributable
+        if source_set == "private":
+            return True
+        raise ConfigError(
+            f"unknown source set {source_set!r}; expected one of {', '.join(SOURCE_SETS)}"
+        )
 
 
 @dataclass(frozen=True)
@@ -185,6 +214,55 @@ class Settings:
 
     def enabled_sources(self) -> list[SourceConfig]:
         return [s for s in self.sources.values() if s.enabled]
+
+    # -- source sets ----------------------------------------------------
+    # A "source set" is the licence boundary of a build. Nothing else in the
+    # codebase decides what may be published: every build, export and bundle
+    # resolves its contents through these three methods.
+    def source_set_slugs(self, source_set: str) -> list[str]:
+        return [s.slug for s in self.enabled_sources() if s.set_membership(source_set)]
+
+    def source_set_report(self, source_set: str) -> dict[str, list[dict[str, str]]]:
+        included: list[dict[str, str]] = []
+        excluded: list[dict[str, str]] = []
+        for source in self.enabled_sources():
+            entry = {
+                "slug": source.slug,
+                "data_license": source.licence.data or "unknown",
+                "legal_review": source.licence.legal_review,
+                "reason": source.licence.reason(),
+            }
+            (included if source.set_membership(source_set) else excluded).append(entry)
+        return {"included": included, "excluded": excluded}
+
+    def resolve_source_set(
+        self, source_set: str, requested: list[str] | None = None
+    ) -> tuple[list[str], dict[str, Any]]:
+        """Resolve ``--source-set`` + ``--source`` into the slugs to import.
+
+        Requesting a source that the set excludes is an error, never a silent
+        downgrade: a public build must not be able to include autodiag2 because
+        someone passed ``--source autodiag`` by habit.
+        """
+        if source_set not in SOURCE_SETS:
+            raise ConfigError(
+                f"unknown source set {source_set!r}; expected one of {', '.join(SOURCE_SETS)}"
+            )
+        allowed = self.source_set_slugs(source_set)
+        if requested:
+            blocked = [slug for slug in requested if slug not in allowed]
+            if blocked:
+                details = "; ".join(
+                    f"{slug}: {self.source(slug).licence.reason()}" for slug in blocked
+                )
+                raise ConfigError(
+                    f"source set {source_set!r} excludes {', '.join(blocked)} ({details}). "
+                    "Build with --source-set private to include them."
+                )
+            allowed = [slug for slug in allowed if slug in requested]
+        report = self.source_set_report(source_set)
+        report["source_set"] = source_set
+        return allowed, report
 
     def database_path(self) -> Path:
         env = os.environ.get("AUTODOCTOR_DB")
