@@ -34,6 +34,7 @@ from .pipeline import (
 )
 from .provenance.tracker import ProvenanceTracker
 from .reporting.changes import detect_changes, render_changes
+from .reporting.coverage import render_coverage_markdown, write_coverage
 from .reporting.report import (
     database_report,
     import_report,
@@ -335,6 +336,35 @@ def cmd_report(args: argparse.Namespace) -> int:
         prefix = "import-report" if args.imports else "data-report"
         json_path, md_path = write_report(settings, report, prefix=prefix)
         _print(f"\nwritten: {json_path}\nwritten: {md_path}")
+    return EXIT_OK
+
+
+def cmd_coverage(args: argparse.Namespace) -> int:
+    settings = _settings(args)
+    db_path = Path(args.database) if args.database else settings.database_path()
+    if not db_path.is_file():
+        _print(f"database not found: {db_path}")
+        return EXIT_FAILURE
+    conn = connect(db_path, readonly=True)
+    try:
+        if args.write:
+            json_path, md_path = write_coverage(conn, args.reports)
+        else:
+            from .reporting.coverage import coverage_report
+
+            report = coverage_report(conn)
+            if args.json:
+                _pretty(report)
+                return EXIT_OK
+            _print(render_coverage_markdown(report))
+            return EXIT_OK
+    finally:
+        conn.close()
+    if args.json:
+        _pretty(json.loads(json_path.read_text(encoding="utf-8")))
+    else:
+        _print(md_path.read_text(encoding="utf-8"))
+    _print(f"written: {json_path}\nwritten: {md_path}")
     return EXIT_OK
 
 
@@ -754,6 +784,14 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--imports", action="store_true", help="report on staged imports instead")
     p.add_argument("--write", action="store_true", help="also write the report to data/reports")
     p.set_defaults(func=cmd_report)
+
+    p = sub.add_parser("coverage", help="measured coverage of a built database "
+                                        "(and of what it does not contain)")
+    p.add_argument("--database", help="database file (default: db/autodoctor.sqlite)")
+    p.add_argument("--reports", type=Path, default=Path("data/reports"),
+                   help="directory for coverage.{json,md} with --write")
+    p.add_argument("--write", action="store_true", help="write coverage.{json,md}")
+    p.set_defaults(func=cmd_coverage)
 
     p = sub.add_parser("version", help="show the engine and database release version")
     p.set_defaults(func=cmd_version)

@@ -132,6 +132,7 @@ a public build that contains a fact from an unapproved source is refused by gate
 | `detect-conflicts [--source S] [--limit N]` | statements that contradict each other |
 | `build-db [--version X] [--part major\|minor\|patch] [--source-set public\|private] [--source S] [--strict] [--no-export] [--no-app-bundle]` | merge, run release gates, publish one edition |
 | `report [--imports] [--write]` | database or import report (markdown + JSON) |
+| `coverage [--database F] [--write] [--json]` | measured coverage per declared field, with denominators, plus the declared scope and its gaps |
 | `search CODE [--json]` | the diagnostic card the Flutter app will show |
 | `explain CODE [--context K] [--lang L] [--json]` | full provenance: source, commit, file, record, licence, status, conflicts |
 | `detect-changes [--previous F] [--current F]` | diff two builds: moved sources, new/changed/vanished records, added/removed codes |
@@ -242,6 +243,9 @@ docs/                                                                 see below
 | [INTEGRATION_RESULTS](docs/INTEGRATION_RESULTS.md) | the four connectors run against the real upstream repositories |
 | [PHASE2_TRANSLATION_PLAN](docs/PHASE2_TRANSLATION_PLAN.md) | reviewed human Arabic: glossary, batches, gates |
 | [PHASE2_DTC_PROCEDURES_PLAN](docs/PHASE2_DTC_PROCEDURES_PLAN.md) | inspection procedures: schema, authoring, review, UI rules |
+| [FINAL_PLAN](docs/FINAL_PLAN.md) | phases A–J for the production dataset, and what is blocked by what |
+| [LICENSE_COMPLIANCE_REPORT](docs/LICENSE_COMPLIANCE_REPORT.md) | per-source licences, obligations, and proof of what the public artifact contains |
+| [DATA_COVERAGE_REPORT](docs/DATA_COVERAGE_REPORT.md) | measured coverage with explicit denominators, generated from the artifact |
 
 ## Data licensing (short version)
 
