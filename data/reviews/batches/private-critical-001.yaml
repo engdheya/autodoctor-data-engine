@@ -1,0 +1,974 @@
+generated_at: '2026-11-01T20:48:10Z'
+band: critical
+rule: generic code, risk in ['high', 'critical'], similarity < 75%
+queue:
+  band_total: 592
+  in_batch: 25
+reviewer_note: A triage band is not a decision. Nothing in this batch has been resolved by the engine;
+  each entry must be decided by a human and recorded in data/reviews/conflicts.yaml before the release
+  gate lets the build publish.
+conflicts:
+- fingerprint: e4d7cd694b83cb34
+  code: P0049
+  context_key: P0049|sae_j2012|generic:generic
+  context_type: generic
+  attribute: definition.en
+  conflict_type: definition_disagreement
+  similarity: 0.7317
+  risk_level: high
+  manufacturer: null
+  reason: 'generic code with risk ''high'' whose statements agree only 73%: publishing it unreviewed shows
+    the user a possibly wrong meaning for a safety-relevant fault'
+  statements:
+  - source: autodiag
+    source_name: autodiag2/database
+    licence: ODbL-1.0
+    repo: https://github.com/autodiag2/database
+    commit: 11e73fd6d105a071fa472f426d23225344921a19
+    statement: Turbo/Super Charger Turbine Overspeed
+  - source: obdex
+    source_name: OBDex (foerbsnavi/OBDex)
+    licence: CC0-1.0
+    repo: https://github.com/foerbsnavi/OBDex
+    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
+    statement: Turbocharger/Supercharger A Turbine Overspeed — The control module has detected that turbocharger
+      A runs above its permitted maximum speed. Engines equipped for it measure turbine speed with a dedicated
+      sensor on the shaft; while the fault is active some systems continue with an estimated speed and
+      reduce power. Real overspeed arises when too much exhaust energy reaches the turbine, for example
+      because the wastegate or the turbine vanes stick closed, or because the turbocharger has to compensate
+      for a charge-air leak or high altitude. Since a damaged turbocharger can fail completely, the cause
+      should be found before driving on. Turbocharger B has its own code.
+  decision:
+    required_at: data/reviews/conflicts.yaml
+    options:
+    - accepted_difference - both statements are legitimate
+    - resolved --source <slug> - one statement is correct
+    - retained_as_alternatives - context makes both true
+    - rejected_source --source <slug> - the source is wrong here
+    command: autodoctor review-conflict e4d7cd694b83cb34 --accept --note '<why>' --reviewer '<name>'
+- fingerprint: 860a80e5664b3c2d
+  code: P00C5
+  context_key: P00C5|sae_j2012|generic:generic
+  context_type: generic
+  attribute: definition.en
+  conflict_type: definition_disagreement
+  similarity: 0.3279
+  risk_level: high
+  manufacturer: null
+  reason: 'generic code with risk ''high'' whose statements agree only 33%: publishing it unreviewed shows
+    the user a possibly wrong meaning for a safety-relevant fault'
+  statements:
+  - source: autodiag
+    source_name: autodiag2/database
+    licence: ODbL-1.0
+    repo: https://github.com/autodiag2/database
+    commit: 11e73fd6d105a071fa472f426d23225344921a19
+    statement: ISO/SAE Reserved
+  - source: obdex
+    source_name: OBDex (foerbsnavi/OBDex)
+    licence: CC0-1.0
+    repo: https://github.com/foerbsnavi/OBDex
+    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
+    statement: Turbocharger/Supercharger B Turbine Overspeed — The control module has detected that turbocharger
+      B runs above its permitted maximum speed. Speed is measured by a dedicated sensor per turbocharger
+      where fitted, or estimated from a model of pressure ratio and air mass. Turbocharger B is the second
+      turbocharger in series systems or the one on bank 2 in parallel systems. Typical causes are sticking
+      boost control of this turbocharger or a charge-air leak; find the cause before driving on, as overspeed
+      can destroy the turbocharger. No manufacturer description naming this exact code was found; the
+      explanation follows its documented counterpart.
+  decision:
+    required_at: data/reviews/conflicts.yaml
+    options:
+    - accepted_difference - both statements are legitimate
+    - resolved --source <slug> - one statement is correct
+    - retained_as_alternatives - context makes both true
+    - rejected_source --source <slug> - the source is wrong here
+    command: autodoctor review-conflict 860a80e5664b3c2d --accept --note '<why>' --reviewer '<name>'
+- fingerprint: 8d9a8fb83e457aeb
+  code: P00C7
+  context_key: P00C7|sae_j2012|generic:generic
+  context_type: generic
+  attribute: definition.en
+  conflict_type: definition_disagreement
+  similarity: 0.2247
+  risk_level: high
+  manufacturer: null
+  reason: 'generic code with risk ''high'' whose statements agree only 22%: publishing it unreviewed shows
+    the user a possibly wrong meaning for a safety-relevant fault'
+  statements:
+  - source: autodiag
+    source_name: autodiag2/database
+    licence: ODbL-1.0
+    repo: https://github.com/autodiag2/database
+    commit: 11e73fd6d105a071fa472f426d23225344921a19
+    statement: ISO/SAE Reserved
+  - source: obdex
+    source_name: OBDex (foerbsnavi/OBDex)
+    licence: CC0-1.0
+    repo: https://github.com/foerbsnavi/OBDex
+    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
+    statement: 'Intake Air Pressure Measurement System - Multiple Sensor Correlation Bank 1 — With the
+      engine stopped, all pressure sensors in the intake system (manifold pressure, boost pressure, barometric
+      pressure) should read ambient pressure; some diesels also compare them at idle. The control module
+      compares them: if one sensor stands out, it sets that sensor''s own code. P00C7 is set when the
+      readings disagree but no single sensor can be identified as faulty, which points to a fault affecting
+      several sensors, such as a shared reference voltage or ground.'
+  decision:
+    required_at: data/reviews/conflicts.yaml
+    options:
+    - accepted_difference - both statements are legitimate
+    - resolved --source <slug> - one statement is correct
+    - retained_as_alternatives - context makes both true
+    - rejected_source --source <slug> - the source is wrong here
+    command: autodoctor review-conflict 8d9a8fb83e457aeb --accept --note '<why>' --reviewer '<name>'
+- fingerprint: bddbf5ccbc4e6047
+  code: P00C8
+  context_key: P00C8|sae_j2012|generic:generic
+  context_type: generic
+  attribute: definition.en
+  conflict_type: definition_disagreement
+  similarity: 0.2326
+  risk_level: high
+  manufacturer: null
+  reason: 'generic code with risk ''high'' whose statements agree only 23%: publishing it unreviewed shows
+    the user a possibly wrong meaning for a safety-relevant fault'
+  statements:
+  - source: autodiag
+    source_name: autodiag2/database
+    licence: ODbL-1.0
+    repo: https://github.com/autodiag2/database
+    commit: 11e73fd6d105a071fa472f426d23225344921a19
+    statement: ISO/SAE Reserved
+  - source: obdex
+    source_name: OBDex (foerbsnavi/OBDex)
+    licence: CC0-1.0
+    repo: https://github.com/foerbsnavi/OBDex
+    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
+    statement: 'Fuel Pressure Regulator A Solenoid Supply Voltage Control Circuit/Open — Some engine control
+      modules switch the solenoid of fuel pressure regulator A on both sides: the ground side is monitored
+      by P0090 to P0092, the supply side (high-side driver) by P00C8 to P00CA. On gasoline direct injection
+      the regulator is typically the control valve on the high-pressure pump. P00C8 reports an open circuit
+      on the supply side. Rail pressure can then not be controlled, causing starting problems, stalling
+      or reduced power.'
+  decision:
+    required_at: data/reviews/conflicts.yaml
+    options:
+    - accepted_difference - both statements are legitimate
+    - resolved --source <slug> - one statement is correct
+    - retained_as_alternatives - context makes both true
+    - rejected_source --source <slug> - the source is wrong here
+    command: autodoctor review-conflict bddbf5ccbc4e6047 --accept --note '<why>' --reviewer '<name>'
+- fingerprint: 74b1ead800a67e6e
+  code: P00C9
+  context_key: P00C9|sae_j2012|generic:generic
+  context_type: generic
+  attribute: definition.en
+  conflict_type: definition_disagreement
+  similarity: 0.2118
+  risk_level: high
+  manufacturer: null
+  reason: 'generic code with risk ''high'' whose statements agree only 21%: publishing it unreviewed shows
+    the user a possibly wrong meaning for a safety-relevant fault'
+  statements:
+  - source: autodiag
+    source_name: autodiag2/database
+    licence: ODbL-1.0
+    repo: https://github.com/autodiag2/database
+    commit: 11e73fd6d105a071fa472f426d23225344921a19
+    statement: ISO/SAE Reserved
+  - source: obdex
+    source_name: OBDex (foerbsnavi/OBDex)
+    licence: CC0-1.0
+    repo: https://github.com/foerbsnavi/OBDex
+    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
+    statement: 'Fuel Pressure Regulator A Solenoid Supply Voltage Control Circuit Low — Some engine control
+      modules switch the solenoid of fuel pressure regulator A on both sides: the ground side is monitored
+      by P0090 to P0092, the supply side (high-side driver) by P00C8 to P00CA. On gasoline direct injection
+      the regulator is typically the control valve on the high-pressure pump; on some diesels it is the
+      regulator designated as regulator 1. P00C9 reports a short to ground on the supply side. Rail pressure
+      can then not be controlled, causing starting problems, stalling or reduced power; documented systems
+      turn on the warning light in the first drive cycle.'
+  decision:
+    required_at: data/reviews/conflicts.yaml
+    options:
+    - accepted_difference - both statements are legitimate
+    - resolved --source <slug> - one statement is correct
+    - retained_as_alternatives - context makes both true
+    - rejected_source --source <slug> - the source is wrong here
+    command: autodoctor review-conflict 74b1ead800a67e6e --accept --note '<why>' --reviewer '<name>'
+- fingerprint: c9316e203c1a2216
+  code: P00CA
+  context_key: P00CA|sae_j2012|generic:generic
+  context_type: generic
+  attribute: definition.en
+  conflict_type: definition_disagreement
+  similarity: 0.2093
+  risk_level: high
+  manufacturer: null
+  reason: 'generic code with risk ''high'' whose statements agree only 21%: publishing it unreviewed shows
+    the user a possibly wrong meaning for a safety-relevant fault'
+  statements:
+  - source: autodiag
+    source_name: autodiag2/database
+    licence: ODbL-1.0
+    repo: https://github.com/autodiag2/database
+    commit: 11e73fd6d105a071fa472f426d23225344921a19
+    statement: ISO/SAE Reserved
+  - source: obdex
+    source_name: OBDex (foerbsnavi/OBDex)
+    licence: CC0-1.0
+    repo: https://github.com/foerbsnavi/OBDex
+    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
+    statement: 'Fuel Pressure Regulator A Solenoid Supply Voltage Control Circuit High — Some engine control
+      modules switch the solenoid of fuel pressure regulator A on both sides: the ground side is monitored
+      by P0090 to P0092, the supply side (high-side driver) by P00C8 to P00CA. On gasoline direct injection
+      the regulator is typically the control valve on the high-pressure pump; on some diesels it is the
+      regulator designated as regulator 1. P00CA reports a short to battery voltage on the supply side,
+      so the driver can no longer switch the supply off. Rail pressure can then not be controlled, causing
+      starting problems, stalling or reduced power; documented systems turn on the warning light in the
+      first drive cycle.'
+  decision:
+    required_at: data/reviews/conflicts.yaml
+    options:
+    - accepted_difference - both statements are legitimate
+    - resolved --source <slug> - one statement is correct
+    - retained_as_alternatives - context makes both true
+    - rejected_source --source <slug> - the source is wrong here
+    command: autodoctor review-conflict c9316e203c1a2216 --accept --note '<why>' --reviewer '<name>'
+- fingerprint: 3a300a4905cd7ca4
+  code: P00CB
+  context_key: P00CB|sae_j2012|generic:generic
+  context_type: generic
+  attribute: definition.en
+  conflict_type: definition_disagreement
+  similarity: 0.2195
+  risk_level: high
+  manufacturer: null
+  reason: 'generic code with risk ''high'' whose statements agree only 22%: publishing it unreviewed shows
+    the user a possibly wrong meaning for a safety-relevant fault'
+  statements:
+  - source: autodiag
+    source_name: autodiag2/database
+    licence: ODbL-1.0
+    repo: https://github.com/autodiag2/database
+    commit: 11e73fd6d105a071fa472f426d23225344921a19
+    statement: ISO/SAE Reserved
+  - source: obdex
+    source_name: OBDex (foerbsnavi/OBDex)
+    licence: CC0-1.0
+    repo: https://github.com/foerbsnavi/OBDex
+    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
+    statement: Fuel Volume Regulator Solenoid Supply Voltage Control Circuit/Open — The fuel volume regulator
+      is the solenoid valve that meters how much fuel the high-pressure pump delivers (metering unit on
+      diesels, pump control valve on some gasoline direct-injection engines). Many control modules switch
+      such solenoids on both sides; P0001 to P0004 cover the control side, while these codes cover the
+      supply side (high-side driver). P00CB reports an open circuit on the supply side. Rail pressure
+      may then deviate, with reduced power or hard starting. None of the published manufacturer documents
+      searched uses this code; the explanation follows regulations and comparable manufacturer monitors.
+  decision:
+    required_at: data/reviews/conflicts.yaml
+    options:
+    - accepted_difference - both statements are legitimate
+    - resolved --source <slug> - one statement is correct
+    - retained_as_alternatives - context makes both true
+    - rejected_source --source <slug> - the source is wrong here
+    command: autodoctor review-conflict 3a300a4905cd7ca4 --accept --note '<why>' --reviewer '<name>'
+- fingerprint: 169d6f59cbe0d3e9
+  code: P00CC
+  context_key: P00CC|sae_j2012|generic:generic
+  context_type: generic
+  attribute: definition.en
+  conflict_type: definition_disagreement
+  similarity: 0.1975
+  risk_level: high
+  manufacturer: null
+  reason: 'generic code with risk ''high'' whose statements agree only 20%: publishing it unreviewed shows
+    the user a possibly wrong meaning for a safety-relevant fault'
+  statements:
+  - source: autodiag
+    source_name: autodiag2/database
+    licence: ODbL-1.0
+    repo: https://github.com/autodiag2/database
+    commit: 11e73fd6d105a071fa472f426d23225344921a19
+    statement: ISO/SAE Reserved
+  - source: obdex
+    source_name: OBDex (foerbsnavi/OBDex)
+    licence: CC0-1.0
+    repo: https://github.com/foerbsnavi/OBDex
+    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
+    statement: Fuel Volume Regulator Solenoid Supply Voltage Control Circuit Low — The fuel volume regulator
+      is the solenoid valve that meters how much fuel the high-pressure pump delivers (metering unit on
+      diesels, pump control valve on some gasoline direct-injection engines). Many control modules switch
+      such solenoids on both sides; P0001 to P0004 cover the control side, while these codes cover the
+      supply side (high-side driver). P00CC reports a short to ground on the supply side. Rail pressure
+      may then deviate, with reduced power or hard starting. None of the published manufacturer documents
+      searched uses this code; the explanation follows regulations and comparable manufacturer monitors.
+  decision:
+    required_at: data/reviews/conflicts.yaml
+    options:
+    - accepted_difference - both statements are legitimate
+    - resolved --source <slug> - one statement is correct
+    - retained_as_alternatives - context makes both true
+    - rejected_source --source <slug> - the source is wrong here
+    command: autodoctor review-conflict 169d6f59cbe0d3e9 --accept --note '<why>' --reviewer '<name>'
+- fingerprint: 8f027687b77cb1b1
+  code: P00CD
+  context_key: P00CD|sae_j2012|generic:generic
+  context_type: generic
+  attribute: definition.en
+  conflict_type: definition_disagreement
+  similarity: 0.1951
+  risk_level: high
+  manufacturer: null
+  reason: 'generic code with risk ''high'' whose statements agree only 20%: publishing it unreviewed shows
+    the user a possibly wrong meaning for a safety-relevant fault'
+  statements:
+  - source: autodiag
+    source_name: autodiag2/database
+    licence: ODbL-1.0
+    repo: https://github.com/autodiag2/database
+    commit: 11e73fd6d105a071fa472f426d23225344921a19
+    statement: ISO/SAE Reserved
+  - source: obdex
+    source_name: OBDex (foerbsnavi/OBDex)
+    licence: CC0-1.0
+    repo: https://github.com/foerbsnavi/OBDex
+    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
+    statement: Fuel Volume Regulator Solenoid Supply Voltage Control Circuit High — The fuel volume regulator
+      is the solenoid valve that meters how much fuel the high-pressure pump delivers (metering unit on
+      diesels, pump control valve on some gasoline direct-injection engines). Many control modules switch
+      such solenoids on both sides; P0001 to P0004 cover the control side, while these codes cover the
+      supply side (high-side driver). P00CD reports a short to battery voltage on the supply side. Rail
+      pressure may then deviate, with reduced power or hard starting. None of the published manufacturer
+      documents searched uses this code; the explanation follows regulations and comparable manufacturer
+      monitors.
+  decision:
+    required_at: data/reviews/conflicts.yaml
+    options:
+    - accepted_difference - both statements are legitimate
+    - resolved --source <slug> - one statement is correct
+    - retained_as_alternatives - context makes both true
+    - rejected_source --source <slug> - the source is wrong here
+    command: autodoctor review-conflict 8f027687b77cb1b1 --accept --note '<why>' --reviewer '<name>'
+- fingerprint: 7d4d204c4b90c3f6
+  code: P00CF
+  context_key: P00CF|sae_j2012|generic:generic
+  context_type: generic
+  attribute: definition.en
+  conflict_type: definition_disagreement
+  similarity: 0.1818
+  risk_level: high
+  manufacturer: null
+  reason: 'generic code with risk ''high'' whose statements agree only 18%: publishing it unreviewed shows
+    the user a possibly wrong meaning for a safety-relevant fault'
+  statements:
+  - source: autodiag
+    source_name: autodiag2/database
+    licence: ODbL-1.0
+    repo: https://github.com/autodiag2/database
+    commit: 11e73fd6d105a071fa472f426d23225344921a19
+    statement: ISO/SAE Reserved
+  - source: obdex
+    source_name: OBDex (foerbsnavi/OBDex)
+    licence: CC0-1.0
+    repo: https://github.com/foerbsnavi/OBDex
+    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
+    statement: Barometric Pressure - Turbocharger/Supercharger Boost Sensor A Correlation — With the engine
+      stopped or without boost, the boost pressure sensor A (between compressor and throttle) must read
+      practically ambient pressure. This code is set when it deviates from the barometric pressure sensor
+      by more than a threshold; the code does not say which of the two is wrong. Manufacturers that publish
+      their diagnostics run the same comparison under other codes. None of the published manufacturer
+      documents searched uses this code; the explanation follows regulations and comparable manufacturer
+      monitors.
+  decision:
+    required_at: data/reviews/conflicts.yaml
+    options:
+    - accepted_difference - both statements are legitimate
+    - resolved --source <slug> - one statement is correct
+    - retained_as_alternatives - context makes both true
+    - rejected_source --source <slug> - the source is wrong here
+    command: autodoctor review-conflict 7d4d204c4b90c3f6 --accept --note '<why>' --reviewer '<name>'
+- fingerprint: eb0f5c8344257433
+  code: P00D0
+  context_key: P00D0|sae_j2012|generic:generic
+  context_type: generic
+  attribute: definition.en
+  conflict_type: definition_disagreement
+  similarity: 0.1818
+  risk_level: high
+  manufacturer: null
+  reason: 'generic code with risk ''high'' whose statements agree only 18%: publishing it unreviewed shows
+    the user a possibly wrong meaning for a safety-relevant fault'
+  statements:
+  - source: autodiag
+    source_name: autodiag2/database
+    licence: ODbL-1.0
+    repo: https://github.com/autodiag2/database
+    commit: 11e73fd6d105a071fa472f426d23225344921a19
+    statement: ISO/SAE Reserved
+  - source: obdex
+    source_name: OBDex (foerbsnavi/OBDex)
+    licence: CC0-1.0
+    repo: https://github.com/foerbsnavi/OBDex
+    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
+    statement: Barometric Pressure - Turbocharger/Supercharger Boost Sensor B Correlation — With the engine
+      stopped or without boost, the boost pressure sensor B (between compressor and throttle) must read
+      practically ambient pressure. This code is set when it deviates from the barometric pressure sensor
+      by more than a threshold; the code does not say which of the two is wrong. B denotes the second
+      boost pressure sensor, for example on a second turbocharger. Manufacturers that publish their diagnostics
+      run the same comparison under other codes. None of the published manufacturer documents searched
+      uses this code; the explanation follows regulations and comparable manufacturer monitors.
+  decision:
+    required_at: data/reviews/conflicts.yaml
+    options:
+    - accepted_difference - both statements are legitimate
+    - resolved --source <slug> - one statement is correct
+    - retained_as_alternatives - context makes both true
+    - rejected_source --source <slug> - the source is wrong here
+    command: autodoctor review-conflict eb0f5c8344257433 --accept --note '<why>' --reviewer '<name>'
+- fingerprint: 318bfdd621aaf1f7
+  code: P00D7
+  context_key: P00D7|sae_j2012|generic:generic
+  context_type: generic
+  attribute: definition.en
+  conflict_type: definition_disagreement
+  similarity: 0.0779
+  risk_level: high
+  manufacturer: null
+  reason: 'generic code with risk ''high'' whose statements agree only 8%: publishing it unreviewed shows
+    the user a possibly wrong meaning for a safety-relevant fault'
+  statements:
+  - source: autodiag
+    source_name: autodiag2/database
+    licence: ODbL-1.0
+    repo: https://github.com/autodiag2/database
+    commit: 11e73fd6d105a071fa472f426d23225344921a19
+    statement: ISO/SAE Reserved
+  - source: obdex
+    source_name: OBDex (foerbsnavi/OBDex)
+    licence: CC0-1.0
+    repo: https://github.com/foerbsnavi/OBDex
+    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
+    statement: Turbocharger/Supercharger Bypass Valve A Temperature Too High — Bypass valve A is the electric
+      compressor recirculation valve, mounted close to the hot compressor and turbine housing. This code
+      reports that its temperature is too high. How the temperature is detected is not described in published
+      manufacturer documents; a documented principle for comparable turbocharger solenoids estimates the
+      coil temperature from current, supply voltage and duty cycle and protects the coil by limiting or
+      switching it off. With the valve switched off, the compressor may surge when lifting off the throttle.
+      None of the published manufacturer documents searched uses this code; the explanation follows regulations
+      and comparable manufacturer monitors.
+  decision:
+    required_at: data/reviews/conflicts.yaml
+    options:
+    - accepted_difference - both statements are legitimate
+    - resolved --source <slug> - one statement is correct
+    - retained_as_alternatives - context makes both true
+    - rejected_source --source <slug> - the source is wrong here
+    command: autodoctor review-conflict 318bfdd621aaf1f7 --accept --note '<why>' --reviewer '<name>'
+- fingerprint: 1ae527ed2ce0edf0
+  code: P00D8
+  context_key: P00D8|sae_j2012|generic:generic
+  context_type: generic
+  attribute: definition.en
+  conflict_type: definition_disagreement
+  similarity: 0.0779
+  risk_level: high
+  manufacturer: null
+  reason: 'generic code with risk ''high'' whose statements agree only 8%: publishing it unreviewed shows
+    the user a possibly wrong meaning for a safety-relevant fault'
+  statements:
+  - source: autodiag
+    source_name: autodiag2/database
+    licence: ODbL-1.0
+    repo: https://github.com/autodiag2/database
+    commit: 11e73fd6d105a071fa472f426d23225344921a19
+    statement: ISO/SAE Reserved
+  - source: obdex
+    source_name: OBDex (foerbsnavi/OBDex)
+    licence: CC0-1.0
+    repo: https://github.com/foerbsnavi/OBDex
+    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
+    statement: Turbocharger/Supercharger Bypass Valve B Temperature Too High — Bypass valve B is the electric
+      compressor recirculation valve, mounted close to the hot compressor and turbine housing. This code
+      reports that its temperature is too high. How the temperature is detected is not described in published
+      manufacturer documents; a documented principle for comparable turbocharger solenoids estimates the
+      coil temperature from current, supply voltage and duty cycle and protects the coil by limiting or
+      switching it off. With the valve switched off, the compressor may surge when lifting off the throttle.
+      None of the published manufacturer documents searched uses this code; the explanation follows regulations
+      and comparable manufacturer monitors.
+  decision:
+    required_at: data/reviews/conflicts.yaml
+    options:
+    - accepted_difference - both statements are legitimate
+    - resolved --source <slug> - one statement is correct
+    - retained_as_alternatives - context makes both true
+    - rejected_source --source <slug> - the source is wrong here
+    command: autodoctor review-conflict 1ae527ed2ce0edf0 --accept --note '<why>' --reviewer '<name>'
+- fingerprint: 94329604130b9db4
+  code: P00DE
+  context_key: P00DE|sae_j2012|generic:generic
+  context_type: generic
+  attribute: definition.en
+  conflict_type: definition_disagreement
+  similarity: 0.2
+  risk_level: high
+  manufacturer: null
+  reason: 'generic code with risk ''high'' whose statements agree only 20%: publishing it unreviewed shows
+    the user a possibly wrong meaning for a safety-relevant fault'
+  statements:
+  - source: autodiag
+    source_name: autodiag2/database
+    licence: ODbL-1.0
+    repo: https://github.com/autodiag2/database
+    commit: 11e73fd6d105a071fa472f426d23225344921a19
+    statement: ISO/SAE Reserved
+  - source: obdex
+    source_name: OBDex (foerbsnavi/OBDex)
+    licence: CC0-1.0
+    repo: https://github.com/foerbsnavi/OBDex
+    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
+    statement: 'Charge Air Cooler Coolant Temperature Sensor A Circuit — With indirect charge air cooling,
+      a water-to-air charge air cooler cools the charge air; it sits in a separate low-temperature coolant
+      circuit with an electric pump and its own radiator. The charge air cooler coolant temperature sensor
+      A measures the coolant temperature of this circuit. The control module uses it to control the pump
+      and to monitor cooling performance. Documented users are diesel engines from Ford and GM. P00DE:
+      This is the general circuit fault; low and high signals have their own codes. No manufacturer description
+      naming this exact code was found.'
+  decision:
+    required_at: data/reviews/conflicts.yaml
+    options:
+    - accepted_difference - both statements are legitimate
+    - resolved --source <slug> - one statement is correct
+    - retained_as_alternatives - context makes both true
+    - rejected_source --source <slug> - the source is wrong here
+    command: autodoctor review-conflict 94329604130b9db4 --accept --note '<why>' --reviewer '<name>'
+- fingerprint: f0ec3a7c1c0254c9
+  code: P00DF
+  context_key: P00DF|sae_j2012|generic:generic
+  context_type: generic
+  attribute: definition.en
+  conflict_type: definition_disagreement
+  similarity: 0.2273
+  risk_level: high
+  manufacturer: null
+  reason: 'generic code with risk ''high'' whose statements agree only 23%: publishing it unreviewed shows
+    the user a possibly wrong meaning for a safety-relevant fault'
+  statements:
+  - source: autodiag
+    source_name: autodiag2/database
+    licence: ODbL-1.0
+    repo: https://github.com/autodiag2/database
+    commit: 11e73fd6d105a071fa472f426d23225344921a19
+    statement: ISO/SAE Reserved
+  - source: obdex
+    source_name: OBDex (foerbsnavi/OBDex)
+    licence: CC0-1.0
+    repo: https://github.com/foerbsnavi/OBDex
+    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
+    statement: 'Charge Air Cooler Coolant Temperature Sensor A Circuit Range/Performance — With indirect
+      charge air cooling, a water-to-air charge air cooler cools the charge air; it sits in a separate
+      low-temperature coolant circuit with an electric pump and its own radiator. The charge air cooler
+      coolant temperature sensor A measures the coolant temperature of this circuit. The control module
+      uses it to control the pump and to monitor cooling performance. Documented users are diesel engines
+      from Ford and GM. P00DF: This is a plausibility fault: the reading is electrically valid but does
+      not fit the operating state; low coolant, air in the circuit or a weak pump can also make the sensor
+      read real but unexpected values.'
+  decision:
+    required_at: data/reviews/conflicts.yaml
+    options:
+    - accepted_difference - both statements are legitimate
+    - resolved --source <slug> - one statement is correct
+    - retained_as_alternatives - context makes both true
+    - rejected_source --source <slug> - the source is wrong here
+    command: autodoctor review-conflict f0ec3a7c1c0254c9 --accept --note '<why>' --reviewer '<name>'
+- fingerprint: e1e66c355b89df34
+  code: P00E0
+  context_key: P00E0|sae_j2012|generic:generic
+  context_type: generic
+  attribute: definition.en
+  conflict_type: definition_disagreement
+  similarity: 0.1892
+  risk_level: high
+  manufacturer: null
+  reason: 'generic code with risk ''high'' whose statements agree only 19%: publishing it unreviewed shows
+    the user a possibly wrong meaning for a safety-relevant fault'
+  statements:
+  - source: autodiag
+    source_name: autodiag2/database
+    licence: ODbL-1.0
+    repo: https://github.com/autodiag2/database
+    commit: 11e73fd6d105a071fa472f426d23225344921a19
+    statement: ISO/SAE Reserved
+  - source: obdex
+    source_name: OBDex (foerbsnavi/OBDex)
+    licence: CC0-1.0
+    repo: https://github.com/foerbsnavi/OBDex
+    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
+    statement: 'Charge Air Cooler Coolant Temperature Sensor A Circuit Low — With indirect charge air
+      cooling, a water-to-air charge air cooler cools the charge air; it sits in a separate low-temperature
+      coolant circuit with an electric pump and its own radiator. The charge air cooler coolant temperature
+      sensor A measures the coolant temperature of this circuit. The control module uses it to control
+      the pump and to monitor cooling performance. Documented users are diesel engines from Ford and GM.
+      P00E0: The signal is below its valid range (below about 0.16 V in a documented case); with the usual
+      NTC circuit this is a short to ground and an apparently very high temperature.'
+  decision:
+    required_at: data/reviews/conflicts.yaml
+    options:
+    - accepted_difference - both statements are legitimate
+    - resolved --source <slug> - one statement is correct
+    - retained_as_alternatives - context makes both true
+    - rejected_source --source <slug> - the source is wrong here
+    command: autodoctor review-conflict e1e66c355b89df34 --accept --note '<why>' --reviewer '<name>'
+- fingerprint: 303fa4f60a9691f8
+  code: P00E1
+  context_key: P00E1|sae_j2012|generic:generic
+  context_type: generic
+  attribute: definition.en
+  conflict_type: definition_disagreement
+  similarity: 0.1867
+  risk_level: high
+  manufacturer: null
+  reason: 'generic code with risk ''high'' whose statements agree only 19%: publishing it unreviewed shows
+    the user a possibly wrong meaning for a safety-relevant fault'
+  statements:
+  - source: autodiag
+    source_name: autodiag2/database
+    licence: ODbL-1.0
+    repo: https://github.com/autodiag2/database
+    commit: 11e73fd6d105a071fa472f426d23225344921a19
+    statement: ISO/SAE Reserved
+  - source: obdex
+    source_name: OBDex (foerbsnavi/OBDex)
+    licence: CC0-1.0
+    repo: https://github.com/foerbsnavi/OBDex
+    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
+    statement: 'Charge Air Cooler Coolant Temperature Sensor A Circuit High — With indirect charge air
+      cooling, a water-to-air charge air cooler cools the charge air; it sits in a separate low-temperature
+      coolant circuit with an electric pump and its own radiator. The charge air cooler coolant temperature
+      sensor A measures the coolant temperature of this circuit. The control module uses it to control
+      the pump and to monitor cooling performance. Documented users are diesel engines from Ford and GM.
+      P00E1: The signal is above its valid range (above about 4.93 V in a documented case); with the usual
+      NTC circuit this is an open circuit and an apparently very low temperature.'
+  decision:
+    required_at: data/reviews/conflicts.yaml
+    options:
+    - accepted_difference - both statements are legitimate
+    - resolved --source <slug> - one statement is correct
+    - retained_as_alternatives - context makes both true
+    - rejected_source --source <slug> - the source is wrong here
+    command: autodoctor review-conflict 303fa4f60a9691f8 --accept --note '<why>' --reviewer '<name>'
+- fingerprint: cb8a046bebca51de
+  code: P00E2
+  context_key: P00E2|sae_j2012|generic:generic
+  context_type: generic
+  attribute: definition.en
+  conflict_type: definition_disagreement
+  similarity: 0.2169
+  risk_level: high
+  manufacturer: null
+  reason: 'generic code with risk ''high'' whose statements agree only 22%: publishing it unreviewed shows
+    the user a possibly wrong meaning for a safety-relevant fault'
+  statements:
+  - source: autodiag
+    source_name: autodiag2/database
+    licence: ODbL-1.0
+    repo: https://github.com/autodiag2/database
+    commit: 11e73fd6d105a071fa472f426d23225344921a19
+    statement: ISO/SAE Reserved
+  - source: obdex
+    source_name: OBDex (foerbsnavi/OBDex)
+    licence: CC0-1.0
+    repo: https://github.com/foerbsnavi/OBDex
+    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
+    statement: 'Charge Air Cooler Coolant Temperature Sensor A Intermittent/Erratic — With indirect charge
+      air cooling, a water-to-air charge air cooler cools the charge air; it sits in a separate low-temperature
+      coolant circuit with an electric pump and its own radiator. The charge air cooler coolant temperature
+      sensor A measures the coolant temperature of this circuit. The control module uses it to control
+      the pump and to monitor cooling performance. Documented users are diesel engines from Ford and GM.
+      P00E2: The signal jumps or drops out briefly, which typically points to a loose contact or a chafed
+      harness.'
+  decision:
+    required_at: data/reviews/conflicts.yaml
+    options:
+    - accepted_difference - both statements are legitimate
+    - resolved --source <slug> - one statement is correct
+    - retained_as_alternatives - context makes both true
+    - rejected_source --source <slug> - the source is wrong here
+    command: autodoctor review-conflict cb8a046bebca51de --accept --note '<why>' --reviewer '<name>'
+- fingerprint: 948c55eec23f9ee6
+  code: P00E6
+  context_key: P00E6|sae_j2012|generic:generic
+  context_type: generic
+  attribute: definition.en
+  conflict_type: definition_disagreement
+  similarity: 0.2247
+  risk_level: high
+  manufacturer: null
+  reason: 'generic code with risk ''high'' whose statements agree only 22%: publishing it unreviewed shows
+    the user a possibly wrong meaning for a safety-relevant fault'
+  statements:
+  - source: autodiag
+    source_name: autodiag2/database
+    licence: ODbL-1.0
+    repo: https://github.com/autodiag2/database
+    commit: 11e73fd6d105a071fa472f426d23225344921a19
+    statement: ISO/SAE Reserved
+  - source: obdex
+    source_name: OBDex (foerbsnavi/OBDex)
+    licence: CC0-1.0
+    repo: https://github.com/foerbsnavi/OBDex
+    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
+    statement: Intake Air Pressure Measurement System - Multiple Sensor Correlation Bank 2 — This is the
+      bank 2 counterpart of the multiple pressure sensor check for engines with separate pressure measurement
+      per bank, such as twin-turbo V engines. With the engine stopped, all intake pressure sensors should
+      read ambient pressure. If one stands out, it gets its own code; this code is set when the readings
+      disagree but no single sensor can be identified, which points to a fault affecting several sensors
+      such as a shared reference voltage or ground. None of the published manufacturer documents searched
+      uses this code; the explanation follows regulations and comparable manufacturer monitors.
+  decision:
+    required_at: data/reviews/conflicts.yaml
+    options:
+    - accepted_difference - both statements are legitimate
+    - resolved --source <slug> - one statement is correct
+    - retained_as_alternatives - context makes both true
+    - rejected_source --source <slug> - the source is wrong here
+    command: autodoctor review-conflict 948c55eec23f9ee6 --accept --note '<why>' --reviewer '<name>'
+- fingerprint: 032864d97e91fb2a
+  code: P00F7
+  context_key: P00F7|sae_j2012|generic:generic
+  context_type: generic
+  attribute: definition.en
+  conflict_type: definition_disagreement
+  similarity: 0.1684
+  risk_level: high
+  manufacturer: null
+  reason: 'generic code with risk ''high'' whose statements agree only 17%: publishing it unreviewed shows
+    the user a possibly wrong meaning for a safety-relevant fault'
+  statements:
+  - source: autodiag
+    source_name: autodiag2/database
+    licence: ODbL-1.0
+    repo: https://github.com/autodiag2/database
+    commit: 11e73fd6d105a071fa472f426d23225344921a19
+    statement: ISO/SAE Reserved
+  - source: obdex
+    source_name: OBDex (foerbsnavi/OBDex)
+    licence: CC0-1.0
+    repo: https://github.com/foerbsnavi/OBDex
+    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
+    statement: Barometric Pressure - Turbocharger/Supercharger Inlet Pressure Correlation Bank 2 — This
+      is the bank 2 counterpart of the comparison between barometric pressure and the pressure ahead of
+      the turbocharger or supercharger. At low air flow the inlet pressure sensor reads close to ambient
+      pressure, minus the small loss across the air filter, so it must match the barometric reading. The
+      code is set when the difference is too large; a clogged air filter or a leaking intake hose on bank
+      2 can cause it as well as a drifting sensor. None of the published manufacturer documents searched
+      uses this code; the explanation follows regulations and comparable manufacturer monitors.
+  decision:
+    required_at: data/reviews/conflicts.yaml
+    options:
+    - accepted_difference - both statements are legitimate
+    - resolved --source <slug> - one statement is correct
+    - retained_as_alternatives - context makes both true
+    - rejected_source --source <slug> - the source is wrong here
+    command: autodoctor review-conflict 032864d97e91fb2a --accept --note '<why>' --reviewer '<name>'
+- fingerprint: 00c6ae885811b73c
+  code: P00F8
+  context_key: P00F8|sae_j2012|generic:generic
+  context_type: generic
+  attribute: definition.en
+  conflict_type: definition_disagreement
+  similarity: 0.2951
+  risk_level: high
+  manufacturer: null
+  reason: 'generic code with risk ''high'' whose statements agree only 30%: publishing it unreviewed shows
+    the user a possibly wrong meaning for a safety-relevant fault'
+  statements:
+  - source: autodiag
+    source_name: autodiag2/database
+    licence: ODbL-1.0
+    repo: https://github.com/autodiag2/database
+    commit: 11e73fd6d105a071fa472f426d23225344921a19
+    statement: ISO/SAE Reserved
+  - source: obdex
+    source_name: OBDex (foerbsnavi/OBDex)
+    licence: CC0-1.0
+    repo: https://github.com/foerbsnavi/OBDex
+    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
+    statement: Turbocharger Outlet Pressure Sensor A Circuit — The turbocharger outlet pressure sensor
+      A measures the pressure directly at the compressor outlet. It is a separate code family from the
+      boost pressure sensor, which usually measures the pressure just ahead of the throttle; engines use
+      it where the pressure behind the compressor is needed in addition, for example to judge the pressure
+      loss across the charge air cooler or to protect against compressor surge. One manufacturer documents
+      it as a combined temperature and pressure sensor. P00F8 is the general circuit fault of this sensor.
+      None of the published manufacturer documents searched uses this code; the explanation follows regulations
+      and comparable manufacturer monitors.
+  decision:
+    required_at: data/reviews/conflicts.yaml
+    options:
+    - accepted_difference - both statements are legitimate
+    - resolved --source <slug> - one statement is correct
+    - retained_as_alternatives - context makes both true
+    - rejected_source --source <slug> - the source is wrong here
+    command: autodoctor review-conflict 00c6ae885811b73c --accept --note '<why>' --reviewer '<name>'
+- fingerprint: 74bf0970666804db
+  code: P00F9
+  context_key: P00F9|sae_j2012|generic:generic
+  context_type: generic
+  attribute: definition.en
+  conflict_type: definition_disagreement
+  similarity: 0.2817
+  risk_level: high
+  manufacturer: null
+  reason: 'generic code with risk ''high'' whose statements agree only 28%: publishing it unreviewed shows
+    the user a possibly wrong meaning for a safety-relevant fault'
+  statements:
+  - source: autodiag
+    source_name: autodiag2/database
+    licence: ODbL-1.0
+    repo: https://github.com/autodiag2/database
+    commit: 11e73fd6d105a071fa472f426d23225344921a19
+    statement: ISO/SAE Reserved
+  - source: obdex
+    source_name: OBDex (foerbsnavi/OBDex)
+    licence: CC0-1.0
+    repo: https://github.com/foerbsnavi/OBDex
+    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
+    statement: Turbocharger Outlet Pressure Sensor A Range/Performance — The turbocharger outlet pressure
+      sensor A measures the pressure directly at the compressor outlet. It is a separate code family from
+      the boost pressure sensor, which usually measures the pressure just ahead of the throttle; engines
+      use it where the pressure behind the compressor is needed in addition, for example to judge the
+      pressure loss across the charge air cooler or to protect against compressor surge. One manufacturer
+      documents it as a combined temperature and pressure sensor. P00F9 means the signal is electrically
+      valid but implausible. In a documented case the cause was a sensor not seated properly and a connector
+      not fully engaged; securing them solved it without parts.
+  decision:
+    required_at: data/reviews/conflicts.yaml
+    options:
+    - accepted_difference - both statements are legitimate
+    - resolved --source <slug> - one statement is correct
+    - retained_as_alternatives - context makes both true
+    - rejected_source --source <slug> - the source is wrong here
+    command: autodoctor review-conflict 74bf0970666804db --accept --note '<why>' --reviewer '<name>'
+- fingerprint: 0fddb5c1a40372b1
+  code: P00FA
+  context_key: P00FA|sae_j2012|generic:generic
+  context_type: generic
+  attribute: definition.en
+  conflict_type: definition_disagreement
+  similarity: 0.2769
+  risk_level: high
+  manufacturer: null
+  reason: 'generic code with risk ''high'' whose statements agree only 28%: publishing it unreviewed shows
+    the user a possibly wrong meaning for a safety-relevant fault'
+  statements:
+  - source: autodiag
+    source_name: autodiag2/database
+    licence: ODbL-1.0
+    repo: https://github.com/autodiag2/database
+    commit: 11e73fd6d105a071fa472f426d23225344921a19
+    statement: ISO/SAE Reserved
+  - source: obdex
+    source_name: OBDex (foerbsnavi/OBDex)
+    licence: CC0-1.0
+    repo: https://github.com/foerbsnavi/OBDex
+    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
+    statement: Turbocharger Outlet Pressure Sensor A Circuit Low — The turbocharger outlet pressure sensor
+      A measures the pressure directly at the compressor outlet. It is a separate code family from the
+      boost pressure sensor, which usually measures the pressure just ahead of the throttle; engines use
+      it where the pressure behind the compressor is needed in addition, for example to judge the pressure
+      loss across the charge air cooler or to protect against compressor surge. One manufacturer documents
+      it as a combined temperature and pressure sensor. P00FA means the signal is below its valid range,
+      typically an open circuit, a short to ground or a missing 5 V reference. None of the published manufacturer
+      documents searched uses this code; the explanation follows regulations and comparable manufacturer
+      monitors.
+  decision:
+    required_at: data/reviews/conflicts.yaml
+    options:
+    - accepted_difference - both statements are legitimate
+    - resolved --source <slug> - one statement is correct
+    - retained_as_alternatives - context makes both true
+    - rejected_source --source <slug> - the source is wrong here
+    command: autodoctor review-conflict 0fddb5c1a40372b1 --accept --note '<why>' --reviewer '<name>'
+- fingerprint: 77209a1ca315344d
+  code: P00FB
+  context_key: P00FB|sae_j2012|generic:generic
+  context_type: generic
+  attribute: definition.en
+  conflict_type: definition_disagreement
+  similarity: 0.2727
+  risk_level: high
+  manufacturer: null
+  reason: 'generic code with risk ''high'' whose statements agree only 27%: publishing it unreviewed shows
+    the user a possibly wrong meaning for a safety-relevant fault'
+  statements:
+  - source: autodiag
+    source_name: autodiag2/database
+    licence: ODbL-1.0
+    repo: https://github.com/autodiag2/database
+    commit: 11e73fd6d105a071fa472f426d23225344921a19
+    statement: ISO/SAE Reserved
+  - source: obdex
+    source_name: OBDex (foerbsnavi/OBDex)
+    licence: CC0-1.0
+    repo: https://github.com/foerbsnavi/OBDex
+    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
+    statement: 'Turbocharger Outlet Pressure Sensor A Circuit High — The turbocharger outlet pressure
+      sensor A measures the pressure directly after the compressor, usually ahead of the charge air cooler;
+      FCA fits it as a combined temperature and pressure sensor. Boost control and compressor protection
+      use the value. P00FB means the signal voltage is above its valid range: typically a signal wire
+      shorted to the 5 V reference or battery voltage, an open ground, or a failed sensor. It does not
+      mean the boost really is too high – that would be P0234. The circuit is monitored continuously from
+      key-on; comparable GM pressure sensors fail above 86–97 % of the reference for about 4 s. The engine
+      then works with a substitute value and may limit boost. GM and Ford do not use this code family
+      in their published summaries – they rely on the boost sensor ahead of the throttle (P0235–P0238)
+      – so no manufacturer document naming exactly this code was found.'
+  decision:
+    required_at: data/reviews/conflicts.yaml
+    options:
+    - accepted_difference - both statements are legitimate
+    - resolved --source <slug> - one statement is correct
+    - retained_as_alternatives - context makes both true
+    - rejected_source --source <slug> - the source is wrong here
+    command: autodoctor review-conflict 77209a1ca315344d --accept --note '<why>' --reviewer '<name>'
+- fingerprint: a4657f2753518dfe
+  code: P00FC
+  context_key: P00FC|sae_j2012|generic:generic
+  context_type: generic
+  attribute: definition.en
+  conflict_type: definition_disagreement
+  similarity: 0.2703
+  risk_level: high
+  manufacturer: null
+  reason: 'generic code with risk ''high'' whose statements agree only 27%: publishing it unreviewed shows
+    the user a possibly wrong meaning for a safety-relevant fault'
+  statements:
+  - source: autodiag
+    source_name: autodiag2/database
+    licence: ODbL-1.0
+    repo: https://github.com/autodiag2/database
+    commit: 11e73fd6d105a071fa472f426d23225344921a19
+    statement: ISO/SAE Reserved
+  - source: obdex
+    source_name: OBDex (foerbsnavi/OBDex)
+    licence: CC0-1.0
+    repo: https://github.com/foerbsnavi/OBDex
+    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
+    statement: Turbocharger Outlet Pressure Sensor A Intermittent/Erratic — The turbocharger outlet pressure
+      sensor A measures the pressure directly after the compressor, usually ahead of the charge air cooler;
+      FCA fits it as a combined temperature and pressure sensor. Boost control and compressor protection
+      use the value. P00FC covers short dropouts or jumps in the signal that are each too brief for the
+      low or high code, or changes faster than real pressure can move. Comparable intermittent monitors
+      count range violations per drive cycle – Ford's MAP check, for example, sets after 25 events. The
+      FCA case for the sibling code P00F9 was a sensor not fully seated with an unlatched connector, exactly
+      the kind of fault that produces erratic signals; heat and vibration near the turbocharger add to
+      it. GM and Ford do not use this code family in their published summaries – they rely on the boost
+      sensor ahead of the throttle (P0235–P0238) – so no manufacturer document naming exactly this code
+      was found.
+  decision:
+    required_at: data/reviews/conflicts.yaml
+    options:
+    - accepted_difference - both statements are legitimate
+    - resolved --source <slug> - one statement is correct
+    - retained_as_alternatives - context makes both true
+    - rejected_source --source <slug> - the source is wrong here
+    command: autodoctor review-conflict a4657f2753518dfe --accept --note '<why>' --reviewer '<name>'
