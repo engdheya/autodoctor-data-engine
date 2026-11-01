@@ -1,5 +1,9 @@
 # Flutter integration
 
+> **The query contract is in [FLUTTER_INTEGRATION_GUIDE.md](FLUTTER_INTEGRATION_GUIDE.md).** That
+> document lists the 13 views, the search recipes, the measured query cost and the on-device
+> integrity checks for the release-candidate bundle. This file keeps the phase-1 background.
+
 The app ships a SQLite file and reads it locally. No network is required to answer "what does
 P0301 mean, where does it come from, and how sure are we".
 

@@ -34,10 +34,14 @@ commit produces a different hash even when the record count is identical.
 
 ```
 data/exports/autodoctor-0.5.0-rc1-public.sqlite        105,771,008 bytes
-sha256 4faee8dbddbd1cb9cec036b2df3e579954ba26911df99446e3e2e094c61045b2
-data/exports/autodoctor-app-0.5.0-rc1-public.sqlite     52,064,256 bytes
-sha256 39a7a3643fe502c1d6702c4ac83064b6fa9bcabfb65db8632d1c4eb64a206e4f
+sha256 58e94ac9a5b4ac016546c1903a53c8c6a59f60eab96cf6afc5cbea9e8a101e4d
+data/exports/autodoctor-app-0.5.0-rc1-public.sqlite     56,840,192 bytes
+sha256 4037a98f75df4cb1c7483af66811274623a8b0616cd55e5f2162b47e6a2b639c
 ```
+
+(The bundle grew from 52.1 MB to 56.8 MB when `provenance_summary` stopped being a `WITHOUT ROWID`
+table: SQLite 3.40's `PRAGMA integrity_check` reports a spurious NULL for that shape, and a shipped
+database must pass the check - see `FLUTTER_INTEGRATION_GUIDE.md`.)
 
 Verified with direct queries against the artifact (not against the staging area):
 

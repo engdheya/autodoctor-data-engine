@@ -246,6 +246,7 @@ docs/                                                                 see below
 | [FINAL_PLAN](docs/FINAL_PLAN.md) | phases A–J for the production dataset, and what is blocked by what |
 | [LICENSE_COMPLIANCE_REPORT](docs/LICENSE_COMPLIANCE_REPORT.md) | per-source licences, obligations, and proof of what the public artifact contains |
 | [DATA_COVERAGE_REPORT](docs/DATA_COVERAGE_REPORT.md) | measured coverage with explicit denominators, generated from the artifact |
+| [FLUTTER_INTEGRATION_GUIDE](docs/FLUTTER_INTEGRATION_GUIDE.md) | the 13-view client contract, search recipes, measured query cost, device checks |
 
 ## Data licensing (short version)
 
