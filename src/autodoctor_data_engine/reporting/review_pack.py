@@ -16,9 +16,7 @@ from typing import Any
 
 import yaml
 
-CHECK_WORDS = re.compile(
-    r"\b(test|check|measure|swap|inspect|verify|probe|compare)\w*\b", re.IGNORECASE
-)
+from .procedures import classify_sentences
 
 ALIASES = {"GM": "General Motors", "VW": "Volkswagen", "MB": "Mercedes-Benz", "Chevy": "Chevrolet"}
 
@@ -167,6 +165,13 @@ def _repairs(conn: sqlite3.Connection, dtc_id: int) -> list[dict[str, Any]]:
 
 
 def _procedure(conn: sqlite3.Connection, dtc_id: int, description: str | None) -> dict[str, Any]:
+    """Procedure view for one code, built from the shared classification.
+
+    ``quoted_checks`` holds **only** ``diagnostic_check`` sentences. Everything else the
+    source says - monitoring strategy, explanation, unrelated prose - stays in
+    ``other_quotes`` with its category, so a monitoring sentence can never be mistaken for
+    an instruction the technician should follow.
+    """
     references = [
         {"url": row[0], "kind": row[1], "label": row[2]}
         for row in conn.execute(
@@ -175,27 +180,39 @@ def _procedure(conn: sqlite3.Connection, dtc_id: int, description: str | None) -
             (dtc_id,),
         )
     ]
-    quoted = []
-    if description:
-        for sentence in re.split(r"(?<=[.;])\s+", description):
-            if len(sentence) > 25 and CHECK_WORDS.search(sentence):
-                quoted.append(sentence.strip())
-    steps = [
-        {"text_en": sentence, "source": "obdex description", "review_status": "source_reported"}
-        for sentence in quoted[:5]
+    quotes = classify_sentences(description)
+    checks = [
+        {
+            "text_en": quote["text_en"],
+            "category": quote["category"],
+            "classification": quote["classification"],
+            "verbatim": quote["verbatim"],
+            "measurement_mentions": quote["measurement_mentions"],
+            "source": "obdex description",
+            "review_status": "quoted_unreviewed",
+        }
+        for quote in quotes
+        if quote["category"] == "diagnostic_check"
+    ][:5]
+    others = [
+        {"text_en": quote["text_en"], "category": quote["category"]}
+        for quote in quotes
+        if quote["category"] != "diagnostic_check"
     ]
-    if steps:
+
+    if checks:
         status = "draft_unreviewed"
         note = (
-            "Verbatim sentences from the source description that describe a check. They are "
-            "not a procedure: no tool list, no nominal value and no limit may be added until a "
-            "qualified technician approves a written procedure."
+            "Verbatim diagnostic-check sentences from the source. They are not a procedure: "
+            "no tool list, no nominal value and no limit may be added until a qualified "
+            "technician approves a written procedure."
         )
     elif references:
         status = "needs_written_procedure"
         note = (
-            "The source cites references but contains no step list. A technician must write "
-            "the procedure against these references; nothing is generated here."
+            "The source cites references but contains no diagnostic-check sentence. A "
+            "technician must write the procedure against these references; nothing is "
+            "generated here."
         )
     else:
         status = "no_reference_found"
@@ -203,11 +220,13 @@ def _procedure(conn: sqlite3.Connection, dtc_id: int, description: str | None) -
     return {
         "status": status,
         "note": note,
-        "quoted_checks": steps,
+        "quoted_checks": checks,
+        "other_quotes": others,
+        "quote_categories": sorted({quote["category"] for quote in quotes}),
         "references": references,
         "tools": [],
         "nominal_values": [],
-        "review_status": "unreviewed_draft" if steps else "not_started",
+        "review_status": "unreviewed_draft" if checks else "not_started",
     }
 
 
@@ -407,7 +426,11 @@ def build_pack(
                 "review_checklist": {
                     "english_text": "pending",
                     "arabic_text": "pending",
-                    "procedure": "pending" if not _procedure(conn, dtc_id, definition.get("description_en"))["quoted_checks"] else "draft_ready",
+                    "procedure": (
+                        "draft_ready"
+                        if _procedure(conn, dtc_id, definition.get("description_en"))["quoted_checks"]
+                        else "pending"
+                    ),
                     "conflicts": "pending" if any(c["status"] == "needs_review" for c in _conflicts(conn, dtc_id)) else "clear",
                 },
             }
@@ -425,6 +448,7 @@ def build_pack(
         if e["arabic_draft"].get("review") and e["arabic_draft"]["review"]["failed"]
     )
     with_steps = sum(1 for e in entries if e["procedure"]["quoted_checks"])
+    with_other = sum(1 for e in entries if e["procedure"]["other_quotes"])
     return {
         "pack": f"tier{tier}-{datetime.now(UTC).strftime('%Y%m%d')}",
         "generated_at": datetime.now(UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
@@ -439,6 +463,7 @@ def build_pack(
             "arabic_drafts": ready,
             "arabic_missing": len(entries) - ready,
             "entries_with_quoted_checks": with_steps,
+            "entries_with_other_quotes": with_other,
             "entries_with_references": sum(1 for e in entries if e["procedure"]["references"]),
             "entries_without_reference": sum(
                 1 for e in entries if e["procedure"]["status"] == "no_reference_found"
@@ -469,14 +494,16 @@ def render_pack_markdown(packs: list[dict[str, Any]]) -> str:
         "machine Arabic draft, the facts with the source that stated them, the safety flags and",
         "the procedure status. **Nothing here is approved content.**",
         "",
-        "| Pack | Tier | Entries | Arabic drafts | With quoted checks | With references | No reference | Open conflicts |",
-        "| --- | --- | --- | --- | --- | --- | --- | --- |",
+        "| Pack | Tier | Entries | Arabic drafts | With diagnostic checks | With other quotes | "
+        "With references | No reference | Open conflicts |",
+        "| --- | --- | --- | --- | --- | --- | --- | --- | --- |",
     ]
     for pack in packs:
         s = pack["summary"]
         lines.append(
             f"| {pack['pack']} | {pack['tier']} | {s['entries']} | {s['arabic_drafts']} | "
-            f"{s['entries_with_quoted_checks']} | {s['entries_with_references']} | "
+            f"{s['entries_with_quoted_checks']} | {s['entries_with_other_quotes']} | "
+            f"{s['entries_with_references']} | "
             f"{s['entries_without_reference']} | {s['entries_with_open_conflicts']} |"
         )
     lines.append("")

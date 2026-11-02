@@ -4,8 +4,8 @@
 
 | Tier | What it means | Identities | Codes | With causes | With tests | Critical conflicts |
 | --- | --- | --- | --- | --- | --- | --- |
-| 1 | safety - ignoring it can endanger the driver or the vehicle | 2,648 | 2,648 | 2,648 | 0 | 14 |
-| 2 | vital system - engine, brakes, steering, transmission, energy | 5,390 | 5,390 | 5,390 | 0 | 0 |
+| 1 | safety - ignoring it can endanger the driver or the vehicle | 2,696 | 2,696 | 2,696 | 0 | 14 |
+| 2 | vital system - engine, brakes, steering, transmission, energy | 5,342 | 5,342 | 5,342 | 0 | 0 |
 | 3 | prevalent - stated by several sources or across many manufacturers | 8,512 | 2,061 | 1,342 | 0 | 0 |
 | 4 | remaining | 2,539 | 2,441 | 153 | 0 | 0 |
 

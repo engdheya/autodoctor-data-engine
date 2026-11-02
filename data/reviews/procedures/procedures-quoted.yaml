@@ -1,21 +1,21 @@
-generated_at: '2026-11-02T16:28:01Z'
+generated_at: '2026-11-02T17:58:18Z'
 tiers:
 - 1
 - 2
 warning: Quoted source text only. No tool list, nominal value, limit or warning has been written by the
   engine, and nothing here is approved for use.
 summary:
-  codes_with_quotes: 3981
-  codes_with_diagnostic_check: 418
+  codes_with_quotes: 4009
+  codes_with_diagnostic_check: 412
   quotes_by_category:
-    diagnostic_check: 421
-    monitoring_description: 1485
-    technical_explanation: 609
-    non_procedure: 3415
-  codes_without_source_text: 4057
-  quotes_total: 5930
-  quotes_with_measurement: 709
-  codes_with_scope_mentions: 1760
+    diagnostic_check: 415
+    monitoring_description: 1500
+    technical_explanation: 616
+    non_procedure: 3450
+  codes_without_source_text: 4029
+  quotes_total: 5981
+  quotes_with_measurement: 722
+  codes_with_scope_mentions: 1783
   approved_procedures: 0
 entries:
 - code: P0500
@@ -63460,6 +63460,2038 @@ entries:
   approval_status: not_approved
   next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
     against the quoted checks and references.
+- code: P0C42
+  context_key: P0C42|sae_j2012|generic:generic
+  tier: 1
+  title_en: Hybrid/EV Battery Pack Coolant Temperature Sensor A Circuit
+  quotes:
+  - text_en: Volvo documents P0C4200 in the battery energy control module of the XC90 T8 plug-in hybrid
+      from model year 2016, as either an intermittent or a permanent entry with a possible check engine
+      lamp;
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  - text_en: CARB requires the inputs of the battery thermal management to be monitored.
+    category: monitoring_description
+    classification:
+      rule: control-unit or code-setting vocabulary
+      matched:
+      - monitored
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  - text_en: P0C43 covers implausible readings, P0CD5 sensor B.
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions: []
+    status: not_stated
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2019/19OBDG01%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2019/MC-10155201-9999.pdf
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
+- code: P0C44
+  context_key: P0C44|sae_j2012|generic:generic
+  tier: 1
+  title_en: Hybrid/EV Battery Pack Coolant Temperature Sensor A Circuit Low
+  quotes:
+  - text_en: The sensor is an NTC thermistor, so a low voltage translates into a very hot reading, and
+      a short to ground or a shorted element is the classic cause.
+    category: technical_explanation
+    classification:
+      rule: explanatory vocabulary
+      matched:
+      - is an
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions:
+    - kind: manufacturer
+      term: Chevrolet
+      sentence: 'GM documents the code in the battery energy control module: the 2011 Chevrolet Volt sets
+        it when the inlet coolant value reaches 87.9 °C (ADC count 130 or less), the 2019 hybrid tables
+        use the same temperature at an ADC count of 133 or less.'
+    status: source_text_mention
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2011/11OBDG01%20HYBRID%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2019/19OBDG01%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
+- code: P0C45
+  context_key: P0C45|sae_j2012|generic:generic
+  tier: 1
+  title_en: Hybrid/EV Battery Pack Coolant Temperature Sensor A Circuit High
+  quotes:
+  - text_en: 'GM uses the code in the battery energy control module: the 2011 Chevrolet Volt fails the
+      test below -40 °C at an ADC count above 3823, the 2019 hybrid tables at a count above 3890.'
+    category: monitoring_description
+    classification:
+      rule: control-unit or code-setting vocabulary
+      matched:
+      - count
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions:
+    - text: 40 °C
+    status: quoted_unreviewed
+  - text_en: With the inlet reading lost, the controller runs the battery cooling and heating on substitute
+      values and may cut power in hot or cold weather.
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions:
+    - kind: manufacturer
+      term: Chevrolet
+      sentence: 'GM uses the code in the battery energy control module: the 2011 Chevrolet Volt fails
+        the test below -40 °C at an ADC count above 3823, the 2019 hybrid tables at a count above 3890.'
+    status: source_text_mention
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2011/11OBDG01%20HYBRID%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2019/19OBDG01%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
+- code: P0C47
+  context_key: P0C47|sae_j2012|generic:generic
+  tier: 1
+  title_en: Hybrid/EV Battery Pack Coolant Pump A Control Circuit/Open
+  quotes:
+  - text_en: Bentley warns that on 2025–2026 Continental GT and Flying Spur hybrids it can keep the car
+      from switching to ready mode.
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions:
+    - kind: manufacturer
+      term: Audi
+      sentence: Audi links it on the 2024 Q4 e-tron to corrosion at splice J1 with reduced power.
+    status: source_text_mention
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2019/19OBDG01%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2017/MC-10119311-9999.pdf
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2023/MC-10238197-0001.pdf
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2025/MC-11024001-0001.pdf
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
+- code: P0C48
+  context_key: P0C48|sae_j2012|generic:generic
+  tier: 1
+  title_en: Hybrid/EV Battery Pack Coolant Pump A Control Circuit Low
+  quotes:
+  - text_en: CARB requires output components of battery thermal management to be checked for circuit faults.
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions:
+    - kind: manufacturer
+      term: Ford
+      sentence: Ford lists the code for the 2020 Explorer, Police Interceptor Utility and Lincoln Aviator
+        with the hybrid powertrain.
+    - kind: manufacturer
+      term: Lincoln
+      sentence: Ford lists the code for the 2020 Explorer, Police Interceptor Utility and Lincoln Aviator
+        with the hybrid powertrain.
+    status: source_text_mention
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2020/MC-10179159-0001.pdf
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2020/MC-10181918-0001.pdf
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
+- code: P0C49
+  context_key: P0C49|sae_j2012|generic:generic
+  tier: 1
+  title_en: Hybrid/EV Battery Pack Coolant Pump A Control Circuit High
+  quotes:
+  - text_en: CARB requires the outputs of battery thermal management to be monitored for circuit faults.
+    category: monitoring_description
+    classification:
+      rule: control-unit or code-setting vocabulary
+      matched:
+      - monitored
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions:
+    - kind: manufacturer
+      term: Ford
+      sentence: Ford uses it on the 2020 Explorer, Police Interceptor Utility and Lincoln Aviator hybrids.
+    - kind: manufacturer
+      term: Lincoln
+      sentence: Ford uses it on the 2020 Explorer, Police Interceptor Utility and Lincoln Aviator hybrids.
+    - kind: manufacturer
+      term: Ford
+      sentence: Ford traces them to the battery energy control module software and fixes them by reprogramming.
+    status: source_text_mention
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2020/MC-10179159-0001.pdf
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2020/MC-10181918-0001.pdf
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
+- code: P0C4A
+  context_key: P0C4A|sae_j2012|generic:generic
+  tier: 1
+  title_en: Hybrid/EV Battery Pack Coolant Pump A Control Performance
+  quotes:
+  - text_en: The 2011 Chevrolet Volt fails the test when the pump has been on for over 60 s and the pack
+      inlet coolant temperature has moved by less than 5 °C, rated Type B.
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions:
+    - text: 60 s
+    - text: 5 °C
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions:
+    - kind: manufacturer
+      term: Chevrolet
+      sentence: The 2011 Chevrolet Volt fails the test when the pump has been on for over 60 s and the
+        pack inlet coolant temperature has moved by less than 5 °C, rated Type B.
+    - kind: manufacturer
+      term: Audi
+      sentence: Audi (Q4 e-tron 2022) and Bentley (Bentayga and Flying Spur Hybrid, EV speed capped near
+        48 km/h) also bleed first, Ford reflashes the battery module.
+    - kind: manufacturer
+      term: Ford
+      sentence: Audi (Q4 e-tron 2022) and Bentley (Bentayga and Flying Spur Hybrid, EV speed capped near
+        48 km/h) also bleed first, Ford reflashes the battery module.
+    status: source_text_mention
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2011/11OBDG01%20HYBRID%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2018/MC-10142253-9999.pdf
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2019/MC-10168213-9999.pdf
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2022/MC-10210075-0001.pdf
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2022/MC-10212400-9999.pdf
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2022/MC-10227024-0001.pdf
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
+- code: P0C4B
+  context_key: P0C4B|sae_j2012|generic:generic
+  tier: 1
+  title_en: Hybrid/EV Battery Pack Coolant Pump A Supply Voltage Circuit/Open
+  quotes:
+  - text_en: CARB requires the electrical components of battery thermal management to be monitored.
+    category: monitoring_description
+    classification:
+      rule: control-unit or code-setting vocabulary
+      matched:
+      - monitored
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions:
+    - kind: manufacturer
+      term: Ford
+      sentence: Ford documents the code on its 2020 hybrids.
+    status: source_text_mention
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2020/MC-10177858-0001.pdf
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2020/MC-10179159-0001.pdf
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2020/MC-10181918-0001.pdf
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
+- code: P0C4C
+  context_key: P0C4C|sae_j2012|generic:generic
+  tier: 1
+  title_en: Hybrid/EV Battery Pack Coolant Pump A Supply Voltage Circuit Low
+  quotes:
+  - text_en: CARB requires the electrical parts of battery thermal management to be monitored.
+    category: monitoring_description
+    classification:
+      rule: control-unit or code-setting vocabulary
+      matched:
+      - monitored
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions:
+    - kind: manufacturer
+      term: Ford
+      sentence: 'Ford uses the sibling P0C4B for the open supply circuit on its 2020 Escape, Explorer
+        and Aviator hybrids, and Bentley''s bulletin on P0C4700 for 2025–2026 Continental GT and Flying
+        Spur hybrids shows what such a feed contains: a 10 A fuse, a relay and a harness route that can
+        chafe at the rear suspension.'
+    status: source_text_mention
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2020/MC-10177858-0001.pdf
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2025/MC-11024001-0001.pdf
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
+- code: P0C4D
+  context_key: P0C4D|sae_j2012|generic:generic
+  tier: 1
+  title_en: Hybrid/EV Battery Pack Coolant Pump A Supply Voltage Circuit High
+  quotes:
+  - text_en: 'P0C4D is the counterpart to P0C4C: the voltage measured on the supply of battery coolant
+      pump A is higher than the controller allows.'
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  - text_en: CARB requires the electrical components of battery thermal management to be monitored.
+    category: monitoring_description
+    classification:
+      rule: control-unit or code-setting vocabulary
+      matched:
+      - monitored
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions:
+    - kind: manufacturer
+      term: Ford
+      sentence: Ford's bulletins for the 2020 Escape, Explorer and Aviator hybrids name the sibling P0C4B
+        for the open supply, and Bentley describes the feed of the same pump with fuse and relay for 2025–2026
+        hybrids.
+    status: source_text_mention
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2020/MC-10177858-0001.pdf
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2025/MC-11024001-0001.pdf
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
+- code: P0C4F
+  context_key: P0C4F|sae_j2012|generic:generic
+  tier: 1
+  title_en: Drive Motor B Position Exceeded Learning Limit
+  quotes:
+  - text_en: GM applies the same two tests as for motor A, an absolute correction above 30 degrees or
+      a change of over 10 degrees against the value kept from earlier learns, both checked at key-off
+      with the rotor nearly still and more than 192 V available.
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions:
+    - text: 192 V
+    status: quoted_unreviewed
+  - text_en: A large offset jump usually means something mechanical changed, so the check after a motor
+      or sensor job matters most.
+    category: technical_explanation
+    classification:
+      rule: explanatory vocabulary
+      matched:
+      - means
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions: []
+    status: not_stated
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2011/11OBDG01%20HYBRID%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2016/16OBDG01%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2019/19OBDG01%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
+- code: P0C50
+  context_key: P0C50|sae_j2012|generic:generic
+  tier: 1
+  title_en: Drive Motor A Position Sensor Circuit A
+  quotes:
+  - text_en: P0C50 is the general entry for Circuit A of motor A, used when the controller sees a fault
+      in that line without classing it as a low or high reading.
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions: []
+    status: not_stated
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://en.wikipedia.org/wiki/Resolver_(electrical)
+    kind: source
+    label: null
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2016/16OBDG01%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
+- code: P0C51
+  context_key: P0C51|sae_j2012|generic:generic
+  tier: 1
+  title_en: Drive Motor A Position Sensor Circuit A Range/Performance
+  quotes:
+  - text_en: Bulletin 2080242 asks for logged measured values, a check of the sensor and power electronics
+      plugs for bent pins, weak terminal grip, moisture or corrosion, then basic settings;
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions: []
+    status: not_stated
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2026/MC-11027863-0001.pdf
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2026/MC-11035297-0001.pdf
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
+- code: P0C54
+  context_key: P0C54|sae_j2012|generic:generic
+  tier: 1
+  title_en: Drive Motor A Position Sensor Circuit A Intermittent/Erratic
+  quotes:
+  - text_en: 'GM handles the same situation differently: on its 2013 eAssist cars the resolver circuit
+      checks run a retry scheme that lets the drive recover from brief faults, and only light the MIL
+      through P0C52 or P0C53 once the trouble repeats, either about 5 s of failure within roughly 10 s
+      or 10 s of accumulated failure over 30 minutes.'
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions:
+    - text: 5 s
+    - text: 10 s
+    - text: 10 s
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions: []
+    status: not_stated
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://en.wikipedia.org/wiki/Resolver_(electrical)
+    kind: source
+    label: null
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2013/13OBDG05C%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
+- code: P0C55
+  context_key: P0C55|sae_j2012|generic:generic
+  tier: 1
+  title_en: Drive Motor B Position Sensor Circuit A
+  quotes:
+  - text_en: Compared with P0A45, which reports the motor B angle signal as a whole, P0C55 narrows the
+      search to one winding and its two wires.
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions: []
+    status: not_stated
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://en.wikipedia.org/wiki/Resolver_(electrical)
+    kind: source
+    label: null
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2016/16OBDG01%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
+- code: P0C57
+  context_key: P0C57|sae_j2012|generic:generic
+  tier: 1
+  title_en: Drive Motor B Position Sensor Circuit A Low
+  quotes:
+  - text_en: 'GM checks it exactly like the motor A line: under 0.5 V on the 2011 and 2016 Volt and the
+      2012 two-mode trucks, under 0.10 V on the 2019 Volt, with Type A on the early cars and Type B from
+      2016.'
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions:
+    - text: 0.5 V
+    - text: 0.10 V
+    status: quoted_unreviewed
+  - text_en: 'GM preliminary information PIC5856A to F for 2011-13 Volt and 2014-16 ELR groups P0C57 with
+      P0C58 and P0C62: if wiring checks and normal diagnosis find nothing, the motor B position sensor
+      is replaced and the drive motor generator control module is brought to its latest calibration.'
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions: []
+    status: not_stated
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2011/11OBDG01%20HYBRID%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2016/16OBDG01%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2019/19OBDG01%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2015/MC-10115056-9999.pdf
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
+- code: P0C5A
+  context_key: P0C5A|sae_j2012|generic:generic
+  tier: 1
+  title_en: Drive Motor A Position Sensor Circuit B
+  quotes:
+  - text_en: GM checks the S2/S4 line only through P0C5C and P0C5D.
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions: []
+    status: not_stated
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://en.wikipedia.org/wiki/Resolver_(electrical)
+    kind: source
+    label: null
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2016/16OBDG01%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
+- code: P0C5B
+  context_key: P0C5B|sae_j2012|generic:generic
+  tier: 1
+  title_en: Drive Motor A Position Sensor Circuit B Range/Performance
+  quotes:
+  - text_en: The repair path is the same, measured value logs, inspection of the 8-pin and 32-pin plugs
+      for pin drag and corrosion, replacement of a 90-degree connector after approval, then basic settings.
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions: []
+    status: not_stated
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://en.wikipedia.org/wiki/Resolver_(electrical)
+    kind: source
+    label: null
+  - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2026/MC-11035297-0001.pdf
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
+- code: P0C5D
+  context_key: P0C5D|sae_j2012|generic:generic
+  tier: 1
+  title_en: Drive Motor A Position Sensor Circuit B High
+  quotes:
+  - text_en: P0C5D means the S2/S4 winding circuit of the motor A resolver, Circuit B, reads a reference
+      level above its ceiling.
+    category: technical_explanation
+    classification:
+      rule: explanatory vocabulary
+      matched:
+      - means
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions: []
+    status: not_stated
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2011/11OBDG01%20HYBRID%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2012/12OBDG06%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2013/13OBDG05C%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2019/19OBDG01%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
+- code: P0C5E
+  context_key: P0C5E|sae_j2012|generic:generic
+  tier: 1
+  title_en: Drive Motor A Position Sensor Circuit B Intermittent/Erratic
+  quotes:
+  - text_en: Checking resistance while flexing the harness tends to reveal it.
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions: []
+    status: not_stated
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://en.wikipedia.org/wiki/Resolver_(electrical)
+    kind: source
+    label: null
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2013/13OBDG05C%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
+- code: P0C5F
+  context_key: P0C5F|sae_j2012|generic:generic
+  tier: 1
+  title_en: Drive Motor B Position Sensor Circuit B
+  quotes:
+  - text_en: It fits a fault on that winding that the controller notices but cannot assign to a low or
+      high reading.
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions: []
+    status: not_stated
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://en.wikipedia.org/wiki/Resolver_(electrical)
+    kind: source
+    label: null
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2016/16OBDG01%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
+- code: P0C60
+  context_key: P0C60|sae_j2012|generic:generic
+  tier: 1
+  title_en: Drive Motor B Position Sensor Circuit B Range/Performance
+  quotes:
+  - text_en: P0C60 indicates that the second winding of the motor B resolver (Circuit B) is electrically
+      intact but delivers values the controller rejects as unrealistic, for example an amplitude that
+      no longer agrees with the first winding or an angle that jumps against the measured speed.
+    category: technical_explanation
+    classification:
+      rule: explanatory vocabulary
+      matched:
+      - example
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  - text_en: The idea behind it is the separate rationality test that CARB demands for input sensors,
+      apart from circuit and range checks.
+    category: monitoring_description
+    classification:
+      rule: control-unit or code-setting vocabulary
+      matched:
+      - rationality
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions: []
+    status: not_stated
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://en.wikipedia.org/wiki/Resolver_(electrical)
+    kind: source
+    label: null
+  - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
+- code: P0C61
+  context_key: P0C61|sae_j2012|generic:generic
+  tier: 1
+  title_en: Drive Motor B Position Sensor Circuit B Low
+  quotes:
+  - text_en: GM uses 0.5 V on the 2011 and 2016 Volt and the 2012 two-mode trucks, 0.10 V on the 2019
+      Volt, and needs the low reading for 50 of 80 samples on early cars, 0.25 s within 0.375 s on the
+      2019 model.
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions:
+    - text: 0.5 V
+    - text: 0.10 V
+    - text: 0.25 s
+    - text: 0.375 s
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions: []
+    status: not_stated
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2011/11OBDG01%20HYBRID%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2012/12OBDG06%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2019/19OBDG01%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2018/MC-10154556-9999.pdf
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
+- code: P0C62
+  context_key: P0C62|sae_j2012|generic:generic
+  tier: 1
+  title_en: Drive Motor B Position Sensor Circuit B High
+  quotes:
+  - text_en: Because both windings of the same resolver report high at once, GM's remedy after clean wiring
+      checks is a new motor B position sensor plus the latest module calibration.
+    category: technical_explanation
+    classification:
+      rule: explanatory vocabulary
+      matched:
+      - is a
+      - Because
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions: []
+    status: not_stated
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2012/12OBDG06%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2016/16OBDG01%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2013/MC-10113076-9999.pdf
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2015/MC-10115056-9999.pdf
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
+- code: P0C63
+  context_key: P0C63|sae_j2012|generic:generic
+  tier: 1
+  title_en: Drive Motor B Position Sensor Circuit B Intermittent/Erratic
+  quotes:
+  - text_en: Wiggle tests under live data help catch it.
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions: []
+    status: not_stated
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://en.wikipedia.org/wiki/Resolver_(electrical)
+    kind: source
+    label: null
+  - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2018/MC-10154556-9999.pdf
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
+- code: P0C64
+  context_key: P0C64|sae_j2012|generic:generic
+  tier: 1
+  title_en: Generator Position Sensor Circuit A
+  quotes:
+  - text_en: CARB asks for an approved generator monitoring plan and for circuit and range checks on hybrid
+      inputs.
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions:
+    - kind: manufacturer
+      term: Mitsubishi
+      sentence: 'Mitsubishi shows how such faults get split on the 2023 Outlander PHEV: the sine winding,
+        which it treats as circuit A, has its own low and high codes (P0C66, P0C67), and a failed internal
+        status goes to P0A4B.'
+    status: source_text_mention
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://en.wikipedia.org/wiki/Resolver_(electrical)
+    kind: source
+    label: null
+  - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+    kind: source
+    label: null
+  - url: https://mitsubishitechinfo.com/data/DGE/2023/03/HTML/N503240240000800USA.htm
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
+- code: P0C65
+  context_key: P0C65|sae_j2012|generic:generic
+  tier: 1
+  title_en: Generator Position Sensor Circuit A Range/Performance
+  quotes:
+  - text_en: 'Mitsubishi runs an analogous window test on the 2023 Outlander PHEV: a sine or cosine level
+      outside 2.1 to 2.9 V for 0.28 s counts as a plausibility fault, but it is filed under P0A4C for
+      the whole sensor.'
+    category: monitoring_description
+    classification:
+      rule: control-unit or code-setting vocabulary
+      matched:
+      - plausibility
+      - counts
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions:
+    - text: 2.9 V
+    - text: 0.28 s
+    status: quoted_unreviewed
+  - text_en: P0C66 and P0C67 cover hard low and high readings on the same circuit.
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions:
+    - kind: manufacturer
+      term: Mitsubishi
+      sentence: 'Mitsubishi runs an analogous window test on the 2023 Outlander PHEV: a sine or cosine
+        level outside 2.1 to 2.9 V for 0.28 s counts as a plausibility fault, but it is filed under P0A4C
+        for the whole sensor.'
+    status: source_text_mention
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+    kind: source
+    label: null
+  - url: https://mitsubishitechinfo.com/data/DGE/2023/03/HTML/N503240240000800USA.htm
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2019/MC-10161001-9999.pdf
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
+- code: P0C66
+  context_key: P0C66|sae_j2012|generic:generic
+  tier: 1
+  title_en: Generator Position Sensor Circuit A Low
+  quotes:
+  - text_en: Mitsubishi first checks for radiator fan codes and tests the resolver circuit, and replaces
+      the power drive unit, or later the generator, only if the code comes back.
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  - text_en: P0C67 is the high counterpart, P0C6B the same test on the cosine side.
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions:
+    - kind: manufacturer
+      term: Mitsubishi
+      sentence: 'Mitsubishi uses it on the 2023 Outlander PHEV for the sine winding: the generator control
+        unit, supplied with at least 8 V, watches the line continuously and sets the code when the sine
+        voltage stays at or below 2.000 V for 0.21 s.'
+    - kind: manufacturer
+      term: Mitsubishi
+      sentence: Mitsubishi first checks for radiator fan codes and tests the resolver circuit, and replaces
+        the power drive unit, or later the generator, only if the code comes back.
+    status: source_text_mention
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://mitsubishitechinfo.com/data/DGE/2023/03/HTML/N503240240000800USA.htm
+    kind: source
+    label: null
+  - url: https://mitsubishitechinfo.com/data/DGE/2023/03/HTML/N503241610000100USA.htm
+    kind: source
+    label: null
+  - url: https://patents.google.com/patent/US10495494B2/en
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
+- code: P0C67
+  context_key: P0C67|sae_j2012|generic:generic
+  tier: 1
+  title_en: Generator Position Sensor Circuit A High
+  quotes:
+  - text_en: the check runs continuously while the generator control unit has 8 V or more.
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions:
+    - text: 8 V
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions:
+    - kind: manufacturer
+      term: Mitsubishi
+      sentence: On the 2023 Outlander PHEV Mitsubishi assigns it to the sine winding and trips it once
+        that voltage stays at or above 4.900 V for 0.21 s;
+    - kind: manufacturer
+      term: Mitsubishi
+      sentence: Mitsubishi's repair path matches P0C66 and ends with a new power drive unit or generator.
+    status: source_text_mention
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://mitsubishitechinfo.com/data/DGE/2023/03/HTML/N503240240000800USA.htm
+    kind: source
+    label: null
+  - url: https://mitsubishitechinfo.com/data/DGE/2023/03/HTML/N503241610000100USA.htm
+    kind: source
+    label: null
+  - url: https://patents.google.com/patent/US10495494B2/en
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
+- code: P0C69
+  context_key: P0C69|sae_j2012|generic:generic
+  tier: 1
+  title_en: Generator Position Sensor Circuit B
+  quotes:
+  - text_en: CARB's hybrid rules require the generator to be monitored under an approved plan and circuit
+      faults of input components to be detected.
+    category: monitoring_description
+    classification:
+      rule: control-unit or code-setting vocabulary
+      matched:
+      - monitored
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions:
+    - kind: manufacturer
+      term: Mitsubishi
+      sentence: At Mitsubishi on the 2023 Outlander PHEV circuit B corresponds to the cosine winding,
+        and that design reports it only through the low and high codes P0C6B and P0C6C.
+    status: source_text_mention
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://en.wikipedia.org/wiki/Resolver_(electrical)
+    kind: source
+    label: null
+  - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+    kind: source
+    label: null
+  - url: https://mitsubishitechinfo.com/data/DGE/2023/03/HTML/N503240240000800USA.htm
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
+- code: P0C6A
+  context_key: P0C6A|sae_j2012|generic:generic
+  tier: 1
+  title_en: Generator Position Sensor Circuit B Range/Performance
+  quotes:
+  - text_en: Mitsubishi's comparable window check on the 2023 Outlander PHEV (2.1 to 2.9 V, 0.28 s) is
+      stored as P0A4C.
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions:
+    - text: 2.9 V
+    - text: 0.28 s
+    status: quoted_unreviewed
+  - text_en: Hard low or high readings on this circuit belong to P0C6B and P0C6C;
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions:
+    - kind: manufacturer
+      term: Mitsubishi
+      sentence: 'P0C6A concerns circuit B of the generator resolver, the cosine side at Mitsubishi: its
+        signal stays inside the electrical limits but does not agree with what the controller expects.'
+    - kind: manufacturer
+      term: Mitsubishi
+      sentence: Mitsubishi's comparable window check on the 2023 Outlander PHEV (2.1 to 2.9 V, 0.28 s)
+        is stored as P0A4C.
+    status: source_text_mention
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://en.wikipedia.org/wiki/Resolver_(electrical)
+    kind: source
+    label: null
+  - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+    kind: source
+    label: null
+  - url: https://mitsubishitechinfo.com/data/DGE/2023/03/HTML/N503240240000800USA.htm
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
+- code: P0C6B
+  context_key: P0C6B|sae_j2012|generic:generic
+  tier: 1
+  title_en: Generator Position Sensor Circuit B Low
+  quotes:
+  - text_en: P0C6B tells you that circuit B of the generator resolver, the cosine winding, reads too low.
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  - text_en: the test never pauses while the generator control unit receives 8 V or more.
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions:
+    - text: 8 V
+    status: quoted_unreviewed
+  - text_en: If the resolver circuit tests fine and the code returns, Mitsubishi fits a new power drive
+      unit and, once the EV oil cooling has been checked, a new generator.
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  - text_en: P0C66 is the sine-side twin, P0C6C the high reading on the same line.
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions:
+    - kind: manufacturer
+      term: Mitsubishi
+      sentence: In the 2023 Outlander PHEV, Mitsubishi stores it if the cosine signal is no higher than
+        2.000 V throughout 0.21 s;
+    - kind: manufacturer
+      term: Mitsubishi
+      sentence: If the resolver circuit tests fine and the code returns, Mitsubishi fits a new power drive
+        unit and, once the EV oil cooling has been checked, a new generator.
+    status: source_text_mention
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://mitsubishitechinfo.com/data/DGE/2023/03/HTML/N503240240000800USA.htm
+    kind: source
+    label: null
+  - url: https://mitsubishitechinfo.com/data/DGE/2023/03/HTML/N503241610000100USA.htm
+    kind: source
+    label: null
+  - url: https://patents.google.com/patent/US10495494B2/en
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
+- code: P0C6C
+  context_key: P0C6C|sae_j2012|generic:generic
+  tier: 1
+  title_en: Generator Position Sensor Circuit B High
+  quotes:
+  - text_en: the monitor stays active as long as the generator control unit is supplied with 8 V.
+    category: monitoring_description
+    classification:
+      rule: control-unit or code-setting vocabulary
+      matched:
+      - monitor
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions:
+    - text: 8 V
+    status: quoted_unreviewed
+  - text_en: Mitsubishi also has the radiator fan codes dealt with first and, before fitting a new generator,
+      the EV oil cooling inspected.
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions:
+    - kind: manufacturer
+      term: Mitsubishi
+      sentence: On the 2023 Outlander PHEV, where circuit B is the cosine winding, Mitsubishi triggers
+        it when the cosine voltage sits at 4.900 V or above for 0.21 s;
+    - kind: manufacturer
+      term: Mitsubishi
+      sentence: Mitsubishi also has the radiator fan codes dealt with first and, before fitting a new
+        generator, the EV oil cooling inspected.
+    status: source_text_mention
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://mitsubishitechinfo.com/data/DGE/2023/03/HTML/N503240240000800USA.htm
+    kind: source
+    label: null
+  - url: https://mitsubishitechinfo.com/data/DGE/2023/03/HTML/N503241610000100USA.htm
+    kind: source
+    label: null
+  - url: https://patents.google.com/patent/US10495494B2/en
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
+- code: P0C6D
+  context_key: P0C6D|sae_j2012|generic:generic
+  tier: 1
+  title_en: Generator Position Sensor Circuit B Intermittent/Erratic
+  quotes:
+  - text_en: 'P0C6D records short, irregular disturbances on circuit B of the generator resolver: the
+      signal flickers, loses samples or jumps, but each event is too brief to count as a hard low or high
+      reading (P0C6B, P0C6C).'
+    category: monitoring_description
+    classification:
+      rule: control-unit or code-setting vocabulary
+      matched:
+      - count
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  - text_en: Wiggle tests with live data help to localise such faults;
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions: []
+    status: not_stated
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://en.wikipedia.org/wiki/Resolver_(electrical)
+    kind: source
+    label: null
+  - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2019/MC-10161001-9999.pdf
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
+- code: P0C6E
+  context_key: P0C6E|sae_j2012|generic:generic
+  tier: 1
+  title_en: Hybrid/EV Battery Temperature Sensor A/B Correlation
+  quotes:
+  - text_en: P0C6E compares two battery temperature sensors, A and B, with each other rather than judging
+      either one alone.
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  - text_en: After a long rest the pack should be close to one temperature, so a lasting gap between the
+      two points to a sensor that reads wrongly while staying electrically valid.
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  - text_en: A Subaru patent compares a sensor pair after parking once both cool at a similar rate.
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions:
+    - kind: manufacturer
+      term: Mitsubishi
+      sentence: GM and Mitsubishi run the same idea against the pack average and store per-sensor codes
+        instead.
+    - kind: manufacturer
+      term: Mitsubishi
+      sentence: Mitsubishi's 2022 Outlander PHEV allows 13 °C after one hour of soak.
+    - kind: manufacturer
+      term: Subaru
+      sentence: A Subaru patent compares a sensor pair after parking once both cool at a similar rate.
+    status: source_text_mention
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2013/13OBDG05C%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+    kind: source
+    label: null
+  - url: https://mitsubishitechinfo.com/data/REEV22/2022/54/HTML/M15494077A026000USA.htm
+    kind: source
+    label: null
+  - url: https://patents.google.com/patent/US12522225B2/en
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
+- code: P0C6F
+  context_key: P0C6F|sae_j2012|generic:generic
+  tier: 1
+  title_en: Hybrid/EV Battery Temperature Sensor B/C Correlation
+  quotes:
+  - text_en: 'Sensor B also takes part in the A/B check (P0C6E), so the pattern of stored codes helps:
+      if P0C6E and P0C6F appear together, B is the shared suspect, while P0C6F alone points more towards
+      C.'
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions:
+    - kind: manufacturer
+      term: Toyota
+      sentence: 'A Toyota patent describes a second way to catch such faults while the pack is working:
+        if the spread between sensors is large during charging or discharging and one output barely moves,
+        that sensor is treated as frozen.'
+    status: source_text_mention
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2013/13OBDG05C%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+    kind: source
+    label: null
+  - url: https://patents.google.com/patent/US7336055B2/en
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
+- code: P0C70
+  context_key: P0C70|sae_j2012|generic:generic
+  tier: 1
+  title_en: Hybrid/EV Battery Temperature Sensor C/D Correlation
+  quotes:
+  - text_en: P0C70 is the correlation check between battery temperature sensors C and D.
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  - text_en: Where GM and Mitsubishi publish this monitor, they compare each sensor with the pack average
+      and name the single sensor;
+    category: monitoring_description
+    classification:
+      rule: control-unit or code-setting vocabulary
+      matched:
+      - monitor
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions:
+    - kind: manufacturer
+      term: Mitsubishi
+      sentence: Where GM and Mitsubishi publish this monitor, they compare each sensor with the pack average
+        and name the single sensor;
+    status: source_text_mention
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2013/13OBDG05C%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://mitsubishitechinfo.com/data/REEV22/2022/54/HTML/M15494077A026000USA.htm
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2018/MC-10155116-9999.pdf
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
 - code: P2107
   context_key: P2107|sae_j2012|generic:generic
   tier: 1
@@ -85673,6 +87705,171 @@ entries:
   approval_status: not_approved
   next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
     against the quoted checks and references.
+- code: P0C3F
+  context_key: P0C3F|sae_j2012|generic:generic
+  tier: 1
+  title_en: DC/DC Converter Temperature Sensor B Low
+  quotes:
+  - text_en: These sensors are normally NTC thermistors fed through a pull-up resistor, so a low voltage
+      corresponds to an extremely hot reading;
+    category: technical_explanation
+    classification:
+      rule: explanatory vocabulary
+      matched:
+      - are
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  - text_en: CARB requires hybrid component inputs to be checked for out-of-range signals.
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions:
+    - kind: manufacturer
+      term: Mercedes-Benz
+      sentence: Mercedes-Benz lists the opposite fault of the same sensor, P0C40, on the EQB and G-Class.
+    status: source_text_mention
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2019/19OBDG01%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2025/MC-11021800-0001.pdf
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
+- code: P0C40
+  context_key: P0C40|sae_j2012|generic:generic
+  tier: 1
+  title_en: DC/DC Converter Temperature Sensor B High
+  quotes:
+  - text_en: Workshops check the converter with XENTRY, erase the memory and reset the unit before replacing
+      anything.
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions:
+    - kind: manufacturer
+      term: Mercedes-Benz
+      sentence: Mercedes-Benz documents it for the EQB (series 243) and the G-Class including the electric
+        G 580 (series 465).
+    status: source_text_mention
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2025/MC-11021800-0001.pdf
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
+- code: P0C41
+  context_key: P0C41|sae_j2012|generic:generic
+  tier: 1
+  title_en: DC/DC Converter Temperature Sensor B Intermittent/Erratic
+  quotes:
+  - text_en: P0C41 concerns a reading from DC/DC converter temperature sensor B that jumps or briefly
+      drops out while it mostly remains inside the valid range.
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  - text_en: CARB requires hybrid component inputs to be monitored for such faults.
+    category: monitoring_description
+    classification:
+      rule: control-unit or code-setting vocabulary
+      matched:
+      - monitored
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  - text_en: Unlike P0C3F and P0C40, the fault can disappear between checks.
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions: []
+    status: not_stated
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2019/19OBDG01%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
 - code: P2033
   context_key: P2033|sae_j2012|generic:generic
   tier: 1
@@ -92782,511 +94979,6 @@ entries:
     kind: source
     label: null
   - url: https://static.nhtsa.gov/odi/tsbs/2018/MC-10148758-9999.pdf
-    kind: source
-    label: null
-  tools: []
-  nominal_values: []
-  limits: []
-  warnings: []
-  authoring_status: quoted_only
-  approval_status: not_approved
-  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
-    against the quoted checks and references.
-- code: P0C42
-  context_key: P0C42|sae_j2012|generic:generic
-  tier: 2
-  title_en: Hybrid/EV Battery Pack Coolant Temperature Sensor A Circuit
-  quotes:
-  - text_en: Reading cannot be used reliably for control.
-    category: non_procedure
-    classification:
-      rule: no imperative test form, monitoring marker or explanation marker
-      matched: []
-      status: rule_based_unreviewed
-    verbatim: true
-    measurement_mentions: []
-    status: quoted_unreviewed
-  scope:
-    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
-      not where the quoted check is valid.
-    procedure_applicability: unverified
-    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
-      that reports the code. Applicability to a make, model, engine and year has to be established by
-      a technician from the references; the mentions below are only what the source printed.
-    source_mentions: []
-    status: not_stated
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Battery_management_system
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  tools: []
-  nominal_values: []
-  limits: []
-  warnings: []
-  authoring_status: quoted_only
-  approval_status: not_approved
-  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
-    against the quoted checks and references.
-- code: P0C43
-  context_key: P0C43|sae_j2012|generic:generic
-  tier: 2
-  title_en: Hybrid/EV Battery Pack Coolant Temperature Sensor A Circuit Range/Performance
-  quotes:
-  - text_en: Reading cannot be used reliably for control.
-    category: non_procedure
-    classification:
-      rule: no imperative test form, monitoring marker or explanation marker
-      matched: []
-      status: rule_based_unreviewed
-    verbatim: true
-    measurement_mentions: []
-    status: quoted_unreviewed
-  scope:
-    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
-      not where the quoted check is valid.
-    procedure_applicability: unverified
-    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
-      that reports the code. Applicability to a make, model, engine and year has to be established by
-      a technician from the references; the mentions below are only what the source printed.
-    source_mentions: []
-    status: not_stated
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Battery_management_system
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  tools: []
-  nominal_values: []
-  limits: []
-  warnings: []
-  authoring_status: quoted_only
-  approval_status: not_approved
-  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
-    against the quoted checks and references.
-- code: P0C44
-  context_key: P0C44|sae_j2012|generic:generic
-  tier: 2
-  title_en: Hybrid/EV Battery Pack Coolant Temperature Sensor A Circuit Low
-  quotes:
-  - text_en: Reading cannot be used reliably for control.
-    category: non_procedure
-    classification:
-      rule: no imperative test form, monitoring marker or explanation marker
-      matched: []
-      status: rule_based_unreviewed
-    verbatim: true
-    measurement_mentions: []
-    status: quoted_unreviewed
-  scope:
-    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
-      not where the quoted check is valid.
-    procedure_applicability: unverified
-    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
-      that reports the code. Applicability to a make, model, engine and year has to be established by
-      a technician from the references; the mentions below are only what the source printed.
-    source_mentions: []
-    status: not_stated
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Battery_management_system
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  tools: []
-  nominal_values: []
-  limits: []
-  warnings: []
-  authoring_status: quoted_only
-  approval_status: not_approved
-  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
-    against the quoted checks and references.
-- code: P0C45
-  context_key: P0C45|sae_j2012|generic:generic
-  tier: 2
-  title_en: Hybrid/EV Battery Pack Coolant Temperature Sensor A Circuit High
-  quotes:
-  - text_en: Reading cannot be used reliably for control.
-    category: non_procedure
-    classification:
-      rule: no imperative test form, monitoring marker or explanation marker
-      matched: []
-      status: rule_based_unreviewed
-    verbatim: true
-    measurement_mentions: []
-    status: quoted_unreviewed
-  scope:
-    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
-      not where the quoted check is valid.
-    procedure_applicability: unverified
-    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
-      that reports the code. Applicability to a make, model, engine and year has to be established by
-      a technician from the references; the mentions below are only what the source printed.
-    source_mentions: []
-    status: not_stated
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Battery_management_system
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  tools: []
-  nominal_values: []
-  limits: []
-  warnings: []
-  authoring_status: quoted_only
-  approval_status: not_approved
-  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
-    against the quoted checks and references.
-- code: P0C46
-  context_key: P0C46|sae_j2012|generic:generic
-  tier: 2
-  title_en: Hybrid/EV Battery Pack Coolant Temperature Sensor A Circuit Intermittent/Erratic
-  quotes:
-  - text_en: Reading cannot be used reliably for control.
-    category: non_procedure
-    classification:
-      rule: no imperative test form, monitoring marker or explanation marker
-      matched: []
-      status: rule_based_unreviewed
-    verbatim: true
-    measurement_mentions: []
-    status: quoted_unreviewed
-  scope:
-    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
-      not where the quoted check is valid.
-    procedure_applicability: unverified
-    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
-      that reports the code. Applicability to a make, model, engine and year has to be established by
-      a technician from the references; the mentions below are only what the source printed.
-    source_mentions: []
-    status: not_stated
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Battery_management_system
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  tools: []
-  nominal_values: []
-  limits: []
-  warnings: []
-  authoring_status: quoted_only
-  approval_status: not_approved
-  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
-    against the quoted checks and references.
-- code: P0C66
-  context_key: P0C66|sae_j2012|generic:generic
-  tier: 2
-  title_en: Generator Position Sensor Circuit A Circuit Low
-  quotes:
-  - text_en: Wiring faults of this kind typically come from chafing, water ingress at connector seals,
-      or pin push-back — a wiggle test on the harness while the code is active often confirms the location.
-    category: diagnostic_check
-    classification:
-      rule: imperative/obligation test form + hardware, instrument or measurement
-      matched:
-      - wiggle test
-      - wiring
-      - harness
-      - connector
-      - pin
-      status: rule_based_unreviewed
-    verbatim: true
-    measurement_mentions: []
-    status: quoted_unreviewed
-  scope:
-    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
-      not where the quoted check is valid.
-    procedure_applicability: unverified
-    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
-      that reports the code. Applicability to a make, model, engine and year has to be established by
-      a technician from the references; the mentions below are only what the source printed.
-    source_mentions: []
-    status: not_stated
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Alternator
-    kind: source
-    label: null
-  - url: https://en.wikipedia.org/wiki/Brushless_DC_electric_motor
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  tools: []
-  nominal_values: []
-  limits: []
-  warnings: []
-  authoring_status: quoted_only
-  approval_status: not_approved
-  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
-    against the quoted checks and references.
-- code: P0C67
-  context_key: P0C67|sae_j2012|generic:generic
-  tier: 2
-  title_en: Generator Position Sensor Circuit A Circuit High
-  quotes:
-  - text_en: Wiring faults of this kind typically come from chafing, water ingress at connector seals,
-      or pin push-back — a wiggle test on the harness while the code is active often confirms the location.
-    category: diagnostic_check
-    classification:
-      rule: imperative/obligation test form + hardware, instrument or measurement
-      matched:
-      - wiggle test
-      - wiring
-      - harness
-      - connector
-      - pin
-      status: rule_based_unreviewed
-    verbatim: true
-    measurement_mentions: []
-    status: quoted_unreviewed
-  scope:
-    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
-      not where the quoted check is valid.
-    procedure_applicability: unverified
-    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
-      that reports the code. Applicability to a make, model, engine and year has to be established by
-      a technician from the references; the mentions below are only what the source printed.
-    source_mentions: []
-    status: not_stated
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Alternator
-    kind: source
-    label: null
-  - url: https://en.wikipedia.org/wiki/Brushless_DC_electric_motor
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  tools: []
-  nominal_values: []
-  limits: []
-  warnings: []
-  authoring_status: quoted_only
-  approval_status: not_approved
-  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
-    against the quoted checks and references.
-- code: P0C68
-  context_key: P0C68|sae_j2012|generic:generic
-  tier: 2
-  title_en: Generator Position Sensor Circuit A Circuit Intermittent/Erratic
-  quotes:
-  - text_en: Wiring faults of this kind typically come from chafing, water ingress at connector seals,
-      or pin push-back — a wiggle test on the harness while the code is active often confirms the location.
-    category: diagnostic_check
-    classification:
-      rule: imperative/obligation test form + hardware, instrument or measurement
-      matched:
-      - wiggle test
-      - wiring
-      - harness
-      - connector
-      - pin
-      status: rule_based_unreviewed
-    verbatim: true
-    measurement_mentions: []
-    status: quoted_unreviewed
-  scope:
-    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
-      not where the quoted check is valid.
-    procedure_applicability: unverified
-    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
-      that reports the code. Applicability to a make, model, engine and year has to be established by
-      a technician from the references; the mentions below are only what the source printed.
-    source_mentions: []
-    status: not_stated
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Alternator
-    kind: source
-    label: null
-  - url: https://en.wikipedia.org/wiki/Brushless_DC_electric_motor
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  tools: []
-  nominal_values: []
-  limits: []
-  warnings: []
-  authoring_status: quoted_only
-  approval_status: not_approved
-  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
-    against the quoted checks and references.
-- code: P0C6B
-  context_key: P0C6B|sae_j2012|generic:generic
-  tier: 2
-  title_en: Generator Position Sensor Circuit B Circuit Low
-  quotes:
-  - text_en: Wiring faults of this kind typically come from chafing, water ingress at connector seals,
-      or pin push-back — a wiggle test on the harness while the code is active often confirms the location.
-    category: diagnostic_check
-    classification:
-      rule: imperative/obligation test form + hardware, instrument or measurement
-      matched:
-      - wiggle test
-      - wiring
-      - harness
-      - connector
-      - pin
-      status: rule_based_unreviewed
-    verbatim: true
-    measurement_mentions: []
-    status: quoted_unreviewed
-  scope:
-    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
-      not where the quoted check is valid.
-    procedure_applicability: unverified
-    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
-      that reports the code. Applicability to a make, model, engine and year has to be established by
-      a technician from the references; the mentions below are only what the source printed.
-    source_mentions: []
-    status: not_stated
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Alternator
-    kind: source
-    label: null
-  - url: https://en.wikipedia.org/wiki/Brushless_DC_electric_motor
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  tools: []
-  nominal_values: []
-  limits: []
-  warnings: []
-  authoring_status: quoted_only
-  approval_status: not_approved
-  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
-    against the quoted checks and references.
-- code: P0C6C
-  context_key: P0C6C|sae_j2012|generic:generic
-  tier: 2
-  title_en: Generator Position Sensor Circuit B Circuit High
-  quotes:
-  - text_en: Wiring faults of this kind typically come from chafing, water ingress at connector seals,
-      or pin push-back — a wiggle test on the harness while the code is active often confirms the location.
-    category: diagnostic_check
-    classification:
-      rule: imperative/obligation test form + hardware, instrument or measurement
-      matched:
-      - wiggle test
-      - wiring
-      - harness
-      - connector
-      - pin
-      status: rule_based_unreviewed
-    verbatim: true
-    measurement_mentions: []
-    status: quoted_unreviewed
-  scope:
-    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
-      not where the quoted check is valid.
-    procedure_applicability: unverified
-    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
-      that reports the code. Applicability to a make, model, engine and year has to be established by
-      a technician from the references; the mentions below are only what the source printed.
-    source_mentions: []
-    status: not_stated
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Alternator
-    kind: source
-    label: null
-  - url: https://en.wikipedia.org/wiki/Brushless_DC_electric_motor
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  tools: []
-  nominal_values: []
-  limits: []
-  warnings: []
-  authoring_status: quoted_only
-  approval_status: not_approved
-  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
-    against the quoted checks and references.
-- code: P0C6D
-  context_key: P0C6D|sae_j2012|generic:generic
-  tier: 2
-  title_en: Generator Position Sensor Circuit B Circuit Intermittent/Erratic
-  quotes:
-  - text_en: Wiring faults of this kind typically come from chafing, water ingress at connector seals,
-      or pin push-back — a wiggle test on the harness while the code is active often confirms the location.
-    category: diagnostic_check
-    classification:
-      rule: imperative/obligation test form + hardware, instrument or measurement
-      matched:
-      - wiggle test
-      - wiring
-      - harness
-      - connector
-      - pin
-      status: rule_based_unreviewed
-    verbatim: true
-    measurement_mentions: []
-    status: quoted_unreviewed
-  scope:
-    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
-      not where the quoted check is valid.
-    procedure_applicability: unverified
-    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
-      that reports the code. Applicability to a make, model, engine and year has to be established by
-      a technician from the references; the mentions below are only what the source printed.
-    source_mentions: []
-    status: not_stated
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Alternator
-    kind: source
-    label: null
-  - url: https://en.wikipedia.org/wiki/Brushless_DC_electric_motor
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
     kind: source
     label: null
   tools: []
@@ -151750,6 +153442,129 @@ entries:
   approval_status: not_approved
   next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
     against the quoted checks and references.
+- code: P0C43
+  context_key: P0C43|sae_j2012|generic:generic
+  tier: 2
+  title_en: Hybrid/EV Battery Pack Coolant Temperature Sensor A Circuit Range/Performance
+  quotes:
+  - text_en: 'GM''s 2019 hybrid tables describe a cold-soak comparison: once all high-voltage contactors
+      and the battery heater have been off for at least 14,400 s, the hybrid controller compares inlet
+      coolant temperature with the average cell temperature and with outside air, failing when the gaps
+      reach about 23 °C and 22 °C;'
+    category: non_procedure
+    classification:
+      rule: no imperative test form, monitoring marker or explanation marker
+      matched: []
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions:
+    - text: 14,400 s
+    - text: 23 °C
+    - text: 22 °C
+    status: quoted_unreviewed
+  - text_en: CARB demands rationality checks for battery thermal inputs.
+    category: monitoring_description
+    classification:
+      rule: control-unit or code-setting vocabulary
+      matched:
+      - rationality
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions:
+    - kind: manufacturer
+      term: Audi
+      sentence: Audi uses P0C4300 in the thermal management module of the 2020 Q5 TFSI e.
+    status: source_text_mention
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2019/19OBDG01%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2020/MC-10175954-0001.pdf
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2020/MC-10180345-0001.pdf
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
+- code: P0C46
+  context_key: P0C46|sae_j2012|generic:generic
+  tier: 2
+  title_en: Hybrid/EV Battery Pack Coolant Temperature Sensor A Circuit Intermittent/Erratic
+  quotes:
+  - text_en: 'GM''s 2019 hybrid tables explain the check: every 100 ms the hybrid controller takes the
+      difference to the previous inlet coolant value, adds up ten of these absolute steps and counts a
+      failure when the sum exceeds 64 °C.'
+    category: monitoring_description
+    classification:
+      rule: control-unit or code-setting vocabulary
+      matched:
+      - counts
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions:
+    - text: 64 °C
+    status: quoted_unreviewed
+  - text_en: The test is suppressed while the hard circuit faults P0C44 or P0C45 are active, so P0C46
+      usually means a signal that is present but noisy.
+    category: technical_explanation
+    classification:
+      rule: explanatory vocabulary
+      matched:
+      - means
+      - are
+      status: rule_based_unreviewed
+    verbatim: true
+    measurement_mentions: []
+    status: quoted_unreviewed
+  scope:
+    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
+      not where the quoted check is valid.
+    procedure_applicability: unverified
+    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
+      that reports the code. Applicability to a make, model, engine and year has to be established by
+      a technician from the references; the mentions below are only what the source printed.
+    source_mentions: []
+    status: not_stated
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2019/19OBDG01%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+    kind: source
+    label: null
+  tools: []
+  nominal_values: []
+  limits: []
+  warnings: []
+  authoring_status: quoted_only
+  approval_status: not_approved
+  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
+    against the quoted checks and references.
 - code: P2024
   context_key: P2024|sae_j2012|generic:generic
   tier: 2
@@ -166029,129 +167844,6 @@ entries:
     kind: source
     label: null
   - url: https://static.nhtsa.gov/odi/tsbs/2025/MC-11020547-0001.pdf
-    kind: source
-    label: null
-  tools: []
-  nominal_values: []
-  limits: []
-  warnings: []
-  authoring_status: quoted_only
-  approval_status: not_approved
-  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
-    against the quoted checks and references.
-- code: P0C3F
-  context_key: P0C3F|sae_j2012|generic:generic
-  tier: 2
-  title_en: DC/DC Converter Temperature Sensor B Low
-  quotes:
-  - text_en: Reading cannot be used reliably for control.
-    category: non_procedure
-    classification:
-      rule: no imperative test form, monitoring marker or explanation marker
-      matched: []
-      status: rule_based_unreviewed
-    verbatim: true
-    measurement_mentions: []
-    status: quoted_unreviewed
-  scope:
-    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
-      not where the quoted check is valid.
-    procedure_applicability: unverified
-    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
-      that reports the code. Applicability to a make, model, engine and year has to be established by
-      a technician from the references; the mentions below are only what the source printed.
-    source_mentions: []
-    status: not_stated
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/DC-to-DC_converter
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  tools: []
-  nominal_values: []
-  limits: []
-  warnings: []
-  authoring_status: quoted_only
-  approval_status: not_approved
-  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
-    against the quoted checks and references.
-- code: P0C40
-  context_key: P0C40|sae_j2012|generic:generic
-  tier: 2
-  title_en: DC/DC Converter Temperature Sensor B High
-  quotes:
-  - text_en: Reading cannot be used reliably for control.
-    category: non_procedure
-    classification:
-      rule: no imperative test form, monitoring marker or explanation marker
-      matched: []
-      status: rule_based_unreviewed
-    verbatim: true
-    measurement_mentions: []
-    status: quoted_unreviewed
-  scope:
-    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
-      not where the quoted check is valid.
-    procedure_applicability: unverified
-    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
-      that reports the code. Applicability to a make, model, engine and year has to be established by
-      a technician from the references; the mentions below are only what the source printed.
-    source_mentions: []
-    status: not_stated
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/DC-to-DC_converter
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  tools: []
-  nominal_values: []
-  limits: []
-  warnings: []
-  authoring_status: quoted_only
-  approval_status: not_approved
-  next_step: A qualified technician writes the procedure (tools, nominal value, limit, warning, applicability)
-    against the quoted checks and references.
-- code: P0C41
-  context_key: P0C41|sae_j2012|generic:generic
-  tier: 2
-  title_en: DC/DC Converter Temperature Sensor B Intermittent/Erratic
-  quotes:
-  - text_en: Reading cannot be used reliably for control.
-    category: non_procedure
-    classification:
-      rule: no imperative test form, monitoring marker or explanation marker
-      matched: []
-      status: rule_based_unreviewed
-    verbatim: true
-    measurement_mentions: []
-    status: quoted_unreviewed
-  scope:
-    dtc_definition_scope: generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means,
-      not where the quoted check is valid.
-    procedure_applicability: unverified
-    applicability_note: A generic DTC definition does not make the quoted check valid for every vehicle
-      that reports the code. Applicability to a make, model, engine and year has to be established by
-      a technician from the references; the mentions below are only what the source printed.
-    source_mentions: []
-    status: not_stated
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/DC-to-DC_converter
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
     kind: source
     label: null
   tools: []
@@ -226038,6 +227730,179 @@ without_source_text:
     label: null
   reason: the source cites references but contains no check sentence
   approval_status: no_source_text
+- code: P0C4E
+  context_key: P0C4E|sae_j2012|generic:generic
+  tier: 1
+  title_en: Drive Motor A Position Exceeded Learning Limit
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2011/11OBDG01%20HYBRID%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2016/16OBDG01%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2019/19OBDG01%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2025/MC-11023106-0001.pdf
+    kind: source
+    label: null
+  reason: the source cites references but contains no check sentence
+  approval_status: no_source_text
+- code: P0C52
+  context_key: P0C52|sae_j2012|generic:generic
+  tier: 1
+  title_en: Drive Motor A Position Sensor Circuit A Low
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2011/11OBDG01%20HYBRID%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2013/13OBDG05C%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2016/16OBDG01%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2019/19OBDG01%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2022/MC-10213163-0001.pdf
+    kind: source
+    label: null
+  reason: the source cites references but contains no check sentence
+  approval_status: no_source_text
+- code: P0C53
+  context_key: P0C53|sae_j2012|generic:generic
+  tier: 1
+  title_en: Drive Motor A Position Sensor Circuit A High
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2011/11OBDG01%20HYBRID%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2012/12OBDG06%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2016/16OBDG01%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2019/19OBDG01%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  reason: the source cites references but contains no check sentence
+  approval_status: no_source_text
+- code: P0C56
+  context_key: P0C56|sae_j2012|generic:generic
+  tier: 1
+  title_en: Drive Motor B Position Sensor Circuit A Range/Performance
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://en.wikipedia.org/wiki/Resolver_(electrical)
+    kind: source
+    label: null
+  - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2026/MC-11027863-0001.pdf
+    kind: source
+    label: null
+  reason: the source cites references but contains no check sentence
+  approval_status: no_source_text
+- code: P0C58
+  context_key: P0C58|sae_j2012|generic:generic
+  tier: 1
+  title_en: Drive Motor B Position Sensor Circuit A High
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2011/11OBDG01%20HYBRID%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2012/12OBDG06%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2019/19OBDG01%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2013/MC-10113076-9999.pdf
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2015/MC-10115056-9999.pdf
+    kind: source
+    label: null
+  reason: the source cites references but contains no check sentence
+  approval_status: no_source_text
+- code: P0C59
+  context_key: P0C59|sae_j2012|generic:generic
+  tier: 1
+  title_en: Drive Motor B Position Sensor Circuit A Intermittent/Erratic
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://en.wikipedia.org/wiki/Resolver_(electrical)
+    kind: source
+    label: null
+  - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2018/MC-10154556-9999.pdf
+    kind: source
+    label: null
+  reason: the source cites references but contains no check sentence
+  approval_status: no_source_text
+- code: P0C5C
+  context_key: P0C5C|sae_j2012|generic:generic
+  tier: 1
+  title_en: Drive Motor A Position Sensor Circuit B Low
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2013/13OBDG05C%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2016/16OBDG01%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2019/19OBDG01%20Hybrid%20Diagnostics.pdf
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2022/MC-10213163-0001.pdf
+    kind: source
+    label: null
+  reason: the source cites references but contains no check sentence
+  approval_status: no_source_text
+- code: P0C68
+  context_key: P0C68|sae_j2012|generic:generic
+  tier: 1
+  title_en: Generator Position Sensor Circuit A Intermittent/Erratic
+  references:
+  - url: sae:J2012
+    kind: reference
+    label: sae:J2012
+  - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+    kind: source
+    label: null
+  - url: https://mitsubishitechinfo.com/data/DGE/2023/03/HTML/N503240240000800USA.htm
+    kind: source
+    label: null
+  - url: https://static.nhtsa.gov/odi/tsbs/2019/MC-10161001-9999.pdf
+    kind: source
+    label: null
+  reason: the source cites references but contains no check sentence
+  approval_status: no_source_text
 - code: P2002
   context_key: P2002|sae_j2012|generic:generic
   tier: 1
@@ -237612,615 +239477,6 @@ without_source_text:
     kind: source
     label: null
   - url: https://static.nhtsa.gov/odi/tsbs/2026/MC-11037572-0001.pdf
-    kind: source
-    label: null
-  reason: the source cites references but contains no check sentence
-  approval_status: no_source_text
-- code: P0C47
-  context_key: P0C47|sae_j2012|generic:generic
-  tier: 2
-  title_en: Hybrid/EV Battery Pack Coolant Pump A Control Circuit/Open
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Battery_management_system
-    kind: source
-    label: null
-  - url: https://en.wikipedia.org/wiki/Water_pump
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  reason: the source cites references but contains no check sentence
-  approval_status: no_source_text
-- code: P0C48
-  context_key: P0C48|sae_j2012|generic:generic
-  tier: 2
-  title_en: Hybrid/EV Battery Pack Coolant Pump A Control Circuit Low
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Battery_management_system
-    kind: source
-    label: null
-  - url: https://en.wikipedia.org/wiki/Water_pump
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  reason: the source cites references but contains no check sentence
-  approval_status: no_source_text
-- code: P0C49
-  context_key: P0C49|sae_j2012|generic:generic
-  tier: 2
-  title_en: Hybrid/EV Battery Pack Coolant Pump A Control Circuit High
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Battery_management_system
-    kind: source
-    label: null
-  - url: https://en.wikipedia.org/wiki/Water_pump
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  reason: the source cites references but contains no check sentence
-  approval_status: no_source_text
-- code: P0C4A
-  context_key: P0C4A|sae_j2012|generic:generic
-  tier: 2
-  title_en: Hybrid/EV Battery Pack Coolant Pump A Control Performance
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Battery_management_system
-    kind: source
-    label: null
-  - url: https://en.wikipedia.org/wiki/Water_pump
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  reason: the source cites references but contains no check sentence
-  approval_status: no_source_text
-- code: P0C4B
-  context_key: P0C4B|sae_j2012|generic:generic
-  tier: 2
-  title_en: Hybrid/EV Battery Pack Coolant Pump A Supply Voltage Circuit/Open
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Battery_management_system
-    kind: source
-    label: null
-  - url: https://en.wikipedia.org/wiki/Water_pump
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  reason: the source cites references but contains no check sentence
-  approval_status: no_source_text
-- code: P0C4C
-  context_key: P0C4C|sae_j2012|generic:generic
-  tier: 2
-  title_en: Hybrid/EV Battery Pack Coolant Pump A Supply Voltage Circuit Low
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Battery_management_system
-    kind: source
-    label: null
-  - url: https://en.wikipedia.org/wiki/Water_pump
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  reason: the source cites references but contains no check sentence
-  approval_status: no_source_text
-- code: P0C4D
-  context_key: P0C4D|sae_j2012|generic:generic
-  tier: 2
-  title_en: Hybrid/EV Battery Pack Coolant Pump A Supply Voltage Circuit High
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Battery_management_system
-    kind: source
-    label: null
-  - url: https://en.wikipedia.org/wiki/Water_pump
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  reason: the source cites references but contains no check sentence
-  approval_status: no_source_text
-- code: P0C4E
-  context_key: P0C4E|sae_j2012|generic:generic
-  tier: 2
-  title_en: Drive Motor A Position Exceeded Learning Limit
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Brushless_DC_electric_motor
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  reason: the source cites references but contains no check sentence
-  approval_status: no_source_text
-- code: P0C4F
-  context_key: P0C4F|sae_j2012|generic:generic
-  tier: 2
-  title_en: Drive Motor B Position Exceeded Learning Limit
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Brushless_DC_electric_motor
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  reason: the source cites references but contains no check sentence
-  approval_status: no_source_text
-- code: P0C50
-  context_key: P0C50|sae_j2012|generic:generic
-  tier: 2
-  title_en: Drive Motor A Position Sensor Circuit A Circuit
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Brushless_DC_electric_motor
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  reason: the source cites references but contains no check sentence
-  approval_status: no_source_text
-- code: P0C51
-  context_key: P0C51|sae_j2012|generic:generic
-  tier: 2
-  title_en: Drive Motor A Position Sensor Circuit A Range/Performance
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Brushless_DC_electric_motor
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  reason: the source cites references but contains no check sentence
-  approval_status: no_source_text
-- code: P0C52
-  context_key: P0C52|sae_j2012|generic:generic
-  tier: 2
-  title_en: Drive Motor A Position Sensor Circuit A Circuit Low
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Brushless_DC_electric_motor
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  reason: the source cites references but contains no check sentence
-  approval_status: no_source_text
-- code: P0C53
-  context_key: P0C53|sae_j2012|generic:generic
-  tier: 2
-  title_en: Drive Motor A Position Sensor Circuit A Circuit High
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Brushless_DC_electric_motor
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  reason: the source cites references but contains no check sentence
-  approval_status: no_source_text
-- code: P0C54
-  context_key: P0C54|sae_j2012|generic:generic
-  tier: 2
-  title_en: Drive Motor A Position Sensor Circuit A Circuit Intermittent/Erratic
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Brushless_DC_electric_motor
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  reason: the source cites references but contains no check sentence
-  approval_status: no_source_text
-- code: P0C55
-  context_key: P0C55|sae_j2012|generic:generic
-  tier: 2
-  title_en: Drive Motor B Position Sensor Circuit A Circuit
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Brushless_DC_electric_motor
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  reason: the source cites references but contains no check sentence
-  approval_status: no_source_text
-- code: P0C56
-  context_key: P0C56|sae_j2012|generic:generic
-  tier: 2
-  title_en: Drive Motor B Position Sensor Circuit A Range/Performance
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Brushless_DC_electric_motor
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  reason: the source cites references but contains no check sentence
-  approval_status: no_source_text
-- code: P0C57
-  context_key: P0C57|sae_j2012|generic:generic
-  tier: 2
-  title_en: Drive Motor B Position Sensor Circuit A Circuit Low
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Brushless_DC_electric_motor
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  reason: the source cites references but contains no check sentence
-  approval_status: no_source_text
-- code: P0C58
-  context_key: P0C58|sae_j2012|generic:generic
-  tier: 2
-  title_en: Drive Motor B Position Sensor Circuit A Circuit High
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Brushless_DC_electric_motor
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  reason: the source cites references but contains no check sentence
-  approval_status: no_source_text
-- code: P0C59
-  context_key: P0C59|sae_j2012|generic:generic
-  tier: 2
-  title_en: Drive Motor B Position Sensor Circuit A Circuit Intermittent/Erratic
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Brushless_DC_electric_motor
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  reason: the source cites references but contains no check sentence
-  approval_status: no_source_text
-- code: P0C5A
-  context_key: P0C5A|sae_j2012|generic:generic
-  tier: 2
-  title_en: Drive Motor A Position Sensor Circuit B Circuit
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Brushless_DC_electric_motor
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  reason: the source cites references but contains no check sentence
-  approval_status: no_source_text
-- code: P0C5B
-  context_key: P0C5B|sae_j2012|generic:generic
-  tier: 2
-  title_en: Drive Motor A Position Sensor Circuit B Range/Performance
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Brushless_DC_electric_motor
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  reason: the source cites references but contains no check sentence
-  approval_status: no_source_text
-- code: P0C5C
-  context_key: P0C5C|sae_j2012|generic:generic
-  tier: 2
-  title_en: Drive Motor A Position Sensor Circuit B Circuit Low
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Brushless_DC_electric_motor
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  reason: the source cites references but contains no check sentence
-  approval_status: no_source_text
-- code: P0C5D
-  context_key: P0C5D|sae_j2012|generic:generic
-  tier: 2
-  title_en: Drive Motor A Position Sensor Circuit B Circuit High
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Brushless_DC_electric_motor
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  reason: the source cites references but contains no check sentence
-  approval_status: no_source_text
-- code: P0C5E
-  context_key: P0C5E|sae_j2012|generic:generic
-  tier: 2
-  title_en: Drive Motor A Position Sensor Circuit B Circuit Intermittent/Erratic
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Brushless_DC_electric_motor
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  reason: the source cites references but contains no check sentence
-  approval_status: no_source_text
-- code: P0C5F
-  context_key: P0C5F|sae_j2012|generic:generic
-  tier: 2
-  title_en: Drive Motor B Position Sensor Circuit B Circuit
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Brushless_DC_electric_motor
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  reason: the source cites references but contains no check sentence
-  approval_status: no_source_text
-- code: P0C60
-  context_key: P0C60|sae_j2012|generic:generic
-  tier: 2
-  title_en: Drive Motor B Position Sensor Circuit B Range/Performance
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Brushless_DC_electric_motor
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  reason: the source cites references but contains no check sentence
-  approval_status: no_source_text
-- code: P0C61
-  context_key: P0C61|sae_j2012|generic:generic
-  tier: 2
-  title_en: Drive Motor B Position Sensor Circuit B Circuit Low
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Brushless_DC_electric_motor
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  reason: the source cites references but contains no check sentence
-  approval_status: no_source_text
-- code: P0C62
-  context_key: P0C62|sae_j2012|generic:generic
-  tier: 2
-  title_en: Drive Motor B Position Sensor Circuit B Circuit High
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Brushless_DC_electric_motor
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  reason: the source cites references but contains no check sentence
-  approval_status: no_source_text
-- code: P0C63
-  context_key: P0C63|sae_j2012|generic:generic
-  tier: 2
-  title_en: Drive Motor B Position Sensor Circuit B Circuit Intermittent/Erratic
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Brushless_DC_electric_motor
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  reason: the source cites references but contains no check sentence
-  approval_status: no_source_text
-- code: P0C64
-  context_key: P0C64|sae_j2012|generic:generic
-  tier: 2
-  title_en: Generator Position Sensor Circuit A Circuit
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Alternator
-    kind: source
-    label: null
-  - url: https://en.wikipedia.org/wiki/Brushless_DC_electric_motor
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  reason: the source cites references but contains no check sentence
-  approval_status: no_source_text
-- code: P0C65
-  context_key: P0C65|sae_j2012|generic:generic
-  tier: 2
-  title_en: Generator Position Sensor Circuit A Range/Performance
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Alternator
-    kind: source
-    label: null
-  - url: https://en.wikipedia.org/wiki/Brushless_DC_electric_motor
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  reason: the source cites references but contains no check sentence
-  approval_status: no_source_text
-- code: P0C69
-  context_key: P0C69|sae_j2012|generic:generic
-  tier: 2
-  title_en: Generator Position Sensor Circuit B Circuit
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Alternator
-    kind: source
-    label: null
-  - url: https://en.wikipedia.org/wiki/Brushless_DC_electric_motor
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  reason: the source cites references but contains no check sentence
-  approval_status: no_source_text
-- code: P0C6A
-  context_key: P0C6A|sae_j2012|generic:generic
-  tier: 2
-  title_en: Generator Position Sensor Circuit B Range/Performance
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Alternator
-    kind: source
-    label: null
-  - url: https://en.wikipedia.org/wiki/Brushless_DC_electric_motor
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  reason: the source cites references but contains no check sentence
-  approval_status: no_source_text
-- code: P0C6E
-  context_key: P0C6E|sae_j2012|generic:generic
-  tier: 2
-  title_en: Hybrid/EV Battery Temperature Sensor A/B Correlation
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Battery_management_system
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  reason: the source cites references but contains no check sentence
-  approval_status: no_source_text
-- code: P0C6F
-  context_key: P0C6F|sae_j2012|generic:generic
-  tier: 2
-  title_en: Hybrid/EV Battery Temperature Sensor B/C Correlation
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Battery_management_system
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
-    kind: source
-    label: null
-  reason: the source cites references but contains no check sentence
-  approval_status: no_source_text
-- code: P0C70
-  context_key: P0C70|sae_j2012|generic:generic
-  tier: 2
-  title_en: Hybrid/EV Battery Temperature Sensor C/D Correlation
-  references:
-  - url: sae:J2012
-    kind: reference
-    label: sae:J2012
-  - url: https://en.wikipedia.org/wiki/Battery_management_system
-    kind: source
-    label: null
-  - url: https://github.com/Wal33D/dtc-database
     kind: source
     label: null
   reason: the source cites references but contains no check sentence
