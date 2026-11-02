@@ -1,0 +1,173 @@
+# مسوّدات آلية — الدفعة الثانية (الأكواد 21-40 من طبقة السلامة). ليست معتمدة.
+- code: P2105
+  context: {type: generic}
+  title: "التحكم في مشغّل الخانق — إيقاف المحرك إجباريًا"
+  description: >
+    دفعت وحدة التحكم الخانق إلى وضع الإيقاف فانقطع عزم المحرك إجباريًا، بعد رصد عطل
+    شديد في منظومة الخانق الإلكتروني.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+- code: P2106
+  context: {type: generic}
+  title: "التحكم في مشغّل الخانق — قدرة محدودة إجباريًا"
+  description: >
+    قيّدت وحدة التحكم قدرة المحرك إجباريًا (limp mode) لأنها لم تعد تثق في التحكم
+    الإلكتروني بالخانق، فلا يستجيب المحرك كاملًا للدواسة.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+- code: P2110
+  context: {type: generic}
+  title: "التحكم في مشغّل الخانق — دورات محدودة إجباريًا"
+  description: >
+    حدّت وحدة التحكم من دورات المحرك إجباريًا بسبب عطل في منظومة الخانق، غالبًا مع
+    فقدان استجابة الدواسة فوق حد دورات معين.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+- code: P2113
+  context: {type: generic}
+  title: "حساس موضع الخانق/الدواسة B — أداء موضع الوقفة الدنيا"
+  description: >
+    القيمة التي يقرأها الحساس B عند الوقفة الدنيا (الدواسة غير مضغوطة) خارج المدى
+    المتعلَّم، وغالبًا سببه انحراف في المعايرة أو تلف ميكانيكي.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+- code: P2114
+  context: {type: generic}
+  title: "حساس موضع الخانق/الدواسة C — أداء موضع الوقفة الدنيا"
+  description: >
+    نظير الكود P2113 على الحساس C: قراءة الوقفة الدنيا لا تطابق القيمة المتعلَّمة.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+- code: P2115
+  context: {type: generic}
+  title: "حساس موضع الخانق/الدواسة D — أداء موضع الوقفة الدنيا"
+  description: >
+    نظير الكود P2113 على الحساس D: قراءة الوقفة الدنيا لا تطابق القيمة المتعلَّمة.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+- code: P2116
+  context: {type: generic}
+  title: "حساس موضع الخانق/الدواسة E — أداء موضع الوقفة الدنيا"
+  description: >
+    نظير الكود P2113 على الحساس E: قراءة الوقفة الدنيا لا تطابق القيمة المتعلَّمة.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+- code: P2117
+  context: {type: generic}
+  title: "حساس موضع الخانق/الدواسة F — أداء موضع الوقفة الدنيا"
+  description: >
+    نظير الكود P2113 على الحساس F: قراءة الوقفة الدنيا لا تطابق القيمة المتعلَّمة.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+- code: P2119
+  context: {type: generic}
+  title: "التحكم في مشغّل الخانق — مدى جسم الخانق وأداؤه"
+  description: >
+    جسم الخانق لا يصل إلى الزاوية المطلوبة أو لا يتحرك ضمن المدى في الزمن المتوقع،
+    مع سلامة كهربائية ظاهرية.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+- code: P2125
+  context: {type: generic}
+  title: "دائرة حساس/مفتاح موضع الخانق والدواسة E"
+  description: >
+    عطل كهربائي عام في دائرة الحساس E: قطع أو قصر أو إشارة خارج النطاق.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+- code: P2129
+  context: {type: generic}
+  title: "حساس/مفتاح موضع الخانق والدواسة E — إشارة متقطعة"
+  description: >
+    إشارة الحساس E تنقطع وتعود بصورة متقطعة، وهي حالة تظهر غالبًا مع اهتزاز أو
+    تلامس ضعيف في التوصيلات.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+- code: P2C99
+  context: {type: generic}
+  title: "التحكم في مشغّل الخانق A — تجاوز حد التعلّم"
+  description: >
+    انتهت قدرة الوحدة على تعلّم موضع الخانق A ضمن حدوده: الفرق بين الموضع المطلوب
+    والفعلية تجاوز ما يمكن تعويضه بالتعلّم، ما يشير إلى تلف ميكانيكي أو انحراف دائم.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+- code: P2C9A
+  context: {type: generic}
+  title: "التحكم في مشغّل الخانق B — تجاوز حد التعلّم"
+  description: >
+    نظير الكود P2C99 على الخانق B في المحركات ذات خانقين إلكترونيين منفصلين.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+- code: P2EB0
+  context: {type: generic}
+  title: "دائرة حساس ضغط هواء السحب في الخانق"
+  description: >
+    عطل كهربائي عام في دائرة حساس ضغط هواء السحب المدمج في جسم الخانق.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+- code: P2EB1
+  context: {type: generic}
+  title: "حساس ضغط هواء السحب في الخانق — إشارة منخفضة"
+  description: >
+    جهد إشارة الحساس أقل من الحد الأدنى المتوقع، مع احتمال قصر إلى الأرضي.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+- code: P2EB2
+  context: {type: generic}
+  title: "حساس ضغط هواء السحب في الخانق — إشارة عالية"
+  description: >
+    جهد إشارة الحساس أعلى من الحد الأعلى المتوقع، مع احتمال قصر إلى التغذية أو قطع
+    في الأرضي.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+- code: P2EB3
+  context: {type: generic}
+  title: "حساس ضغط هواء السحب في الخانق — المدى والأداء"
+  description: >
+    الدائرة سليمة كهربائيًا لكن القراءة لا تتسق مع ضغط السحب الفعلي أو مع حساسات
+    الضغط الأخرى.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+- code: U011E
+  context: {type: generic}
+  title: "انقطاع الاتصال بوحدة التحكم في مشغّل الخانق B"
+  description: >
+    توقفت وحدة التحكم في مشغّل الخانق B عن الإرسال على ناقل بيانات السيارة، وهي
+    وحدة مستقلة عن TAC الأولى في المحركات ذات خانقين.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+- code: U013C
+  context: {type: generic}
+  title: "انقطاع الاتصال بوحدة دواسة الوقود"
+  description: >
+    لا تصل رسائل وحدة دواسة الوقود إلى الوحدات الأخرى على ناقل البيانات، وغالبًا
+    ينتج عن ذلك فقدان استجابة الدواسة أو انتقال إلى وضع آمن.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+- code: U0308
+  context: {type: generic}
+  title: "عدم توافق برمجي مع وحدة التحكم في مشغّل الخانق"
+  description: >
+    الوحدتان تتصلان ولكن إصدار البرنامج أو التهيئة غير متوافقين، فترفض إحداهما
+    بيانات الأخرى.
+  translator: ""
+  reviewer: ""
+  reviewed: false

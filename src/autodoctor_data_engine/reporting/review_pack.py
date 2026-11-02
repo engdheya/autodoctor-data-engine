@@ -42,6 +42,14 @@ def load_arabic(path: Path | None) -> dict[str, dict[str, Any]]:
     return {entry["code"]: entry for entry in payload if entry.get("code")}
 
 
+def load_arabic_files(paths: list[Path]) -> dict[str, dict[str, Any]]:
+    """Merge several translation draft files; a later file overrides an earlier one."""
+    merged: dict[str, dict[str, Any]] = {}
+    for path in paths:
+        merged.update(load_arabic(path))
+    return merged
+
+
 def _fact_sources(conn: sqlite3.Connection, entity_type: str, ids: list[int]) -> dict[int, list[str]]:
     if not ids:
         return {}

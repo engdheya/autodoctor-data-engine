@@ -1,0 +1,169 @@
+# مسوّدات آلية — الدفعة الرابعة (الأكواد 61-80 من طبقة السلامة). ليست معتمدة.
+- code: P0122
+  context: {type: generic}
+  title: "حساس/مفتاح موضع الخانق والدواسة A — إشارة منخفضة"
+  description: >
+    جهد المسار A أقل من الحد الأدنى المتوقع، وغالبًا سببه قصر إلى الأرضي أو انقطاع
+    في التغذية.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+- code: P0123
+  context: {type: generic}
+  title: "حساس/مفتاح موضع الخانق والدواسة A — إشارة عالية"
+  description: >
+    جهد المسار A أعلى من الحد الأعلى المتوقع، وغالبًا سببه قصر إلى التغذية أو قطع
+    في الأرضي.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+- code: P0124
+  context: {type: generic}
+  title: "حساس/مفتاح موضع الخانق والدواسة A — إشارة متقطعة"
+  description: >
+    إشارة المسار A تنقطع وتعود، وتظهر عادة مع اهتزاز أو تلامس ضعيف في الموصلات.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+- code: P0220
+  context: {type: generic}
+  title: "دائرة حساس/مفتاح موضع الخانق والدواسة B"
+  description: >
+    عطل كهربائي عام في دائرة المسار B، وهو المسار الثاني المستقل الذي تستخدمه
+    الوحدة للتحقق المتقاطع من طلب السائق.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+- code: P0221
+  context: {type: generic}
+  title: "حساس/مفتاح موضع الخانق والدواسة B — المدى والأداء"
+  description: >
+    إشارة المسار B لا تتسق مع المسار A ضمن الحد المسموح.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+- code: P0222
+  context: {type: generic}
+  title: "حساس/مفتاح موضع الخانق والدواسة B — إشارة منخفضة"
+  description: >
+    جهد المسار B أقل من الحد الأدنى المتوقع.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+- code: P0223
+  context: {type: generic}
+  title: "حساس/مفتاح موضع الخانق والدواسة B — إشارة عالية"
+  description: >
+    جهد المسار B أعلى من الحد الأعلى المتوقع.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+- code: P0224
+  context: {type: generic}
+  title: "حساس/مفتاح موضع الخانق والدواسة B — إشارة متقطعة"
+  description: >
+    إشارة المسار B تنقطع وتعود بصورة متقطعة، وقد تسبب انتقالًا متكررًا إلى وضع آمن.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+- code: P0225
+  context: {type: generic}
+  title: "دائرة حساس/مفتاح موضع الخانق والدواسة C"
+  description: >
+    عطل كهربائي عام في دائرة المسار C، ويظهر في المحركات ذات ثلاثة مسارات للدواسة
+    أو الخانق.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+- code: P0226
+  context: {type: generic}
+  title: "حساس/مفتاح موضع الخانق والدواسة C — المدى والأداء"
+  description: >
+    إشارة المسار C موجودة لكنها لا تتسق مع المسارين الآخرين.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+- code: P0227
+  context: {type: generic}
+  title: "حساس/مفتاح موضع الخانق والدواسة C — إشارة منخفضة"
+  description: >
+    جهد المسار C أقل من الحد الأدنى المتوقع.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+- code: P0228
+  context: {type: generic}
+  title: "حساس/مفتاح موضع الخانق والدواسة C — إشارة عالية"
+  description: >
+    جهد المسار C أعلى من الحد الأعلى المتوقع.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+- code: P0229
+  context: {type: generic}
+  title: "حساس/مفتاح موضع الخانق والدواسة C — إشارة متقطعة"
+  description: >
+    إشارة المسار C تنقطع وتعود بصورة متقطعة.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+- code: P023D
+  context: {type: generic}
+  title: "ترابط ضغط السحب مع حساس ضغط الشاحن A"
+  description: >
+    قراءة ضغط مجرى السحب لا تتسق مع قراءة حساس الضغط التعزيزي A عند نفس ظرف
+    التشغيل، ما يعني خللًا في أحد الحساسين أو تسربًا في مسار الضغط.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+- code: P023E
+  context: {type: generic}
+  title: "ترابط ضغط السحب مع حساس ضغط الشاحن B"
+  description: >
+    نظير الكود P023D على حساس الضغط التعزيزي B في المحركات ذات مساري شحن منفصلين.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+- code: P02E0
+  context: {type: generic}
+  title: "التحكم في تدفق هواء السحب A (ديزل) — قطع في الدائرة"
+  description: >
+    في محركات الديزل الحديثة تُستخدم صفيحة خنق في مجرى السحب لتوليد تفريغ وتعزيز
+    إعادة تدوير العادم؛ الكود يعني قطعًا في دائرة التحكم بهذه الصفيحة.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+- code: P02E1
+  context: {type: generic}
+  title: "التحكم في تدفق هواء السحب A (ديزل) — الأداء"
+  description: >
+    الدائرة سليمة لكن الصفيحة لا تصل إلى الموضع المطلوب، ما يؤثر في دقة إعادة تدوير
+    العادم.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+- code: P02E2
+  context: {type: generic}
+  title: "التحكم في تدفق هواء السحب A (ديزل) — إشارة منخفضة"
+  description: >
+    جهد أو تيار دائرة التحكم أقل من الحد الأدنى المتوقع.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+- code: P02E3
+  context: {type: generic}
+  title: "التحكم في تدفق هواء السحب A (ديزل) — إشارة عالية"
+  description: >
+    جهد أو تيار دائرة التحكم أعلى من الحد الأعلى المتوقع.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+- code: P02E4
+  context: {type: generic}
+  title: "التحكم في تدفق هواء السحب A (ديزل) — عالق مفتوح"
+  description: >
+    الصفيحة ملتصقة في وضع الفتح ولا تستجيب لأمر الإغلاق، ما يضعف توليد التفريغ
+    اللازم لإعادة تدوير العادم.
+  translator: ""
+  reviewer: ""
+  reviewed: false

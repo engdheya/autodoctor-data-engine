@@ -79,3 +79,51 @@ def test_pack_never_promotes_a_draft_or_invents_a_procedure(built, tmp_path: Pat
             assert procedure["quoted_checks"], "a draft needs quoted source text"
             assert all(step["source"] for step in procedure["quoted_checks"])
     assert "not approved" in pack["warning"].lower() or "only" in pack["warning"].lower()
+
+
+def test_procedures_are_verbatim_and_never_invented(built) -> None:
+    from autodoctor_data_engine.reporting.procedures import build_entries, verify_no_invention
+
+    conn = sqlite3.connect(f"file:{built.database_path}?mode=ro", uri=True)
+    try:
+        index = priority_index(conn)
+        payload = build_entries(conn, index, (1, 2, 3, 4))
+        descriptions = {
+            row[0]: row[1] or ""
+            for row in conn.execute(
+                "SELECT c.context_key, d.description FROM dtc_codes c "
+                "JOIN dtc_definitions d ON d.dtc_code_id = c.id "
+                "AND d.language = 'en' AND d.is_canonical = 1"
+            )
+        }
+    finally:
+        conn.close()
+
+    for entry in payload["entries"]:
+        assert entry["tools"] == []
+        assert entry["nominal_values"] == []
+        assert entry["limits"] == []
+        assert entry["warnings"] == []
+        assert entry["approval_status"] == "not_approved"
+        assert entry["scope"]["status"] in {"source_text_mention", "not_stated"}
+    assert verify_no_invention(payload, descriptions) == []
+
+
+def test_quote_that_is_not_verbatim_is_reported(built) -> None:
+    from autodoctor_data_engine.reporting.procedures import build_entries, verify_no_invention
+
+    conn = sqlite3.connect(f"file:{built.database_path}?mode=ro", uri=True)
+    try:
+        payload = build_entries(conn, priority_index(conn), (1, 2, 3, 4))
+    finally:
+        conn.close()
+
+    if not payload["entries"]:
+        return
+    tampered = dict(payload)
+    tampered["entries"] = [dict(payload["entries"][0])]
+    tampered["entries"][0]["quotes"] = [
+        {"text_en": "measure the voltage with a multimeter", "verbatim": False, "measurement_mentions": []}
+    ]
+    descriptions = {tampered["entries"][0]["context_key"]: "something else entirely"}
+    assert verify_no_invention(tampered, descriptions), "a non-verbatim quote must be reported"
