@@ -97,6 +97,14 @@ def _scope(conn: sqlite3.Connection, dtc_id: int, context_type: str, description
 
 
 
+def scope_for(
+    conn: sqlite3.Connection, dtc_id: int, context_type: str, description: str
+) -> dict[str, Any]:
+    """Public entry point for the scope caveats that travel with a quote."""
+    return _scope(conn, dtc_id, context_type, description)
+
+
+
 def classify_sentences(description: str | None, min_length: int = 25) -> list[dict[str, Any]]:
     """Every candidate sentence of one description, classified.
 

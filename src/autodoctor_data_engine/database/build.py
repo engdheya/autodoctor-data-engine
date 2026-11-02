@@ -31,10 +31,11 @@ from ..utils.hashing import sha256_file, sha256_text
 from ..validators.database_rules import DatabaseCheck, failed_blocking, run_database_checks
 from ..validators.rules import ValidationIssue, blockable_errors, summarize, validate_record
 from ..versioning.manifest import build_manifest, next_version, write_manifest
+from .app_content import AppContentError, populate_app_content
 from .app_export import LicenceError, build_app_bundle
 from .connection import create_database, optimise
 
-SCHEMA_VERSION = "3"
+SCHEMA_VERSION = "4"
 
 
 class BuildError(RuntimeError):
@@ -225,6 +226,16 @@ def build_database(
         )
         warnings.extend(translation_warnings)
         applied_translations = _apply_translations(conn, translations, stats, warnings)
+
+        # the client bundle carries the unreviewed drafts separately, clearly labelled,
+        # and the quoted source text with its classifier verdict - never as approved
+        # procedures. Loading them here does not touch dtc_definitions.
+        draft_entries, _draft_warnings = load_translations(settings, include_unreviewed=True)
+        try:
+            app_content = populate_app_content(conn, draft_entries)
+        except AppContentError as exc:
+            raise BuildError(f"client content refused: {exc}") from exc
+        warnings.extend(app_content["warnings"])
 
         # the full per-record log stays in data/staging/<source>/<commit>/validation.jsonl;
         # the database keeps the failures plus aggregate counts in the manifest.

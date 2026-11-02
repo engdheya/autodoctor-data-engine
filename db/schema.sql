@@ -519,3 +519,119 @@ SELECT
 FROM dtc_codes c
 LEFT JOIN manufacturers m ON m.id = c.manufacturer_id
 LEFT JOIN dtc_flags f ON f.dtc_code_id = c.id;
+
+-- ---------------------------------------------------------------------------
+-- Client content (schema 4)
+--
+-- Everything below is derived from data already stored above: the quoted
+-- sentences are verbatim substrings of dtc_definitions.description, the drafts
+-- are the files in data/translations that no human has signed off yet, and the
+-- priority rows come from the documented ranking rules. Nothing is authored
+-- here and nothing may be relabelled as approved by the client.
+-- ---------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS source_quotes (
+    id                    INTEGER PRIMARY KEY,
+    dtc_code_id           INTEGER NOT NULL REFERENCES dtc_codes(id) ON DELETE CASCADE,
+    ordinal               INTEGER NOT NULL,
+    text_en               TEXT    NOT NULL,
+    category              TEXT    NOT NULL
+                          CHECK (category IN ('diagnostic_check', 'monitoring_description',
+                                              'technical_explanation', 'non_procedure')),
+    classification_rule   TEXT    NOT NULL,
+    classification_status TEXT    NOT NULL,
+    verbatim              INTEGER NOT NULL DEFAULT 1 CHECK (verbatim IN (0, 1)),
+    measurements_json     TEXT,
+    quote_status          TEXT    NOT NULL,
+    UNIQUE (dtc_code_id, ordinal)
+);
+
+CREATE TABLE IF NOT EXISTS procedure_scope (
+    dtc_code_id        INTEGER PRIMARY KEY REFERENCES dtc_codes(id) ON DELETE CASCADE,
+    definition_scope   TEXT,
+    applicability      TEXT    NOT NULL DEFAULT 'unverified',
+    applicability_note TEXT,
+    mentions_json      TEXT,
+    approval_status    TEXT    NOT NULL DEFAULT 'not_approved',
+    authoring_status   TEXT    NOT NULL DEFAULT 'quoted_only',
+    next_step          TEXT,
+    CHECK (applicability IN ('verified', 'unverified', 'not_applicable')),
+    CHECK (approval_status IN ('approved', 'not_approved'))
+);
+
+CREATE TABLE IF NOT EXISTS translation_drafts (
+    dtc_code_id  INTEGER NOT NULL REFERENCES dtc_codes(id) ON DELETE CASCADE,
+    language     TEXT    NOT NULL,
+    title        TEXT,
+    description  TEXT,
+    context_ar   TEXT,
+    reviewed     INTEGER NOT NULL DEFAULT 0 CHECK (reviewed IN (0, 1)),
+    translator   TEXT,
+    reviewer     TEXT,
+    source_url   TEXT,
+    file_path    TEXT,
+    created_at   TEXT    NOT NULL,
+    PRIMARY KEY (dtc_code_id, language)
+);
+
+CREATE TABLE IF NOT EXISTS dtc_priority (
+    dtc_code_id        INTEGER PRIMARY KEY REFERENCES dtc_codes(id) ON DELETE CASCADE,
+    tier               INTEGER NOT NULL CHECK (tier BETWEEN 1 AND 4),
+    score              REAL    NOT NULL,
+    reasons_json       TEXT    NOT NULL,
+    open_conflicts     INTEGER NOT NULL DEFAULT 0,
+    critical_conflicts INTEGER NOT NULL DEFAULT 0,
+    contexts           INTEGER NOT NULL DEFAULT 1,
+    source_count       INTEGER NOT NULL DEFAULT 0
+);
+
+CREATE INDEX IF NOT EXISTS idx_source_quotes_code ON source_quotes(dtc_code_id);
+CREATE INDEX IF NOT EXISTS idx_priority_tier ON dtc_priority(tier, score DESC);
+
+DROP VIEW IF EXISTS v_dtc_source_quotes;
+CREATE VIEW v_dtc_source_quotes AS
+SELECT
+    c.id           AS dtc_code_id,
+    c.code,
+    c.context_key,
+    q.ordinal,
+    q.text_en,
+    q.category,
+    q.classification_rule,
+    q.classification_status,
+    q.quote_status,
+    p.approval_status,
+    p.applicability
+FROM source_quotes q
+JOIN dtc_codes c ON c.id = q.dtc_code_id
+LEFT JOIN procedure_scope p ON p.dtc_code_id = c.id;
+
+DROP VIEW IF EXISTS v_dtc_priority;
+CREATE VIEW v_dtc_priority AS
+SELECT
+    c.id AS dtc_code_id,
+    c.code,
+    c.context_key,
+    p.tier,
+    p.score,
+    p.reasons_json,
+    p.open_conflicts,
+    p.critical_conflicts
+FROM dtc_priority p
+JOIN dtc_codes c ON c.id = p.dtc_code_id;
+
+DROP VIEW IF EXISTS v_translation_drafts;
+CREATE VIEW v_translation_drafts AS
+SELECT
+    c.id AS dtc_code_id,
+    c.code,
+    c.context_key,
+    t.language,
+    t.title,
+    t.description,
+    t.context_ar,
+    t.reviewed,
+    t.source_url,
+    t.file_path
+FROM translation_drafts t
+JOIN dtc_codes c ON c.id = t.dtc_code_id;
