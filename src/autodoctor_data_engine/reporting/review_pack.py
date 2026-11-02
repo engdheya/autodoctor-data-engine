@@ -20,6 +20,8 @@ CHECK_WORDS = re.compile(
     r"\b(test|check|measure|swap|inspect|verify|probe|compare)\w*\b", re.IGNORECASE
 )
 
+ALIASES = {"GM": "General Motors", "VW": "Volkswagen", "MB": "Mercedes-Benz", "Chevy": "Chevrolet"}
+
 STATUS = {
     "reviewed": "approved by a named human reviewer",
     "machine_draft": "machine draft, never shown to a user as approved",
@@ -230,6 +232,84 @@ def _conflicts(conn: sqlite3.Connection, dtc_id: int) -> list[dict[str, Any]]:
     ]
 
 
+
+def _context_terms(conn: sqlite3.Connection, description: str) -> list[str]:
+    """Manufacturer names the English source itself printed (alias aware)."""
+    names = [row[0] for row in conn.execute("SELECT name FROM manufacturers")]
+    found: list[str] = []
+    for name in sorted(set(names), key=len, reverse=True):
+        if len(name) >= 2 and re.search(rf"\b{re.escape(name)}\b", description) and name not in found:
+            found.append(name)
+    for short in ALIASES:
+        if re.search(rf"\b{short}\b", description) and short not in found:
+            found.append(short)
+    return found
+
+
+MEASUREMENT = re.compile(
+    r"\d+(?:[.,]\d+)?\s?(?:%|V|mV|A|mA|ohm|Ω|kΩ|bar|hPa|psi|kPa|°C|rpm|km/h|mm|Hz|kHz)\b"
+)
+YEAR = re.compile(r"\b(?:19|20)\d{2}\b")
+
+
+def _measurements(text: str) -> list[str]:
+    return [m.group(0).replace(" ", "") for m in MEASUREMENT.finditer(text or "")]
+
+
+def _years(text: str) -> list[str]:
+    return sorted(set(YEAR.findall(text or "")))
+
+
+def _review_arabic(conn: sqlite3.Connection, definition: dict[str, Any], draft: dict[str, Any]) -> dict[str, Any]:
+    english = (definition.get("description_en") or "") + " " + (definition.get("title_en") or "")
+    arabic = " ".join(
+        str(draft.get(key) or "") for key in ("title", "description", "context_ar")
+    )
+    required = _context_terms(conn, english)
+    present = [term for term in required if term in arabic]
+    missing_context = [term for term in required if term not in arabic]
+    english_values = _measurements(english)
+    arabic_compact = arabic.replace(" ", "")
+    missing_values = [v for v in english_values if v not in arabic_compact]
+    english_years = _years(english)
+    missing_years = [y for y in english_years if y not in arabic]
+
+    checks = {
+        "manufacturer_context": {
+            "required": required,
+            "present": present,
+            "ok": not missing_context,
+        },
+        "measurements_preserved": {
+            "english": english_values,
+            "missing_in_arabic": missing_values,
+            "ok": not missing_values,
+        },
+        "years_referenced": {
+            "english": english_years,
+            "missing_in_arabic": missing_years,
+            "ok": True,
+            "note": "informational: model years the source printed",
+        },
+        "context_note_present": bool(draft.get("context_ar")) or not required,
+    }
+    failed = [
+        name
+        for name in ("manufacturer_context", "measurements_preserved", "context_note_present")
+        if not (checks[name]["ok"] if isinstance(checks[name], dict) else checks[name])
+    ]
+    return {
+        "checks": checks,
+        "failed": failed,
+        "status": "needs_fix" if failed else "machine_checked_pending_human",
+        "note": (
+            "Automated consistency checks only: manufacturer context kept, numbers kept, "
+            "terminology from the glossary. They do not replace a technical and linguistic "
+            "review by a named human."
+        ),
+    }
+
+
 def _arabic_status(draft: dict[str, Any]) -> str:
     if not draft:
         return "not_authored"
@@ -298,10 +378,21 @@ def build_pack(
                 "arabic_draft": {
                     "title_ar": draft.get("title"),
                     "description_ar": draft.get("description"),
+                    "context_ar": draft.get("context_ar"),
                     "translator": draft.get("translator") or None,
                     "reviewer": draft.get("reviewer") or None,
                     "status": _arabic_status(draft),
                     "note": STATUS.get(_arabic_status(draft), ""),
+                    "source": {
+                        "english_sources": definition.get("sources", []),
+                        "scope": (
+                            "generic DTC definition; translation follows the source text, "
+                            "not a vehicle-specific claim"
+                            if entry["context_type"] == "generic"
+                            else f"manufacturer-specific definition ({entry['manufacturer']})"
+                        ),
+                    },
+                    "review": _review_arabic(conn, definition, draft) if draft else None,
                 },
                 "causes": _causes(conn, dtc_id),
                 "symptoms": _symptoms(conn, dtc_id),
@@ -322,6 +413,17 @@ def build_pack(
             }
         )
     ready = sum(1 for e in entries if e["arabic_draft"]["status"] == "machine_draft")
+    context_ok = sum(
+        1
+        for e in entries
+        if e["arabic_draft"].get("review")
+        and not e["arabic_draft"]["review"]["failed"]
+    )
+    context_fix = sum(
+        1
+        for e in entries
+        if e["arabic_draft"].get("review") and e["arabic_draft"]["review"]["failed"]
+    )
     with_steps = sum(1 for e in entries if e["procedure"]["quoted_checks"])
     return {
         "pack": f"tier{tier}-{datetime.now(UTC).strftime('%Y%m%d')}",
@@ -341,6 +443,8 @@ def build_pack(
             "entries_without_reference": sum(
                 1 for e in entries if e["procedure"]["status"] == "no_reference_found"
             ),
+            "arabic_context_ok": context_ok,
+            "arabic_needs_context_fix": context_fix,
             "entries_with_open_conflicts": sum(
                 1 for e in entries if any(c["status"] == "needs_review" for c in e["conflicts"])
             ),
