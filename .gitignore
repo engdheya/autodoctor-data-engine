@@ -244,3 +244,6 @@ vendor/upstream
 # Local environment
 .env
 .venv/
+
+# Internal-only artifacts: ODbL/CC-BY-SA content must not be committed or distributed.
+data/reviews/batches/internal-*

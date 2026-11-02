@@ -1,9 +1,9 @@
-generated_at: '2026-11-01T20:45:14Z'
+generated_at: '2026-11-02T15:46:28Z'
 band: critical
 rule: generic code, risk in ['high', 'critical'], similarity < 75%
 queue:
-  band_total: 18
-  in_batch: 18
+  band_total: 14
+  in_batch: 14
 reviewer_note: A triage band is not a decision. Nothing in this batch has been resolved by the engine;
   each entry must be decided by a human and recorded in data/reviews/conflicts.yaml before the release
   gate lets the build publish.
@@ -24,7 +24,7 @@ conflicts:
     source_name: OBDex (foerbsnavi/OBDex)
     licence: CC0-1.0
     repo: https://github.com/foerbsnavi/OBDex
-    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
+    commit: 5e927da4941bca7a63838931126b12f481a4c428
     statement: Reductant Pressure Too Low — The pressure in the SCR reductant (AdBlue/DEF) line is below
       the calibrated minimum. Without sufficient pressure the dosing module cannot atomise reagent properly,
       leading to NOx exceedence.
@@ -58,7 +58,7 @@ conflicts:
     source_name: OBDex (foerbsnavi/OBDex)
     licence: CC0-1.0
     repo: https://github.com/foerbsnavi/OBDex
-    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
+    commit: 5e927da4941bca7a63838931126b12f481a4c428
     statement: Reductant Pressure Too Low — The reductant (AdBlue/DEF) line pressure stays below the demanded
       value during dosing. The dosing system needs a stable supply pressure to inject metered amounts;
       without it the system cannot meet NOx targets.
@@ -92,7 +92,7 @@ conflicts:
     source_name: OBDex (foerbsnavi/OBDex)
     licence: CC0-1.0
     repo: https://github.com/foerbsnavi/OBDex
-    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
+    commit: 5e927da4941bca7a63838931126b12f481a4c428
     statement: Reductant Injection Valve Performance — The SCR reductant injection valve does not deliver
       the commanded amount of reagent. Causes include clogging by urea crystals, electrical faults or
       incorrect spray pattern.
@@ -110,74 +110,6 @@ conflicts:
     - retained_as_alternatives - context makes both true
     - rejected_source --source <slug> - the source is wrong here
     command: autodoctor review-conflict ffc30517d65a4529 --accept --note '<why>' --reviewer '<name>'
-- fingerprint: 3f520f00387171ef
-  code: P2113
-  context_key: P2113|sae_j2012|generic:generic
-  context_type: generic
-  attribute: definition.en
-  conflict_type: definition_disagreement
-  similarity: 0.4444
-  risk_level: high
-  manufacturer: null
-  reason: 'generic code with risk ''high'' whose statements agree only 44%: publishing it unreviewed shows
-    the user a possibly wrong meaning for a safety-relevant fault'
-  statements:
-  - source: obdex
-    source_name: OBDex (foerbsnavi/OBDex)
-    licence: CC0-1.0
-    repo: https://github.com/foerbsnavi/OBDex
-    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
-    statement: Throttle Actuator Control System Forced Limited RPM — The throttle actuator control has
-      detected a fault and limits engine speed to a defined emergency value. The vehicle stays drivable
-      but with severely reduced power until the underlying fault is cleared.
-  - source: wal33d
-    source_name: Wal33D dtc-database
-    licence: MIT
-    repo: https://github.com/Wal33D/dtc-database
-    commit: 04c43d72e7db7197658b6f72fe582c5076d9eee8
-    statement: Throttle/Pedal Position Sensor B Minimum Stop Performance
-  decision:
-    required_at: data/reviews/conflicts.yaml
-    options:
-    - accepted_difference - both statements are legitimate
-    - resolved --source <slug> - one statement is correct
-    - retained_as_alternatives - context makes both true
-    - rejected_source --source <slug> - the source is wrong here
-    command: autodoctor review-conflict 3f520f00387171ef --accept --note '<why>' --reviewer '<name>'
-- fingerprint: 1db1be67756c6b00
-  code: P2114
-  context_key: P2114|sae_j2012|generic:generic
-  context_type: generic
-  attribute: definition.en
-  conflict_type: definition_disagreement
-  similarity: 0.4464
-  risk_level: high
-  manufacturer: null
-  reason: 'generic code with risk ''high'' whose statements agree only 45%: publishing it unreviewed shows
-    the user a possibly wrong meaning for a safety-relevant fault'
-  statements:
-  - source: obdex
-    source_name: OBDex (foerbsnavi/OBDex)
-    licence: CC0-1.0
-    repo: https://github.com/foerbsnavi/OBDex
-    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
-    statement: Throttle Actuator Control System Forced Below Limit RPM — The throttle actuator system
-      has dropped engine speed below the normal limp limit because of a more serious fault. The engine
-      may run only at idle or stall.
-  - source: wal33d
-    source_name: Wal33D dtc-database
-    licence: MIT
-    repo: https://github.com/Wal33D/dtc-database
-    commit: 04c43d72e7db7197658b6f72fe582c5076d9eee8
-    statement: Throttle/Pedal Position Sensor C Minimum Stop Performance
-  decision:
-    required_at: data/reviews/conflicts.yaml
-    options:
-    - accepted_difference - both statements are legitimate
-    - resolved --source <slug> - one statement is correct
-    - retained_as_alternatives - context makes both true
-    - rejected_source --source <slug> - the source is wrong here
-    command: autodoctor review-conflict 1db1be67756c6b00 --accept --note '<why>' --reviewer '<name>'
 - fingerprint: 9cdc8d2653e1f10e
   code: P22F1
   context_key: P22F1|sae_j2012|generic:generic
@@ -194,7 +126,7 @@ conflicts:
     source_name: OBDex (foerbsnavi/OBDex)
     licence: CC0-1.0
     repo: https://github.com/foerbsnavi/OBDex
-    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
+    commit: 5e927da4941bca7a63838931126b12f481a4c428
     statement: Particulate Matter Sensor Heater Performance — The particulate matter (PM) sensor heater
       on diesel after-DPF systems does not reach or hold the calibrated operating temperature within the
       expected time. Without proper heating the PM sensor cannot be regenerated and read correctly.
@@ -228,7 +160,7 @@ conflicts:
     source_name: OBDex (foerbsnavi/OBDex)
     licence: CC0-1.0
     repo: https://github.com/foerbsnavi/OBDex
-    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
+    commit: 5e927da4941bca7a63838931126b12f481a4c428
     statement: Exhaust Gas Recirculation System Performance — The ECU monitors EGR flow indirectly through
       MAF, MAP or differential-pressure feedback and finds that actual EGR flow does not match the commanded
       value over a sustained period.
@@ -262,7 +194,7 @@ conflicts:
     source_name: OBDex (foerbsnavi/OBDex)
     licence: CC0-1.0
     repo: https://github.com/foerbsnavi/OBDex
-    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
+    commit: 5e927da4941bca7a63838931126b12f481a4c428
     statement: DPF Regeneration Duration — The DPF regeneration cycle takes longer than the calibrated
       maximum. The ECU sets this code when the soot load is not being burned off within the expected window
       — common after many short trips or with degraded post-injection.
@@ -296,7 +228,7 @@ conflicts:
     source_name: OBDex (foerbsnavi/OBDex)
     licence: CC0-1.0
     repo: https://github.com/foerbsnavi/OBDex
-    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
+    commit: 5e927da4941bca7a63838931126b12f481a4c428
     statement: DPF Restriction — Forced Limited Power — The DPF restriction has reached a level that forces
       the ECU to limit engine power. The driver must allow a forced regeneration or have the filter serviced
       before normal power is restored.
@@ -330,7 +262,7 @@ conflicts:
     source_name: OBDex (foerbsnavi/OBDex)
     licence: CC0-1.0
     repo: https://github.com/foerbsnavi/OBDex
-    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
+    commit: 5e927da4941bca7a63838931126b12f481a4c428
     statement: DPF Restriction — Forced Limited — The DPF restriction has reached the limit defined for
       forced limited operation. Vehicle behaviour depends on the manufacturer — usually a hard torque
       cap with a service warning.
@@ -364,7 +296,7 @@ conflicts:
     source_name: OBDex (foerbsnavi/OBDex)
     licence: CC0-1.0
     repo: https://github.com/foerbsnavi/OBDex
-    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
+    commit: 5e927da4941bca7a63838931126b12f481a4c428
     statement: Diesel Particulate Filter Restriction - Soot Accumulation — The DPF differential pressure
       sensor reports a backpressure rise consistent with excessive soot accumulation. The filter cannot
       regenerate fast enough, eventually causing limp mode.
@@ -382,72 +314,6 @@ conflicts:
     - retained_as_alternatives - context makes both true
     - rejected_source --source <slug> - the source is wrong here
     command: autodoctor review-conflict c32a52f8da504837 --accept --note '<why>' --reviewer '<name>'
-- fingerprint: 124dd7409cfa83cd
-  code: P2567
-  context_key: P2567|sae_j2012|generic:generic
-  context_type: generic
-  attribute: definition.en
-  conflict_type: definition_disagreement
-  similarity: 0.4643
-  risk_level: high
-  manufacturer: null
-  reason: 'generic code with risk ''high'' whose statements agree only 46%: publishing it unreviewed shows
-    the user a possibly wrong meaning for a safety-relevant fault'
-  statements:
-  - source: obdex
-    source_name: OBDex (foerbsnavi/OBDex)
-    licence: CC0-1.0
-    repo: https://github.com/foerbsnavi/OBDex
-    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
-    statement: Turbocharger Boost Control Position Sensor Circuit Low — The turbocharger position sensor
-      signal is below the lower limit — short to ground or sensor at zero stop.
-  - source: wal33d
-    source_name: Wal33D dtc-database
-    licence: MIT
-    repo: https://github.com/Wal33D/dtc-database
-    commit: 04c43d72e7db7197658b6f72fe582c5076d9eee8
-    statement: Direct Ozone Reduction Catalyst Temperature Sensor Circuit
-  decision:
-    required_at: data/reviews/conflicts.yaml
-    options:
-    - accepted_difference - both statements are legitimate
-    - resolved --source <slug> - one statement is correct
-    - retained_as_alternatives - context makes both true
-    - rejected_source --source <slug> - the source is wrong here
-    command: autodoctor review-conflict 124dd7409cfa83cd --accept --note '<why>' --reviewer '<name>'
-- fingerprint: d103f02c5c8c5b42
-  code: P2568
-  context_key: P2568|sae_j2012|generic:generic
-  context_type: generic
-  attribute: definition.en
-  conflict_type: definition_disagreement
-  similarity: 0.4275
-  risk_level: high
-  manufacturer: null
-  reason: 'generic code with risk ''high'' whose statements agree only 43%: publishing it unreviewed shows
-    the user a possibly wrong meaning for a safety-relevant fault'
-  statements:
-  - source: obdex
-    source_name: OBDex (foerbsnavi/OBDex)
-    licence: CC0-1.0
-    repo: https://github.com/foerbsnavi/OBDex
-    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
-    statement: Turbocharger Boost Control Position Sensor Circuit High — The turbocharger position sensor
-      signal is above the upper limit — short to supply, open ground or sensor failed high.
-  - source: wal33d
-    source_name: Wal33D dtc-database
-    licence: MIT
-    repo: https://github.com/Wal33D/dtc-database
-    commit: 04c43d72e7db7197658b6f72fe582c5076d9eee8
-    statement: Direct Ozone Reduction Catalyst Temperature Sensor Circuit Range/Performance
-  decision:
-    required_at: data/reviews/conflicts.yaml
-    options:
-    - accepted_difference - both statements are legitimate
-    - resolved --source <slug> - one statement is correct
-    - retained_as_alternatives - context makes both true
-    - rejected_source --source <slug> - the source is wrong here
-    command: autodoctor review-conflict d103f02c5c8c5b42 --accept --note '<why>' --reviewer '<name>'
 - fingerprint: c1deae54810a7f82
   code: P2BAB
   context_key: P2BAB|sae_j2012|generic:generic
@@ -464,7 +330,7 @@ conflicts:
     source_name: OBDex (foerbsnavi/OBDex)
     licence: CC0-1.0
     repo: https://github.com/foerbsnavi/OBDex
-    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
+    commit: 5e927da4941bca7a63838931126b12f481a4c428
     statement: NOx Exceedence — Reagent System Performance — The SCR system has detected that NOx emissions
       exceed the legal limit and the cause is traced to a performance fault in the reagent dosing system
       — for example a slow dosing pump, a clogged injector, or a frozen line that is not yet caught by
@@ -499,7 +365,7 @@ conflicts:
     source_name: OBDex (foerbsnavi/OBDex)
     licence: CC0-1.0
     repo: https://github.com/foerbsnavi/OBDex
-    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
+    commit: 5e927da4941bca7a63838931126b12f481a4c428
     statement: NOx Exceedence - Insufficient Reagent Quality — The diesel exhaust aftertreatment system
       detects elevated NOx levels combined with abnormal reagent (AdBlue/DEF) consumption, indicating
       that the reagent quality is insufficient or contaminated. Many regions trigger driver inducement
@@ -534,7 +400,7 @@ conflicts:
     source_name: OBDex (foerbsnavi/OBDex)
     licence: CC0-1.0
     repo: https://github.com/foerbsnavi/OBDex
-    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
+    commit: 5e927da4941bca7a63838931126b12f481a4c428
     statement: NOx Exceedence - Insufficient Reagent Consumption — The aftertreatment system detects elevated
       NOx emissions while reagent (AdBlue/DEF) consumption is below the expected level. Causes include
       clogged dosing injector, incorrect dosing rate or tampering.
@@ -568,7 +434,7 @@ conflicts:
     source_name: OBDex (foerbsnavi/OBDex)
     licence: CC0-1.0
     repo: https://github.com/foerbsnavi/OBDex
-    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
+    commit: 5e927da4941bca7a63838931126b12f481a4c428
     statement: NOx Exceedence - EGR System — NOx emissions are above the legal threshold and the ECU isolates
       the cause to the EGR system. EGR flow is too low or absent under operating conditions where NOx
       reduction is required.
@@ -602,7 +468,7 @@ conflicts:
     source_name: OBDex (foerbsnavi/OBDex)
     licence: CC0-1.0
     repo: https://github.com/foerbsnavi/OBDex
-    commit: a9d0220bdb993cd5f545ee762a0531463a2d0fbf
+    commit: 5e927da4941bca7a63838931126b12f481a4c428
     statement: NOx Sensor Heater Sense Circuit Range/Performance Bank 1 Sensor 1 — The heater sense feedback
       of NOx sensor 1 on bank 1 reports values that do not match expected operation. The sensor warm-up
       cycle does not behave as the diagnostic expects.
