@@ -1,0 +1,13 @@
+# Flutter / Dart
+.dart_tool/
+.packages
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+pubspec.lock
+*.iml
+.idea/
+android/local.properties
+
+# 65 MB reference database: staged by tool/stage_reference_db.py, never committed
+assets/db/*.sqlite

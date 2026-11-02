@@ -1,5 +1,5 @@
 pack: tier1-20261102
-generated_at: '2026-11-02T17:58:31Z'
+generated_at: '2026-11-02T18:11:46Z'
 tier: 1
 limit: 100
 warning: Review material only. Nothing in this file is approved content, no conflict is resolved here,
@@ -140,6 +140,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: CARB explicitly names it as an input to be monitored.
       category: monitoring_description
@@ -295,6 +297,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: CARB explicitly names it as an input to be monitored.
       category: monitoring_description
@@ -427,6 +431,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes: []
     quote_categories: []
     references:
@@ -562,6 +568,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes: []
     quote_categories: []
     references:
@@ -700,6 +708,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: 'P0488 is its function check: the actual position reported by the sensor deviates from
         the target for too long, or the position signal is implausible – typically a coked, stiff flap
@@ -848,6 +858,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: CARB explicitly names it as an input to be monitored.
       category: monitoring_description
@@ -992,6 +1004,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: CARB explicitly names it as an input to be monitored.
       category: monitoring_description
@@ -1134,6 +1148,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes: []
     quote_categories: []
     references:
@@ -1272,6 +1288,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: GM reads it in the engine module from about 2012 and uses it as an enabling condition of
         transmission monitors – hence type A, warning lamp after one trip, unlike cruise control codes.
@@ -1416,6 +1434,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: GM reads it in the engine module from about 2012 and uses it as an enabling condition of
         transmission monitors – hence type A, warning lamp after one trip, unlike cruise control codes.
@@ -1560,6 +1580,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: GM reads it in the engine module from about 2012 and uses it as an enabling condition of
         transmission monitors – hence type A, warning lamp after one trip, unlike cruise control codes.
@@ -1716,6 +1738,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: 'With P060D the module''s own cross-check of the pedal value fails: two processors (GM:
         main and ''motor'' processor) calculate pedal position independently and must agree, and an active
@@ -1889,6 +1913,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: 'The throttle body also has two position sensor tracks, and the module checks whether it
         can still detect a short between them: during an active test one track is influenced briefly,
@@ -2047,6 +2073,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: P061F monitors the throttle position controller inside the engine module and its communication
         with the main processor.
@@ -2202,6 +2230,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes: []
     quote_categories: []
     references:
@@ -2346,6 +2376,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: The module compares target and actual angle and the duty cycle the motor needs;
       category: monitoring_description
@@ -2485,6 +2517,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: No manufacturer document or patent available to us describes this check;
       category: non_procedure
@@ -2611,6 +2645,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes: []
     quote_categories: []
     references:
@@ -2730,6 +2766,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes: []
     quote_categories: []
     references:
@@ -2846,6 +2884,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes: []
     quote_categories: []
     references:
@@ -2962,6 +3002,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: The TAC monitor commanded an engine shutdown because throttle authority can no longer be
         guaranteed safely.
@@ -3081,6 +3123,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: The TAC monitor restricts maximum throttle opening as a safety response to a TAC fault.
       category: monitoring_description
@@ -3199,6 +3243,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: The TAC monitor caps engine speed at a fixed limp-home rpm because it can no longer trust
         the throttle response.
@@ -3336,6 +3382,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: The engine computer checks whether position signal B reports a plausible value when the
         throttle or pedal rests against its lower mechanical stop.
@@ -3482,6 +3530,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: The controller learns or expects a minimum reading within a tolerance band and flags a
         fault when the learned value falls outside it.
@@ -3622,6 +3672,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: On Ford and GM drive-by-wire systems D is the first accelerator pedal sensor, so the code
         means the pedal's idle reading is outside the expected window, for example because the pedal does
@@ -3762,6 +3814,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: The code covers the rest-position check of signal E.
       category: non_procedure
@@ -3897,6 +3951,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: P2117 is the minimum-stop check for signal F.
       category: non_procedure
@@ -4051,6 +4107,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: This is a mechanical performance check of the electronic throttle body.
       category: technical_explanation
@@ -4203,6 +4261,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes: []
     quote_categories: []
     references:
@@ -4348,6 +4408,8 @@ entries:
       measurement_mentions: []
       source: obdex description
       review_status: quoted_unreviewed
+    diagnostic_quotes_total: 1
+    quotes_truncated: false
     other_quotes:
     - text_en: CARB requires circuit monitoring of input sensors;
       category: non_procedure
@@ -4470,6 +4532,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes: []
     quote_categories: []
     references:
@@ -4584,6 +4648,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes: []
     quote_categories: []
     references:
@@ -4686,6 +4752,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: Reading cannot be used reliably for control.
       category: non_procedure
@@ -4795,6 +4863,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: Reading cannot be used reliably for control.
       category: non_procedure
@@ -4905,6 +4975,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: Reading cannot be used reliably for control.
       category: non_procedure
@@ -5015,6 +5087,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: Reading cannot be used reliably for control.
       category: non_procedure
@@ -5138,6 +5212,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes: []
     quote_categories: []
     references:
@@ -5258,6 +5334,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes: []
     quote_categories: []
     references:
@@ -5387,6 +5465,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: Throttle control affects emissions, so CARB demands monitoring and a MIL is likely.
       category: non_procedure
@@ -5527,6 +5607,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: 'U0408 points to messages from the throttle actuator control module that the receiver,
         usually the ECM/PCM, judges invalid: implausible content, a failed checksum or counter, or a value
@@ -5654,6 +5736,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes: []
     quote_categories: []
     references:
@@ -5772,6 +5856,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes: []
     quote_categories: []
     references:
@@ -5888,6 +5974,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: Distinct from P2138 which monitors the pedal pair — P2135 monitors the throttle-body pair
         on drive-by-wire systems.
@@ -6007,6 +6095,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes: []
     quote_categories: []
     references:
@@ -6116,6 +6206,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes: []
     quote_categories: []
     references:
@@ -6224,6 +6316,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes: []
     quote_categories: []
     references:
@@ -6356,6 +6450,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: The engine control module compares the air quantity measured by the manifold pressure and/or
         mass air flow sensor with the quantity the throttle position leads it to expect.
@@ -6506,6 +6602,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: The control module compares the air mass measured by the air flow meter with the air mass
         it expects from a model, for example from manifold pressure, boost pressure and throttle position.
@@ -6636,6 +6734,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: The control module compares the air mass measured by the air flow meter with the air mass
         it expects from a model, for example from manifold pressure, boost pressure and throttle position.
@@ -6770,6 +6870,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: The control module compares the air mass measured by the air flow meter with the air mass
         it expects from a model, for example from manifold pressure, boost pressure and throttle position.
@@ -6901,6 +7003,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: The control module compares the air mass measured by the air flow meter with the air mass
         it expects from a model, for example from manifold pressure, boost pressure and throttle position.
@@ -7034,6 +7138,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: With the engine stopped, all pressure sensors in the intake system (manifold pressure,
         boost pressure, barometric pressure) should read ambient pressure;
@@ -7171,6 +7277,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: This is the bank 2 counterpart of the multiple pressure sensor check for engines with separate
         pressure measurement per bank, such as twin-turbo V engines.
@@ -7327,6 +7435,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: The manifold absolute pressure (MAP) sensor measures the pressure behind the throttle;
       category: non_procedure
@@ -7476,6 +7586,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: The manifold absolute pressure (MAP) sensor measures the pressure behind the throttle;
       category: non_procedure
@@ -7642,6 +7754,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: The manifold absolute pressure (MAP) sensor measures the pressure behind the throttle;
       category: non_procedure
@@ -7794,6 +7908,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: The manifold absolute pressure (MAP) sensor measures the pressure behind the throttle;
       category: non_procedure
@@ -7948,6 +8064,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes: []
     quote_categories: []
     references:
@@ -8104,6 +8222,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: Manufacturers check this very differently.
       category: non_procedure
@@ -8272,6 +8392,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes: []
     quote_categories: []
     references:
@@ -8429,6 +8551,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes: []
     quote_categories: []
     references:
@@ -8583,6 +8707,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: GM does not use P0124 in the tables checked – its low/high monitors already catch intermittent
         shorts.
@@ -8728,6 +8854,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: With electronic throttle control the throttle body carries two position sensors, A and
         B, usually with opposite or offset signals, and the engine module compares them (correlation code
@@ -8871,6 +8999,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: With electronic throttle control the throttle body carries two position sensors, A and
         B, usually with opposite or offset signals, and the engine module compares them (correlation code
@@ -9021,6 +9151,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: With electronic throttle control the throttle body carries two position sensors, A and
         B, usually with opposite or offset signals, and the engine module compares them (correlation code
@@ -9167,6 +9299,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: With electronic throttle control the throttle body carries two position sensors, A and
         B, usually with opposite or offset signals, and the engine module compares them (correlation code
@@ -9304,6 +9438,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: With electronic throttle control the throttle body carries two position sensors, A and
         B, usually with opposite or offset signals, and the engine module compares them (correlation code
@@ -9439,6 +9575,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes: []
     quote_categories: []
     references:
@@ -9565,6 +9703,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: 'The logic follows the sibling checks on sensors A and B (Bosch: more than 9 % deviation,
         Ford: more than 7 degrees).'
@@ -9708,6 +9848,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: the description follows CARB's input monitoring requirement and the sensor A/B siblings.
       category: technical_explanation
@@ -9850,6 +9992,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: the description follows CARB's input monitoring requirement and the sensor A/B siblings.
       category: technical_explanation
@@ -9984,6 +10128,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes: []
     quote_categories: []
     references:
@@ -10131,6 +10277,8 @@ entries:
       measurement_mentions: []
       source: obdex description
       review_status: quoted_unreviewed
+    diagnostic_quotes_total: 1
+    quotes_truncated: false
     other_quotes:
     - text_en: Saab's 2.8 V6 checks this once per trip with the ignition on before starting and sets the
         code at a difference of more than 12 kPa, with the warning light and limp mode limited to 170
@@ -10272,6 +10420,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: 'P023E is the counterpart of P023D: manifold pressure is compared with boost sensor B,
         and with the engine stopped both must read ambient pressure.'
@@ -10411,6 +10561,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes: []
     quote_categories: []
     references:
@@ -10548,6 +10700,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes: []
     quote_categories: []
     references:
@@ -10684,6 +10838,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes: []
     quote_categories: []
     references:
@@ -10823,6 +10979,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes: []
     quote_categories: []
     references:
@@ -10960,6 +11118,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes: []
     quote_categories: []
     references:
@@ -11094,6 +11254,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes: []
     quote_categories: []
     references:
@@ -11225,6 +11387,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: no manufacturer using P02E6 was found, so the description follows CARB's input monitoring
         requirement and the documented siblings (GM 0.40/4.72 V, Ford 0.08/4.92 V).
@@ -11357,6 +11521,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes: []
     quote_categories: []
     references:
@@ -11494,6 +11660,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes: []
     quote_categories: []
     references:
@@ -11633,6 +11801,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes: []
     quote_categories: []
     references:
@@ -11769,6 +11939,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: No manufacturer using P02EA was found – GM reports such faults under its own codes, Ford
         does not use it – so the description follows CARB's input monitoring requirement.
@@ -11904,6 +12076,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes: []
     quote_categories: []
     references:
@@ -12037,6 +12211,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: P02ED means the measured air mass stays below target with the control at its limit – too
         much EGR, a throttle stuck closed or a clogged intake – for 10 s (6.7) or 5 s (3.0).
@@ -12176,6 +12352,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: Ford's 6.7 and 3.0 diesels check it once after each learning run and set the code when
         the learned minimum offset is outside ±10 (6.7) or ±6.7 (3.0) – Ford only evaluates the minimum
@@ -12313,6 +12491,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: GM (from about 2012) and Stellantis read it in the engine module, Saab's 9-4X and 9-5 in
         the body module;
@@ -12453,6 +12633,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: GM (from about 2012) and Stellantis read it in the engine module, Saab's 9-4X and 9-5 in
         the body module;
@@ -12599,6 +12781,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: CARB requires inputs used by other diagnoses to be monitored.
       category: monitoring_description
@@ -12729,6 +12913,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: CARB requires inputs used by other diagnoses to be monitored.
       category: monitoring_description
@@ -12867,6 +13053,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: CARB requires inputs used by other diagnoses to be monitored.
       category: monitoring_description
@@ -13008,6 +13196,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: CARB requires inputs used by other diagnoses to be monitored.
       category: monitoring_description
@@ -13143,6 +13333,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: CARB requires inputs used by other diagnoses to be monitored.
       category: monitoring_description
@@ -13267,6 +13459,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes: []
     quote_categories: []
     references:
@@ -13386,6 +13580,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes: []
     quote_categories: []
     references:
@@ -13501,6 +13697,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes:
     - text_en: Drive-by-wire systems compare two or three independent channels to detect a faulty potentiometer
         track.
@@ -13616,6 +13814,8 @@ entries:
     note: The source cites references but contains no diagnostic-check sentence. A technician must write
       the procedure against these references; nothing is generated here.
     quoted_checks: []
+    diagnostic_quotes_total: 0
+    quotes_truncated: false
     other_quotes: []
     quote_categories: []
     references:

@@ -41,6 +41,9 @@ class TranslationEntry:
     context_target: str | None = None
     source_url: str | None = None
     file_path: str = ""
+    #: free-text note from the draft saying which make/model the source sentence was
+    #: printed for. Never translated from the description, only what the file states.
+    context_ar: str | None = None
 
     @property
     def context_key(self) -> str:
@@ -117,6 +120,7 @@ def load_translations(
                     context_target=context_target,
                     source_url=clean_text(raw.get("source_url")),
                     file_path=str(path.relative_to(settings.root)),
+                    context_ar=clean_text(raw.get("context_ar")),
                 )
             )
     return entries, warnings

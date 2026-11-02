@@ -51,6 +51,11 @@ CONTENT_TABLES = [
     "dtc_evidence_sources",
     "dtc_related_codes",
     "dtc_flags",
+    # schema 4: client content derived from the rows above
+    "source_quotes",
+    "procedure_scope",
+    "translation_drafts",
+    "dtc_priority",
     "conflicts",
     "conflict_evidence",
     "translations",
@@ -369,6 +374,8 @@ def _populate_bundle(
         if exists:
             conn.execute(f"DROP TABLE main.{table}")
     conn.executescript(APP_VIEW_SQL)
+    if _has_tables(conn, ("source_quotes", "dtc_priority")):
+        conn.executescript(APP_CONTENT_VIEW_SQL)
     conn.execute("PRAGMA foreign_key_check")
 
     if source_set == "public":
@@ -382,7 +389,7 @@ def _populate_bundle(
             """
             INSERT INTO db_versions (version, built_at, schema_version, source_set,
                 sources_json, counts_json, validation_json, test_status, notes)
-            VALUES (?, datetime('now'), '3', ?,
+            VALUES (?, datetime('now'), '4', ?,
                 (SELECT json_group_array(slug) FROM data_sources),
                 '{}', '{}', 'passed', 'mobile app bundle (content + compact provenance)')
             ON CONFLICT(version) DO UPDATE SET
@@ -415,6 +422,15 @@ def _populate_bundle(
     )
 
 
+def _has_tables(conn: sqlite3.Connection, names: tuple[str, ...]) -> bool:
+    """True when every named table survived the copy stage."""
+    present = {
+        str(row[0])
+        for row in conn.execute("SELECT name FROM main.sqlite_master WHERE type = 'table'")
+    }
+    return all(name in present for name in names)
+
+
 def _shrink(path: Path) -> None:
     conn = sqlite3.connect(path)
     try:
@@ -438,6 +454,9 @@ REQUIRED_VIEWS = (
     "v_manufacturers",
     "v_pids",
     "v_vehicles",
+    "v_dtc_source_quotes",
+    "v_dtc_priority",
+    "v_translation_drafts",
 )
 
 
@@ -462,6 +481,33 @@ def _verify_views(path: Path) -> None:
         raise RuntimeError(
             f"app bundle {path.name} is missing view(s): {', '.join(missing)}"
         )
+
+
+APP_CONTENT_VIEW_SQL = """
+DROP VIEW IF EXISTS v_dtc_source_quotes;
+CREATE VIEW v_dtc_source_quotes AS
+SELECT
+    c.id AS dtc_code_id, c.code, c.context_key, q.ordinal, q.text_en, q.category,
+    q.classification_rule, q.classification_status, q.quote_status,
+    p.approval_status, p.applicability
+FROM source_quotes q
+JOIN dtc_codes c ON c.id = q.dtc_code_id
+LEFT JOIN procedure_scope p ON p.dtc_code_id = c.id;
+
+DROP VIEW IF EXISTS v_dtc_priority;
+CREATE VIEW v_dtc_priority AS
+SELECT c.id AS dtc_code_id, c.code, c.context_key, p.tier, p.score, p.reasons_json,
+       p.open_conflicts, p.critical_conflicts
+FROM dtc_priority p
+JOIN dtc_codes c ON c.id = p.dtc_code_id;
+
+DROP VIEW IF EXISTS v_translation_drafts;
+CREATE VIEW v_translation_drafts AS
+SELECT c.id AS dtc_code_id, c.code, c.context_key, t.language, t.title, t.description,
+       t.context_ar, t.reviewed, t.source_url, t.file_path
+FROM translation_drafts t
+JOIN dtc_codes c ON c.id = t.dtc_code_id;
+"""
 
 
 def schema_version() -> str:
