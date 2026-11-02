@@ -1,0 +1,21 @@
+name: autodoctor_db_harness
+description: Verifies that the AutoDoctor SQLite bundle answers the documented contract queries.
+publish_to: none
+version: 0.1.0
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  sqflite: ^2.3.0
+  path: ^1.9.0
+  path_provider: ^2.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  integration_test:
+    sdk: flutter
+  sqflite_common_ffi: ^2.3.0

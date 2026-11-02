@@ -26,7 +26,11 @@ def _scalar(conn: sqlite3.Connection, query: str) -> int:
 
 
 def run_database_checks(
-    conn: sqlite3.Connection, *, source_set: str = "private"
+    conn: sqlite3.Connection,
+    *,
+    source_set: str = "private",
+    allow_critical_conflicts: str | None = None,
+    override_reviewer: str | None = None,
 ) -> list[DatabaseCheck]:
     """Evaluate the release gates.
 
@@ -254,6 +258,50 @@ def run_database_checks(
             leak,
         )
     )
+
+    # D012 - a release must not ship a critical conflict that nobody reviewed.
+    # "Critical" is the triage band (generic code, high/critical risk, statements
+    # less than 75 % similar): the user could read the wrong meaning for a
+    # safety-relevant fault. A human decision in data/reviews/conflicts.yaml moves
+    # the conflict out of this count; the triage band itself is never a decision.
+    from ..conflict_resolution.triage import (
+        unreviewed_critical_codes,
+        unreviewed_critical_count,
+    )
+
+    unreviewed = unreviewed_critical_count(conn)
+    if allow_critical_conflicts:
+        checks.append(
+            DatabaseCheck(
+                "D012_critical_conflicts",
+                "no unreviewed critical conflict is published",
+                True,
+                True,
+                (
+                    f"OVERRIDDEN by {override_reviewer or 'unknown'}: {unreviewed} unreviewed "
+                    f"critical conflict(s) published. Reason: {allow_critical_conflicts}"
+                ),
+                unreviewed,
+            )
+        )
+    else:
+        sample = ", ".join(unreviewed_critical_codes(conn, limit=5))
+        checks.append(
+            DatabaseCheck(
+                "D012_critical_conflicts",
+                "no unreviewed critical conflict is published",
+                True,
+                unreviewed == 0,
+                (
+                    "0 unreviewed critical conflicts"
+                    if unreviewed == 0
+                    else f"{unreviewed} unreviewed critical conflict(s); first: {sample}. "
+                    "Review them (autodoctor review-batch / review-conflict) or build with "
+                    "--allow-unreviewed-critical '<reason>' to publish deliberately"
+                ),
+                unreviewed,
+            )
+        )
 
     return checks
 

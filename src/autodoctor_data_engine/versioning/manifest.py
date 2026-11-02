@@ -43,6 +43,9 @@ class Manifest:
     test_status: str = "pending"
     notes: str | None = None
     app_bundle: dict[str, Any] | None = None
+    #: release gates that were deliberately overridden, with the reason recorded
+    gate_overrides: list[dict[str, Any]] = field(default_factory=list)
+    warnings: list[str] = field(default_factory=list)
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -94,6 +97,8 @@ def build_manifest(
     sources_excluded: list[dict[str, Any]] | None = None,
     notes: str | None = None,
     app_bundle: dict[str, Any] | None = None,
+    gate_overrides: list[dict[str, Any]] | None = None,
+    warnings: list[str] | None = None,
 ) -> Manifest:
     return Manifest(
         version=version,
@@ -113,6 +118,8 @@ def build_manifest(
         test_status=test_status,
         notes=notes,
         app_bundle=app_bundle,
+        gate_overrides=list(gate_overrides or []),
+        warnings=list(warnings or []),
     )
 
 
