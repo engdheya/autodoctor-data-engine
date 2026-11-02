@@ -1,0 +1,14 @@
+phase,start,end,deliverable,evidence_artifact,owner,gate
+P0 - capability audit,2026-11-02,2026-11-02,What the four licensed sources actually contain per dimension,docs/DATA_AVAILABILITY_AUDIT.md,engine done
+P1 - production build,2026-11-02,2026-11-04,Full-envelope SQLite with tables/relations/indexes/views + manifest + SHA-256,data/exports/autodoctor-0.9.0-*.sqlite + manifest,engine,12 DB checks
+P2 - conflict packs,2026-11-03,2026-11-05,All 592 critical conflicts as decision packs with evidence and a written recommendation per conflict,data/reviews/batches/*.yaml + decision workbook,engine,generated
+P3 - Arabic drafts,2026-11-04,2026-11-08,Machine-draft Arabic for the priority code set + glossary + reviewer workbook,data/translations/ar/drafts/*.yaml,engine,marked machine_draft
+P4 - procedure drafts,2026-11-04,2026-11-08,Draft inspection procedures for priority codes with tools and pass/fail limits,data/procedures/drafts/*.yaml,engine,marked unreviewed_draft
+P5 - reports,2026-11-05,2026-11-08,Coverage + conflicts + licences + test results + manifest index,docs/*.md + data/reports/*,engine,matches manifest
+H1 - Arabic human review,2026-11-08,2026-11-12,Reviewer approves or rejects every draft string,data/translations/ar/reviewed.yaml,user reviewer,required for v1.0.0
+H2 - procedure sign-off,2026-11-08,2026-11-12,Technician approves or rewrites every draft procedure,data/procedures/reviewed.yaml,user technician,required for v1.0.0
+H3 - conflict decisions,2026-11-05,2026-11-12,Human decision recorded per critical conflict,data/reviews/conflicts.yaml,user reviewer,gate D012 enforced in code
+H4 - licence decision on vehicle/ECU data,2026-11-05,2026-11-12,Legal sign-off on ODbL and CC-BY-SA sources,LEGAL_REVIEW_REQUEST.md,user counsel,blocks vehicles/ECUs
+H5 - Android run + CI,2026-11-08,2026-11-12,Device test output and workflow committed,docs/ANDROID_FLUTTER_VERIFICATION.md,user with SDK + repo admin,required for v1.0.0
+P6 - integration of reviewed content,2026-11-12,2026-11-14,Rebuild with reviewed Arabic/procedures/decisions and re-run all gates,build logs + manifest,engine,all gates green
+P7 - release,2026-11-14,2026-11-16,Final artifacts + acceptance table + v1.0.0 tag only if every acceptance line is green,release manifest,engine + user sign-off,acceptance §19
