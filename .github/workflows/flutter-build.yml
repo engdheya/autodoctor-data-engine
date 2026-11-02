@@ -1,0 +1,102 @@
+name: Flutter app
+
+# Builds the Android app from source. This is the only place an APK is produced: the
+# development environment has no Flutter SDK, so "it compiles" is proven here, not claimed.
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "app/**"
+      - "db/schema.sql"
+      - "src/**"
+      - ".github/workflows/flutter-build.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: flutter-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: analyze, test, build debug APK
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.24.5"
+          channel: stable
+          cache: true
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install the data engine
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+
+      - name: Fetch upstream sources
+        run: autodoctor fetch-sources
+
+      - name: Import and build the public bundle
+        # D012 is overridden deliberately: the 14 critical conflicts still await a qualified
+        # technician, so this bundle is a verification build and must not be published.
+        run: |
+          autodoctor import --all
+          autodoctor build-db \
+            --version 0.9.1 \
+            --source-set public \
+            --allow-unreviewed-critical "CI verification bundle; not for publication" \
+            --override-reviewer ci-data-engineering
+
+      - name: Stage the bundle into the app assets
+        run: python3 app/tool/stage_reference_db.py
+
+      - name: Resolve packages
+        working-directory: app
+        run: flutter pub get
+
+      - name: Analyze
+        working-directory: app
+        run: flutter analyze
+
+      - name: Test
+        working-directory: app
+        run: flutter test --reporter expanded
+
+      - name: Generate the Android platform folder
+        working-directory: app
+        run: bash tool/bootstrap_android.sh
+
+      - name: Build debug APK
+        working-directory: app
+        run: flutter build apk --debug --target-platform android-arm64
+
+      - name: Record the artifact digest
+        working-directory: app
+        run: |
+          APK=$(find build/app/outputs/flutter-apk -name "*.apk" | head -1)
+          echo "APK: $APK"
+          sha256sum "$APK" | tee apk-sha256.txt
+          ls -lh "$APK"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: autodoctor-debug-apk
+          path: |
+            app/build/app/outputs/flutter-apk/*.apk
+            app/apk-sha256.txt
+          retention-days: 30

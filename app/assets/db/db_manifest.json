@@ -1,0 +1,27 @@
+{
+  "version": "0.9.1",
+  "schema_version": 4,
+  "file_name": "autodoctor-app-0.9.1-public.sqlite",
+  "sha256": "4741b4c6ac385c9f90e39cdf4c5e3fa89f8ba879ed88a5b998721c41237df98c",
+  "bytes": 65884160,
+  "required_views": [
+    "v_dtc_causes",
+    "v_dtc_conflicts",
+    "v_dtc_lookup",
+    "v_dtc_priority",
+    "v_dtc_provenance",
+    "v_dtc_related",
+    "v_dtc_repairs",
+    "v_dtc_search",
+    "v_dtc_source_quotes",
+    "v_dtc_summary",
+    "v_dtc_symptoms",
+    "v_dtc_tests",
+    "v_manufacturers",
+    "v_pids",
+    "v_translation_drafts",
+    "v_vehicles"
+  ],
+  "generated_at": "2026-11-02T18:44:53Z",
+  "source": "data/exports/autodoctor-app-0.9.1-public.sqlite"
+}
