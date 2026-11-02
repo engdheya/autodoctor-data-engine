@@ -1,0 +1,93 @@
+# مسرد المصطلحات العربية الموحّد — يُستخدم في كل مسوّدات الترجمة.
+#
+# القاعدة: المصطلح التقني القياسي يبقى بالإنجليزية داخل النص العربي (ECU، CAN، ABS،
+# limp mode، DTC) لأن الفني العربي يستخدمه بهذه الصورة، وما له مقابل عربي راسخ
+# يُترجم ويُذكر أصله الإنجليزي بين قوسين عند أول ورود.
+version: 1
+terms:
+  - en: Throttle
+    ar: الخانق
+  - en: Throttle Actuator Control (TAC)
+    ar: التحكم في مشغّل الخانق (TAC)
+  - en: Throttle body
+    ar: جسم الخانق
+  - en: Accelerator pedal
+    ar: دواسة الوقود
+  - en: Brake pedal
+    ar: دواسة الفرامل
+  - en: Pedal position sensor
+    ar: حساس موضع الدواسة
+  - en: Sensor
+    ar: حساس
+  - en: Circuit
+    ar: دائرة
+  - en: Open circuit
+    ar: قطع في الدائرة
+  - en: Short to ground
+    ar: قصر إلى الأرضي
+  - en: Short to supply
+    ar: قصر إلى التغذية
+  - en: Circuit low
+    ar: إشارة منخفضة
+  - en: Circuit high
+    ar: إشارة عالية
+  - en: Range/Performance
+    ar: المدى والأداء
+  - en: Intermittent
+    ar: متقطعة
+  - en: Erratic
+    ar: غير منتظمة
+  - en: Correlation
+    ar: ترابط الجهود
+  - en: Lost communication
+    ar: انقطاع الاتصال
+  - en: Invalid data
+    ar: بيانات غير صالحة
+  - en: Software incompatibility
+    ar: عدم توافق برمجي
+  - en: Forced idle
+    ar: خمول إجباري
+  - en: Forced limited power
+    ar: قدرة محدودة إجباريًا
+  - en: Forced limited RPM
+    ar: دورات محدودة إجباريًا
+  - en: Forced engine shutdown
+    ar: إيقاف المحرك إجباريًا
+  - en: Limp mode
+    ar: limp mode (وضع الحماية)
+  - en: Learning limit
+    ar: حد التعلّم
+  - en: Minimum stop
+    ar: موضع الوقفة الدنيا
+  - en: Stuck open
+    ar: عالق مفتوح
+  - en: Stuck closed
+    ar: عالق مغلق
+  - en: Manifold absolute pressure (MAP)
+    ar: ضغط مجرى السحب المطلق (MAP)
+  - en: Mass/volume air flow (MAF)
+    ar: تدفق الهواء (MAF)
+  - en: Intake air
+    ar: هواء السحب
+  - en: Boost pressure sensor
+    ar: حساس الضغط التعزيزي
+  - en: Turbocharger / supercharger
+    ar: الشاحن التوربيني / الشاحن الميكانيكي
+  - en: Diesel intake air flow control
+    ar: التحكم في تدفق هواء السحب (ديزل)
+  - en: Exhaust gas recirculation (EGR)
+    ar: إعادة تدوير غاز العادم (EGR)
+  - en: ABS control module
+    ar: وحدة تحكم ABS
+  - en: System voltage
+    ar: جهد النظام
+  - en: Bank 1 / Bank 2
+    ar: الصف 1 / الصف 2
+  - en: Control module
+    ar: وحدة التحكم
+  - en: Wiring harness
+    ar: ضفيرة الأسلاك
+  - en: Connector
+    ar: الموصل
+  - en: MIL (malfunction indicator lamp)
+    ar: لمبة الأعطال (MIL)

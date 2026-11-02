@@ -1,0 +1,3876 @@
+pack: tier2-20261102
+generated_at: '2026-11-02T16:03:31Z'
+tier: 2
+limit: 40
+warning: Review material only. Nothing in this file is approved content, no conflict is resolved here,
+  and no inspection value or tool list has been invented.
+summary:
+  entries: 40
+  arabic_drafts: 0
+  arabic_missing: 40
+  entries_with_quoted_checks: 9
+  entries_with_references: 40
+  entries_without_reference: 0
+  entries_with_open_conflicts: 0
+entries:
+- priority_position: 1
+  code: P0A08
+  context_key: P0A08|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 2
+  score: 11.0
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - 'vital component(s): hybrid_control_module'
+  - 2 independent source(s) state this code
+  - 2 manufacturer/generic contexts for the same code
+  - 4 cause statement(s) available for review
+  english:
+    title_en: DC/DC Converter Status Circuit
+    description_en: 'General fault on the status line through which the DC/DC converter reports its condition
+      to the hybrid control module. The converter replaces the alternator: it steps the traction battery
+      voltage down to charge the 12 V battery. When its self-diagnosis detects an internal problem it
+      signals this back, and the controller reacts. P0A08 is the broad verdict for an unusable or implausible
+      status signal; a signal stuck low or high has its own codes P0A09 and P0A10. No manufacturer documents
+      P0A08 publicly in an official source. Toyota''s Prius c recall shows the consequence of a dead converter:
+      warning lights, then a draining 12 V battery that can shut the hybrid system down. Drivers should
+      not keep driving for long.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Internal fault in the DC/DC converter reported by its self-diagnosis
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Damaged or corroded status line or connector between converter and hybrid control module
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Converter overheating due to a fault in the inverter/converter coolant loop
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  - text_en: Faulty input stage in the hybrid control module
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Hybrid system, battery or master warning light on
+    source: obdex
+    review_status: source_reported
+  - text_en: 12 V battery is no longer charged and voltage drops while driving
+    source: obdex
+    review_status: source_reported
+  - text_en: Electrical consumers fail and the hybrid system may finally shut down
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: false
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; components:
+      dcdc_converter, hybrid_control_module, wiring_harness'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+      kind: source
+      label: null
+    - url: https://patents.google.com/patent/JP2017153316A/en
+      kind: source
+      label: null
+    - url: https://static.nhtsa.gov/odi/rcl/2019/RCLRPT-19V491-5318.PDF
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 2
+  code: P2711
+  context_key: P2711|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 2
+  score: 11.0
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - 'vital component(s): transmission_internal'
+  - 2 independent source(s) state this code
+  - 2 manufacturer/generic contexts for the same code
+  - 2 cause statement(s) available for review
+  english:
+    title_en: Unexpected Mechanical Gear Disengagement
+    description_en: The transmission disengaged mechanically without a corresponding command. The vehicle
+      can free-wheel, which is a safety concern. Often a hydraulic or hardware fault inside the gearbox.
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Clutch piston seal failure releases gear
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Sudden hydraulic pressure loss
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  symptoms: []
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: false
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; components:
+      hydraulic_control_unit, transmission_internal'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/Automatic_transmission
+      kind: source
+      label: null
+    - url: https://en.wikipedia.org/wiki/On-board_diagnostics
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 3
+  code: P2716
+  context_key: P2716|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 2
+  score: 11.0
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - 'vital component(s): transmission_pressure_solenoid, transmission_wiring'
+  - 2 independent source(s) state this code
+  - 2 manufacturer/generic contexts for the same code
+  - 2 cause statement(s) available for review
+  english:
+    title_en: Pressure Control Solenoid D Electrical
+    description_en: The TCM detects an electrical fault on transmission pressure control solenoid D. Hydraulic
+      pressure cannot be modulated as expected, causing harsh or slipping shifts.
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Internal solenoid fault
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Wiring or connector fault
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  symptoms: []
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: false
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; components:
+      tcm, transmission_pressure_solenoid, transmission_wiring'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/Automatic_transmission
+      kind: source
+      label: null
+    - url: https://en.wikipedia.org/wiki/On-board_diagnostics
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 4
+  code: P2723
+  context_key: P2723|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 2
+  score: 11.0
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - 'vital component(s): transmission_pressure_solenoid'
+  - 2 independent source(s) state this code
+  - 2 manufacturer/generic contexts for the same code
+  - 3 cause statement(s) available for review
+  english:
+    title_en: Pressure Control Solenoid E Stuck Off
+    description_en: The TCM detects that pressure control solenoid E is stuck in the de-energised position.
+      The corresponding clutch or band cannot be applied, leading to gear slip or loss of certain gears.
+    verification_status: source_reported
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Solenoid mechanically stuck
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Contaminated transmission fluid
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Carbon or debris buildup preventing free movement
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms: []
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: false
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; components:
+      transmission_pressure_solenoid, valve_body'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/Automatic_transmission
+      kind: source
+      label: null
+    - url: https://en.wikipedia.org/wiki/On-board_diagnostics
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 5
+  code: P2803
+  context_key: P2803|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 2
+  score: 11.0
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - 'vital component(s): transmission_range_sensor_b'
+  - 2 independent source(s) state this code
+  - 2 manufacturer/generic contexts for the same code
+  - 3 cause statement(s) available for review
+  english:
+    title_en: Transmission Range Sensor B Circuit High
+    description_en: Voltage on the range sensor B signal line is above the expected window. Wire shorted
+      to B+ or sensor open.
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Signal wire shorted to B+
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Open range sensor B
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Connector pins corroded - high contact resistance
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine or transmission warning light on
+    source: obdex
+    review_status: source_reported
+  - text_en: Harsh, delayed, or missing shifts
+    source: obdex
+    review_status: source_reported
+  - text_en: Possible limp mode (locked in one gear)
+    source: obdex
+    review_status: source_reported
+  - text_en: Slipping or shuddering during gear changes
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: false
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; components:
+      tcm, transmission_range_sensor_b, wiring_harness'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/Automatic_transmission
+      kind: source
+      label: null
+    - url: https://en.wikipedia.org/wiki/Gear_stick
+      kind: source
+      label: null
+    - url: https://github.com/Wal33D/dtc-database
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 6
+  code: P2810
+  context_key: P2810|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 2
+  score: 11.0
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - 'vital component(s): transmission_wiring'
+  - 2 independent source(s) state this code
+  - 2 manufacturer/generic contexts for the same code
+  - 2 cause statement(s) available for review
+  english:
+    title_en: Pressure Control Solenoid G Electrical
+    description_en: The TCM detects an electrical fault on transmission pressure control solenoid G. Hydraulic
+      pressure cannot be modulated as expected, causing harsh or slipping shifts.
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Internal solenoid fault
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Wiring or connector fault
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  symptoms: []
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: false
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; components:
+      pressure_control_solenoid_g, tcm, transmission_wiring'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/Automatic_transmission
+      kind: source
+      label: null
+    - url: https://en.wikipedia.org/wiki/Solenoid_valve
+      kind: source
+      label: null
+    - url: https://github.com/Wal33D/dtc-database
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 7
+  code: U0001
+  context_key: U0001|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: network
+  tier: 2
+  score: 11.0
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - 'vital component(s): can_bus_wiring'
+  - 2 independent source(s) state this code
+  - 2 manufacturer/generic contexts for the same code
+  - 3 cause statement(s) available for review
+  english:
+    title_en: High Speed CAN Communication Bus
+    description_en: A general fault on the high-speed CAN bus has been detected. This bus typically connects
+      powertrain modules (ECM, TCM, ABS) at 500 kbit/s and a fault disables communication between them,
+      often triggering multiple secondary DTCs in other modules.
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: CAN-High and CAN-Low shorted together
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Open circuit in CAN bus wiring
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Terminating resistor failed (not 60 ohms across bus)
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Multiple warning lights may illuminate
+    source: obdex
+    review_status: source_reported
+  - text_en: Affected modules may go into limp mode or shut down
+    source: obdex
+    review_status: source_reported
+  - text_en: Specific functions inoperative depending on module
+    source: obdex
+    review_status: source_reported
+  - text_en: Diagnostic tools may show communication faults
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: false
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; components:
+      can_bus_wiring, can_terminating_resistor, control_module'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: iso:11898
+      kind: reference
+      label: iso:11898
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/CAN_bus
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 8
+  code: U0073
+  context_key: U0073|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: network
+  tier: 2
+  score: 11.0
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - 'vital component(s): can_bus_wiring'
+  - 2 independent source(s) state this code
+  - 2 manufacturer/generic contexts for the same code
+  - 3 cause statement(s) available for review
+  english:
+    title_en: Control Module Communication Bus "A" Off
+    description_en: A control module has detected that the communication bus is non-functional and has
+      shut its bus interface off. Affects multiple modules at once because none can communicate; on most
+      vehicles the dashboard lights up with several warning lamps simultaneously.
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: CAN line shorted to supply or ground
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: One failing module pulling the bus down
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Terminating resistor failed
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Multiple warning lights may illuminate
+    source: obdex
+    review_status: source_reported
+  - text_en: Affected modules may go into limp mode or shut down
+    source: obdex
+    review_status: source_reported
+  - text_en: Specific functions inoperative depending on module
+    source: obdex
+    review_status: source_reported
+  - text_en: Diagnostic tools may show communication faults
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: false
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; components:
+      can_bus_wiring, can_terminating_resistor, control_module'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: iso:11898
+      kind: reference
+      label: iso:11898
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/CAN_bus
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 9
+  code: U0100
+  context_key: U0100|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: network
+  tier: 2
+  score: 11.0
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - 'vital component(s): ecm, can_bus_wiring'
+  - 2 independent source(s) state this code
+  - 2 manufacturer/generic contexts for the same code
+  - 3 cause statement(s) available for review
+  english:
+    title_en: Lost Communication with ECM/PCM "A"
+    description_en: The ECM/PCM "A" has stopped transmitting on the vehicle data bus, so other control
+      units no longer receive its messages. As this is the engine controller itself, the engine usually
+      will not start or run while the message is missing. Typical causes are loss of power or ground at
+      the module, an open or shorted CAN/LIN bus wire, a connector fault, or an internal module failure.
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: ECM unpowered (fuse, ground, supply wire)
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: CAN wiring to ECM broken
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: ECM internally failed
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Multiple warning lights may illuminate
+    source: obdex
+    review_status: source_reported
+  - text_en: Affected modules may go into limp mode or shut down
+    source: obdex
+    review_status: source_reported
+  - text_en: Specific functions inoperative depending on module
+    source: obdex
+    review_status: source_reported
+  - text_en: Diagnostic tools may show communication faults
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: false
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; components:
+      can_bus_wiring, ecm'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/CAN_bus
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 10
+  code: C0073
+  context_key: C0073|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: chassis
+  tier: 2
+  score: 10.5
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - 'vital component(s): ecm'
+  - 2 independent source(s) state this code
+  - 1 cause statement(s) available for review
+  english:
+    title_en: Delivered Driving Torque
+    description_en: Engine-delivered driving torque does not match TCS request.
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: ECM/TCS communication issue
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: ABS warning light on
+    source: obdex
+    review_status: source_reported
+  - text_en: ESC/stability control deactivated
+    source: obdex
+    review_status: source_reported
+  - text_en: Possible reduced brake assist
+    source: obdex
+    review_status: source_reported
+  - text_en: Speedometer may behave erratically
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: false
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; components:
+      ecm, tcs_module'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/Traction_control_system
+      kind: source
+      label: null
+    - url: https://github.com/Wal33D/dtc-database
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 11
+  code: C0074
+  context_key: C0074|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: chassis
+  tier: 2
+  score: 10.5
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - 'vital component(s): ecm'
+  - 2 independent source(s) state this code
+  - 1 cause statement(s) available for review
+  english:
+    title_en: Requested Driving Torque
+    description_en: Driving torque request from TCS rejected or out of range.
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: ECM/TCS communication issue
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: ABS warning light on
+    source: obdex
+    review_status: source_reported
+  - text_en: ESC/stability control deactivated
+    source: obdex
+    review_status: source_reported
+  - text_en: Possible reduced brake assist
+    source: obdex
+    review_status: source_reported
+  - text_en: Speedometer may behave erratically
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: false
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; components:
+      ecm, tcs_module'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/Traction_control_system
+      kind: source
+      label: null
+    - url: https://github.com/Wal33D/dtc-database
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 12
+  code: C0076
+  context_key: C0076|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: chassis
+  tier: 2
+  score: 10.5
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - 'vital component(s): ecm'
+  - 2 independent source(s) state this code
+  - 1 cause statement(s) available for review
+  english:
+    title_en: PWM for Traction Control
+    description_en: PWM communication signal for traction control faulty.
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: PWM signal fault
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: ABS warning light on
+    source: obdex
+    review_status: source_reported
+  - text_en: ESC/stability control deactivated
+    source: obdex
+    review_status: source_reported
+  - text_en: Possible reduced brake assist
+    source: obdex
+    review_status: source_reported
+  - text_en: Speedometer may behave erratically
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: false
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; components:
+      ecm, tcs_module'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/Traction_control_system
+      kind: source
+      label: null
+    - url: https://github.com/Wal33D/dtc-database
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 13
+  code: C061B
+  context_key: C061B|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: chassis
+  tier: 2
+  score: 10.5
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - 'vital component(s): ecm'
+  - 2 independent source(s) state this code
+  - 1 cause statement(s) available for review
+  english:
+    title_en: ECM Request - Forced Traction Control Disable
+    description_en: Engine control module requests forced disable of traction control — typically when
+      the engine cannot deliver requested torque reduction.
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: ECM/TCS communication issue
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: ABS warning light on
+    source: obdex
+    review_status: source_reported
+  - text_en: ESC/stability control deactivated
+    source: obdex
+    review_status: source_reported
+  - text_en: Possible reduced brake assist
+    source: obdex
+    review_status: source_reported
+  - text_en: Speedometer may behave erratically
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: false
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; components:
+      ecm, tcs_module'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/Traction_control_system
+      kind: source
+      label: null
+    - url: https://github.com/Wal33D/dtc-database
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 14
+  code: P0168
+  context_key: P0168|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 2
+  score: 10.5
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - 'vital component(s): fuel_temperature_sensor_a, fuel_cooler, fuel_return_line'
+  - 2 independent source(s) state this code
+  - 5 cause statement(s) available for review
+  english:
+    title_en: Fuel Temperature Too High
+    description_en: 'P0168 is not a sensor fault but an operating condition, almost only on diesels: the
+      fuel temperature sensor reports fuel hotter than a protective limit. The fuel heats up through the
+      return flow from the high-pressure pump and injectors, especially with little fuel in the tank,
+      at idle after full load, in hot weather or with a failed fuel cooler; one manufacturer patent names
+      about 80 °C as the upper limit to protect seals, against a normal range of roughly 5–60 °C. On Saab''s
+      Bosch EDC16 diesels the code means an engine protection function is active and injection quantity
+      is reduced. No manufacturer threshold was found, and GM''s and Ford''s diesel summaries do not use
+      P0168. Whether the warning light comes on depends on the manufacturer.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Fuel cooler (air or water cooler in the return) dirty or faulty, coolant circuit disturbed
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Excessive return flow from worn high-pressure pump or injectors, or faulty overflow valve
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Very little fuel in the tank at high load or heat
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Fuel temperature sensor drifting and reading too high
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Engine overheating or overload (trailer, gradient)
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Loss of power, limp mode (reduced injection quantity)
+    source: obdex
+    review_status: source_reported
+  - text_en: Warning light depending on manufacturer
+    source: obdex
+    review_status: source_reported
+  - text_en: Occurs in heat, at full load, with little fuel in the tank
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: false
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; components:
+      fuel_cooler, fuel_return_line, fuel_temperature_sensor_a'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+      kind: source
+      label: null
+    - url: https://patents.google.com/patent/US7493893B2/en
+      kind: source
+      label: null
+    - url: https://saabwisonline.com/9-5-9600/2010/2-engine/engine-management-system-edc-16/fault-diagnosis-diagnostic-trouble-codes/p0168
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 15
+  code: P0171
+  context_key: P0171|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 2
+  score: 10.5
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - emissions relevant
+  - 'vital component(s): fuel_system'
+  - 2 independent source(s) state this code
+  - 3 manufacturer/generic contexts for the same code
+  - 5 cause statement(s) available for review
+  english:
+    title_en: System Too Lean Bank 1
+    description_en: 'With closed-loop control the engine module corrects the injected fuel using the oxygen
+      sensor: short-term fuel trim reacts within fractions of a second, long-term trim stores a learned
+      base correction per load and speed range. Positive values mean fuel is being added because the mixture
+      was lean, negative values mean fuel is being removed; around ±10 % is normal. P0171 means long-term
+      trim on bank 1 is at its upper limit: the module already adds the maximum fuel and the mixture still
+      stays lean. GM sets it at a long-term factor of about 1.30–1.36 (+30–36 %, engine-specific), Ford
+      above +25 % with short-term trim above +1 %; it needs two trips and is suspended during heavy purge
+      flow or intrusive tests. GM bulletins repeatedly trace it to leaking crankcase ventilation hoses
+      or pipes on V6 and V8 engines; Ford found leaking direct injectors. P0171 together with P0174 points
+      to a shared cause. Diagnosis hint: trims very high only at idle and normal under load point to an
+      air leak; trims rising with load point to fuel shortage or an air flow sensor reading low. The oxygen
+      sensor only reports what is in the exhaust and is rarely the cause.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Air leak after the air flow sensor (intake manifold gasket, vacuum hoses, throttle body gasket,
+      brake booster line)
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Crankcase ventilation leaking or faulty (PCV hose, diaphragm in valve cover, oil cap, dipstick)
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Fuel pressure or delivery too low (weak pump, clogged filter, regulator, tank nearly empty)
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Air flow sensor dirty or drifting (measures too little air)
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Injectors clogged, or exhaust leak ahead of the oxygen sensor
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light on (after two drive cycles)
+    source: obdex
+    review_status: source_reported
+  - text_en: Rough or unsteady idle, possibly stalling
+    source: obdex
+    review_status: source_reported
+  - text_en: Hesitation or lack of power when accelerating
+    source: obdex
+    review_status: source_reported
+  - text_en: Hissing or whistling from the engine bay (air leak, PCV)
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 0
+    safety_note_en: 'requests the dashboard warning lamp; emissions relevant; components: fuel_system,
+      intake_manifold, mass_air_flow_sensor, oxygen_sensor_bank1_sensor1'
+    review_status: source_reported
+  procedure:
+    status: draft_unreviewed
+    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
+      no tool list, no nominal value and no limit may be added until a qualified technician approves a
+      written procedure.'
+    quoted_checks:
+    - text_en: it needs two trips and is suspended during heavy purge flow or intrusive tests.
+      source: obdex description
+      review_status: source_reported
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://fordservicecontent.com/Ford_Content/catalog/motorcraft/OBD-Operations-Summary-Gasoline-2020-2023.pdf
+      kind: source
+      label: null
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2018/18OBDG03A%20Engine%20Diagnostics.pdf
+      kind: source
+      label: null
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2019/19OBDG03A%20Diagnostics.pdf
+      kind: source
+      label: null
+    - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+      kind: source
+      label: null
+    - url: https://saabwisonline.com/9-4x/2011/2-engine/engine-management-and-fuel-system-v6/fault-diagnosis-diagnostic-trouble-codes/dtc-p0171-p0172-p0174-or-p0175
+      kind: source
+      label: null
+    - url: https://static.nhtsa.gov/odi/tsbs/2015/MC-10114925-9999.pdf
+      kind: source
+      label: null
+    - url: https://static.nhtsa.gov/odi/tsbs/2019/MC-10168955-9999.pdf
+      kind: source
+      label: null
+    - url: https://static.nhtsa.gov/odi/tsbs/2021/MC-10190420-9999.pdf
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: unreviewed_draft
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: draft_ready
+    conflicts: clear
+- priority_position: 16
+  code: P0217
+  context_key: P0217|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 2
+  score: 10.5
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - 'vital component(s): engine_coolant_temperature_sensor'
+  - 2 independent source(s) state this code
+  - 5 cause statement(s) available for review
+  english:
+    title_en: Engine Coolant Over Temperature Condition
+    description_en: 'P0217 is a condition code: the engine module reports that coolant temperature has
+      passed a protection threshold. The limit and the reaction depend on the manufacturer – Saab''s 2.2
+      diesel sets it at 120 °C for over 10 s, limits fuel quantity and suspends EGR and boost diagnostics
+      until the temperature drops; heavy-duty diesels cut power sharply and may shut down; Ford petrol
+      engines use their own code P1299 and cut fuel to individual cylinders. Whether the warning light
+      comes on varies, because CARB exempts overheat protection that only engages once the gauge reads
+      red. Usual causes are low coolant, a thermostat stuck closed, a failed fan or water pump – but Ford
+      traced some cases to a faulty coolant sensor or harness.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Low coolant (leak, head gasket)
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Thermostat stuck closed
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Radiator fan, fan clutch or water pump faulty, radiator clogged
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Coolant temperature sensor or harness faulty (false reading)
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Extreme load (towing, gradient, heat) with an intact cooling system
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Temperature gauge in the red, overheat warning
+    source: obdex
+    review_status: source_reported
+  - text_en: Loss of power, limp mode, cylinders possibly shut off
+    source: obdex
+    review_status: source_reported
+  - text_en: Air conditioning switches off
+    source: obdex
+    review_status: source_reported
+  - text_en: Steam or coolant smell, coolant loss
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: false
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; components:
+      cooling_system, engine_coolant_temperature_sensor, radiator_fan, thermostat'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+      kind: source
+      label: null
+    - url: https://roushcleantech.com/wp-content/uploads/sites/all/themes/roushcleantech/pdf/diagnosticmanuals/Roush_CleanTech%20_Diagnostics_Manual-DA_8.5.18.pdf
+      kind: source
+      label: null
+    - url: https://saabwisonline.com/9-5-9600/2004/2-engine/psg-16-d223l/fault-diagnosis-diagnostic-trouble-codes/p0217
+      kind: source
+      label: null
+    - url: https://static.nhtsa.gov/odi/tsbs/2020/MC-10175334-0001.pdf
+      kind: source
+      label: null
+    - url: https://static.nhtsa.gov/odi/tsbs/2020/MC-10177705-0001.pdf
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 17
+  code: P0442
+  context_key: P0442|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 2
+  score: 10.5
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - emissions relevant
+  - 'vital component(s): fuel_cap, fuel_tank_pressure_sensor'
+  - 2 independent source(s) state this code
+  - 3 manufacturer/generic contexts for the same code
+  - 5 cause statement(s) available for review
+  english:
+    title_en: EVAP System Leak Detected (small leak)
+    description_en: 'The evaporative emission (EVAP) system stores fuel vapour from the tank in a charcoal
+      canister; a purge valve lets the engine draw it off, and a vent valve opens the canister to fresh
+      air. P0442 reports a small leak; what size that means depends on the maker. Ford detects 0.040 in
+      (1 mm) with the engine running: the vent valve closes, engine vacuum pulls the tank down, the purge
+      valve closes and a pressure rise above 2.5 inH2O in 15 s sets the code (0.020 in is P0456). GM uses
+      the natural pressure change after switch-off for 0.020 in and averages several tests. Pump systems
+      at VW and Audi compare against a reference leak. A worn or loose fuel cap is the most common cause.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Fuel cap seal worn, wrong or not clicked in
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Cracked or porous EVAP hoses or leaking connections
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Leak detection pump itself leaking (VW/Audi)
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Purge or vent valve does not seal
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Filler neck corroded, tank or sender seal leaking
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light on
+    source: obdex
+    review_status: source_reported
+  - text_en: Possibly slight fuel smell
+    source: obdex
+    review_status: source_reported
+  - text_en: Readiness or emission inspection not passed
+    source: obdex
+    review_status: source_reported
+  - text_en: No change in driving
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 0
+    safety_note_en: 'requests the dashboard warning lamp; emissions relevant; components: evap_hoses,
+      evap_system, fuel_cap, fuel_tank_pressure_sensor'
+    review_status: source_reported
+  procedure:
+    status: draft_unreviewed
+    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
+      no tool list, no nominal value and no limit may be added until a qualified technician approves a
+      written procedure.'
+    quoted_checks:
+    - text_en: GM uses the natural pressure change after switch-off for 0.020 in and averages several
+        tests.
+      source: obdex description
+      review_status: source_reported
+    - text_en: Pump systems at VW and Audi compare against a reference leak.
+      source: obdex description
+      review_status: source_reported
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://fordservicecontent.com/Ford_Content/catalog/motorcraft/OBD-Operations-Summary-Gasoline-2020-2023.pdf
+      kind: source
+      label: null
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2018/18OBDG03A%20Engine%20Diagnostics.pdf
+      kind: source
+      label: null
+    - url: https://newtonnet.co.uk/fiesta/fordobd2012.pdf
+      kind: source
+      label: null
+    - url: https://saabwisonline.com/9-4x/2011/2-engine/engine-management-and-fuel-system-v6/fault-diagnosis-diagnostic-trouble-codes/dtc-p0442
+      kind: source
+      label: null
+    - url: https://saabwisonline.com/9-5-9600/2002/2-engine/trionic-t7-v6/fault-diagnosis-diagnostic-trouble-codes/p0442
+      kind: source
+      label: null
+    - url: https://static.nhtsa.gov/odi/tsbs/2014/SB-10065706-6903.pdf
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: unreviewed_draft
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: draft_ready
+    conflicts: clear
+- priority_position: 18
+  code: P0455
+  context_key: P0455|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 2
+  score: 10.5
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - emissions relevant
+  - 'vital component(s): fuel_cap'
+  - 2 independent source(s) state this code
+  - 3 manufacturer/generic contexts for the same code
+  - 4 cause statement(s) available for review
+  english:
+    title_en: EVAP System Leak Detected - Large Leak
+    description_en: The evaporative emission (EVAP) system stores fuel vapour from the tank in a charcoal
+      canister; a purge valve lets the engine draw it off, and a vent valve opens the canister to fresh
+      air. P0455 means a large leak or that no vacuum builds up. Ford pulls the closed system down with
+      engine vacuum and expects about −2 kPa within 30 s; after refuelling it sets P0457 instead. GM sets
+      the code if 20 litres have been purged without reaching 2740 Pa tank vacuum (once per cold start,
+      MIL after two trips). Saab's ME9 uses a pressure drop below 525 Pa. The code also covers blocked
+      purging, for example a purge valve stuck closed.
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Fuel cap missing, not clicked in or seal faulty (or capless flap)
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Hose off or cracked (canister, filler neck, purge line)
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Canister or filler neck cracked or corroded
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Vent valve stuck open or purge valve stuck closed
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light on (possibly a check fuel cap message)
+    source: obdex
+    review_status: source_reported
+  - text_en: Possibly fuel smell
+    source: obdex
+    review_status: source_reported
+  - text_en: EVAP readiness or emission inspection not passed
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 0
+    safety_note_en: 'requests the dashboard warning lamp; emissions relevant; components: evap_hoses,
+      evap_purge_valve, evap_system, fuel_cap'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://fordservicecontent.com/Ford_Content/catalog/motorcraft/OBD-Operations-Summary-Gasoline-2020-2023.pdf
+      kind: source
+      label: null
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2018/18OBDG03A%20Engine%20Diagnostics.pdf
+      kind: source
+      label: null
+    - url: https://newtonnet.co.uk/fiesta/fordobd2012.pdf
+      kind: source
+      label: null
+    - url: https://saabwisonline.com/9-3-9440/2006/dtcs/me9/p0455-00
+      kind: source
+      label: null
+    - url: https://saabwisonline.com/900/1998/2-engine/evaporative-emission-system-orvr-obd-ii/fault-diagnosis-diagnostic-trouble-codes/p0455
+      kind: source
+      label: null
+    - url: https://static.nhtsa.gov/odi/tsbs/2017/MC-10216318-9999.pdf
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 19
+  code: P0524
+  context_key: P0524|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 2
+  score: 10.5
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - 'vital component(s): oil_pump, oil_pressure_sensor, engine_lubrication, engine_control_module'
+  - 2 independent source(s) state this code
+  - 5 cause statement(s) available for review
+  english:
+    title_en: Engine Oil Pressure Too Low
+    description_en: 'P0524 is not a sensor fault but a condition: the measured oil pressure is below a
+      minimum depending on speed, load and temperature (Ford diesel 30–90 kPa) for about 5 s, with the
+      sensor itself plausible. Its purpose is engine protection; Ford petrol engines with mid-lock cam
+      phasers drive them into the locked position. GM''s tables do not use it; FCA updated the Ram EcoDiesel
+      software against false setting in the cold. Stop the engine, check the oil level and confirm with
+      a mechanical gauge.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Oil level too low, oil loss or consumption
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Too thin oil, fuel dilution or clogged pick-up screen
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Oil pump or pressure control valve faulty or stuck
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Worn crankshaft or camshaft bearings
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  - text_en: False setting by software in the cold (Ram EcoDiesel)
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Oil pressure warning and/or check engine light
+    source: obdex
+    review_status: source_reported
+  - text_en: Engine noise (lifters, timing chain)
+    source: obdex
+    review_status: source_reported
+  - text_en: Possible power reduction
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: false
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; components:
+      engine_control_module, engine_lubrication, oil_pressure_sensor, oil_pump'
+    review_status: source_reported
+  procedure:
+    status: draft_unreviewed
+    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
+      no tool list, no nominal value and no limit may be added until a qualified technician approves a
+      written procedure.'
+    quoted_checks:
+    - text_en: 'P0524 is not a sensor fault but a condition: the measured oil pressure is below a minimum
+        depending on speed, load and temperature (Ford diesel 30–90 kPa) for about 5 s, with the sensor
+        itself plausible.'
+      source: obdex description
+      review_status: source_reported
+    - text_en: Stop the engine, check the oil level and confirm with a mechanical gauge.
+      source: obdex description
+      review_status: source_reported
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://fordservicecontent.com/Ford_Content/catalog/motorcraft/OBD-Operations-Summary-Gasoline-2020-2023.pdf
+      kind: source
+      label: null
+    - url: https://fordservicecontent.com/Ford_Content/catalog/motorcraft/obd-summary-diesel-2023.pdf
+      kind: source
+      label: null
+    - url: https://static.nhtsa.gov/odi/tsbs/2021/MC-10220589-9999.pdf
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: unreviewed_draft
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: draft_ready
+    conflicts: clear
+- priority_position: 20
+  code: P055F
+  context_key: P055F|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 2
+  score: 10.5
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - 'vital component(s): oil_pump, oil_pump_control_valve, oil_pressure_sensor, engine_control_module'
+  - 2 independent source(s) state this code
+  - 4 cause statement(s) available for review
+  english:
+    title_en: Engine Oil Pressure Out of Range
+    description_en: 'P055F is a condition code: the measured oil pressure is above the maximum expected
+      for speed and oil temperature – Ford, which documents it, calls it ''too high'' and pairs it with
+      P0524 (too low). Ford checks continuously for 5 s, only with plausible oil pressure, oil temperature
+      and coolant sensors, as engine protection. Background are regulated oil pumps, whose control valve
+      (P06DA ff) defaults to full pressure on failure. An electrically high signal is P0523 or P055D instead.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Oil pump control valve or variable pump stuck at high pressure
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Wrong viscosity, very cold oil
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Pump relief valve stuck
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Sensor A reading high within range
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light or oil pressure warning
+    source: obdex
+    review_status: source_reported
+  - text_en: Possible engine protection or power limit
+    source: obdex
+    review_status: source_reported
+  - text_en: Possible oil filter or seal leaks
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: false
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; components:
+      engine_control_module, oil_pressure_sensor, oil_pump, oil_pump_control_valve'
+    review_status: source_reported
+  procedure:
+    status: draft_unreviewed
+    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
+      no tool list, no nominal value and no limit may be added until a qualified technician approves a
+      written procedure.'
+    quoted_checks:
+    - text_en: 'P055F is a condition code: the measured oil pressure is above the maximum expected for
+        speed and oil temperature – Ford, which documents it, calls it ''too high'' and pairs it with
+        P0524 (too low).'
+      source: obdex description
+      review_status: source_reported
+    - text_en: Ford checks continuously for 5 s, only with plausible oil pressure, oil temperature and
+        coolant sensors, as engine protection.
+      source: obdex description
+      review_status: source_reported
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://fordservicecontent.com/Ford_Content/catalog/motorcraft/OBD-Operations-Summary-Gasoline-2020-2023.pdf
+      kind: source
+      label: null
+    - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: unreviewed_draft
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: draft_ready
+    conflicts: clear
+- priority_position: 21
+  code: P06DB
+  context_key: P06DB|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 2
+  score: 10.5
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - 'vital component(s): oil_pump_control_valve, oil_pump_control_circuit, engine_control_module'
+  - 2 independent source(s) state this code
+  - 4 cause statement(s) available for review
+  english:
+    title_en: Engine Oil Pressure Control Circuit Low
+    description_en: A switchable or variable oil pump saves fuel by lowering its output at part load;
+      a solenoid valve sets the stage. GM and Ford design it so the pump runs at full output, i.e. high
+      pressure, when the valve is unpowered – the safe default – and at the low stage when powered. P06DB
+      means the control wire behind the valve is shorted to ground. With a low-side driver the valve is
+      then powered all the time, so the pump stays at the low stage even at high load and speed. That
+      endangers the engine, so GM flags a short below 0.5 Ω after just one trip, unlike open circuit and
+      short to positive. GM checks the low-side driver at 11 V or more relay voltage over 40 of 50 samples
+      (100 ms); Ford's smart driver reports output faults after 5 s with the battery at 11 V or more.
+      A short to positive is P06DC, a pump stuck at low pressure without a circuit fault P06DE.
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Control wire chafing against ground (engine block, oil pan)
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Oil or moisture in the connector
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Control valve shorted internally
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Engine module driver stage
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light at once (GM after one trip)
+    source: obdex
+    review_status: source_reported
+  - text_en: Low oil pressure at high engine speed, possibly oil pressure warning
+    source: obdex
+    review_status: source_reported
+  - text_en: Possibly reduced power
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: false
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; components:
+      engine_control_module, oil_pump_control_circuit, oil_pump_control_valve'
+    review_status: source_reported
+  procedure:
+    status: draft_unreviewed
+    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
+      no tool list, no nominal value and no limit may be added until a qualified technician approves a
+      written procedure.'
+    quoted_checks:
+    - text_en: GM checks the low-side driver at 11 V or more relay voltage over 40 of 50 samples (100
+        ms);
+      source: obdex description
+      review_status: source_reported
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://fordservicecontent.com/Ford_Content/catalog/motorcraft/OBD-Operations-Summary-Gasoline-2020-2023.pdf
+      kind: source
+      label: null
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2018/18OBDG03A%20Engine%20Diagnostics.pdf
+      kind: source
+      label: null
+    - url: https://patents.google.com/patent/US10865670B2/en
+      kind: source
+      label: null
+    - url: https://static.nhtsa.gov/odi/tsbs/2023/MC-10237505-0001.pdf
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: unreviewed_draft
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: draft_ready
+    conflicts: clear
+- priority_position: 22
+  code: P06DE
+  context_key: P06DE|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 2
+  score: 10.5
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - 'vital component(s): oil_pump_control_valve, oil_pump, oil_pressure_sensor, engine_control_module'
+  - 2 independent source(s) state this code
+  - 5 cause statement(s) available for review
+  english:
+    title_en: Engine Oil Pressure Control Circuit Stuck On
+    description_en: 'A switchable oil pump changes its output via a solenoid valve; powered it runs at
+      the low stage. To test it, the module switches the pump between stages (GM up to 15 times, with
+      oil at 50–110 °C and 1350–2500 rpm, expecting more than 100 kPa difference) and watches the oil
+      pressure sensor; Ford checks each switch-over of a two-stage pump within 1 s, or a variable pump
+      over 10 s, from 30 s after start. P06DE is the counterpart of P06DD: the commanded high stage is
+      not reached and the pressure stays below the threshold, as if the valve were stuck on. Too little
+      oil pressure at high load endangers the engine, so GM sets it after just one trip; a Ford patent
+      raises idle speed in this case. A short to ground on the control wire (P06DB) has the same effect
+      electrically. An FCA bulletin for the 3.6 L V6 fixes false codes by software.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Control valve stuck in the powered position
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Low oil level, diluted or sludged oil, aeration
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Pump wear or internal leakage
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Oil pressure sensor
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  - text_en: Engine module software (FCA 3.6 L)
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light at once
+    source: obdex
+    review_status: source_reported
+  - text_en: Oil pressure warning at higher engine speed possible
+    source: obdex
+    review_status: source_reported
+  - text_en: Possibly reduced power or raised idle
+    source: obdex
+    review_status: source_reported
+  - text_en: Valvetrain or chain tensioner noise from lack of oil
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: false
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; components:
+      engine_control_module, oil_pressure_sensor, oil_pump, oil_pump_control_valve'
+    review_status: source_reported
+  procedure:
+    status: draft_unreviewed
+    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
+      no tool list, no nominal value and no limit may be added until a qualified technician approves a
+      written procedure.'
+    quoted_checks:
+    - text_en: To test it, the module switches the pump between stages (GM up to 15 times, with oil at
+        50–110 °C and 1350–2500 rpm, expecting more than 100 kPa difference) and watches the oil pressure
+        sensor;
+      source: obdex description
+      review_status: source_reported
+    - text_en: Ford checks each switch-over of a two-stage pump within 1 s, or a variable pump over 10
+        s, from 30 s after start.
+      source: obdex description
+      review_status: source_reported
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://fordservicecontent.com/Ford_Content/catalog/motorcraft/OBD-Operations-Summary-Gasoline-2020-2023.pdf
+      kind: source
+      label: null
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2018/18OBDG03A%20Engine%20Diagnostics.pdf
+      kind: source
+      label: null
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2018/18OBDG04%20Engine%20Diagnostics.pdf
+      kind: source
+      label: null
+    - url: https://patents.google.com/patent/US10865670B2/en
+      kind: source
+      label: null
+    - url: https://static.nhtsa.gov/odi/tsbs/2015/SB-10074965-5290.pdf
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: unreviewed_draft
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: draft_ready
+    conflicts: clear
+- priority_position: 23
+  code: P0710
+  context_key: P0710|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 2
+  score: 10.5
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - 'vital component(s): transmission_fluid_temperature_sensor, transmission_internal_harness, transmission_control_module'
+  - 2 independent source(s) state this code
+  - 4 cause statement(s) available for review
+  english:
+    title_en: Transmission Fluid Temperature Sensor A Circuit
+    description_en: 'The transmission fluid temperature sensor is an NTC thermistor whose resistance falls
+      as the fluid warms; the module feeds it with 5 V through a resistor. A low signal therefore means
+      very hot or a short to ground, a high signal very cold or an open circuit. P0710 is the general
+      circuit code used when a manufacturer does not separate low and high. Subaru-based systems (Saab
+      9-2X) flag 0.1 V or less or 4.7 V or more, light the MIL after two consecutive trips and use 80
+      °C as substitute. Ford''s 2023 diesels use P0710 alongside P0712/P0713 for open and short circuits,
+      without MIL, after 5–12 s, substituting coolant temperature. GM uses only the split codes. With
+      the substitute value the shift quality suffers: harsh shifts and a late converter clutch.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Fluid temperature sensor faulty (often part of the internal harness or valve body)
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Transmission connector leaking or corroded, oil in the connector
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Wire open or shorted
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Transmission or engine module faulty
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Harsh or late shifts
+    source: obdex
+    review_status: source_reported
+  - text_en: Torque converter clutch applies late or not at all
+    source: obdex
+    review_status: source_reported
+  - text_en: Check engine or transmission lamp depending on manufacturer
+    source: obdex
+    review_status: source_reported
+  - text_en: Implausible fluid temperature in the scan tool
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: false
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; components:
+      transmission_control_module, transmission_fluid_temperature_sensor, transmission_internal_harness'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/Thermistor
+      kind: source
+      label: null
+    - url: https://fordservicecontent.com/Ford_Content/catalog/motorcraft/obd-summary-diesel-2023.pdf
+      kind: source
+      label: null
+    - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+      kind: source
+      label: null
+    - url: https://saabwisonline.com/9-2x-9346/2005/0-general/general-diagnostics-2-0t/diagnostic-trouble-code-dtc-detecting-criteria/fault-diagnosis-fault-codes/dtc-p0710-transmission-fluid-temperature-sensor-circuit
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 24
+  code: P0711
+  context_key: P0711|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 2
+  score: 10.5
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - 'vital component(s): transmission_fluid_temperature_sensor, transmission_internal_harness, transmission_control_module'
+  - 2 independent source(s) state this code
+  - 5 cause statement(s) available for review
+  english:
+    title_en: Transmission Fluid Temperature Sensor A Circuit Range/Performance
+    description_en: 'P0711 means the fluid temperature signal is electrically valid but implausible. Manufacturers
+      check three things: the fluid does not warm up as expected (GM 2025 still below 15 °C after the
+      calibrated warm-up time, Saab''s AF40 below 20 °C after 10 minutes of driving), the value is stuck
+      (Ford: within ±2 °F for about 2.5 minutes below 70 or above 225 °F), or it jumps unrealistically.
+      GM''s 6T70 compares it with the module''s internal temperature. The MIL rating varies: GM''s newer
+      modules after two trips, Saab AF40 none, Ford none; a 2013 Ram 6.7 bulletin moved P0711–P0714 from
+      one to two trips. A substitute value then limits adaption and converter clutch control.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Fluid temperature sensor drifting or stuck
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Very cold weather or short trips (fluid does not reach warm-up threshold)
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: High contact resistance in connector or harness (oil, corrosion)
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Fluid cooler thermostat faulty
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  - text_en: Outdated module software
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Harsh or late shifts
+    source: obdex
+    review_status: source_reported
+  - text_en: Torque converter clutch applies late or not at all
+    source: obdex
+    review_status: source_reported
+  - text_en: Check engine or transmission lamp depending on manufacturer
+    source: obdex
+    review_status: source_reported
+  - text_en: Implausible fluid temperature in the scan tool
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: false
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; components:
+      transmission_control_module, transmission_fluid_temperature_sensor, transmission_internal_harness'
+    review_status: source_reported
+  procedure:
+    status: draft_unreviewed
+    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
+      no tool list, no nominal value and no limit may be added until a qualified technician approves a
+      written procedure.'
+    quoted_checks:
+    - text_en: 'Manufacturers check three things: the fluid does not warm up as expected (GM 2025 still
+        below 15 °C after the calibrated warm-up time, Saab''s AF40 below 20 °C after 10 minutes of driving),
+        the value is stuck (Ford: within ±2 °F for about 2.5 minutes below 70 or above 225 °F), or it
+        jumps unrealistically.'
+      source: obdex description
+      review_status: source_reported
+    - text_en: GM's 6T70 compares it with the module's internal temperature.
+      source: obdex description
+      review_status: source_reported
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2025/25OBDG03A.pdf
+      kind: source
+      label: null
+    - url: https://newtonnet.co.uk/fiesta/fordobd2012.pdf
+      kind: source
+      label: null
+    - url: https://saabwisonline.com/9-4x/2011/4-transmission/automatic-transmission-6t70-6t75/fault-diagnosis-diagnostic-trouble-codes/dtc-p0711-p0712-or-p0713
+      kind: source
+      label: null
+    - url: https://saabwisonline.com/9-5-9650/2010/4-transmission/automatic-transmission/fault-diagnosis-diagnostic-trouble-codes/dtc-p0711-p0712-or-p0713
+      kind: source
+      label: null
+    - url: https://static.nhtsa.gov/odi/tsbs/2014/MC-10221090-9999.pdf
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: unreviewed_draft
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: draft_ready
+    conflicts: clear
+- priority_position: 25
+  code: P0712
+  context_key: P0712|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 2
+  score: 10.5
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - 'vital component(s): transmission_fluid_temperature_sensor, transmission_internal_harness, transmission_control_module'
+  - 2 independent source(s) state this code
+  - 4 cause statement(s) available for review
+  english:
+    title_en: Transmission Fluid Temperature Sensor A Circuit Low
+    description_en: The transmission fluid temperature sensor is an NTC thermistor whose resistance falls
+      as the fluid warms; the module feeds it with 5 V through a resistor. A low signal therefore means
+      very hot or a short to ground, a high signal very cold or an open circuit. P0712 means the signal
+      is too low – the sensor reads extremely hot, or the signal wire is shorted to ground. GM's 2025
+      transmission modules flag below 13.5 Ω for 5 of 6 s after two trips; the 2018 LT4 engine module
+      below 17.88 Ω (over 150 °C) without MIL; the 2007 Allison 1000 150 °C or more for 2.5 s; Saab's
+      AF40 over 200 °C; Ford below 0.05 V for 5–12 s without MIL. The module substitutes a value (coolant
+      temperature, 80 °C or a hot mode) and may shift with hot-fluid strategy. Real overheating with a
+      good sensor is P0218.
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Signal wire shorted to ground (internal harness, chafing)
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Sensor shorted internally
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Control module faulty
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  - text_en: Transmission actually severely overheated
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Transmission in hot mode (early converter clutch, changed shift points)
+    source: obdex
+    review_status: source_reported
+  - text_en: Harsh shifts
+    source: obdex
+    review_status: source_reported
+  - text_en: Extremely high fluid temperature shown
+    source: obdex
+    review_status: source_reported
+  - text_en: Check engine or transmission lamp depending on manufacturer
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: false
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; components:
+      transmission_control_module, transmission_fluid_temperature_sensor, transmission_internal_harness'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2007/07%20GRP15_Allison%201000.pdf
+      kind: source
+      label: null
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2018/18OBDG03A%20Engine%20Diagnostics.pdf
+      kind: source
+      label: null
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2025/25OBDG03A.pdf
+      kind: source
+      label: null
+    - url: https://newtonnet.co.uk/fiesta/fordobd2012.pdf
+      kind: source
+      label: null
+    - url: https://saabwisonline.com/9-5-9650/2010/4-transmission/automatic-transmission/fault-diagnosis-diagnostic-trouble-codes/dtc-p0711-p0712-or-p0713
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 26
+  code: P0713
+  context_key: P0713|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 2
+  score: 10.5
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - 'vital component(s): transmission_fluid_temperature_sensor, transmission_internal_harness, transmission_control_module'
+  - 2 independent source(s) state this code
+  - 4 cause statement(s) available for review
+  english:
+    title_en: Transmission Fluid Temperature Sensor A Circuit High
+    description_en: 'The transmission fluid temperature sensor is an NTC thermistor whose resistance falls
+      as the fluid warms; the module feeds it with 5 V through a resistor. A low signal therefore means
+      very hot or a short to ground, a high signal very cold or an open circuit. P0713 means the signal
+      is too high – the sensor reads extremely cold, or the circuit is open or shorted to positive. GM''s
+      2025 modules flag above 284 kΩ for 5 of 6 s after two trips; the 2007 Allison 1000 −45 °C or below
+      for 2.5 s; Saab''s AF40 below −43 °C; Ford above 4.6 V for 5–12 s without MIL. Many require prior
+      running time or a warm engine so a genuine −40 °C cold start does not count (Allison: coolant above
+      20 °C; Saab: over 10 minutes of driving). The transmission then stays in its cold strategy: open
+      converter clutch, late upshifts.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Transmission connector loose or corroded, wire open
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Sensor open internally
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Control module faulty
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  - text_en: Signal wire shorted to positive
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Fluid temperature shown around −40 °C
+    source: obdex
+    review_status: source_reported
+  - text_en: Converter clutch stays open, late upshifts
+    source: obdex
+    review_status: source_reported
+  - text_en: Higher fuel consumption
+    source: obdex
+    review_status: source_reported
+  - text_en: Check engine or transmission lamp depending on manufacturer
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: false
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; components:
+      transmission_control_module, transmission_fluid_temperature_sensor, transmission_internal_harness'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2007/07%20GRP15_Allison%201000.pdf
+      kind: source
+      label: null
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2025/25OBDG03A.pdf
+      kind: source
+      label: null
+    - url: https://newtonnet.co.uk/fiesta/fordobd2012.pdf
+      kind: source
+      label: null
+    - url: https://saabwisonline.com/9-5-9650/2010/4-transmission/automatic-transmission/fault-diagnosis-diagnostic-trouble-codes/dtc-p0711-p0712-or-p0713
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 27
+  code: P072A
+  context_key: P072A|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 2
+  score: 10.5
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - 'vital component(s): transmission_control_module'
+  - 2 independent source(s) state this code
+  - 4 cause statement(s) available for review
+  english:
+    title_en: Stuck in Neutral
+    description_en: 'Ford''s DPS6 dry dual-clutch transmission moves its gears with two electrically driven
+      shift drums whose position is read by Hall sensors: drum A shifts 1st, 3rd and 5th, drum B reverse,
+      2nd, 4th and 6th. Ford''s 2012 summary lists ''stuck in gear'' codes for each drum: the module commands
+      the drum out of a gear, but the gear stays engaged. It gives no thresholds or MIL rating. P072A
+      means the transmission stays in neutral although a gear is commanded – no drive. No manufacturer
+      document available to us uses this code; the DPS6 reports drum position faults under its own codes.
+      On dual-clutch or automated manuals a drum or fork would fail to engage a gear, on planetary automatics
+      clutch pressure would be missing. The opposite is P073D.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Shift fork or synchronizer for this gear sticking
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Shift drum A motor, Hall position sensing or driver faulty
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Transmission module
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  - text_en: 'On planetary automatics: clutch or brake not releasing (sticking valve)'
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Transmission stays in one gear, no further shifts
+    source: obdex
+    review_status: source_reported
+  - text_en: Limp mode, transmission warning
+    source: obdex
+    review_status: source_reported
+  - text_en: Clunking or blocking when shifting
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: false
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; components:
+      shift_drum, shift_drum_motor, shift_fork, transmission_control_module'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+      kind: source
+      label: null
+    - url: https://newtonnet.co.uk/fiesta/fordobd2012.pdf
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 28
+  code: P072B
+  context_key: P072B|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 2
+  score: 10.5
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - 'vital component(s): transmission_control_module'
+  - 2 independent source(s) state this code
+  - 4 cause statement(s) available for review
+  english:
+    title_en: Stuck in Reverse
+    description_en: 'Ford''s DPS6 dry dual-clutch transmission moves its gears with two electrically driven
+      shift drums whose position is read by Hall sensors: drum A shifts 1st, 3rd and 5th, drum B reverse,
+      2nd, 4th and 6th. Ford''s 2012 summary lists ''stuck in gear'' codes for each drum: the module commands
+      the drum out of a gear, but the gear stays engaged. It gives no thresholds or MIL rating. P072B
+      is the code for drum B: reverse cannot be disengaged. The transmission then locks out sub-gearbox
+      B and can only use drum A (1st, 3rd, 5th), or the car is stranded. Slip in reverse is P0736.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Shift fork or synchronizer for this gear sticking
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Shift drum B motor, Hall position sensing or driver faulty
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Transmission module
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  - text_en: 'On planetary automatics: clutch or brake not releasing (sticking valve)'
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Transmission stays in one gear, no further shifts
+    source: obdex
+    review_status: source_reported
+  - text_en: Limp mode, transmission warning
+    source: obdex
+    review_status: source_reported
+  - text_en: Clunking or blocking when shifting
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: false
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; components:
+      shift_drum, shift_drum_motor, shift_fork, transmission_control_module'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+      kind: source
+      label: null
+    - url: https://newtonnet.co.uk/fiesta/fordobd2012.pdf
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 29
+  code: P072C
+  context_key: P072C|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 2
+  score: 10.5
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - 'vital component(s): transmission_control_module'
+  - 2 independent source(s) state this code
+  - 4 cause statement(s) available for review
+  english:
+    title_en: Stuck in Gear 1
+    description_en: 'Ford''s DPS6 dry dual-clutch transmission moves its gears with two electrically driven
+      shift drums whose position is read by Hall sensors: drum A shifts 1st, 3rd and 5th, drum B reverse,
+      2nd, 4th and 6th. Ford''s 2012 summary lists ''stuck in gear'' codes for each drum: the module commands
+      the drum out of a gear, but the gear stays engaged. It gives no thresholds or MIL rating. P072C
+      is the code for drum A: first gear cannot be disengaged. The car stays in first or sub-gearbox A
+      is locked out. Slip in first gear is P0731.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Shift fork or synchronizer for this gear sticking
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Shift drum A motor, Hall position sensing or driver faulty
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Transmission module
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  - text_en: 'On planetary automatics: clutch or brake not releasing (sticking valve)'
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Transmission stays in one gear, no further shifts
+    source: obdex
+    review_status: source_reported
+  - text_en: Limp mode, transmission warning
+    source: obdex
+    review_status: source_reported
+  - text_en: Clunking or blocking when shifting
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: false
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; components:
+      shift_drum, shift_drum_motor, shift_fork, transmission_control_module'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+      kind: source
+      label: null
+    - url: https://newtonnet.co.uk/fiesta/fordobd2012.pdf
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 30
+  code: P072D
+  context_key: P072D|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 2
+  score: 10.5
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - 'vital component(s): transmission_control_module'
+  - 2 independent source(s) state this code
+  - 4 cause statement(s) available for review
+  english:
+    title_en: Stuck in Gear 2
+    description_en: 'Ford''s DPS6 dry dual-clutch transmission moves its gears with two electrically driven
+      shift drums whose position is read by Hall sensors: drum A shifts 1st, 3rd and 5th, drum B reverse,
+      2nd, 4th and 6th. Ford''s 2012 summary lists ''stuck in gear'' codes for each drum: the module commands
+      the drum out of a gear, but the gear stays engaged. It gives no thresholds or MIL rating. P072D
+      is the code for drum B: second gear cannot be disengaged. The car stays in second or sub-gearbox
+      B is locked out. Slip in second gear is P0732.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Shift fork or synchronizer for this gear sticking
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Shift drum B motor, Hall position sensing or driver faulty
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Transmission module
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  - text_en: 'On planetary automatics: clutch or brake not releasing (sticking valve)'
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Transmission stays in one gear, no further shifts
+    source: obdex
+    review_status: source_reported
+  - text_en: Limp mode, transmission warning
+    source: obdex
+    review_status: source_reported
+  - text_en: Clunking or blocking when shifting
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: false
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; components:
+      shift_drum, shift_drum_motor, shift_fork, transmission_control_module'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+      kind: source
+      label: null
+    - url: https://newtonnet.co.uk/fiesta/fordobd2012.pdf
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 31
+  code: P072E
+  context_key: P072E|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 2
+  score: 10.5
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - 'vital component(s): transmission_control_module'
+  - 2 independent source(s) state this code
+  - 4 cause statement(s) available for review
+  english:
+    title_en: Stuck in Gear 3
+    description_en: 'Ford''s DPS6 dry dual-clutch transmission moves its gears with two electrically driven
+      shift drums whose position is read by Hall sensors: drum A shifts 1st, 3rd and 5th, drum B reverse,
+      2nd, 4th and 6th. Ford''s 2012 summary lists ''stuck in gear'' codes for each drum: the module commands
+      the drum out of a gear, but the gear stays engaged. It gives no thresholds or MIL rating. P072E
+      is the code for drum A: third gear cannot be disengaged. The car stays in third – weak pulling away
+      – or sub-gearbox A is locked out. Slip in third gear is P0733.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Shift fork or synchronizer for this gear sticking
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Shift drum A motor, Hall position sensing or driver faulty
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Transmission module
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  - text_en: 'On planetary automatics: clutch or brake not releasing (sticking valve)'
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Transmission stays in one gear, no further shifts
+    source: obdex
+    review_status: source_reported
+  - text_en: Limp mode, transmission warning
+    source: obdex
+    review_status: source_reported
+  - text_en: Clunking or blocking when shifting
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: false
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; components:
+      shift_drum, shift_drum_motor, shift_fork, transmission_control_module'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+      kind: source
+      label: null
+    - url: https://newtonnet.co.uk/fiesta/fordobd2012.pdf
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 32
+  code: P072F
+  context_key: P072F|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 2
+  score: 10.5
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - 'vital component(s): transmission_control_module'
+  - 2 independent source(s) state this code
+  - 4 cause statement(s) available for review
+  english:
+    title_en: Stuck in Gear 4
+    description_en: 'Ford''s DPS6 dry dual-clutch transmission moves its gears with two electrically driven
+      shift drums whose position is read by Hall sensors: drum A shifts 1st, 3rd and 5th, drum B reverse,
+      2nd, 4th and 6th. Ford''s 2012 summary lists ''stuck in gear'' codes for each drum: the module commands
+      the drum out of a gear, but the gear stays engaged. It gives no thresholds or MIL rating. P072F
+      is the code for drum B: fourth gear cannot be disengaged. The car stays in fourth or sub-gearbox
+      B is locked out. Slip in fourth gear is P0734.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Shift fork or synchronizer for this gear sticking
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Shift drum B motor, Hall position sensing or driver faulty
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Transmission module
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  - text_en: 'On planetary automatics: clutch or brake not releasing (sticking valve)'
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Transmission stays in one gear, no further shifts
+    source: obdex
+    review_status: source_reported
+  - text_en: Limp mode, transmission warning
+    source: obdex
+    review_status: source_reported
+  - text_en: Clunking or blocking when shifting
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: false
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; components:
+      shift_drum, shift_drum_motor, shift_fork, transmission_control_module'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+      kind: source
+      label: null
+    - url: https://newtonnet.co.uk/fiesta/fordobd2012.pdf
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 33
+  code: P073A
+  context_key: P073A|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 2
+  score: 10.5
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - 'vital component(s): transmission_control_module'
+  - 2 independent source(s) state this code
+  - 4 cause statement(s) available for review
+  english:
+    title_en: Stuck in Gear 5
+    description_en: 'Ford''s DPS6 dry dual-clutch transmission moves its gears with two electrically driven
+      shift drums whose position is read by Hall sensors: drum A shifts 1st, 3rd and 5th, drum B reverse,
+      2nd, 4th and 6th. Ford''s 2012 summary lists ''stuck in gear'' codes for each drum: the module commands
+      the drum out of a gear, but the gear stays engaged. It gives no thresholds or MIL rating. P073A
+      is the code for drum A: fifth gear cannot be disengaged. The car stays in fifth – very weak pulling
+      away – or sub-gearbox A is locked out. Slip in fifth gear is P0735.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Shift fork or synchronizer for this gear sticking
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Shift drum A motor, Hall position sensing or driver faulty
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Transmission module
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  - text_en: 'On planetary automatics: clutch or brake not releasing (sticking valve)'
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Transmission stays in one gear, no further shifts
+    source: obdex
+    review_status: source_reported
+  - text_en: Limp mode, transmission warning
+    source: obdex
+    review_status: source_reported
+  - text_en: Clunking or blocking when shifting
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: false
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; components:
+      shift_drum, shift_drum_motor, shift_fork, transmission_control_module'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+      kind: source
+      label: null
+    - url: https://newtonnet.co.uk/fiesta/fordobd2012.pdf
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 34
+  code: P073B
+  context_key: P073B|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 2
+  score: 10.5
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - 'vital component(s): transmission_control_module'
+  - 2 independent source(s) state this code
+  - 4 cause statement(s) available for review
+  english:
+    title_en: Stuck in Gear 6
+    description_en: 'Ford''s DPS6 dry dual-clutch transmission moves its gears with two electrically driven
+      shift drums whose position is read by Hall sensors: drum A shifts 1st, 3rd and 5th, drum B reverse,
+      2nd, 4th and 6th. Ford''s 2012 summary lists ''stuck in gear'' codes for each drum: the module commands
+      the drum out of a gear, but the gear stays engaged. It gives no thresholds or MIL rating. P073B
+      is the code for drum B: sixth gear cannot be disengaged. The car stays in sixth – it can hardly
+      pull away – or sub-gearbox B is locked out. Slip in sixth gear is P0729.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Shift fork or synchronizer for this gear sticking
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Shift drum B motor, Hall position sensing or driver faulty
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Transmission module
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  - text_en: 'On planetary automatics: clutch or brake not releasing (sticking valve)'
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Transmission stays in one gear, no further shifts
+    source: obdex
+    review_status: source_reported
+  - text_en: Limp mode, transmission warning
+    source: obdex
+    review_status: source_reported
+  - text_en: Clunking or blocking when shifting
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: false
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; components:
+      shift_drum, shift_drum_motor, shift_fork, transmission_control_module'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+      kind: source
+      label: null
+    - url: https://newtonnet.co.uk/fiesta/fordobd2012.pdf
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 35
+  code: P073C
+  context_key: P073C|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 2
+  score: 10.5
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - 'vital component(s): transmission_control_module'
+  - 2 independent source(s) state this code
+  - 4 cause statement(s) available for review
+  english:
+    title_en: Stuck in Gear 7
+    description_en: 'Ford''s DPS6 dry dual-clutch transmission moves its gears with two electrically driven
+      shift drums whose position is read by Hall sensors: drum A shifts 1st, 3rd and 5th, drum B reverse,
+      2nd, 4th and 6th. Ford''s 2012 summary lists ''stuck in gear'' codes for each drum: the module commands
+      the drum out of a gear, but the gear stays engaged. It gives no thresholds or MIL rating. P073C
+      would be the code for a seventh gear that cannot be disengaged, which only exists on transmissions
+      with seven or more gears. No manufacturer document available to us uses it – the six-speed DPS6
+      has no seventh gear, GM''s 9- and 10-speeds report clutch valve codes and Ford''s 10R80 solenoid
+      codes instead. Slip in seventh gear is P076F.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Shift fork or synchronizer for this gear sticking
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Shift drum B motor, Hall position sensing or driver faulty
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Transmission module
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  - text_en: 'On planetary automatics: clutch or brake not releasing (sticking valve)'
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Transmission stays in one gear, no further shifts
+    source: obdex
+    review_status: source_reported
+  - text_en: Limp mode, transmission warning
+    source: obdex
+    review_status: source_reported
+  - text_en: Clunking or blocking when shifting
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: false
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; components:
+      shift_drum, shift_drum_motor, shift_fork, transmission_control_module'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+      kind: source
+      label: null
+    - url: https://newtonnet.co.uk/fiesta/fordobd2012.pdf
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 36
+  code: P07B2
+  context_key: P07B2|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 2
+  score: 10.5
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - 'vital component(s): transmission_control_module'
+  - 2 independent source(s) state this code
+  - 3 cause statement(s) available for review
+  english:
+    title_en: Transmission Park Position Sensor/Switch A Circuit/Open
+    description_en: 'With electronic gear selection the park position sensor/switch reports the park request
+      or position. On GM''s shift-by-wire selectors (2017 LaCrosse, XT4/XT5, Bolt EV, later SUVs and pickups)
+      it is the P button, read by two redundant analog sensors A and B with separate ''released'' and
+      ''pressed'' voltage zones. P07B2 means the circuit of sensor A is open: the module sees a missing
+      or undefined signal. No manufacturer document available to us uses this code; GM covers an open
+      analog circuit under its low and high codes (P07B3/P07B4), which CARB allows when an open cannot
+      be told apart from an out-of-range value. Park may then not be selectable by button.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Wire or connector to the selector open
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Connector not latched
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Sensor faulty
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light, 'service transmission' or 'unable to shift' message
+    source: obdex
+    review_status: source_reported
+  - text_en: Park cannot be selected by button, or the car will not shift out of P
+    source: obdex
+    review_status: source_reported
+  - text_en: P button illumination off
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: false
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; components:
+      electronic_range_selector, park_position_sensor, sensor_wiring, transmission_control_module'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2019/19OBDG03A%20Diagnostics.pdf
+      kind: source
+      label: null
+    - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 37
+  code: P07B3
+  context_key: P07B3|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 2
+  score: 10.5
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - 'vital component(s): transmission_control_module'
+  - 2 independent source(s) state this code
+  - 4 cause statement(s) available for review
+  english:
+    title_en: Transmission Park Position Sensor/Switch A Circuit Low
+    description_en: 'With electronic gear selection the park position sensor/switch reports the park request
+      or position. On GM''s shift-by-wire selectors (2017 LaCrosse, XT4/XT5, Bolt EV, later SUVs and pickups)
+      it is the P button, read by two redundant analog sensors A and B with separate ''released'' and
+      ''pressed'' voltage zones. P07B3 means sensor A reads below its valid zones: GM''s selector modules
+      flag below 446 counts (43.6 % of 5 V) in 16 of 20 samples, the ICCM below 35 %, the 2025 diesel
+      engine module at a raw value of 115 or less – all after two trips. A short to ground or an open
+      supply is typical. Hyundai uses the wording ''circuit low'' for P07B5 instead.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Signal shorted to ground or supply wire open
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Selector knob not fully seated or connector not latched
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Sensor in the P button faulty
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Selector or control module
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light, 'service transmission' or 'unable to shift' message
+    source: obdex
+    review_status: source_reported
+  - text_en: Park cannot be selected by button, or the car will not shift out of P
+    source: obdex
+    review_status: source_reported
+  - text_en: P button illumination off
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: false
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; components:
+      electronic_range_selector, park_position_sensor, sensor_wiring, transmission_control_module'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2019/19OBDG03A%20Diagnostics.pdf
+      kind: source
+      label: null
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2019/19OBDG03B%20Diagnostics.pdf
+      kind: source
+      label: null
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2025/25OBDG04B.pdf
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 38
+  code: P07B4
+  context_key: P07B4|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 2
+  score: 10.5
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - 'vital component(s): transmission_control_module'
+  - 2 independent source(s) state this code
+  - 4 cause statement(s) available for review
+  english:
+    title_en: Transmission Park Position Sensor/Switch A Circuit High
+    description_en: 'With electronic gear selection the park position sensor/switch reports the park request
+      or position. On GM''s shift-by-wire selectors (2017 LaCrosse, XT4/XT5, Bolt EV, later SUVs and pickups)
+      it is the P button, read by two redundant analog sensors A and B with separate ''released'' and
+      ''pressed'' voltage zones. P07B4 means sensor A reads above its valid zones: GM flags above 853
+      counts (83.3 % of 5 V), the ICCM above 70 %, after two trips. A short to positive or an open ground
+      is typical. A GM bulletin for the 2017 LaCrosse, XT5 and Bolt EV lists P07B4 when the selector knob
+      is not fully seated or the connector at the shifter is not latched – check that first.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Signal shorted to positive or ground open
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Selector knob not fully seated or connector not latched
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Sensor in the P button faulty
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Selector or control module
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light, 'service transmission' or 'unable to shift' message
+    source: obdex
+    review_status: source_reported
+  - text_en: Park cannot be selected by button, or the car will not shift out of P
+    source: obdex
+    review_status: source_reported
+  - text_en: P button illumination off
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: false
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; components:
+      electronic_range_selector, park_position_sensor, sensor_wiring, transmission_control_module'
+    review_status: source_reported
+  procedure:
+    status: draft_unreviewed
+    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
+      no tool list, no nominal value and no limit may be added until a qualified technician approves a
+      written procedure.'
+    quoted_checks:
+    - text_en: A GM bulletin for the 2017 LaCrosse, XT5 and Bolt EV lists P07B4 when the selector knob
+        is not fully seated or the connector at the shifter is not latched – check that first.
+      source: obdex description
+      review_status: source_reported
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2019/19OBDG03A%20Diagnostics.pdf
+      kind: source
+      label: null
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2019/19OBDG03B%20Diagnostics.pdf
+      kind: source
+      label: null
+    - url: https://static.nhtsa.gov/odi/tsbs/2017/MC-10116541-9999.pdf
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: unreviewed_draft
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: draft_ready
+    conflicts: clear
+- priority_position: 39
+  code: P07B5
+  context_key: P07B5|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 2
+  score: 10.5
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - 'vital component(s): transmission_control_module'
+  - 2 independent source(s) state this code
+  - 4 cause statement(s) available for review
+  english:
+    title_en: Transmission Park Position Sensor/Switch A Circuit Performance/Low
+    description_en: 'P07B5 means something different at each manufacturer. At GM it covers the P button
+      of the shift-by-wire selector: sensor A reads in the band between its ''released'' and ''pressed''
+      zones (53.2–73.7 % of 5 V, ICCM 45–58 %), after two trips. On the Chrysler Pacifica plug-in hybrid
+      it is the park pawl position sensor 1 in the transmission, fixed by software together with park
+      actuator codes. On the 2017–18 Genesis G80/G90 it reads ''park position sensor circuit low'' and
+      the park position switch is replaced. In all cases the module cannot reliably determine the park
+      request or position.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: P button sensor faulty or worn
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Knob not seated, button sticking
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Contact resistance in the connector
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Module software
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light, 'service transmission' or 'unable to shift' message
+    source: obdex
+    review_status: source_reported
+  - text_en: Park cannot be selected by button, or the car will not shift out of P
+    source: obdex
+    review_status: source_reported
+  - text_en: P button illumination off
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: false
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; components:
+      electronic_range_selector, park_position_sensor, sensor_wiring, transmission_control_module'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2019/19OBDG03B%20Diagnostics.pdf
+      kind: source
+      label: null
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2019/19OBDG03D%20Diagnostics.pdf
+      kind: source
+      label: null
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2023/23OBDG03A%20Part2.pdf
+      kind: source
+      label: null
+    - url: https://static.nhtsa.gov/odi/tsbs/2021/MC-10202185-0001.pdf
+      kind: source
+      label: null
+    - url: https://static.nhtsa.gov/odi/tsbs/2021/MC-10215947-9999.pdf
+      kind: source
+      label: null
+    - url: https://static.nhtsa.gov/odi/tsbs/2022/MC-10214640-9999.pdf
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 40
+  code: P07B6
+  context_key: P07B6|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 2
+  score: 10.5
+  why_here:
+  - risk_level=medium published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - 'vital component(s): transmission_control_module'
+  - 2 independent source(s) state this code
+  - 4 cause statement(s) available for review
+  english:
+    title_en: Transmission Park Position Sensor/Switch A Circuit Performance High
+    description_en: With electronic gear selection the park position sensor/switch reports the park request
+      or position. On GM's shift-by-wire selectors (2017 LaCrosse, XT4/XT5, Bolt EV, later SUVs and pickups)
+      it is the P button, read by two redundant analog sensors A and B with separate 'released' and 'pressed'
+      voltage zones. P07B6 is the 'high' side of the plausibility check of sensor A. No manufacturer document
+      available to us uses this code; GM covers the band between its zones with one code (P07B5); CARB
+      does not require separate codes for each side of a two-sided plausibility check. Park request or
+      position is then unreliable.
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: P button sensor faulty or worn
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Knob not seated, button sticking
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Contact resistance in the connector
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Module software
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light, 'service transmission' or 'unable to shift' message
+    source: obdex
+    review_status: source_reported
+  - text_en: Park cannot be selected by button, or the car will not shift out of P
+    source: obdex
+    review_status: source_reported
+  - text_en: P button illumination off
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: medium
+    mil: 1
+    emissions_relevant: false
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; components:
+      electronic_range_selector, park_position_sensor, sensor_wiring, transmission_control_module'
+    review_status: source_reported
+  procedure:
+    status: draft_unreviewed
+    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
+      no tool list, no nominal value and no limit may be added until a qualified technician approves a
+      written procedure.'
+    quoted_checks:
+    - text_en: P07B6 is the 'high' side of the plausibility check of sensor A.
+      source: obdex description
+      review_status: source_reported
+    - text_en: CARB does not require separate codes for each side of a two-sided plausibility check.
+      source: obdex description
+      review_status: source_reported
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2019/19OBDG03A%20Diagnostics.pdf
+      kind: source
+      label: null
+    - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: unreviewed_draft
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: draft_ready
+    conflicts: clear

@@ -1,0 +1,1272 @@
+pack: critical-conflicts-001
+generated_at: '2026-11-02T16:03:54Z'
+tier: 1
+limit: 50
+warning: Review material only. Nothing in this file is approved content, no conflict is resolved here,
+  and no inspection value or tool list has been invented. This pack exists because these 14 codes carry
+  unresolved CRITICAL conflicts; no decision is taken or suggested here.
+summary:
+  entries: 14
+  arabic_drafts: 0
+  arabic_missing: 14
+  entries_with_quoted_checks: 0
+  entries_with_references: 14
+  entries_without_reference: 0
+  entries_with_open_conflicts: 14
+entries:
+- priority_position: 1
+  code: P2458
+  context_key: P2458|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 12.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'vital component(s): fuel_injectors'
+  - 2 independent source(s) state this code
+  - 2 cause statement(s) available for review
+  - 1 unresolved critical conflict(s) - do not publish before a human decides
+  english:
+    title_en: DPF Regeneration Duration
+    description_en: The DPF regeneration cycle takes longer than the calibrated maximum. The ECU sets
+      this code when the soot load is not being burned off within the expected window — common after many
+      short trips or with degraded post-injection.
+    verification_status: conflicting
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Heavy soot load, short trips
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Post-injection insufficient
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light or DPF warning light on
+    source: obdex
+    review_status: source_reported
+  - text_en: Power loss / limp mode
+    source: obdex
+    review_status: source_reported
+  - text_en: Increased fuel consumption
+    source: obdex
+    review_status: source_reported
+  - text_en: Failed forced regeneration attempts
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: diesel_particulate_filter, dpf_temperature_sensor, fuel_injectors'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/Diesel_particulate_filter
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts:
+  - fingerprint: cfd28c677631d6a6
+    type: definition_disagreement
+    similarity: 0.6667
+    status: needs_review
+    summary: 2 incompatible en descriptions of P2458 in P2458|sae_j2012|generic:generic from ['obdex',
+      'wal33d'] (closest pair 67% similar)
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: pending
+- priority_position: 2
+  code: P2460
+  context_key: P2460|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 12.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'vital component(s): dpf_differential_pressure_sensor'
+  - 2 independent source(s) state this code
+  - 2 cause statement(s) available for review
+  - 1 unresolved critical conflict(s) - do not publish before a human decides
+  english:
+    title_en: DPF Restriction — Forced Limited Power
+    description_en: The DPF restriction has reached a level that forces the ECU to limit engine power.
+      The driver must allow a forced regeneration or have the filter serviced before normal power is restored.
+    verification_status: conflicting
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Heavy soot load, regenerations skipped
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Ash loaded near service interval
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light or DPF warning light on
+    source: obdex
+    review_status: source_reported
+  - text_en: Power loss / limp mode
+    source: obdex
+    review_status: source_reported
+  - text_en: Increased fuel consumption
+    source: obdex
+    review_status: source_reported
+  - text_en: Failed forced regeneration attempts
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: diesel_particulate_filter, dpf_differential_pressure_sensor'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/Diesel_particulate_filter
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts:
+  - fingerprint: 68d330cfafe161cf
+    type: definition_disagreement
+    similarity: 0.3571
+    status: needs_review
+    summary: 2 incompatible en descriptions of P2460 in P2460|sae_j2012|generic:generic from ['obdex',
+      'wal33d'] (closest pair 36% similar)
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: pending
+- priority_position: 3
+  code: P2461
+  context_key: P2461|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 12.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'vital component(s): dpf_differential_pressure_sensor'
+  - 2 independent source(s) state this code
+  - 2 cause statement(s) available for review
+  - 1 unresolved critical conflict(s) - do not publish before a human decides
+  english:
+    title_en: DPF Restriction — Forced Limited
+    description_en: The DPF restriction has reached the limit defined for forced limited operation. Vehicle
+      behaviour depends on the manufacturer — usually a hard torque cap with a service warning.
+    verification_status: conflicting
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Heavy soot load, regenerations skipped
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Ash loaded near service interval
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light or DPF warning light on
+    source: obdex
+    review_status: source_reported
+  - text_en: Power loss / limp mode
+    source: obdex
+    review_status: source_reported
+  - text_en: Increased fuel consumption
+    source: obdex
+    review_status: source_reported
+  - text_en: Failed forced regeneration attempts
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: diesel_particulate_filter, dpf_differential_pressure_sensor'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/Diesel_particulate_filter
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts:
+  - fingerprint: ca8fb3c675872c08
+    type: definition_disagreement
+    similarity: 0.3544
+    status: needs_review
+    summary: 2 incompatible en descriptions of P2461 in P2461|sae_j2012|generic:generic from ['obdex',
+      'wal33d'] (closest pair 35% similar)
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: pending
+- priority_position: 4
+  code: P2BAB
+  context_key: P2BAB|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 12.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'vital component(s): reductant_injector'
+  - 2 independent source(s) state this code
+  - 3 cause statement(s) available for review
+  - 1 unresolved critical conflict(s) - do not publish before a human decides
+  english:
+    title_en: NOx Exceedence — Reagent System Performance
+    description_en: The SCR system has detected that NOx emissions exceed the legal limit and the cause
+      is traced to a performance fault in the reagent dosing system — for example a slow dosing pump,
+      a clogged injector, or a frozen line that is not yet caught by another DTC.
+    verification_status: conflicting
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Reductant injector clogged with crystals
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Dosing pump output below spec
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Reagent supply line blocked
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light or NOx warning on
+    source: obdex
+    review_status: source_reported
+  - text_en: AdBlue/DEF level or quality warning
+    source: obdex
+    review_status: source_reported
+  - text_en: Possible no-start countdown after ignore period
+    source: obdex
+    review_status: source_reported
+  - text_en: Failed emissions inspection (NOx)
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: reductant_dosing_unit, reductant_injector, reductant_pump'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/Selective_catalytic_reduction
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts:
+  - fingerprint: c1deae54810a7f82
+    type: definition_disagreement
+    similarity: 0.6216
+    status: needs_review
+    summary: 2 incompatible en descriptions of P2BAB in P2BAB|sae_j2012|generic:generic from ['obdex',
+      'wal33d'] (closest pair 62% similar)
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: pending
+- priority_position: 5
+  code: P20E0
+  context_key: P20E0|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 10.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 2 independent source(s) state this code
+  - 3 cause statement(s) available for review
+  - 1 unresolved critical conflict(s) - do not publish before a human decides
+  english:
+    title_en: Reductant Pressure Too Low
+    description_en: The pressure in the SCR reductant (AdBlue/DEF) line is below the calibrated minimum.
+      Without sufficient pressure the dosing module cannot atomise reagent properly, leading to NOx exceedence.
+    verification_status: conflicting
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Worn DEF pump
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Clogged DEF filter
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Leak in DEF line
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light or NOx warning on
+    source: obdex
+    review_status: source_reported
+  - text_en: AdBlue/DEF level or quality warning
+    source: obdex
+    review_status: source_reported
+  - text_en: Possible no-start countdown after ignore period
+    source: obdex
+    review_status: source_reported
+  - text_en: Failed emissions inspection (NOx)
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: def_lines, def_pressure_sensor, def_pump'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/Selective_catalytic_reduction
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts:
+  - fingerprint: c6afcd44cb87712c
+    type: definition_disagreement
+    similarity: 0.4146
+    status: needs_review
+    summary: 2 incompatible en descriptions of P20E0 in P20E0|sae_j2012|generic:generic from ['obdex',
+      'wal33d'] (closest pair 41% similar)
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: pending
+- priority_position: 6
+  code: P20E1
+  context_key: P20E1|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 10.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 2 independent source(s) state this code
+  - 3 cause statement(s) available for review
+  - 1 unresolved critical conflict(s) - do not publish before a human decides
+  english:
+    title_en: Reductant Pressure Too Low
+    description_en: The reductant (AdBlue/DEF) line pressure stays below the demanded value during dosing.
+      The dosing system needs a stable supply pressure to inject metered amounts; without it the system
+      cannot meet NOx targets.
+    verification_status: conflicting
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Reductant pump worn or weak
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Inline filter clogged
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Leak in pressure line
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light or NOx warning on
+    source: obdex
+    review_status: source_reported
+  - text_en: AdBlue/DEF level or quality warning
+    source: obdex
+    review_status: source_reported
+  - text_en: Possible no-start countdown after ignore period
+    source: obdex
+    review_status: source_reported
+  - text_en: Failed emissions inspection (NOx)
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: reductant_lines, reductant_pressure_sensor, reductant_pump'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/Diesel_exhaust_fluid
+      kind: source
+      label: null
+    - url: https://en.wikipedia.org/wiki/Selective_catalytic_reduction
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts:
+  - fingerprint: 6f77b77f3c94f250
+    type: definition_disagreement
+    similarity: 0.3469
+    status: needs_review
+    summary: 2 incompatible en descriptions of P20E1 in P20E1|sae_j2012|generic:generic from ['obdex',
+      'wal33d'] (closest pair 35% similar)
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: pending
+- priority_position: 7
+  code: P20EF
+  context_key: P20EF|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 10.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 2 independent source(s) state this code
+  - 2 cause statement(s) available for review
+  - 1 unresolved critical conflict(s) - do not publish before a human decides
+  english:
+    title_en: Reductant Injection Valve Performance
+    description_en: The SCR reductant injection valve does not deliver the commanded amount of reagent.
+      Causes include clogging by urea crystals, electrical faults or incorrect spray pattern.
+    verification_status: conflicting
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Urea crystals in dosing valve
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Electrical fault in dosing valve
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light or NOx warning on
+    source: obdex
+    review_status: source_reported
+  - text_en: AdBlue/DEF level or quality warning
+    source: obdex
+    review_status: source_reported
+  - text_en: Possible no-start countdown after ignore period
+    source: obdex
+    review_status: source_reported
+  - text_en: Failed emissions inspection (NOx)
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: def_dosing_valve, def_pump'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/Selective_catalytic_reduction
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts:
+  - fingerprint: ffc30517d65a4529
+    type: definition_disagreement
+    similarity: 0.3297
+    status: needs_review
+    summary: 2 incompatible en descriptions of P20EF in P20EF|sae_j2012|generic:generic from ['obdex',
+      'wal33d'] (closest pair 33% similar)
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: pending
+- priority_position: 8
+  code: P22F1
+  context_key: P22F1|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 10.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 2 independent source(s) state this code
+  - 2 cause statement(s) available for review
+  - 1 unresolved critical conflict(s) - do not publish before a human decides
+  english:
+    title_en: Particulate Matter Sensor Heater Performance
+    description_en: The particulate matter (PM) sensor heater on diesel after-DPF systems does not reach
+      or hold the calibrated operating temperature within the expected time. Without proper heating the
+      PM sensor cannot be regenerated and read correctly.
+    verification_status: conflicting
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: PM sensor aging
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Increased heater resistance
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  symptoms: []
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: pm_heater_circuit, pm_sensor'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/Diesel_particulate_filter
+      kind: source
+      label: null
+    - url: https://en.wikipedia.org/wiki/On-board_diagnostics
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts:
+  - fingerprint: 9cdc8d2653e1f10e
+    type: definition_disagreement
+    similarity: 0.3366
+    status: needs_review
+    summary: 2 incompatible en descriptions of P22F1 in P22F1|sae_j2012|generic:generic from ['obdex',
+      'wal33d'] (closest pair 34% similar)
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: pending
+- priority_position: 9
+  code: P2413
+  context_key: P2413|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 10.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 2 independent source(s) state this code
+  - 3 cause statement(s) available for review
+  - 1 unresolved critical conflict(s) - do not publish before a human decides
+  english:
+    title_en: Exhaust Gas Recirculation System Performance
+    description_en: The ECU monitors EGR flow indirectly through MAF, MAP or differential-pressure feedback
+      and finds that actual EGR flow does not match the commanded value over a sustained period.
+    verification_status: conflicting
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Carbon buildup in EGR passages
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Sticking EGR valve
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: EGR differential pressure sensor fault
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  symptoms: []
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: egr_cooler, egr_diff_pressure_sensor, egr_valve'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/Exhaust_gas_recirculation
+      kind: source
+      label: null
+    - url: https://en.wikipedia.org/wiki/On-board_diagnostics
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts:
+  - fingerprint: 26dfef8005401b3f
+    type: definition_disagreement
+    similarity: 0.6667
+    status: needs_review
+    summary: 2 incompatible en descriptions of P2413 in P2413|sae_j2012|generic:generic from ['obdex',
+      'wal33d'] (closest pair 67% similar)
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: pending
+- priority_position: 10
+  code: P2462
+  context_key: P2462|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 10.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 2 independent source(s) state this code
+  - 2 cause statement(s) available for review
+  - 1 unresolved critical conflict(s) - do not publish before a human decides
+  english:
+    title_en: Diesel Particulate Filter Restriction - Soot Accumulation
+    description_en: The DPF differential pressure sensor reports a backpressure rise consistent with excessive
+      soot accumulation. The filter cannot regenerate fast enough, eventually causing limp mode.
+    verification_status: conflicting
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Heavily clogged DPF
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Repeated failed regeneration cycles
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light or DPF warning light on
+    source: obdex
+    review_status: source_reported
+  - text_en: Power loss / limp mode
+    source: obdex
+    review_status: source_reported
+  - text_en: Increased fuel consumption
+    source: obdex
+    review_status: source_reported
+  - text_en: Failed forced regeneration attempts
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: diesel_particulate_filter, dpf_diff_pressure_sensor'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/Diesel_particulate_filter
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts:
+  - fingerprint: c32a52f8da504837
+    type: definition_disagreement
+    similarity: 0.5333
+    status: needs_review
+    summary: 2 incompatible en descriptions of P2462 in P2462|sae_j2012|generic:generic from ['obdex',
+      'wal33d'] (closest pair 53% similar)
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: pending
+- priority_position: 11
+  code: P2BAC
+  context_key: P2BAC|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 10.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 2 independent source(s) state this code
+  - 2 cause statement(s) available for review
+  - 1 unresolved critical conflict(s) - do not publish before a human decides
+  english:
+    title_en: NOx Exceedence - Insufficient Reagent Quality
+    description_en: The diesel exhaust aftertreatment system detects elevated NOx levels combined with
+      abnormal reagent (AdBlue/DEF) consumption, indicating that the reagent quality is insufficient or
+      contaminated. Many regions trigger driver inducement (limited restarts).
+    verification_status: conflicting
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Non-DEF liquid in tank (water, diesel)
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Aged or diluted DEF/AdBlue
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light or NOx warning on
+    source: obdex
+    review_status: source_reported
+  - text_en: AdBlue/DEF level or quality warning
+    source: obdex
+    review_status: source_reported
+  - text_en: Possible no-start countdown after ignore period
+    source: obdex
+    review_status: source_reported
+  - text_en: Failed emissions inspection (NOx)
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: def_quality_sensor, def_tank, nox_sensor, scr_catalyst'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/Diesel_exhaust_fluid
+      kind: source
+      label: null
+    - url: https://en.wikipedia.org/wiki/Selective_catalytic_reduction
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts:
+  - fingerprint: c18c612e7bd58de0
+    type: definition_disagreement
+    similarity: 0.4675
+    status: needs_review
+    summary: 2 incompatible en descriptions of P2BAC in P2BAC|sae_j2012|generic:generic from ['obdex',
+      'wal33d'] (closest pair 47% similar)
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: pending
+- priority_position: 12
+  code: P2BAD
+  context_key: P2BAD|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 10.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 2 independent source(s) state this code
+  - 2 cause statement(s) available for review
+  - 1 unresolved critical conflict(s) - do not publish before a human decides
+  english:
+    title_en: NOx Exceedence - Insufficient Reagent Consumption
+    description_en: The aftertreatment system detects elevated NOx emissions while reagent (AdBlue/DEF)
+      consumption is below the expected level. Causes include clogged dosing injector, incorrect dosing
+      rate or tampering.
+    verification_status: conflicting
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Clogged DEF dosing valve
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Incorrect dosing calibration
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light or NOx warning on
+    source: obdex
+    review_status: source_reported
+  - text_en: AdBlue/DEF level or quality warning
+    source: obdex
+    review_status: source_reported
+  - text_en: Possible no-start countdown after ignore period
+    source: obdex
+    review_status: source_reported
+  - text_en: Failed emissions inspection (NOx)
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: def_dosing_valve, nox_sensor, scr_catalyst'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/Selective_catalytic_reduction
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts:
+  - fingerprint: 1e7e6d1c57fa137b
+    type: definition_disagreement
+    similarity: 0.525
+    status: needs_review
+    summary: 2 incompatible en descriptions of P2BAD in P2BAD|sae_j2012|generic:generic from ['obdex',
+      'wal33d'] (closest pair 52% similar)
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: pending
+- priority_position: 13
+  code: P2BAE
+  context_key: P2BAE|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 10.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 2 independent source(s) state this code
+  - 2 cause statement(s) available for review
+  - 1 unresolved critical conflict(s) - do not publish before a human decides
+  english:
+    title_en: NOx Exceedence - EGR System
+    description_en: NOx emissions are above the legal threshold and the ECU isolates the cause to the
+      EGR system. EGR flow is too low or absent under operating conditions where NOx reduction is required.
+    verification_status: conflicting
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Carbon clogged EGR passages
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: EGR valve stuck closed
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light on
+    source: obdex
+    review_status: source_reported
+  - text_en: Pinging or knocking under load
+    source: obdex
+    review_status: source_reported
+  - text_en: Power loss and hesitation
+    source: obdex
+    review_status: source_reported
+  - text_en: Possible rough idle
+    source: obdex
+    review_status: source_reported
+  - text_en: Failed emissions inspection (NOx)
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: egr_cooler, egr_diff_pressure_sensor, egr_valve'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/Exhaust_gas_recirculation
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts:
+  - fingerprint: 7f23389ebc6b46aa
+    type: definition_disagreement
+    similarity: 0.6667
+    status: needs_review
+    summary: 2 incompatible en descriptions of P2BAE in P2BAE|sae_j2012|generic:generic from ['obdex',
+      'wal33d'] (closest pair 67% similar)
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: pending
+- priority_position: 14
+  code: P2BAF
+  context_key: P2BAF|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 10.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 2 independent source(s) state this code
+  - 3 cause statement(s) available for review
+  - 1 unresolved critical conflict(s) - do not publish before a human decides
+  english:
+    title_en: NOx Sensor Heater Sense Circuit Range/Performance Bank 1 Sensor 1
+    description_en: The heater sense feedback of NOx sensor 1 on bank 1 reports values that do not match
+      expected operation. The sensor warm-up cycle does not behave as the diagnostic expects.
+    verification_status: conflicting
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: NOx sensor aging
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: High resistance in heater circuit
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Sensor element aged beyond calibration window
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light or NOx warning on
+    source: obdex
+    review_status: source_reported
+  - text_en: AdBlue/DEF level or quality warning
+    source: obdex
+    review_status: source_reported
+  - text_en: Possible no-start countdown after ignore period
+    source: obdex
+    review_status: source_reported
+  - text_en: Failed emissions inspection (NOx)
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: nox_heater_circuit, nox_sensor'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/NOx_sensor
+      kind: source
+      label: null
+    - url: https://en.wikipedia.org/wiki/Selective_catalytic_reduction
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts:
+  - fingerprint: 9ac8bb3729be6b9c
+    type: definition_disagreement
+    similarity: 0.32
+    status: needs_review
+    summary: 2 incompatible en descriptions of P2BAF in P2BAF|sae_j2012|generic:generic from ['obdex',
+      'wal33d'] (closest pair 32% similar)
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: pending

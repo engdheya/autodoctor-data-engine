@@ -1,0 +1,4056 @@
+pack: tier1-20261102
+generated_at: '2026-11-02T16:03:31Z'
+tier: 1
+limit: 40
+warning: Review material only. Nothing in this file is approved content, no conflict is resolved here,
+  and no inspection value or tool list has been invented.
+summary:
+  entries: 40
+  arabic_drafts: 20
+  arabic_missing: 20
+  entries_with_quoted_checks: 15
+  entries_with_references: 40
+  entries_without_reference: 0
+  entries_with_open_conflicts: 0
+entries:
+- priority_position: 1
+  code: P0500
+  context_key: P0500|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 18.0
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): abs_module'
+  - 'vital component(s): engine_control_module'
+  - 2 independent source(s) state this code
+  - 2 manufacturer/generic contexts for the same code
+  - 5 cause statement(s) available for review
+  english:
+    title_en: Vehicle Speed Sensor A Circuit
+    description_en: 'The vehicle speed signal A comes, depending on the maker, from a sensor on the gearbox,
+      the transmission output speed, the wheel speeds via ABS/ESP or a CAN message; CARB explicitly names
+      it as an input to be monitored. P0500 is the general code for this signal. Ford checks plausibility:
+      the car must be moving (high load, positive torque), yet the signal stays below 1–5 mph for 5 s;
+      Ford diesels flag a missing CAN message after 0.5 s. GM''s Saturn ION of 2004 used high load with
+      below 3 mph for 6.2 s (MIL after two trips); GM''s 2018 tables use P0502/P0503 instead. Cruise control
+      is then disabled and substitute values are used.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: دائرة حساس سرعة السيارة A
+    description_ar: 'إشارة سرعة السيارة A تأتي — بحسب الشركة — من حساس على ناقل الحركة، أو من سرعة خرج
+      ناقل الحركة، أو من سرعات العجلات عبر ABS/ESP، أو عبر رسالة CAN. عند انقطاعها لا تعرف وحدة التحكم
+      سرعة السيارة، ويتأثر عمل النقل والتحكم.
+
+      '
+    translator: null
+    reviewer: null
+    status: machine_draft
+    note: machine draft, never shown to a user as approved
+  causes:
+  - text_en: ABS/ESP module or wheel speed sensor faulty (signal source)
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Output speed sensor or vehicle speed sensor faulty or dirty (metal debris on the magnet)
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: CAN communication fault (message missing)
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Wire or connector open or shorted, corrosion
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Wrong tyre or axle data programmed
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light on
+    source: obdex
+    review_status: source_reported
+  - text_en: Speedometer dead or jumping
+    source: obdex
+    review_status: source_reported
+  - text_en: Cruise control not working
+    source: obdex
+    review_status: source_reported
+  - text_en: Automatic shifts harshly or wrongly
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: abs_module, engine_control_module, sensor_wiring, vehicle_speed_sensor'
+    review_status: source_reported
+  procedure:
+    status: draft_unreviewed
+    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
+      no tool list, no nominal value and no limit may be added until a qualified technician approves a
+      written procedure.'
+    quoted_checks:
+    - text_en: 'Ford checks plausibility: the car must be moving (high load, positive torque), yet the
+        signal stays below 1–5 mph for 5 s;'
+      source: obdex description
+      review_status: source_reported
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://fordservicecontent.com/Ford_Content/catalog/motorcraft/OBD-Operations-Summary-Gasoline-2020-2023.pdf
+      kind: source
+      label: null
+    - url: https://fordservicecontent.com/Ford_Content/catalog/motorcraft/obd-summary-diesel-2023.pdf
+      kind: source
+      label: null
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2004/2004file1.pdf
+      kind: source
+      label: null
+    - url: https://newtonnet.co.uk/fiesta/fordobd2012.pdf
+      kind: source
+      label: null
+    - url: https://saabwisonline.com/9-3-9400/1998/2-engine/trionic-t5/fault-diagnosis-diagnostic-trouble-codes/p0500p0501-p0502
+      kind: source
+      label: null
+    - url: https://saabwisonline.com/9-5-9600/2005/2-engine/psg-16-d223l/fault-diagnosis-diagnostic-trouble-codes/p0500-p0501-p0503
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: unreviewed_draft
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: draft_ready
+    conflicts: clear
+- priority_position: 2
+  code: P0501
+  context_key: P0501|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 18.0
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): abs_module'
+  - 'vital component(s): engine_control_module'
+  - 2 independent source(s) state this code
+  - 2 manufacturer/generic contexts for the same code
+  - 4 cause statement(s) available for review
+  english:
+    title_en: Vehicle Speed Sensor A Circuit Range/Performance
+    description_en: 'The vehicle speed signal A comes, depending on the maker, from a sensor on the gearbox,
+      the transmission output speed, the wheel speeds via ABS/ESP or a CAN message; CARB explicitly names
+      it as an input to be monitored. P0501 means the signal is present but does not fit the driving state
+      or lies outside the physically possible range. Saab''s Trionic T5 sets it above 270 km/h; other
+      makers typically compare it with engine speed times gear ratio, wheel speeds or the transmission
+      output speed. GM''s 2018 tables and Ford do not use P0501 (GM: P0503, Ford: P0500). Cruise control
+      is then disabled.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: دائرة حساس سرعة السيارة A — المدى والأداء
+    description_ar: 'الإشارة موجودة لكن قيمتها خارج المدى المتوقع أو غير متسقة مع مصادر السرعة الأخرى
+      (حساس ناقل الحركة أو سرعات العجلات عبر ABS/ESP أو CAN).
+
+      '
+    translator: null
+    reviewer: null
+    status: machine_draft
+    note: machine draft, never shown to a user as approved
+  causes:
+  - text_en: Wheel speed sensor or tone ring damaged or dirty (ABS source)
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Wrong tyre size, axle ratio or coding
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Sensor with weak signal or damaged tone wheel
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Interference from damaged shielding or ground
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light on
+    source: obdex
+    review_status: source_reported
+  - text_en: Speedometer dead or jumping
+    source: obdex
+    review_status: source_reported
+  - text_en: Cruise control not working
+    source: obdex
+    review_status: source_reported
+  - text_en: Automatic shifts harshly or wrongly
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: abs_module, engine_control_module, sensor_wiring, vehicle_speed_sensor'
+    review_status: source_reported
+  procedure:
+    status: draft_unreviewed
+    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
+      no tool list, no nominal value and no limit may be added until a qualified technician approves a
+      written procedure.'
+    quoted_checks:
+    - text_en: other makers typically compare it with engine speed times gear ratio, wheel speeds or the
+        transmission output speed.
+      source: obdex description
+      review_status: source_reported
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+      kind: source
+      label: null
+    - url: https://saabwisonline.com/9-3-9400/1998/2-engine/trionic-t5/fault-diagnosis-diagnostic-trouble-codes/p0500p0501-p0502
+      kind: source
+      label: null
+    - url: https://saabwisonline.com/9-5-9600/2005/2-engine/psg-16-d223l/fault-diagnosis-diagnostic-trouble-codes/p0500-p0501-p0503
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: unreviewed_draft
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: draft_ready
+    conflicts: clear
+- priority_position: 3
+  code: U0107
+  context_key: U0107|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: network
+  tier: 1
+  score: 18.0
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): throttle_actuator_control_module'
+  - 'vital component(s): can_bus_wiring'
+  - 2 independent source(s) state this code
+  - 2 manufacturer/generic contexts for the same code
+  - 3 cause statement(s) available for review
+  english:
+    title_en: Lost Communication with Throttle Actuator Control Module
+    description_en: The Throttle Actuator Control Module has stopped transmitting on the vehicle data
+      bus, so other control units no longer receive its messages. Electronic throttle control can drop
+      to limp mode with sharply reduced power. Typical causes are loss of power or ground at the module,
+      an open or shorted CAN/LIN bus wire, a connector fault, or an internal module failure.
+    verification_status: source_reported
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: انقطاع الاتصال بوحدة التحكم في مشغّل الخانق (TAC)
+    description_ar: 'توقفت وحدة التحكم في مشغّل الخانق عن الإرسال على ناقل بيانات السيارة، فلا تتلقى الوحدات
+      الأخرى رسائلها. قد ينتقل التحكم الإلكتروني في الخانق إلى limp mode بقدرة منخفضة جدًا.
+
+      '
+    translator: null
+    reviewer: null
+    status: machine_draft
+    note: machine draft, never shown to a user as approved
+  causes:
+  - text_en: Throttle module unpowered
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: CAN wiring to throttle module broken
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Gateway module routing CAN messages incorrectly
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Multiple warning lights may illuminate
+    source: obdex
+    review_status: source_reported
+  - text_en: Affected modules may go into limp mode or shut down
+    source: obdex
+    review_status: source_reported
+  - text_en: Specific functions inoperative depending on module
+    source: obdex
+    review_status: source_reported
+  - text_en: Diagnostic tools may show communication faults
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: can_bus_wiring, throttle_actuator_control_module'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/CAN_bus
+      kind: source
+      label: null
+    - url: https://en.wikipedia.org/wiki/Engine_control_unit
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 4
+  code: P0487
+  context_key: P0487|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 17.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): egr_throttle_valve, throttle_actuator'
+  - 'vital component(s): engine_control_module'
+  - 2 independent source(s) state this code
+  - 4 cause statement(s) available for review
+  english:
+    title_en: EGR Throttle Control Circuit A/Open
+    description_en: 'Exhaust gas recirculation (EGR) routes part of the exhaust back into the intake to
+      lower combustion temperature and NOx. The EGR throttle is a regulating flap ahead of the intake
+      manifold on diesels: by closing partly it lowers manifold pressure below exhaust back pressure so
+      that enough exhaust is recirculated, and it also helps filter regeneration and shuts off air at
+      engine stop. It is usually a DC motor with position sensor. GM and Ford report this flap under P02E0
+      ff; no manufacturer document available to us uses this code. P0487 means its drive circuit is open
+      or has a general circuit fault, detected by the output stage. The flap then stays open, so the EGR
+      rate cannot be raised enough and filter regeneration may be blocked.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: دائرة التحكم في خانق EGR — القناة A — قطع
+    description_ar: 'إعادة تدوير غاز العادم (EGR) تعيد جزءًا من العادم إلى مجرى السحب لخفض حرارة الاحتراق
+      وNOx. خانق EGR صفيحة تنظيم أمام مجرى السحب في محركات الديزل، والكود يعني قطعًا أو فتحًا في دائرة
+      التحكم به.
+
+      '
+    translator: null
+    reviewer: null
+    status: machine_draft
+    note: machine draft, never shown to a user as approved
+  causes:
+  - text_en: Connector at the flap corroded or loose, wire open
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Flap actuator motor faulty (winding open)
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Driver in the engine module
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  - text_en: 'Pneumatic version: vacuum converter faulty'
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light on
+    source: obdex
+    review_status: source_reported
+  - text_en: Loss of power or limp mode possible
+    source: obdex
+    review_status: source_reported
+  - text_en: Shaking when the engine is switched off
+    source: obdex
+    review_status: source_reported
+  - text_en: Filter regeneration does not complete
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: actuator_wiring, egr_throttle_valve, engine_control_module, throttle_actuator'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+      kind: source
+      label: null
+    - url: https://ms-motorservice.com/en/technipedia/post/throttle-valves-and-regulating-throttles
+      kind: source
+      label: null
+    - url: https://patents.google.com/patent/US6732723B2/en
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 5
+  code: P0488
+  context_key: P0488|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 17.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): egr_throttle_valve, throttle_actuator, throttle_position_sensor'
+  - 'vital component(s): engine_control_module'
+  - 2 independent source(s) state this code
+  - 4 cause statement(s) available for review
+  english:
+    title_en: EGR Throttle Control Circuit A Range/Performance
+    description_en: 'Exhaust gas recirculation (EGR) routes part of the exhaust back into the intake to
+      lower combustion temperature and NOx. The EGR throttle is a regulating flap ahead of the intake
+      manifold on diesels: by closing partly it lowers manifold pressure below exhaust back pressure so
+      that enough exhaust is recirculated, and it also helps filter regeneration and shuts off air at
+      engine stop. It is usually a DC motor with position sensor. GM and Ford report this flap under P02E0
+      ff; no manufacturer document available to us uses this code. P0488 is its function check: the actual
+      position reported by the sensor deviates from the target for too long, or the position signal is
+      implausible – typically a coked, stiff flap or a broken gear. The flap then goes to its rest position
+      or the engine enters limp mode, and the EGR rate cannot be controlled.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: دائرة التحكم في خانق EGR — القناة A — المدى والأداء
+    description_ar: 'الدائرة سليمة كهربائيًا لكن وضع صفيحة EGR لا يطابق الوضع المطلوب من وحدة التحكم،
+      أو أن الاستجابة خارج المدى المسموح.
+
+      '
+    translator: null
+    reviewer: null
+    status: machine_draft
+    note: machine draft, never shown to a user as approved
+  causes:
+  - text_en: Flap coked by soot and oil mist (EGR plus crankcase ventilation)
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Actuator gear or motor worn or broken
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Position sensor in the flap faulty or implausible
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Corrosion on flap or housing
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light on
+    source: obdex
+    review_status: source_reported
+  - text_en: Loss of power or limp mode possible
+    source: obdex
+    review_status: source_reported
+  - text_en: Shaking when the engine is switched off
+    source: obdex
+    review_status: source_reported
+  - text_en: Filter regeneration does not complete
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: egr_throttle_valve, engine_control_module, throttle_actuator, throttle_position_sensor'
+    review_status: source_reported
+  procedure:
+    status: draft_unreviewed
+    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
+      no tool list, no nominal value and no limit may be added until a qualified technician approves a
+      written procedure.'
+    quoted_checks:
+    - text_en: 'P0488 is its function check: the actual position reported by the sensor deviates from
+        the target for too long, or the position signal is implausible – typically a coked, stiff flap
+        or a broken gear.'
+      source: obdex description
+      review_status: source_reported
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+      kind: source
+      label: null
+    - url: https://ms-motorservice.com/en/technipedia/post/throttle-valves-and-regulating-throttles
+      kind: source
+      label: null
+    - url: https://patents.google.com/patent/US6732723B2/en
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: unreviewed_draft
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: draft_ready
+    conflicts: clear
+- priority_position: 6
+  code: P0502
+  context_key: P0502|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 17.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): abs_module'
+  - 'vital component(s): engine_control_module'
+  - 2 independent source(s) state this code
+  - 4 cause statement(s) available for review
+  english:
+    title_en: Vehicle Speed Sensor A Circuit Low
+    description_en: 'The vehicle speed signal A comes, depending on the maker, from a sensor on the gearbox,
+      the transmission output speed, the wheel speeds via ABS/ESP or a CAN message; CARB explicitly names
+      it as an input to be monitored. Despite its wording, all makers found check plausibility: the car
+      is clearly moving (load, torque, overrun), yet the signal stays at zero. GM''s 2018 tables use the
+      transmission output speed: below 12 rpm (petrol) or 60 rpm (diesel) for 4.5 s, MIL on the first
+      trip. Subaru (also in the Saab 9-2X) sets it below 1 km/h on overrun for over 4 s with the MIL at
+      once; Saab''s T5 after 4 s without signal above 1800 rpm. Electrical faults give the same picture.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: حساس سرعة السيارة A — إشارة منخفضة
+    description_ar: 'جهد أو تردد إشارة سرعة السيارة A أقل من الحد الأدنى المتوقع، مع احتمال أن تكون الإشارة
+      صفرية رغم أن السيارة تتحرك.
+
+      '
+    translator: null
+    reviewer: null
+    status: machine_draft
+    note: machine draft, never shown to a user as approved
+  causes:
+  - text_en: Speed or output speed sensor faulty
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Wire open or shorted to ground, connector corroded
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: ABS module sends no speed signal
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Tone wheel damaged or sensor dirty
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light on
+    source: obdex
+    review_status: source_reported
+  - text_en: Speedometer dead or jumping
+    source: obdex
+    review_status: source_reported
+  - text_en: Cruise control not working
+    source: obdex
+    review_status: source_reported
+  - text_en: Automatic shifts harshly or wrongly
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: abs_module, engine_control_module, sensor_wiring, vehicle_speed_sensor'
+    review_status: source_reported
+  procedure:
+    status: draft_unreviewed
+    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
+      no tool list, no nominal value and no limit may be added until a qualified technician approves a
+      written procedure.'
+    quoted_checks:
+    - text_en: 'Despite its wording, all makers found check plausibility: the car is clearly moving (load,
+        torque, overrun), yet the signal stays at zero.'
+      source: obdex description
+      review_status: source_reported
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2018/18OBDG03A%20Engine%20Diagnostics.pdf
+      kind: source
+      label: null
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2018/18OBDG04%20Engine%20Diagnostics.pdf
+      kind: source
+      label: null
+    - url: https://saabwisonline.com/9-2x-9346/2005/0-general/general-diagnostics-2-0t/diagnostic-trouble-code-dtc-detecting-criteria/fault-diagnosis-fault-codes/dtc-p0502-vehicle-speed-sensor-circuit-low-input
+      kind: source
+      label: null
+    - url: https://saabwisonline.com/9-3-9400/1998/2-engine/trionic-t5/fault-diagnosis-diagnostic-trouble-codes/p0500p0501-p0502
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: unreviewed_draft
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: draft_ready
+    conflicts: clear
+- priority_position: 7
+  code: P0503
+  context_key: P0503|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 17.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): abs_module'
+  - 'vital component(s): engine_control_module'
+  - 2 independent source(s) state this code
+  - 4 cause statement(s) available for review
+  english:
+    title_en: Vehicle Speed Sensor A Circuit Intermittent/Erratic/High
+    description_en: 'The vehicle speed signal A comes, depending on the maker, from a sensor on the gearbox,
+      the transmission output speed, the wheel speeds via ABS/ESP or a CAN message; CARB explicitly names
+      it as an input to be monitored. P0503 combines three fault patterns: sporadic signal loss, jumping
+      values and a value that is too high. GM detects a sudden signal drop quickly (0.3 s, 5 counts, MIL
+      on the first trip); Subaru sets it at 240 km/h or more for a cumulative 4 s, Saab''s diesel above
+      220 km/h. In limp mode Subaru sets the speed to zero, disables fuel cut-off on overrun and raises
+      the fan.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: حساس سرعة السيارة A — إشارة متقطعة/غير منتظمة/عالية
+    description_ar: 'إشارة السرعة تقفز أو تنقطع بصورة غير منتظمة أو تتجاوز الحد الأعلى، وهي حالة تمنع
+      وحدات ABS/ESP والنقل من الاعتماد عليها.
+
+      '
+    translator: null
+    reviewer: null
+    status: machine_draft
+    note: machine draft, never shown to a user as approved
+  causes:
+  - text_en: Loose contact, chafed wire, corroded connector
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Interference from damaged shielding or the ignition
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Sensor with weakened magnet or damaged tone wheel
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: ABS/ESP fault (signal source)
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light on
+    source: obdex
+    review_status: source_reported
+  - text_en: Speedometer needle jumps
+    source: obdex
+    review_status: source_reported
+  - text_en: Cruise control drops out, jerky shifting
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: abs_module, engine_control_module, sensor_wiring, vehicle_speed_sensor'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2018/18OBDG03A%20Engine%20Diagnostics.pdf
+      kind: source
+      label: null
+    - url: https://saabwisonline.com/9-2x-9346/2005/0-general/general-diagnostics-2-0t/diagnostic-trouble-code-dtc-detecting-criteria/fault-diagnosis-fault-codes/dtc-p0503-vehicle-speed-sensor-intermittent-erratic-high
+      kind: source
+      label: null
+    - url: https://saabwisonline.com/9-5-9600/2005/2-engine/psg-16-d223l/fault-diagnosis-diagnostic-trouble-codes/p0500-p0501-p0503
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 8
+  code: P0519
+  context_key: P0519|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 17.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): throttle_body'
+  - 'vital component(s): engine_control_module'
+  - 2 independent source(s) state this code
+  - 4 cause statement(s) available for review
+  english:
+    title_en: Idle Air Control System Performance
+    description_en: 'P0519 means the idle control fails functionally with an electrically sound circuit
+      – the actual idle speed deviates strongly despite fully used control. It is documented only on Subaru
+      (also in the Saab 9-2X, electronic throttle, around 2005): idle at least 1000 rpm above target with
+      the control already at zero for 2 or 5 s sets the code with the warning lamp at once, and a fail-safe
+      cuts fuel to cylinders to stop the engine racing. GM and Ford use P0506/P0507 instead; CARB''s mandatory
+      limit is +200/−100 rpm.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: أداء نظام التحكم في هواء الخمول
+    description_ar: 'فشل وظيفي في التحكم بالخمول مع دائرة كهربائية سليمة: سرعة الخمول تنحرف بشدة رغم استخدام
+      التحكم الكامل لطاقته. موثّق على Subaru وأيضًا Saab 9-2X.
+
+      '
+    translator: null
+    reviewer: null
+    status: machine_draft
+    note: machine draft, never shown to a user as approved
+  causes:
+  - text_en: False air behind the throttle (intake, gasket, vacuum hose)
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Throttle or idle valve stuck open (foreign body, coking)
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Throttle actuator motor faulty (follow-on P2101)
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Follow-on fault of other codes (sensors, pedal)
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Idle far above target, engine races
+    source: obdex
+    review_status: source_reported
+  - text_en: Jerking from cylinder cut-off in limp mode
+    source: obdex
+    review_status: source_reported
+  - text_en: Check engine light on
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: engine_control_module, idle_control, throttle_body'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2018/18OBDG03A%20Engine%20Diagnostics.pdf
+      kind: source
+      label: null
+    - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+      kind: source
+      label: null
+    - url: https://saabwisonline.com/9-2x-9346/2005/0-general/general-diagnostics-2-0t/diagnostic-trouble-code-dtc-detecting-criteria/fault-diagnosis-fault-codes/dtc-p0519-idle-control-system-malfunction-fail-safe
+      kind: source
+      label: null
+    - url: https://saabwisonline.com/9-2x-9346/2005/2-engine/engine-diagnostics-2-5i/diagnostic-procedure-with-diagnostic-trouble-code-dtc/fault-diagnosis-fault-codes/dtc-p0519-idle-control-system-malfunction-fail-safe
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 9
+  code: P057C
+  context_key: P057C|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 17.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): brake_pedal_position_sensor'
+  - 'vital component(s): engine_control_module'
+  - 2 independent source(s) state this code
+  - 4 cause statement(s) available for review
+  english:
+    title_en: Brake Pedal Position Sensor A Circuit Low
+    description_en: 'The brake pedal position sensor A is an analogue 5 V sensor giving pedal travel continuously;
+      its rest position (about 1 V) is learned. GM reads it in the engine module from about 2012 and uses
+      it as an enabling condition of transmission monitors – hence type A, warning lamp after one trip,
+      unlike cruise control codes. On any circuit fault GM sets the pedal to 0 %, so brake detection relies
+      on the brake light switch. P057C means the signal is too low – a short to ground: GM below 5 in
+      20 of 32 samples. GM bulletins for 2012–14 pick-ups and SUVs name connector X205 under the left
+      defroster duct, with cruise, brake light and stability messages and reduced power.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: حساس موضع دواسة الفرامل A — إشارة منخفضة
+    description_ar: 'حساس تناظري بجهد 5V يعطي مقدار حركة الدواسة باستمرار، ويُتعلَّم موضع الراحة (نحو
+      1V). الكود يعني أن الجهد أقل من الحد الأدنى المتوقع.
+
+      '
+    translator: null
+    reviewer: null
+    status: machine_draft
+    note: machine draft, never shown to a user as approved
+  causes:
+  - text_en: Connector or terminals at sensor or inline connector (GM X205) loose, pushed back or corroded
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Sensor faulty internally
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Signal or 5 V reference shorted to ground
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: 5 V reference pulled down by another sensor
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light on (GM, one trip)
+    source: obdex
+    review_status: source_reported
+  - text_en: Cruise control, brake light or stability functions restricted
+    source: obdex
+    review_status: source_reported
+  - text_en: Reduced power when accelerating
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: brake_pedal_position_sensor, engine_control_module, sensor_wiring'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2018/18OBDG03A%20Engine%20Diagnostics.pdf
+      kind: source
+      label: null
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2018/18OBDG04%20Engine%20Diagnostics.pdf
+      kind: source
+      label: null
+    - url: https://static.nhtsa.gov/odi/tsbs/2013/MC-10112348-9999.pdf
+      kind: source
+      label: null
+    - url: https://static.nhtsa.gov/odi/tsbs/2025/MC-11014638-0001.pdf
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 10
+  code: P057D
+  context_key: P057D|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 17.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): brake_pedal_position_sensor'
+  - 'vital component(s): engine_control_module'
+  - 2 independent source(s) state this code
+  - 4 cause statement(s) available for review
+  english:
+    title_en: Brake Pedal Position Sensor A Circuit High
+    description_en: 'The brake pedal position sensor A is an analogue 5 V sensor giving pedal travel continuously;
+      its rest position (about 1 V) is learned. GM reads it in the engine module from about 2012 and uses
+      it as an enabling condition of transmission monitors – hence type A, warning lamp after one trip,
+      unlike cruise control codes. On any circuit fault GM sets the pedal to 0 %, so brake detection relies
+      on the brake light switch. P057D means the signal is too high: GM above 95 in 20 of 32 samples and
+      calls this explicitly an open circuit – an open signal or ground line is pulled up. A short to 5
+      V or battery acts the same. ''High'' means signal, not a fully pressed pedal. GM bulletins name
+      connector X205 on 2012–14 pick-ups.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: حساس موضع دواسة الفرامل A — إشارة عالية
+    description_ar: 'جهد إشارة دواسة الفرامل أعلى من الحد الأعلى المتوقع، ما يجعل وحدة التحكم عاجزة عن
+      تمييز موضع الدواسة الحقيقي.
+
+      '
+    translator: null
+    reviewer: null
+    status: machine_draft
+    note: machine draft, never shown to a user as approved
+  causes:
+  - text_en: Ground or signal line open, connector X205 with poor contact
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Sensor faulty
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Sensor misinstalled or misadjusted
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  - text_en: Signal shorted to voltage
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light on (GM, one trip)
+    source: obdex
+    review_status: source_reported
+  - text_en: Cruise unavailable, brake light or stability messages
+    source: obdex
+    review_status: source_reported
+  - text_en: Possible power reduction
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: brake_pedal_position_sensor, engine_control_module, sensor_wiring'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2018/18OBDG03A%20Engine%20Diagnostics.pdf
+      kind: source
+      label: null
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2019/19OBDG03B%20Diagnostics.pdf
+      kind: source
+      label: null
+    - url: https://static.nhtsa.gov/odi/tsbs/2012/MC-10247739-9999.pdf
+      kind: source
+      label: null
+    - url: https://static.nhtsa.gov/odi/tsbs/2013/MC-10112348-9999.pdf
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 11
+  code: P057E
+  context_key: P057E|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 17.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): brake_pedal_position_sensor'
+  - 'vital component(s): engine_control_module'
+  - 2 independent source(s) state this code
+  - 4 cause statement(s) available for review
+  english:
+    title_en: Brake Pedal Position Sensor A Circuit Intermittent/Erratic
+    description_en: 'The brake pedal position sensor A is an analogue 5 V sensor giving pedal travel continuously;
+      its rest position (about 1 V) is learned. GM reads it in the engine module from about 2012 and uses
+      it as an enabling condition of transmission monitors – hence type A, warning lamp after one trip,
+      unlike cruise control codes. On any circuit fault GM sets the pedal to 0 %, so brake detection relies
+      on the brake light switch. P057E means implausibly fast signal jumps within the valid range: GM
+      sets it at jumps above 11 in 5 of 20 samples. Brief interruptions can also make GM''s engine module
+      learn a wrong rest position – it then sees the brake pressed and cuts power; GM names fretting at
+      the 5 V reference or signal.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: حساس موضع دواسة الفرامل A — إشارة متقطعة/غير منتظمة
+    description_ar: 'إشارة الدواسة تقفز أو تنقطع، وهي إشارة تمكينية لعدد من وظائف التحكم في المحرك والنقل،
+      لذا يؤثر الخلل في أكثر من نظام.
+
+      '
+    translator: null
+    reviewer: null
+    status: machine_draft
+    note: machine draft, never shown to a user as approved
+  causes:
+  - text_en: Loose contact or fretting corrosion at sensor or inline connector
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Sensor worn internally (signal jumping)
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Broken or chafed wire near the pedal
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Interference on the 5 V reference
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light on (GM)
+    source: obdex
+    review_status: source_reported
+  - text_en: Sporadic power reduction when accelerating
+    source: obdex
+    review_status: source_reported
+  - text_en: Cruise control cutting out sporadically
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: brake_pedal_position_sensor, engine_control_module, sensor_wiring'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://gm-techlink.com?p=20329
+      kind: source
+      label: null
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2018/18OBDG03A%20Engine%20Diagnostics.pdf
+      kind: source
+      label: null
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2018/18OBDG04%20Engine%20Diagnostics.pdf
+      kind: source
+      label: null
+    - url: https://static.nhtsa.gov/odi/tsbs/2025/MC-11014638-0001.pdf
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 12
+  code: P060D
+  context_key: P060D|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 17.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): accelerator_pedal_position_sensor'
+  - 'vital component(s): engine_control_module'
+  - 2 independent source(s) state this code
+  - 4 cause statement(s) available for review
+  english:
+    title_en: Internal Control Module Accelerator Pedal Position Performance
+    description_en: 'The accelerator pedal has two sensor tracks. With P060D the module''s own cross-check
+      of the pedal value fails: two processors (GM: main and ''motor'' processor) calculate pedal position
+      independently and must agree, and an active test briefly pulls one track to ground – the other must
+      not follow, otherwise the tracks are shorted together. Thresholds: GM 2005 difference over 0.142
+      V or track 2 over 2.05 V during the test; GM 2006 over 5 %; Ford diesel compares track 1 against
+      twice track 2 (half slope), fault above 547 or 1055 mV for 5 s. GM sets it in the first trip, Ford
+      since 2020 with the check engine and wrench lamps (2012 only the wrench lamp). Unlike P2138, where
+      the two pedal tracks disagree outside the module, P060D is the internal plausibility check.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: أداء موضع دواسة الوقود داخل وحدة التحكم
+    description_ar: 'للدواسة مسارا حساس، ويفشل التحقق المتقاطع الداخلي: معالجان يحسبان موضع الدواسة كلٌّ
+      على حدة ويجب أن يتطابقا.
+
+      '
+    translator: null
+    reviewer: null
+    status: machine_draft
+    note: machine draft, never shown to a user as approved
+  causes:
+  - text_en: Short between the two pedal sensor signal lines or moisture in the pedal connector
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Faulty pedal sensor (tracks drifting)
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Faulty module software (update available)
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Internal module fault (converter, processor)
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Reduced power, engine barely responds to the pedal
+    source: obdex
+    review_status: source_reported
+  - text_en: Check engine light or wrench lamp
+    source: obdex
+    review_status: source_reported
+  - text_en: Cruise control disabled
+    source: obdex
+    review_status: source_reported
+  - text_en: Raised idle or limp mode
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: accelerator_pedal_position_sensor, engine_control_module, sensor_wiring'
+    review_status: source_reported
+  procedure:
+    status: draft_unreviewed
+    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
+      no tool list, no nominal value and no limit may be added until a qualified technician approves a
+      written procedure.'
+    quoted_checks:
+    - text_en: 'With P060D the module''s own cross-check of the pedal value fails: two processors (GM:
+        main and ''motor'' processor) calculate pedal position independently and must agree, and an active
+        test briefly pulls one track to ground – the other must not follow, otherwise the tracks are shorted
+        together.'
+      source: obdex description
+      review_status: source_reported
+    - text_en: 'Thresholds: GM 2005 difference over 0.142 V or track 2 over 2.05 V during the test;'
+      source: obdex description
+      review_status: source_reported
+    - text_en: Ford diesel compares track 1 against twice track 2 (half slope), fault above 547 or 1055
+        mV for 5 s.
+      source: obdex description
+      review_status: source_reported
+    - text_en: GM sets it in the first trip, Ford since 2020 with the check engine and wrench lamps (2012
+        only the wrench lamp).
+      source: obdex description
+      review_status: source_reported
+    - text_en: Unlike P2138, where the two pedal tracks disagree outside the module, P060D is the internal
+        plausibility check.
+      source: obdex description
+      review_status: source_reported
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://fordservicecontent.com/Ford_Content/catalog/motorcraft/OBD-Operations-Summary-Gasoline-2020-2023.pdf
+      kind: source
+      label: null
+    - url: https://fordservicecontent.com/Ford_Content/catalog/motorcraft/obd-summary-diesel-2023.pdf
+      kind: source
+      label: null
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2005/2005file2.pdf
+      kind: source
+      label: null
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2006/2006file10.pdf
+      kind: source
+      label: null
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2016/16OBDG10%20Engine%20Diagnostics.pdf
+      kind: source
+      label: null
+    - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+      kind: source
+      label: null
+    - url: https://saabwisonline.com/9-5-9650/2011/2-engine/engine-management-and-fuel-system-1-6-l-petrol/fault-diagnosis-diagnostic-trouble-codes/dtc-p0602-p0606-p060a-p060b-p060d-p060e-p061a-p061c-p061d-or-p062f-llu
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: unreviewed_draft
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: draft_ready
+    conflicts: clear
+- priority_position: 13
+  code: P060E
+  context_key: P060E|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 17.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): throttle_body'
+  - 'vital component(s): engine_control_module'
+  - 2 independent source(s) state this code
+  - 4 cause statement(s) available for review
+  english:
+    title_en: Internal Control Module Throttle Position Performance
+    description_en: 'P060E is the throttle counterpart of P060D. The throttle body also has two position
+      sensor tracks, and the module checks whether it can still detect a short between them: during an
+      active test one track is influenced briefly, and the second processor (GM ''motor processor'') confirms
+      that the test actually ran. GM 2005 sets the code when track 2 exceeds 1.75 V during the test or
+      no test activity is seen for 500 ms, GM 2006 at 2.05 V or 498 ms, each after two counts of about
+      155 ms, with the lamp in the first trip; GM Europe rates it type C with reduced power. Ford does
+      not use P060E. The throttle opening is limited or set to its default position. External disagreement
+      between the two tracks is P2135; circuit faults of single tracks are P0120–P0123 and P0220–P0223.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: أداء موضع الخانق داخل وحدة التحكم
+    description_ar: 'النظير الخاص بالخانق للكود P060D: لجسم الخانق مسارا حساس للموضع، وتتحقق الوحدة من
+      قدرتها على كشف قصر بينهما أثناء اختبار نشط.
+
+      '
+    translator: null
+    reviewer: null
+    status: machine_draft
+    note: machine draft, never shown to a user as approved
+  causes:
+  - text_en: Short between the throttle sensor signal lines or moisture in the throttle connector
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Internal module fault (test circuit, second processor)
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Faulty throttle body (sensor)
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Faulty module software (update available)
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Reduced power
+    source: obdex
+    review_status: source_reported
+  - text_en: Check engine light (GM) or service lamp (GM Europe)
+    source: obdex
+    review_status: source_reported
+  - text_en: Hesitant or jerky throttle response
+    source: obdex
+    review_status: source_reported
+  - text_en: Cruise control not working
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: engine_control_module, sensor_wiring, throttle_body'
+    review_status: source_reported
+  procedure:
+    status: draft_unreviewed
+    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
+      no tool list, no nominal value and no limit may be added until a qualified technician approves a
+      written procedure.'
+    quoted_checks:
+    - text_en: 'The throttle body also has two position sensor tracks, and the module checks whether it
+        can still detect a short between them: during an active test one track is influenced briefly,
+        and the second processor (GM ''motor processor'') confirms that the test actually ran.'
+      source: obdex description
+      review_status: source_reported
+    - text_en: GM 2005 sets the code when track 2 exceeds 1.75 V during the test or no test activity is
+        seen for 500 ms, GM 2006 at 2.05 V or 498 ms, each after two counts of about 155 ms, with the
+        lamp in the first trip;
+      source: obdex description
+      review_status: source_reported
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2005/2005file2.pdf
+      kind: source
+      label: null
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2006/2006file10.pdf
+      kind: source
+      label: null
+    - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+      kind: source
+      label: null
+    - url: https://saabwisonline.com/9-5-9650/2011/2-engine/engine-management-and-fuel-system-1-6-l-petrol/fault-diagnosis-diagnostic-trouble-codes/dtc-p0602-p0606-p060a-p060b-p060d-p060e-p061a-p061c-p061d-or-p062f-llu
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: unreviewed_draft
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: draft_ready
+    conflicts: clear
+- priority_position: 14
+  code: P061F
+  context_key: P061F|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 17.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): throttle_body, throttle_actuator_motor'
+  - 'vital component(s): engine_control_module'
+  - 2 independent source(s) state this code
+  - 5 cause statement(s) available for review
+  english:
+    title_en: Internal Control Module Throttle Actuator Controller Performance
+    description_en: 'P061F monitors the throttle position controller inside the engine module and its
+      communication with the main processor. At Ford the main processor sends the target throttle angle
+      to this controller (generation 2: a 312.5 Hz duty cycle signal, 10–92 % for 0–82°), which drives
+      the throttle motor via an H-bridge; the monitoring checks that the target is implemented and reported
+      back correctly. Ford 2012 sets it within 1 s – with the check engine light on generation 2 (2003–2007,
+      separate controller chip), without it on generations 3/4 where the controller is integrated. A fault
+      puts the throttle into its default position with an RPM limit. Ford 2020–23 no longer uses P061F
+      (throttle controller faults run under P2107 ff). No other manufacturer document available to us
+      uses it. Throttle motor circuit and function codes are P2100–P2112.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: أداء وحدة التحكم في مشغّل الخانق
+    description_ar: 'يراقب الكود وحدة التحكم في موضع الخانق داخل وحدة إدارة المحرك واتصالها بالمعالج الرئيسي:
+      الوحدة ترسل زاوية الخانق المطلوبة ولا يصل التأكيد.
+
+      '
+    translator: null
+    reviewer: null
+    status: machine_draft
+    note: machine draft, never shown to a user as approved
+  causes:
+  - text_en: Internal fault in the throttle controller of the engine module
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Engine module software or calibration fault (update available)
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Throttle stiff, sooted or iced, controller at its limit
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Voltage dips, poor ground or supply at the module
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  - text_en: Throttle motor connector or wiring resistance
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Wrench lamp (Ford), check engine light on generation 2
+    source: obdex
+    review_status: source_reported
+  - text_en: Throttle in default position, raised idle, barely any response
+    source: obdex
+    review_status: source_reported
+  - text_en: RPM limit
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: engine_control_module, throttle_actuator_motor, throttle_body'
+    review_status: source_reported
+  procedure:
+    status: draft_unreviewed
+    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
+      no tool list, no nominal value and no limit may be added until a qualified technician approves a
+      written procedure.'
+    quoted_checks:
+    - text_en: the monitoring checks that the target is implemented and reported back correctly.
+      source: obdex description
+      review_status: source_reported
+    - text_en: Ford 2012 sets it within 1 s – with the check engine light on generation 2 (2003–2007,
+        separate controller chip), without it on generations 3/4 where the controller is integrated.
+      source: obdex description
+      review_status: source_reported
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://fordservicecontent.com/Ford_Content/catalog/motorcraft/OBD-Operations-Summary-Gasoline-2020-2023.pdf
+      kind: source
+      label: null
+    - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+      kind: source
+      label: null
+    - url: https://newtonnet.co.uk/fiesta/fordobd2012.pdf
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: unreviewed_draft
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: draft_ready
+    conflicts: clear
+- priority_position: 15
+  code: P0638
+  context_key: P0638|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 17.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): throttle_body, throttle_actuator_motor'
+  - 'vital component(s): engine_control_module'
+  - 2 independent source(s) state this code
+  - 5 cause statement(s) available for review
+  english:
+    title_en: Throttle Actuator Control Range/Performance Bank 1
+    description_en: 'The electronic throttle motor positions the throttle plate; P0638 means the actuator
+      does not follow its command on bank 1 (or the only throttle): target and actual angle from the two
+      position sensors differ, or the motor needs too much duty cycle to hold the position. Subaru (also
+      sold as Saab 9-2X) sets it at more than 3.5° deviation for 250 ms or over 95 % duty cycle for 2
+      s, lights the lamp at once and lets the spring set the plate to about 6° – raised idle, almost no
+      power. GM''s Saab 9-4X V6 uses more than 80 % duty cycle for over 1 s, lamp in the first trip. Mazda''s
+      CX-9 set it after frosty nights when condensation froze the throttle and fixed it with software
+      that moves the plate after switch-off. Ford reports the same function as P2111/P2112.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: التحكم في مشغّل الخانق — المدى والأداء — الصف 1
+    description_ar: 'محرك الخانق الإلكتروني لا يتبع الأمر: زاوية الهدف لا تطابق الزاوية الفعلية المقروءة
+      من حساسَي الموضع، أو أن المحرك لا يتحرك بالمعدل المطلوب.
+
+      '
+    translator: null
+    reviewer: null
+    status: machine_draft
+    note: machine draft, never shown to a user as approved
+  causes:
+  - text_en: Throttle dirty, sooted or stiff
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Icing from condensation in frost
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Throttle motor or gears worn
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Resistance in the motor control wires
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Module or software
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine or electronic throttle light
+    source: obdex
+    review_status: source_reported
+  - text_en: 'Limp mode: much reduced power, raised idle'
+    source: obdex
+    review_status: source_reported
+  - text_en: Delayed or jerky throttle response
+    source: obdex
+    review_status: source_reported
+  - text_en: Often after a cold start in frost
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: engine_control_module, throttle_actuator_motor, throttle_body'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://fordservicecontent.com/Ford_Content/catalog/motorcraft/OBD-Operations-Summary-Gasoline-2020-2023.pdf
+      kind: source
+      label: null
+    - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+      kind: source
+      label: null
+    - url: https://saabwisonline.com/9-2x-9346/2005/0-general/general-diagnostics-2-5i/diagnostic-trouble-code-dtc-detecting-criteria/fault-diagnosis-fault-codes/dtc-p0638-throttle-actuator-control-range-performance-bank-1
+      kind: source
+      label: null
+    - url: https://saabwisonline.com/9-4x/2011/2-engine/engine-management-and-fuel-system-v6/fault-diagnosis-diagnostic-trouble-codes/dtc-p0638-p2100-p2103-or-p2119-without-lf1-lfw
+      kind: source
+      label: null
+    - url: https://static.nhtsa.gov/odi/tsbs/2018/MC-10144325-9999.pdf
+      kind: source
+      label: null
+    - url: https://static.nhtsa.gov/odi/tsbs/2020/MC-10170634-0001.pdf
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 16
+  code: P0639
+  context_key: P0639|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 17.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): throttle_body, throttle_actuator_motor'
+  - 'vital component(s): engine_control_module'
+  - 2 independent source(s) state this code
+  - 4 cause statement(s) available for review
+  english:
+    title_en: Throttle Actuator Control Range/Performance Bank 2
+    description_en: 'P0639 is the bank 2 counterpart of P0638 and only applies to engines with two separate
+      electronic throttles, one per cylinder bank (some V8, V10 and V12 engines with separate intake paths).
+      The module compares target and actual angle and the duty cycle the motor needs; if the plate does
+      not follow, it is de-energised and springs to its rest position, and power is limited. No manufacturer
+      document available to us uses P0639 – this follows P0638 (Subaru: more than 3.5° deviation for 250
+      ms) and CARB''s function check of output components. Ford calls a second throttle ''throttle actuator
+      B'' and reports it as P211A ff, its sensors as sensor C (P0225/P0229). Uneven filling of the two
+      banks can also cause a rough idle.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: التحكم في مشغّل الخانق — المدى والأداء — الصف 2
+    description_ar: 'النظير للكود P0638 ويخص المحركات ذات خانقين إلكترونيين منفصلين، واحد لكل صف أسطوانات
+      (بعض محركات V8 وV10 وV12 بمساري سحب منفصلين).
+
+      '
+    translator: null
+    reviewer: null
+    status: machine_draft
+    note: machine draft, never shown to a user as approved
+  causes:
+  - text_en: Bank 2 throttle dirty or stiff
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Bank 2 actuator motor or gears faulty
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Icing
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  - text_en: Wiring or module
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light
+    source: obdex
+    review_status: source_reported
+  - text_en: Limp mode, loss of power
+    source: obdex
+    review_status: source_reported
+  - text_en: Rough idle from uneven bank filling
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: engine_control_module, throttle_actuator_motor, throttle_body'
+    review_status: source_reported
+  procedure:
+    status: draft_unreviewed
+    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
+      no tool list, no nominal value and no limit may be added until a qualified technician approves a
+      written procedure.'
+    quoted_checks:
+    - text_en: The module compares target and actual angle and the duty cycle the motor needs;
+      source: obdex description
+      review_status: source_reported
+    - text_en: 'No manufacturer document available to us uses P0639 – this follows P0638 (Subaru: more
+        than 3.5° deviation for 250 ms) and CARB''s function check of output components.'
+      source: obdex description
+      review_status: source_reported
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://fordservicecontent.com/Ford_Content/catalog/motorcraft/OBD-Operations-Summary-Gasoline-2020-2023.pdf
+      kind: source
+      label: null
+    - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+      kind: source
+      label: null
+    - url: https://saabwisonline.com/9-2x-9346/2005/0-general/general-diagnostics-2-5i/diagnostic-trouble-code-dtc-detecting-criteria/fault-diagnosis-fault-codes/dtc-p0638-throttle-actuator-control-range-performance-bank-1
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: unreviewed_draft
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: draft_ready
+    conflicts: clear
+- priority_position: 17
+  code: P063E
+  context_key: P063E|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 17.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): throttle_position_sensor, throttle_body'
+  - 'vital component(s): engine_control_module'
+  - 2 independent source(s) state this code
+  - 4 cause statement(s) available for review
+  english:
+    title_en: Auto Configuration Throttle Input Not Present Bank 1
+    description_en: Some modules configure themselves at start-up by detecting which inputs are present.
+      P063E means the module expects a throttle position input for bank 1 but does not detect it. Unlike
+      circuit codes such as P0122/P0123 or P2135, which judge a present but faulty signal, this says the
+      input was not found for the configuration. No manufacturer document or patent available to us describes
+      this check; the explanation is derived from the J2012 wording. CARB requires input components to
+      be checked for circuit continuity and plausibility, and modules with several variants to detect
+      a wrong one. Possible causes are an unplugged throttle body or open wiring, or software meant for
+      a different vehicle. Without a throttle signal an electronic throttle runs in limp mode.
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: إدخال الخانق غير موجود عند التهيئة التلقائية — الصف 1
+    description_ar: 'بعض الوحدات تهيّئ نفسها عند التشغيل بتحديد المدخلات الموجودة. الكود يعني أن الوحدة
+      تتوقع إدخال موضع خانق للصف 1 ولا تجده، بخلاف أكواد الدوائر مثل P0122/P0123.
+
+      '
+    translator: null
+    reviewer: null
+    status: machine_draft
+    note: machine draft, never shown to a user as approved
+  causes:
+  - text_en: Throttle sensor or unit not connected, connector or wire open
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Wrong module software or variant for the vehicle (module from another model)
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Internal module fault
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  - text_en: Faulty throttle unit
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light
+    source: obdex
+    review_status: source_reported
+  - text_en: Limp mode, reduced power
+    source: obdex
+    review_status: source_reported
+  - text_en: Rough idle, poor throttle response
+    source: obdex
+    review_status: source_reported
+  - text_en: Additional throttle circuit codes
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: engine_control_module, throttle_body, throttle_position_sensor'
+    review_status: source_reported
+  procedure:
+    status: draft_unreviewed
+    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
+      no tool list, no nominal value and no limit may be added until a qualified technician approves a
+      written procedure.'
+    quoted_checks:
+    - text_en: No manufacturer document or patent available to us describes this check;
+      source: obdex description
+      review_status: source_reported
+    - text_en: CARB requires input components to be checked for circuit continuity and plausibility, and
+        modules with several variants to detect a wrong one.
+      source: obdex description
+      review_status: source_reported
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/Throttle_position_sensor
+      kind: source
+      label: null
+    - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: unreviewed_draft
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: draft_ready
+    conflicts: clear
+- priority_position: 18
+  code: P2102
+  context_key: P2102|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 17.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): throttle_actuator_motor, throttle_body_wiring'
+  - 'vital component(s): ecm'
+  - 2 independent source(s) state this code
+  - 3 cause statement(s) available for review
+  english:
+    title_en: Throttle Actuator Control Motor Circuit Low
+    description_en: Drive voltage to the throttle motor is below the lower limit. Typically a short to
+      ground or a failed driver stage in the ECU.
+    verification_status: source_reported
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: دائرة محرك مشغّل الخانق — إشارة منخفضة
+    description_ar: 'جهد تشغيل محرك الخانق أقل من الحد الأدنى، وغالبًا سببه قصر إلى الأرضي أو عطل في مرحلة
+      القدرة داخل وحدة التحكم في المحرك.
+
+      '
+    translator: null
+    reviewer: null
+    status: machine_draft
+    note: machine draft, never shown to a user as approved
+  causes:
+  - text_en: Drive line shorted to ground
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Throttle motor internal short
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Connector pins corroded - high contact resistance
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light on
+    source: obdex
+    review_status: source_reported
+  - text_en: Reduced throttle response, possible limp mode
+    source: obdex
+    review_status: source_reported
+  - text_en: Hesitation or surging
+    source: obdex
+    review_status: source_reported
+  - text_en: Idle too high or too low
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: ecm, throttle_actuator_motor, throttle_body_wiring'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/On-board_diagnostics
+      kind: source
+      label: null
+    - url: https://en.wikipedia.org/wiki/Throttle_position_sensor
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 19
+  code: P2103
+  context_key: P2103|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 17.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): throttle_actuator_motor, throttle_body_wiring'
+  - 'vital component(s): ecm'
+  - 2 independent source(s) state this code
+  - 3 cause statement(s) available for review
+  english:
+    title_en: Throttle Actuator Control Motor Circuit High
+    description_en: Drive voltage to the throttle motor is above the upper limit. Usually a short to supply
+      or an open ground.
+    verification_status: source_reported
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: دائرة محرك مشغّل الخانق — إشارة عالية
+    description_ar: 'جهد تشغيل محرك الخانق أعلى من الحد الأعلى، وغالبًا سببه قصر إلى التغذية أو قطع في
+      مسار الأرضي.
+
+      '
+    translator: null
+    reviewer: null
+    status: machine_draft
+    note: machine draft, never shown to a user as approved
+  causes:
+  - text_en: Drive line shorted to supply
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Throttle motor ground open
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Connector pins corroded - high contact resistance
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light on
+    source: obdex
+    review_status: source_reported
+  - text_en: Reduced throttle response, possible limp mode
+    source: obdex
+    review_status: source_reported
+  - text_en: Hesitation or surging
+    source: obdex
+    review_status: source_reported
+  - text_en: Idle too high or too low
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: ecm, throttle_actuator_motor, throttle_body_wiring'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/On-board_diagnostics
+      kind: source
+      label: null
+    - url: https://en.wikipedia.org/wiki/Throttle_position_sensor
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 20
+  code: P2104
+  context_key: P2104|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 17.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): throttle_actuator_control'
+  - 'vital component(s): ecm'
+  - 2 independent source(s) state this code
+  - 2 cause statement(s) available for review
+  english:
+    title_en: Throttle Actuator Control System — Forced Idle
+    description_en: The ECU has detected a fault severe enough that it forces the throttle actuator to
+      the idle stop. The driver loses pedal authority — only idle is available until the underlying TAC
+      fault clears.
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: التحكم في مشغّل الخانق — خمول إجباري
+    description_ar: 'رصدت وحدة التحكم عطلًا شديدًا فدفعت الخانق إلى وضع الخمول. يفقد السائق سلطة الدواسة
+      ولا تتوفر إلا سرعة الخمول حتى يُصلح عطل TAC الأساسي.
+
+      '
+    translator: null
+    reviewer: null
+    status: machine_draft
+    note: machine draft, never shown to a user as approved
+  causes:
+  - text_en: Severe upstream TAC fault
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Throttle position signal invalid
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light on
+    source: obdex
+    review_status: source_reported
+  - text_en: Reduced throttle response, possible limp mode
+    source: obdex
+    review_status: source_reported
+  - text_en: Hesitation or surging
+    source: obdex
+    review_status: source_reported
+  - text_en: Idle too high or too low
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: ecm, throttle_actuator_control'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/On-board_diagnostics
+      kind: source
+      label: null
+    - url: https://en.wikipedia.org/wiki/Throttle_position_sensor
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 21
+  code: P2105
+  context_key: P2105|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 17.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): throttle_actuator_control, throttle_position_sensor'
+  - 'vital component(s): ecm'
+  - 2 independent source(s) state this code
+  - 2 cause statement(s) available for review
+  english:
+    title_en: Throttle Actuator Control System — Forced Engine Shutdown
+    description_en: The TAC monitor commanded an engine shutdown because throttle authority can no longer
+      be guaranteed safely. The most aggressive TAC limp mode — used when both throttle position sensors
+      disagree or the motor is uncontrollable.
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: TPS1 and TPS2 disagree beyond limit
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Throttle motor not controllable
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light on
+    source: obdex
+    review_status: source_reported
+  - text_en: Reduced throttle response, possible limp mode
+    source: obdex
+    review_status: source_reported
+  - text_en: Hesitation or surging
+    source: obdex
+    review_status: source_reported
+  - text_en: Idle too high or too low
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: ecm, throttle_actuator_control, throttle_position_sensor'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/On-board_diagnostics
+      kind: source
+      label: null
+    - url: https://en.wikipedia.org/wiki/Throttle_position_sensor
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 22
+  code: P2106
+  context_key: P2106|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 17.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): throttle_actuator_control'
+  - 'vital component(s): ecm'
+  - 2 independent source(s) state this code
+  - 2 cause statement(s) available for review
+  english:
+    title_en: Throttle Actuator Control System — Forced Limited Power
+    description_en: The TAC monitor restricts maximum throttle opening as a safety response to a TAC fault.
+      The vehicle can still be driven, but accelerator pedal travel is capped.
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Underlying TAC fault triggers limit
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Pedal position sensor signal implausible
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light on
+    source: obdex
+    review_status: source_reported
+  - text_en: Reduced throttle response, possible limp mode
+    source: obdex
+    review_status: source_reported
+  - text_en: Hesitation or surging
+    source: obdex
+    review_status: source_reported
+  - text_en: Idle too high or too low
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: ecm, throttle_actuator_control'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/On-board_diagnostics
+      kind: source
+      label: null
+    - url: https://en.wikipedia.org/wiki/Throttle_position_sensor
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 23
+  code: P2110
+  context_key: P2110|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 17.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): throttle_actuator_control'
+  - 'vital component(s): ecm'
+  - 2 independent source(s) state this code
+  - 2 cause statement(s) available for review
+  english:
+    title_en: Throttle Actuator Control System — Forced Limited RPM
+    description_en: The TAC monitor caps engine speed at a fixed limp-home rpm because it can no longer
+      trust the throttle response. Driver may notice a hard rev limit well below redline.
+    verification_status: source_reported
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Underlying TAC fault triggers rpm cap
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Throttle response time out of spec
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light on
+    source: obdex
+    review_status: source_reported
+  - text_en: Reduced throttle response, possible limp mode
+    source: obdex
+    review_status: source_reported
+  - text_en: Hesitation or surging
+    source: obdex
+    review_status: source_reported
+  - text_en: Idle too high or too low
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: ecm, throttle_actuator_control'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/On-board_diagnostics
+      kind: source
+      label: null
+    - url: https://en.wikipedia.org/wiki/Throttle_position_sensor
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 24
+  code: P2113
+  context_key: P2113|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 17.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): throttle_position_sensor_b, throttle_body'
+  - 'vital component(s): ecm'
+  - 2 independent source(s) state this code
+  - 4 cause statement(s) available for review
+  english:
+    title_en: Throttle/Pedal Position Sensor B Minimum Stop Performance
+    description_en: The engine computer checks whether position signal B reports a plausible value when
+      the throttle or pedal rests against its lower mechanical stop. At key-on many systems learn this
+      minimum and compare it with a tolerance window; a reading outside that window sets the code. Ford
+      and GM label their second throttle position sensor as B, so on those layouts B means the throttle
+      body, but neither maker publishes P2113 itself. No manufacturer documents this code publicly; Subaru
+      uses the A version (P2109). Ice, coking or a bent stop are typical triggers. P0220-P0223 cover the
+      B circuit, P2109 and P2114-P2117 the other letters. The driver may see a warning lamp and reduced
+      power.
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Carbon deposits or ice keep the throttle plate off its rest stop
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Minimum position not relearned after cleaning or part replacement
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Position sensor B worn or drifted at the low end of its track
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Corroded connector shifting the sensor B signal
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Engine or ETC warning lamp on
+    source: obdex
+    review_status: source_reported
+  - text_en: Unstable or raised idle speed
+    source: obdex
+    review_status: source_reported
+  - text_en: Reduced engine power (limp mode)
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: ecm, throttle_body, throttle_position_sensor_b'
+    review_status: source_reported
+  procedure:
+    status: draft_unreviewed
+    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
+      no tool list, no nominal value and no limit may be added until a qualified technician approves a
+      written procedure.'
+    quoted_checks:
+    - text_en: The engine computer checks whether position signal B reports a plausible value when the
+        throttle or pedal rests against its lower mechanical stop.
+      source: obdex description
+      review_status: source_reported
+    - text_en: At key-on many systems learn this minimum and compare it with a tolerance window;
+      source: obdex description
+      review_status: source_reported
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+      kind: source
+      label: null
+    - url: https://newtonnet.co.uk/fiesta/fordobd2012.pdf
+      kind: source
+      label: null
+    - url: https://patents.google.com/patent/US6588400B2/en
+      kind: source
+      label: null
+    - url: https://static.nhtsa.gov/odi/tsbs/2023/MC-10232235-0001.pdf
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: unreviewed_draft
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: draft_ready
+    conflicts: clear
+- priority_position: 25
+  code: P2114
+  context_key: P2114|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 17.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): throttle_position_sensor_c, throttle_body'
+  - 'vital component(s): ecm'
+  - 2 independent source(s) state this code
+  - 4 cause statement(s) available for review
+  english:
+    title_en: Throttle/Pedal Position Sensor C Minimum Stop Performance
+    description_en: 'This code reports that position signal C does not show a believable value while its
+      throttle or pedal sits on the lower stop. The controller learns or expects a minimum reading within
+      a tolerance band and flags a fault when the learned value falls outside it. Letter C is rarely assigned:
+      Ford and GM use A/B for the throttle and D/E/F for the pedal, so C appears only on layouts with
+      a third sensor. No manufacturer documents this code publicly; the logic follows the A version P2109
+      (Subaru) and the Delphi minimum-learn patent. P2113 and P2115-P2117 are the same test for other
+      letters, P2136/P2137 compare C against A or B. Expect a warning lamp and possibly limited power.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Deposits, ice or a damaged stop prevent the rest position
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Rest position not relearned after repair
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Position sensor C worn or drifted near its rest position
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Connector or wiring fault shifting the C signal
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Engine or ETC warning lamp on
+    source: obdex
+    review_status: source_reported
+  - text_en: Irregular idle
+    source: obdex
+    review_status: source_reported
+  - text_en: Reduced power possible
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: ecm, throttle_body, throttle_position_sensor_c'
+    review_status: source_reported
+  procedure:
+    status: draft_unreviewed
+    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
+      no tool list, no nominal value and no limit may be added until a qualified technician approves a
+      written procedure.'
+    quoted_checks:
+    - text_en: P2113 and P2115-P2117 are the same test for other letters, P2136/P2137 compare C against
+        A or B.
+      source: obdex description
+      review_status: source_reported
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+      kind: source
+      label: null
+    - url: https://patents.google.com/patent/US6588400B2/en
+      kind: source
+      label: null
+    - url: https://static.nhtsa.gov/odi/tsbs/2023/MC-10232235-0001.pdf
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: unreviewed_draft
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: draft_ready
+    conflicts: clear
+- priority_position: 26
+  code: P2115
+  context_key: P2115|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 17.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): accelerator_pedal_position_sensor, accelerator_pedal'
+  - 'vital component(s): ecm'
+  - 2 independent source(s) state this code
+  - 4 cause statement(s) available for review
+  english:
+    title_en: Throttle/Pedal Position Sensor D Minimum Stop Performance
+    description_en: Here the controller judges position signal D at the released (minimum) end of travel.
+      On Ford and GM drive-by-wire systems D is the first accelerator pedal sensor, so the code means
+      the pedal's idle reading is outside the expected window, for example because the pedal does not
+      return fully or its sensor track has shifted. No manufacturer documents P2115 publicly; Ford and
+      GM publish only circuit and correlation codes for D (P2120-P2123, P2138). P2116 and P2117 are the
+      E and F counterparts, P2109 and P2113 refer to A and B. The engine may not return to idle cleanly,
+      and the ECU may limit pedal response.
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Pedal blocked by floor mat or weak return spring
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Worn pedal sensor track D at the idle end
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Aftermarket pedal tuning module or wrong pedal part
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  - text_en: Corroded or loose pedal connector
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Warning lamp on
+    source: obdex
+    review_status: source_reported
+  - text_en: Engine does not drop to normal idle when the pedal is released
+    source: obdex
+    review_status: source_reported
+  - text_en: Dull or limited pedal response
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: accelerator_pedal, accelerator_pedal_position_sensor, ecm'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2007/07_GRP12_All%20Engines.pdf
+      kind: source
+      label: null
+    - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+      kind: source
+      label: null
+    - url: https://newtonnet.co.uk/fiesta/fordobd2012.pdf
+      kind: source
+      label: null
+    - url: https://patents.google.com/patent/US6588400B2/en
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 27
+  code: P2116
+  context_key: P2116|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 17.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): accelerator_pedal_position_sensor, accelerator_pedal'
+  - 'vital component(s): ecm'
+  - 2 independent source(s) state this code
+  - 3 cause statement(s) available for review
+  english:
+    title_en: Throttle/Pedal Position Sensor E Minimum Stop Performance
+    description_en: 'The code covers the rest-position check of signal E. Ford, GM and Mitsubishi assign
+      E to the second accelerator pedal sensor, which on many pedals runs at roughly half the voltage
+      of sensor D (GM: APP 2 between 0.16 and 2.3 V). If the reading with the pedal released lies outside
+      the learned or calibrated window, P2116 can be stored. No manufacturer documents this code publicly.
+      Circuit faults of the same sensor are reported separately (P2125, P2127-P2129) and disagreement
+      between D and E as P2138; P2115 and P2117 handle D and F. Typical effects are a warning lamp, an
+      unsteady idle and limited throttle response.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Pedal held off its stop by floor mat or sticking pivot
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Worn or contaminated sensor track E
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Moisture or corrosion at the pedal connector
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Warning lamp on
+    source: obdex
+    review_status: source_reported
+  - text_en: Unsteady or raised idle
+    source: obdex
+    review_status: source_reported
+  - text_en: Limited throttle response
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: accelerator_pedal, accelerator_pedal_position_sensor, ecm'
+    review_status: source_reported
+  procedure:
+    status: draft_unreviewed
+    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
+      no tool list, no nominal value and no limit may be added until a qualified technician approves a
+      written procedure.'
+    quoted_checks:
+    - text_en: The code covers the rest-position check of signal E.
+      source: obdex description
+      review_status: source_reported
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2006/2006file13.pdf
+      kind: source
+      label: null
+    - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+      kind: source
+      label: null
+    - url: https://newtonnet.co.uk/fiesta/fordobd2012.pdf
+      kind: source
+      label: null
+    - url: https://patents.google.com/patent/US6588400B2/en
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: unreviewed_draft
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: draft_ready
+    conflicts: clear
+- priority_position: 28
+  code: P2117
+  context_key: P2117|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 17.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): accelerator_pedal_position_sensor, accelerator_pedal'
+  - 'vital component(s): ecm'
+  - 2 independent source(s) state this code
+  - 3 cause statement(s) available for review
+  english:
+    title_en: Throttle/Pedal Position Sensor F Minimum Stop Performance
+    description_en: P2117 is the minimum-stop check for signal F. Ford lists F as the third accelerator
+      pedal sensor on its older Gen2 throttle systems (circuit codes P2132/P2133, range P2131), while
+      most current pedals carry only D and E, so the code can only occur on three-track pedals. The ECU
+      flags it when the F reading at the released position lies outside the expected band. No manufacturer
+      documents P2117 publicly. Siblings are P2115 (D) and P2116 (E); P2139 and P2140 compare F with D
+      or E. A sticking pedal or a worn track usually lies behind it, with a warning lamp and reduced pedal
+      response as the visible result.
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Pedal does not return fully to its stop
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Worn third sensor track F
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Poor contact at the pedal connector
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Warning lamp on
+    source: obdex
+    review_status: source_reported
+  - text_en: Idle speed does not settle
+    source: obdex
+    review_status: source_reported
+  - text_en: Reduced pedal response
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: accelerator_pedal, accelerator_pedal_position_sensor, ecm'
+    review_status: source_reported
+  procedure:
+    status: draft_unreviewed
+    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
+      no tool list, no nominal value and no limit may be added until a qualified technician approves a
+      written procedure.'
+    quoted_checks:
+    - text_en: P2117 is the minimum-stop check for signal F.
+      source: obdex description
+      review_status: source_reported
+    - text_en: P2139 and P2140 compare F with D or E.
+      source: obdex description
+      review_status: source_reported
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+      kind: source
+      label: null
+    - url: https://newtonnet.co.uk/fiesta/fordobd2012.pdf
+      kind: source
+      label: null
+    - url: https://patents.google.com/patent/US6588400B2/en
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: unreviewed_draft
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: draft_ready
+    conflicts: clear
+- priority_position: 29
+  code: P2119
+  context_key: P2119|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 17.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): electronic_throttle_body, throttle_actuator_motor, throttle_position_sensor'
+  - 'vital component(s): ecm'
+  - 2 independent source(s) state this code
+  - 4 cause statement(s) available for review
+  english:
+    title_en: Throttle Actuator Control Throttle Body Range/Performance
+    description_en: 'This is a mechanical performance check of the electronic throttle body. GM calls
+      it Throttle Closed Position Performance: after the motor is de-energized the return springs must
+      bring the plate into its default (limp) position, e.g. 1.32-1.90 V on TP sensor 1 in GM''s 2006
+      tables; 15 failed samples in a row set it. A Bosch-based GM ECM times the spring return at key-on
+      (fault above 0.56 s). Toyota, Lexus, Ford (Ranger/Bronco, ice behind the throttle) and Mitsubishi
+      use the code too. Unlike P2101 (position error while driven) or P2118 (motor current), P2119 points
+      at a sticking or iced plate or a weak spring; the engine may enter limp mode.'
+    verification_status: source_reported
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Carbon deposits make the throttle plate stick
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Water or ice in the intake behind the throttle body
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Weak return spring or worn gear in the throttle body
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: ECM software that sets the code falsely (update available)
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Engine warning lamp on
+    source: obdex
+    review_status: source_reported
+  - text_en: Reduced power or limp mode
+    source: obdex
+    review_status: source_reported
+  - text_en: Hesitation or uneven acceleration
+    source: obdex
+    review_status: source_reported
+  - text_en: Raised or unstable idle
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: ecm, electronic_throttle_body, throttle_actuator_motor, throttle_position_sensor'
+    review_status: source_reported
+  procedure:
+    status: draft_unreviewed
+    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
+      no tool list, no nominal value and no limit may be added until a qualified technician approves a
+      written procedure.'
+    quoted_checks:
+    - text_en: This is a mechanical performance check of the electronic throttle body.
+      source: obdex description
+      review_status: source_reported
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2006/2006file13.pdf
+      kind: source
+      label: null
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2007/07_GRP12_All%20Engines.pdf
+      kind: source
+      label: null
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2012/12OBDGS1%20Engine%20Diagnostics.pdf
+      kind: source
+      label: null
+    - url: https://static.nhtsa.gov/odi/tsbs/2016/SB-10087802-5448.pdf
+      kind: source
+      label: null
+    - url: https://static.nhtsa.gov/odi/tsbs/2020/MC-10185785-9999.pdf
+      kind: source
+      label: null
+    - url: https://static.nhtsa.gov/odi/tsbs/2021/MC-10202632-0001.pdf
+      kind: source
+      label: null
+    - url: https://static.nhtsa.gov/odi/tsbs/2023/MC-10237505-0001.pdf
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: unreviewed_draft
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: draft_ready
+    conflicts: clear
+- priority_position: 30
+  code: P2125
+  context_key: P2125|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 17.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): accelerator_pedal_position_sensor, pedal_sensor_wiring'
+  - 'vital component(s): ecm'
+  - 2 independent source(s) state this code
+  - 4 cause statement(s) available for review
+  english:
+    title_en: Throttle/Pedal Position Sensor/Switch E Circuit
+    description_en: 'P2125 reports a general electrical fault in signal circuit E. GM uses it as Accelerator
+      Pedal Position Sensor 2 Circuit: the ECM looks for a continuous or intermittent open or short in
+      the sensor 2 circuit with a counter at 12.5 ms per count (19 of 39 counts). In GM''s 2006 tables
+      sensor 2 is valid between about 0.16 and 2.3 V. GM bulletin 14636 lists P2125 among the pedal codes
+      caused by a broken solder joint inside the pedal (2009-2011 Impala, LaCrosse). Range/Performance
+      is P2126, explicit low or high voltage P2127/P2128, dropouts P2129, and the D/E comparison P2138.
+      With one pedal track lost the ECU usually limits engine power.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Internal fault in the pedal sensor (e.g. cracked solder joint)
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Loose or corroded pedal or inline connector
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Open or short in the sensor 2 wiring or 5 V reference
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: ECM input fault
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Engine warning lamp and reduced power message
+    source: obdex
+    review_status: source_reported
+  - text_en: Delayed or limited pedal response
+    source: obdex
+    review_status: source_reported
+  - text_en: Traction control may be switched off
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: accelerator_pedal_position_sensor, ecm, pedal_sensor_wiring'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2006/2006file13.pdf
+      kind: source
+      label: null
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2007/07_GRP12_All%20Engines.pdf
+      kind: source
+      label: null
+    - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+      kind: source
+      label: null
+    - url: https://static.nhtsa.gov/odi/tsbs/2015/SB-10090054-2280.pdf
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 31
+  code: P2129
+  context_key: P2129|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 17.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): accelerator_pedal_position_sensor, pedal_sensor_wiring'
+  - 'vital component(s): ecm'
+  - 2 independent source(s) state this code
+  - 3 cause statement(s) available for review
+  english:
+    title_en: Throttle/Pedal Position Sensor/Switch E Circuit Intermittent
+    description_en: 'P2129 is meant for short dropouts or spikes in signal circuit E that do not last
+      long enough for a steady low or high fault. No manufacturer documents this code publicly. GM and
+      Ford, which assign E to the second pedal sensor, catch such glitches inside their circuit codes
+      instead: GM counts failures every 12.5 ms and flags the APP sensor 2 circuit after 19 of 39 counts
+      (P2125/P2127/P2128), Ford uses 0.25/4.75 V limits. CARB requires circuit monitoring of input sensors;
+      the code fits that duty. Check for loose pins and harness chafing with the pedal moved slowly. Effects
+      range from a warning lamp to brief power cuts while driving.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Loose terminal or poor pin tension at the pedal connector
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Chafed harness making intermittent contact
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Worn spot or cracked joint inside the pedal sensor
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Warning lamp that comes and goes
+    source: obdex
+    review_status: source_reported
+  - text_en: Brief hesitation or power loss while driving
+    source: obdex
+    review_status: source_reported
+  - text_en: Reduced power mode after repeated dropouts
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: accelerator_pedal_position_sensor, ecm, pedal_sensor_wiring'
+    review_status: source_reported
+  procedure:
+    status: draft_unreviewed
+    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
+      no tool list, no nominal value and no limit may be added until a qualified technician approves a
+      written procedure.'
+    quoted_checks:
+    - text_en: Check for loose pins and harness chafing with the pedal moved slowly.
+      source: obdex description
+      review_status: source_reported
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://gsi.ext.gm.com/gmspo/mode6/pdf/2007/07_GRP12_All%20Engines.pdf
+      kind: source
+      label: null
+    - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+      kind: source
+      label: null
+    - url: https://newtonnet.co.uk/fiesta/fordobd2012.pdf
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: unreviewed_draft
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: draft_ready
+    conflicts: clear
+- priority_position: 32
+  code: P2C99
+  context_key: P2C99|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 17.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): throttle_actuator_a, throttle_position_sensor'
+  - 'vital component(s): ecm'
+  - 2 independent source(s) state this code
+  - 2 cause statement(s) available for review
+  english:
+    title_en: Throttle Actuator A Control Exceeded Learning Limit
+    description_en: The required adaptation offset for throttle actuator A exceeds the calibrated learning
+      window. Mechanical wear, deposit build-up, or sensor drift beyond compensation.
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Deposits on throttle plate or bore
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: TPS reference drifted
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light on
+    source: obdex
+    review_status: source_reported
+  - text_en: Reduced throttle response, possible limp mode
+    source: obdex
+    review_status: source_reported
+  - text_en: Hesitation or surging
+    source: obdex
+    review_status: source_reported
+  - text_en: Idle too high or too low
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: ecm, throttle_actuator_a, throttle_position_sensor'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/Throttle_position_sensor
+      kind: source
+      label: null
+    - url: https://github.com/Wal33D/dtc-database
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 33
+  code: P2C9A
+  context_key: P2C9A|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 17.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): throttle_actuator_b, throttle_position_sensor'
+  - 'vital component(s): ecm'
+  - 2 independent source(s) state this code
+  - 2 cause statement(s) available for review
+  english:
+    title_en: Throttle Actuator B Control Exceeded Learning Limit
+    description_en: The required adaptation offset for throttle actuator B exceeds the calibrated learning
+      window. Mechanical wear, deposit build-up, or sensor drift beyond compensation.
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Deposits on throttle plate or bore
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: TPS reference drifted
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light on
+    source: obdex
+    review_status: source_reported
+  - text_en: Reduced throttle response, possible limp mode
+    source: obdex
+    review_status: source_reported
+  - text_en: Hesitation or surging
+    source: obdex
+    review_status: source_reported
+  - text_en: Idle too high or too low
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: ecm, throttle_actuator_b, throttle_position_sensor'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/Throttle_position_sensor
+      kind: source
+      label: null
+    - url: https://github.com/Wal33D/dtc-database
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 34
+  code: P2EB0
+  context_key: P2EB0|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 17.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): throttle_valve_intake_air_pressure_sensor'
+  - 'vital component(s): ecm'
+  - 2 independent source(s) state this code
+  - 2 cause statement(s) available for review
+  english:
+    title_en: Throttle Valve Intake Air Pressure Sensor Circuit
+    description_en: The ECM detects a circuit fault on the throttle valve intake air pressure sensor circuit.
+      Reading cannot be used reliably for control.
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Sensor failed
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Wiring or connector fault
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  symptoms: []
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: ecm, throttle_valve_intake_air_pressure_sensor, wiring_harness'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/Throttle_position_sensor
+      kind: source
+      label: null
+    - url: https://github.com/Wal33D/dtc-database
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 35
+  code: P2EB1
+  context_key: P2EB1|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 17.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): throttle_valve_intake_air_pressure_sensor'
+  - 'vital component(s): ecm'
+  - 2 independent source(s) state this code
+  - 3 cause statement(s) available for review
+  english:
+    title_en: Throttle Valve Intake Air Pressure Sensor Circuit Low
+    description_en: The ECM detects a circuit low fault on the throttle valve intake air pressure sensor
+      circuit. Reading cannot be used reliably for control.
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Signal wire shorted to ground
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Internal sensor short
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Connector pins corroded - high contact resistance
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms: []
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: ecm, throttle_valve_intake_air_pressure_sensor, wiring_harness'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/Throttle_position_sensor
+      kind: source
+      label: null
+    - url: https://github.com/Wal33D/dtc-database
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 36
+  code: P2EB2
+  context_key: P2EB2|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 17.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): throttle_valve_intake_air_pressure_sensor'
+  - 'vital component(s): ecm'
+  - 2 independent source(s) state this code
+  - 3 cause statement(s) available for review
+  english:
+    title_en: Throttle Valve Intake Air Pressure Sensor Circuit High
+    description_en: The ECM detects a circuit high fault on the throttle valve intake air pressure sensor
+      circuit. Reading cannot be used reliably for control.
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Signal wire shorted to B+
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Open sensor
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Connector pins corroded - high contact resistance
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms: []
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: ecm, throttle_valve_intake_air_pressure_sensor, wiring_harness'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/Throttle_position_sensor
+      kind: source
+      label: null
+    - url: https://github.com/Wal33D/dtc-database
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 37
+  code: P2EB3
+  context_key: P2EB3|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: powertrain
+  tier: 1
+  score: 17.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): throttle_valve_intake_air_pressure_sensor'
+  - 'vital component(s): ecm'
+  - 2 independent source(s) state this code
+  - 3 cause statement(s) available for review
+  english:
+    title_en: Throttle Valve Intake Air Pressure Sensor Circuit Range/Performance
+    description_en: The ECM detects a range/performance fault on the throttle valve intake air pressure
+      sensor circuit. Reading cannot be used reliably for control.
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Sensor characteristic drifted
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Sensor mounting displaced
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Sensor element aged beyond calibration window
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms: []
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: ecm, throttle_valve_intake_air_pressure_sensor, wiring_harness'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/Throttle_position_sensor
+      kind: source
+      label: null
+    - url: https://github.com/Wal33D/dtc-database
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 38
+  code: U011E
+  context_key: U011E|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: network
+  tier: 1
+  score: 17.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): throttle_actuator_b_module'
+  - 'vital component(s): can_bus'
+  - 2 independent source(s) state this code
+  - 3 cause statement(s) available for review
+  english:
+    title_en: Lost Communication With Throttle Actuator B Control Module
+    description_en: ECU lost CAN communication with throttle actuator B control module. A communication
+      loss with this module breaks any function relying on its data — diagnostic tools may show 'no response'
+      and dependent modules can fall into limp mode.
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Module unpowered
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Gateway module routing CAN messages incorrectly
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  - text_en: CAN terminating resistor (120 Ω) drifted out of spec
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Multiple warning lights may illuminate
+    source: obdex
+    review_status: source_reported
+  - text_en: Affected modules may go into limp mode or shut down
+    source: obdex
+    review_status: source_reported
+  - text_en: Specific functions inoperative depending on module
+    source: obdex
+    review_status: source_reported
+  - text_en: Diagnostic tools may show communication faults
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: can_bus, throttle_actuator_b_module'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/Throttle_position_sensor
+      kind: source
+      label: null
+    - url: https://github.com/Wal33D/dtc-database
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 39
+  code: U013C
+  context_key: U013C|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: network
+  tier: 1
+  score: 17.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): accelerator_pedal_module'
+  - 'vital component(s): can_bus'
+  - 2 independent source(s) state this code
+  - 3 cause statement(s) available for review
+  english:
+    title_en: Lost Communication With Accelerator Pedal Module
+    description_en: ECU lost CAN communication with the accelerator pedal module. Throttle response severely
+      affected. A communication loss with this module breaks any function relying on its data — diagnostic
+      tools may show 'no response' and dependent modules can fall into limp mode.
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Module unpowered
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Gateway module routing CAN messages incorrectly
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  - text_en: CAN terminating resistor (120 Ω) drifted out of spec
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Multiple warning lights may illuminate
+    source: obdex
+    review_status: source_reported
+  - text_en: Affected modules may go into limp mode or shut down
+    source: obdex
+    review_status: source_reported
+  - text_en: Specific functions inoperative depending on module
+    source: obdex
+    review_status: source_reported
+  - text_en: Diagnostic tools may show communication faults
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: accelerator_pedal_module, can_bus'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: https://en.wikipedia.org/wiki/Throttle_position_sensor
+      kind: source
+      label: null
+    - url: https://github.com/Wal33D/dtc-database
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear
+- priority_position: 40
+  code: U0308
+  context_key: U0308|sae_j2012|generic:generic
+  context_type: generic
+  manufacturer: null
+  category: network
+  tier: 1
+  score: 17.5
+  why_here:
+  - risk_level=high published by the source
+  - MIL requested (dashboard warning)
+  - limp mode possible
+  - emissions relevant
+  - 'safety component(s): throttle_actuator_control_module'
+  - 'vital component(s): engine_control_module'
+  - 2 independent source(s) state this code
+  - 3 cause statement(s) available for review
+  english:
+    title_en: Software Incompatibility With Throttle Actuator Control Module
+    description_en: 'U0308 flags that the throttle actuator control module carries software or a calibration
+      that the engine controller does not accept. In most current cars throttle control lives inside the
+      ECM/PCM, so a separate TAC module and this code are rare; no manufacturer documents U0308 publicly.
+      Ford shows how such a mismatch is handled when the logic is integrated: its 2012 OBD summary files
+      a software version mismatch between the electronic-throttle processors under U0300, non-MIL on Gen2
+      and MIL on Gen3/Gen4 throttle systems. GM''s U03xx procedure links these codes to a module that
+      was not configured after installation. Throttle control affects emissions, so CARB demands monitoring
+      and a MIL is likely. U0107 means lost contact, U0408 invalid data.'
+    verification_status: verified
+    sources:
+    - obdex
+  arabic_draft:
+    title_ar: null
+    description_ar: null
+    translator: null
+    reviewer: null
+    status: not_authored
+    note: ''
+  causes:
+  - text_en: Throttle or engine control module replaced or flashed without matching software
+    likelihood: high
+    source: obdex
+    review_status: source_reported
+  - text_en: Wrong or outdated calibration loaded, e.g. by an engine tune
+    likelihood: medium
+    source: obdex
+    review_status: source_reported
+  - text_en: Programming aborted due to low voltage
+    likelihood: low
+    source: obdex
+    review_status: source_reported
+  symptoms:
+  - text_en: Check engine light on
+    source: obdex
+    review_status: source_reported
+  - text_en: Reduced power or limp mode with limited throttle opening
+    source: obdex
+    review_status: source_reported
+  - text_en: Code appears after module replacement or programming
+    source: obdex
+    review_status: source_reported
+  repairs: []
+  severity:
+    risk_level: high
+    mil: 1
+    emissions_relevant: true
+    limp_mode_possible: 1
+    safety_note_en: 'source states limp mode is possible; requests the dashboard warning lamp; emissions
+      relevant; components: control_module_software, engine_control_module, throttle_actuator_control_module'
+    review_status: source_reported
+  procedure:
+    status: needs_written_procedure
+    note: The source cites references but contains no step list. A technician must write the procedure
+      against these references; nothing is generated here.
+    quoted_checks: []
+    references:
+    - url: sae:J2012
+      kind: reference
+      label: sae:J2012
+    - url: http://newtonnet.co.uk/fiesta/fordobd2012.pdf
+      kind: source
+      label: null
+    - url: https://en.wikipedia.org/wiki/Electronic_throttle_control
+      kind: source
+      label: null
+    - url: https://law.cornell.edu/regulations/california/13-CCR-1968.2
+      kind: source
+      label: null
+    - url: https://saabwisonline.com/9-5-9650/2011/3-electrical-system/bus-and-diagnostics-communication/fault-diagnosis-diagnostic-trouble-codes/dtc-u0300-u0336
+      kind: source
+      label: null
+    tools: []
+    nominal_values: []
+    review_status: not_started
+  conflicts: []
+  review_checklist:
+    english_text: pending
+    arabic_text: pending
+    procedure: pending
+    conflicts: clear

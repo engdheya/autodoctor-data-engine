@@ -1,0 +1,251 @@
+# مسوّدات آلية لمجموعة الأولوية الأولى (أكواد السلامة) — ليست محتوى معتمدًا.
+#
+# كل مدخل هنا `reviewed: false` و`translator` فارغ، لذلك يتجاهله build-db ويظهر
+# في التقرير كمسوّدة. لا يُعرض للمستخدم داخل التطبيق قبل أن يوقّعه مترجم ومراجع
+# بشريان (reviewer + reviewed: true).
+#
+# المصطلحات التقنية تُركت بالإنجليزية عمدًا: ECU، CAN، ABS/ESP، EGR، TAC، limp mode.
+
+- code: P0500
+  context:
+    type: generic
+  title: "دائرة حساس سرعة السيارة A"
+  description: >
+    إشارة سرعة السيارة A تأتي — بحسب الشركة — من حساس على ناقل الحركة، أو من
+    سرعة خرج ناقل الحركة، أو من سرعات العجلات عبر ABS/ESP، أو عبر رسالة CAN.
+    عند انقطاعها لا تعرف وحدة التحكم سرعة السيارة، ويتأثر عمل النقل والتحكم.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+  source_url: "https://github.com/foerbsnavi/OBDex"
+
+- code: P0501
+  context:
+    type: generic
+  title: "دائرة حساس سرعة السيارة A — المدى والأداء"
+  description: >
+    الإشارة موجودة لكن قيمتها خارج المدى المتوقع أو غير متسقة مع مصادر السرعة
+    الأخرى (حساس ناقل الحركة أو سرعات العجلات عبر ABS/ESP أو CAN).
+  translator: ""
+  reviewer: ""
+  reviewed: false
+  source_url: "https://github.com/foerbsnavi/OBDex"
+
+- code: U0107
+  context:
+    type: generic
+  title: "انقطاع الاتصال بوحدة التحكم في مشغّل الخانق (TAC)"
+  description: >
+    توقفت وحدة التحكم في مشغّل الخانق عن الإرسال على ناقل بيانات السيارة، فلا
+    تتلقى الوحدات الأخرى رسائلها. قد ينتقل التحكم الإلكتروني في الخانق إلى
+    limp mode بقدرة منخفضة جدًا.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+  source_url: "https://github.com/foerbsnavi/OBDex"
+
+- code: P0487
+  context:
+    type: generic
+  title: "دائرة التحكم في خانق EGR — القناة A — قطع"
+  description: >
+    إعادة تدوير غاز العادم (EGR) تعيد جزءًا من العادم إلى مجرى السحب لخفض حرارة
+    الاحتراق وNOx. خانق EGR صفيحة تنظيم أمام مجرى السحب في محركات الديزل، والكود
+    يعني قطعًا أو فتحًا في دائرة التحكم به.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+  source_url: "https://github.com/foerbsnavi/OBDex"
+
+- code: P0488
+  context:
+    type: generic
+  title: "دائرة التحكم في خانق EGR — القناة A — المدى والأداء"
+  description: >
+    الدائرة سليمة كهربائيًا لكن وضع صفيحة EGR لا يطابق الوضع المطلوب من وحدة
+    التحكم، أو أن الاستجابة خارج المدى المسموح.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+  source_url: "https://github.com/foerbsnavi/OBDex"
+
+- code: P0502
+  context:
+    type: generic
+  title: "حساس سرعة السيارة A — إشارة منخفضة"
+  description: >
+    جهد أو تردد إشارة سرعة السيارة A أقل من الحد الأدنى المتوقع، مع احتمال أن
+    تكون الإشارة صفرية رغم أن السيارة تتحرك.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+  source_url: "https://github.com/foerbsnavi/OBDex"
+
+- code: P0503
+  context:
+    type: generic
+  title: "حساس سرعة السيارة A — إشارة متقطعة/غير منتظمة/عالية"
+  description: >
+    إشارة السرعة تقفز أو تنقطع بصورة غير منتظمة أو تتجاوز الحد الأعلى، وهي حالة
+    تمنع وحدات ABS/ESP والنقل من الاعتماد عليها.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+  source_url: "https://github.com/foerbsnavi/OBDex"
+
+- code: P0519
+  context:
+    type: generic
+  title: "أداء نظام التحكم في هواء الخمول"
+  description: >
+    فشل وظيفي في التحكم بالخمول مع دائرة كهربائية سليمة: سرعة الخمول تنحرف بشدة
+    رغم استخدام التحكم الكامل لطاقته. موثّق على Subaru وأيضًا Saab 9-2X.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+  source_url: "https://github.com/foerbsnavi/OBDex"
+
+- code: P057C
+  context:
+    type: generic
+  title: "حساس موضع دواسة الفرامل A — إشارة منخفضة"
+  description: >
+    حساس تناظري بجهد 5V يعطي مقدار حركة الدواسة باستمرار، ويُتعلَّم موضع الراحة
+    (نحو 1V). الكود يعني أن الجهد أقل من الحد الأدنى المتوقع.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+  source_url: "https://github.com/foerbsnavi/OBDex"
+
+- code: P057D
+  context:
+    type: generic
+  title: "حساس موضع دواسة الفرامل A — إشارة عالية"
+  description: >
+    جهد إشارة دواسة الفرامل أعلى من الحد الأعلى المتوقع، ما يجعل وحدة التحكم
+    عاجزة عن تمييز موضع الدواسة الحقيقي.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+  source_url: "https://github.com/foerbsnavi/OBDex"
+
+- code: P057E
+  context:
+    type: generic
+  title: "حساس موضع دواسة الفرامل A — إشارة متقطعة/غير منتظمة"
+  description: >
+    إشارة الدواسة تقفز أو تنقطع، وهي إشارة تمكينية لعدد من وظائف التحكم في
+    المحرك والنقل، لذا يؤثر الخلل في أكثر من نظام.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+  source_url: "https://github.com/foerbsnavi/OBDex"
+
+- code: P060D
+  context:
+    type: generic
+  title: "أداء موضع دواسة الوقود داخل وحدة التحكم"
+  description: >
+    للدواسة مسارا حساس، ويفشل التحقق المتقاطع الداخلي: معالجان يحسبان موضع
+    الدواسة كلٌّ على حدة ويجب أن يتطابقا.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+  source_url: "https://github.com/foerbsnavi/OBDex"
+
+- code: P060E
+  context:
+    type: generic
+  title: "أداء موضع الخانق داخل وحدة التحكم"
+  description: >
+    النظير الخاص بالخانق للكود P060D: لجسم الخانق مسارا حساس للموضع، وتتحقق
+    الوحدة من قدرتها على كشف قصر بينهما أثناء اختبار نشط.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+  source_url: "https://github.com/foerbsnavi/OBDex"
+
+- code: P061F
+  context:
+    type: generic
+  title: "أداء وحدة التحكم في مشغّل الخانق"
+  description: >
+    يراقب الكود وحدة التحكم في موضع الخانق داخل وحدة إدارة المحرك واتصالها
+    بالمعالج الرئيسي: الوحدة ترسل زاوية الخانق المطلوبة ولا يصل التأكيد.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+  source_url: "https://github.com/foerbsnavi/OBDex"
+
+- code: P0638
+  context:
+    type: generic
+  title: "التحكم في مشغّل الخانق — المدى والأداء — الصف 1"
+  description: >
+    محرك الخانق الإلكتروني لا يتبع الأمر: زاوية الهدف لا تطابق الزاوية الفعلية
+    المقروءة من حساسَي الموضع، أو أن المحرك لا يتحرك بالمعدل المطلوب.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+  source_url: "https://github.com/foerbsnavi/OBDex"
+
+- code: P0639
+  context:
+    type: generic
+  title: "التحكم في مشغّل الخانق — المدى والأداء — الصف 2"
+  description: >
+    النظير للكود P0638 ويخص المحركات ذات خانقين إلكترونيين منفصلين، واحد لكل
+    صف أسطوانات (بعض محركات V8 وV10 وV12 بمساري سحب منفصلين).
+  translator: ""
+  reviewer: ""
+  reviewed: false
+  source_url: "https://github.com/foerbsnavi/OBDex"
+
+- code: P063E
+  context:
+    type: generic
+  title: "إدخال الخانق غير موجود عند التهيئة التلقائية — الصف 1"
+  description: >
+    بعض الوحدات تهيّئ نفسها عند التشغيل بتحديد المدخلات الموجودة. الكود يعني أن
+    الوحدة تتوقع إدخال موضع خانق للصف 1 ولا تجده، بخلاف أكواد الدوائر مثل
+    P0122/P0123.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+  source_url: "https://github.com/foerbsnavi/OBDex"
+
+- code: P2102
+  context:
+    type: generic
+  title: "دائرة محرك مشغّل الخانق — إشارة منخفضة"
+  description: >
+    جهد تشغيل محرك الخانق أقل من الحد الأدنى، وغالبًا سببه قصر إلى الأرضي أو
+    عطل في مرحلة القدرة داخل وحدة التحكم في المحرك.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+  source_url: "https://github.com/foerbsnavi/OBDex"
+
+- code: P2103
+  context:
+    type: generic
+  title: "دائرة محرك مشغّل الخانق — إشارة عالية"
+  description: >
+    جهد تشغيل محرك الخانق أعلى من الحد الأعلى، وغالبًا سببه قصر إلى التغذية أو
+    قطع في مسار الأرضي.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+  source_url: "https://github.com/foerbsnavi/OBDex"
+
+- code: P2104
+  context:
+    type: generic
+  title: "التحكم في مشغّل الخانق — خمول إجباري"
+  description: >
+    رصدت وحدة التحكم عطلًا شديدًا فدفعت الخانق إلى وضع الخمول. يفقد السائق سلطة
+    الدواسة ولا تتوفر إلا سرعة الخمول حتى يُصلح عطل TAC الأساسي.
+  translator: ""
+  reviewer: ""
+  reviewed: false
+  source_url: "https://github.com/foerbsnavi/OBDex"

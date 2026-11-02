@@ -431,6 +431,88 @@ def cmd_completeness(args: argparse.Namespace) -> int:
     return EXIT_OK
 
 
+def cmd_review_pack(args: argparse.Namespace) -> int:
+    from .reporting.priority import (
+        priority_index,
+        render_priority,
+        summarise,
+        write_index,
+    )
+    from .reporting.review_pack import (
+        build_pack,
+        load_arabic_files,
+        render_pack_markdown,
+        write_pack,
+    )
+
+    settings = _settings(args)
+    db_path = Path(args.database) if args.database else settings.database_path()
+    if not db_path.is_file():
+        _print(f"database not found: {db_path}")
+        return EXIT_FAILURE
+    conn = connect(db_path, readonly=True)
+    try:
+        index = priority_index(conn)
+        summary = summarise(index)
+        if args.write:
+            packs_dir = Path("data/reviews/packs")
+            write_index(index, packs_dir / "priority-index.csv")
+            arabic = load_arabic_files([Path(a) for a in args.arabic] if args.arabic else [])
+            packs = []
+            for tier in args.tier:
+                pack = build_pack(conn, index, arabic, tier, args.limit)
+                path = packs_dir / f"tier{tier}-{args.batch}.yaml"
+                write_pack(pack, path)
+                packs.append(pack)
+                _print(f"written: {path} ({pack['summary']['entries']} entries)")
+            reports = Path(args.reports)
+            reports.mkdir(parents=True, exist_ok=True)
+            (reports / "priority.md").write_text(render_priority(index, args.limit), encoding="utf-8")
+            (reports / "priority-packs.md").write_text(render_pack_markdown(packs), encoding="utf-8")
+            _print(f"written: {packs_dir / 'priority-index.csv'}")
+            _print(f"written: {reports / 'priority.md'}")
+            _print(f"written: {reports / 'priority-packs.md'}")
+            return EXIT_OK
+        _pretty(summary) if args.json else _print(render_priority(index, args.limit))
+    finally:
+        conn.close()
+    return EXIT_OK
+
+
+def cmd_procedure_export(args: argparse.Namespace) -> int:
+    from .reporting.priority import priority_index
+    from .reporting.procedures import build_entries, verify_no_invention, write_procedures
+
+    settings = _settings(args)
+    db_path = Path(args.database) if args.database else settings.database_path()
+    if not db_path.is_file():
+        _print(f"database not found: {db_path}")
+        return EXIT_FAILURE
+    conn = connect(db_path, readonly=True)
+    try:
+        index = priority_index(conn)
+        payload = build_entries(conn, index, tuple(args.tiers))
+        descriptions = {
+            row[0]: row[1] or ""
+            for row in conn.execute(
+                "SELECT c.context_key, d.description FROM dtc_codes c "
+                "JOIN dtc_definitions d ON d.dtc_code_id = c.id "
+                "AND d.language = 'en' AND d.is_canonical = 1"
+            )
+        }
+        problems = verify_no_invention(payload, descriptions)
+        if problems:
+            for problem in problems[:10]:
+                _print(f"INTEGRITY: {problem}")
+            return EXIT_FAILURE
+        yaml_path, csv_path, md_path = write_procedures(payload, Path(args.out))
+        _print(f"written: {yaml_path}\nwritten: {csv_path}\nwritten: {md_path}")
+        _pretty(payload["summary"])
+    finally:
+        conn.close()
+    return EXIT_OK
+
+
 def cmd_coverage(args: argparse.Namespace) -> int:
     settings = _settings(args)
     db_path = Path(args.database) if args.database else settings.database_path()
@@ -893,6 +975,33 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--out", help="explicit output path")
     p.add_argument("--write", action="store_true", help="write the YAML batch")
     p.set_defaults(func=cmd_review_batch)
+
+    p = sub.add_parser(
+        "procedure-export",
+        help="export the check sentences the sources contain, with scope (no invented steps)",
+    )
+    p.add_argument("--tiers", type=int, nargs="+", default=[1, 2])
+    p.add_argument("--database", help="database to read")
+    p.add_argument("--out", default="data/reviews/procedures", help="output directory")
+    p.set_defaults(func=cmd_procedure_export)
+
+    p = sub.add_parser(
+        "review-pack",
+        help="priority order for review plus ready-to-review packs (drafts only)",
+    )
+    p.add_argument("--tier", type=int, nargs="+", default=[1], help="tiers to pack (1-4)")
+    p.add_argument("--limit", type=int, default=40, help="entries per tier in the pack")
+    p.add_argument("--batch", default="001", help="batch label written into the file name")
+    p.add_argument("--database", help="database to read")
+    p.add_argument(
+        "--arabic",
+        nargs="+",
+        help="one or more translation draft files (merged, later files win)",
+    )
+    p.add_argument("--reports", default="data/reports", help="report directory")
+    p.add_argument("--json", action="store_true", help="print the summary as JSON")
+    p.add_argument("--write", action="store_true", help="write the index and the packs")
+    p.set_defaults(func=cmd_review_pack)
 
     p = sub.add_parser("completeness", help="per-code completeness: what each identity has "
                                             "and what it is missing")
