@@ -1,5 +1,13 @@
 name: Flutter app
 
+# NOTE: this file is staged in ci/ because the automation token used for this repository
+# cannot create files under .github/workflows (GitHub App permission `workflows` is not
+# granted). To enable it, either grant that permission or run:
+#
+#     mkdir -p .github/workflows && cp ci/flutter-build.yml .github/workflows/
+#
+# Nothing else needs to change: paths inside the workflow are repository-relative.
+
 # Builds the Android app from source. This is the only place an APK is produced: the
 # development environment has no Flutter SDK, so "it compiles" is proven here, not claimed.
 

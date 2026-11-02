@@ -89,9 +89,19 @@ foreign_keys = ON`. الترقية تُضاف كبلوك جديد في `onUpgrad
 4. `flutter build apk` — يحتاج SDK + JDK 17 + Android SDK.
 5. تشغيل فعلي على جهاز — غير متاح هنا إطلاقًا.
 
-سير العمل `.github/workflows/flutter-build.yml` ينفّذ: بناء القاعدة العامة (مع تجاوز D012
+سير العمل `ci/flutter-build.yml` ينفّذ: بناء القاعدة العامة (مع تجاوز D012
 الموسوم «CI verification bundle; not for publication») ← stage ← pub get ← analyze ←
 test ← bootstrap Android ← build debug APK ← رفع APK + SHA‑256 كـ artifact.
+
+**تفعيله:** توكن الأتمتة المستخدم لهذا المستودع لا يملك صلاحية `workflows`، لذلك رُفض دفع
+الملف إلى `.github/workflows/` (رسالة GitHub: *refusing to allow a GitHub App to create or
+update workflow … without `workflows` permission*). الحل بسطر واحد — إمّا منح الصلاحية، أو:
+
+```bash
+mkdir -p .github/workflows && cp ci/flutter-build.yml .github/workflows/
+```
+
+الملف نفسه لا يحتاج أي تعديل لأن كل مساراته نسبة إلى جذر المستودع.
 
 ## 4. أوامر التشغيل محليًا
 

@@ -19,6 +19,18 @@
 
 غير مبني بعد (المراحل 2–6): البحث، تفاصيل العطل، المرآب، السجل، المفضلة، التقارير.
 
+## بناء APK عبر CI
+
+سير العمل جاهز في `ci/flutter-build.yml`. تفعيله:
+
+```bash
+mkdir -p .github/workflows && cp ci/flutter-build.yml .github/workflows/
+```
+
+(النسخ مطلوب لأن توكن الأتمتة في هذا المستودع لا يملك صلاحية `workflows`.)
+ثم من تبويب Actions: `Flutter app` → Run workflow. الناتج `autodoctor-debug-apk` مع
+`apk-sha256.txt`.
+
 ## المتطلبات
 
 - Flutter 3.24.5 (stable) · Dart 3.5 · JDK 17 · Android SDK 35.
