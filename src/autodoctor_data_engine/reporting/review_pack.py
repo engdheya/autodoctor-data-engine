@@ -18,6 +18,10 @@ import yaml
 
 from .procedures import classify_sentences
 
+# A pack shows at most this many diagnostic sentences per code; the total is reported
+# separately so a truncated list is never mistaken for the whole source text.
+MAX_QUOTED_CHECKS = 5
+
 ALIASES = {"GM": "General Motors", "VW": "Volkswagen", "MB": "Mercedes-Benz", "Chevy": "Chevrolet"}
 
 STATUS = {
@@ -181,7 +185,7 @@ def _procedure(conn: sqlite3.Connection, dtc_id: int, description: str | None) -
         )
     ]
     quotes = classify_sentences(description)
-    checks = [
+    all_checks = [
         {
             "text_en": quote["text_en"],
             "category": quote["category"],
@@ -193,7 +197,8 @@ def _procedure(conn: sqlite3.Connection, dtc_id: int, description: str | None) -
         }
         for quote in quotes
         if quote["category"] == "diagnostic_check"
-    ][:5]
+    ]
+    checks = all_checks[:MAX_QUOTED_CHECKS]
     others = [
         {"text_en": quote["text_en"], "category": quote["category"]}
         for quote in quotes
@@ -221,6 +226,8 @@ def _procedure(conn: sqlite3.Connection, dtc_id: int, description: str | None) -
         "status": status,
         "note": note,
         "quoted_checks": checks,
+        "diagnostic_quotes_total": len(all_checks),
+        "quotes_truncated": len(all_checks) > MAX_QUOTED_CHECKS,
         "other_quotes": others,
         "quote_categories": sorted({quote["category"] for quote in quotes}),
         "references": references,

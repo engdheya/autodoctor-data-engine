@@ -74,12 +74,11 @@
 | الملف | المحتوى |
 | --- | --- |
 | `packs/tier1-100-safety.yaml` | 100 كود سلامة: EN + مسوّدة AR + سياق + مراجعة آلية + أسباب/أعراض/إصلاحات + حالة الإجراء |
-| `procedures/procedures-quoted.yaml.gz` | 5,930 اقتباسًا مصنّفًا مع النطاق والمراجع (جميع أكواد الطبقتين 1 و2) |
+| `procedures/procedures-quoted.yaml.gz` | 5,981 اقتباسًا مصنّفًا مع النطاق والمراجع (جميع أكواد الطبقتين 1 و2) |
 | `procedures/procedures-quoted.csv` | الجدول مع أعمدة عدد الاقتباسات لكل فئة |
 | `procedures/procedures-quoted.md` | ملخص الفئات + أول المدخلات |
 | `translations/ar/*.yaml` | المسوّدات الـ100 + المسرد |
 | `reports/` | تقرير الأولوية وتقرير الحزم |
 | `TEST_RESULTS.md` | مخرجات الاختبارات كاملة بما فيها المتخطّاة وسببها |
 | `BEFORE_AFTER.md` | أعداد قبل/بعد الإصلاح مع المثال المتحقق منه |
-| `TEST_RESULTS.md` | مخرجات الاختبارات |
 | `SHA256SUMS` + `verify_delivery.py` | البصمات والتحقق |
