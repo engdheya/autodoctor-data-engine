@@ -4,22 +4,22 @@ Quoted source text only. No tool list, nominal value, limit or warning has been 
 
 | Measure | Count |
 | --- | --- |
-| Codes with quoted check text | 3,981 |
-| Codes without any check text in the sources | 4,057 |
-| Verbatim quotes | 5,930 |
-| Codes with at least one diagnostic check | 418 |
-| Quotes that mention a measurement | 709 |
-| Codes where the source names a vehicle/engine term | 1,760 |
+| Codes with quoted check text | 4,009 |
+| Codes without any check text in the sources | 4,029 |
+| Verbatim quotes | 5,981 |
+| Codes with at least one diagnostic check | 412 |
+| Quotes that mention a measurement | 722 |
+| Codes where the source names a vehicle/engine term | 1,783 |
 | Approved procedures | 0 |
 
 ## Quotes by category
 
 | Category | Quotes |
 | --- | --- |
-| diagnostic_check | 421 |
-| monitoring_description | 1,485 |
-| technical_explanation | 609 |
-| non_procedure | 3,415 |
+| diagnostic_check | 415 |
+| monitoring_description | 1,500 |
+| technical_explanation | 616 |
+| non_procedure | 3,450 |
 
 Every quote is a verbatim substring of the stored English description; numbers appear only inside those quotes and are not validated by the engine.
 

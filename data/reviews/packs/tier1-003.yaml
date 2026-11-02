@@ -1,5 +1,5 @@
 pack: tier1-20261102
-generated_at: '2026-11-02T16:28:53Z'
+generated_at: '2026-11-02T17:58:31Z'
 tier: 1
 limit: 100
 warning: Review material only. Nothing in this file is approved content, no conflict is resolved here,
@@ -8,7 +8,8 @@ summary:
   entries: 100
   arabic_drafts: 100
   arabic_missing: 0
-  entries_with_quoted_checks: 43
+  entries_with_quoted_checks: 2
+  entries_with_other_quotes: 65
   entries_with_references: 100
   entries_without_reference: 0
   arabic_context_ok: 100
@@ -135,15 +136,18 @@ entries:
       relevant; components: abs_module, engine_control_module, sensor_wiring, vehicle_speed_sensor'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
+    - text_en: CARB explicitly names it as an input to be monitored.
+      category: monitoring_description
     - text_en: 'Ford checks plausibility: the car must be moving (high load, positive torque), yet the
         signal stays below 1–5 mph for 5 s;'
-      source: obdex description
-      review_status: source_reported
+      category: monitoring_description
+    quote_categories:
+    - monitoring_description
     references:
     - url: sae:J2012
       kind: reference
@@ -168,12 +172,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 2
   code: P0501
@@ -287,15 +291,19 @@ entries:
       relevant; components: abs_module, engine_control_module, sensor_wiring, vehicle_speed_sensor'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
+    - text_en: CARB explicitly names it as an input to be monitored.
+      category: monitoring_description
     - text_en: other makers typically compare it with engine speed times gear ratio, wheel speeds or the
         transmission output speed.
-      source: obdex description
-      review_status: source_reported
+      category: non_procedure
+    quote_categories:
+    - monitoring_description
+    - non_procedure
     references:
     - url: sae:J2012
       kind: reference
@@ -311,12 +319,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 3
   code: U0107
@@ -416,9 +424,11 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes: []
+    quote_categories: []
     references:
     - url: sae:J2012
       kind: reference
@@ -549,9 +559,11 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes: []
+    quote_categories: []
     references:
     - url: sae:J2012
       kind: reference
@@ -684,16 +696,17 @@ entries:
       relevant; components: egr_throttle_valve, engine_control_module, throttle_actuator, throttle_position_sensor'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
     - text_en: 'P0488 is its function check: the actual position reported by the sensor deviates from
         the target for too long, or the position signal is implausible – typically a coked, stiff flap
         or a broken gear.'
-      source: obdex description
-      review_status: source_reported
+      category: non_procedure
+    quote_categories:
+    - non_procedure
     references:
     - url: sae:J2012
       kind: reference
@@ -709,12 +722,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 6
   code: P0502
@@ -831,15 +844,18 @@ entries:
       relevant; components: abs_module, engine_control_module, sensor_wiring, vehicle_speed_sensor'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
+    - text_en: CARB explicitly names it as an input to be monitored.
+      category: monitoring_description
     - text_en: 'Despite its wording, all makers found check plausibility: the car is clearly moving (load,
         torque, overrun), yet the signal stays at zero.'
-      source: obdex description
-      review_status: source_reported
+      category: monitoring_description
+    quote_categories:
+    - monitoring_description
     references:
     - url: sae:J2012
       kind: reference
@@ -858,12 +874,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 7
   code: P0503
@@ -973,9 +989,14 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes:
+    - text_en: CARB explicitly names it as an input to be monitored.
+      category: monitoring_description
+    quote_categories:
+    - monitoring_description
     references:
     - url: sae:J2012
       kind: reference
@@ -1110,9 +1131,11 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes: []
+    quote_categories: []
     references:
     - url: sae:J2012
       kind: reference
@@ -1246,9 +1269,15 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes:
+    - text_en: GM reads it in the engine module from about 2012 and uses it as an enabling condition of
+        transmission monitors – hence type A, warning lamp after one trip, unlike cruise control codes.
+      category: monitoring_description
+    quote_categories:
+    - monitoring_description
     references:
     - url: sae:J2012
       kind: reference
@@ -1384,9 +1413,15 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes:
+    - text_en: GM reads it in the engine module from about 2012 and uses it as an enabling condition of
+        transmission monitors – hence type A, warning lamp after one trip, unlike cruise control codes.
+      category: monitoring_description
+    quote_categories:
+    - monitoring_description
     references:
     - url: sae:J2012
       kind: reference
@@ -1522,9 +1557,15 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes:
+    - text_en: GM reads it in the engine module from about 2012 and uses it as an enabling condition of
+        transmission monitors – hence type A, warning lamp after one trip, unlike cruise control codes.
+      category: monitoring_description
+    quote_categories:
+    - monitoring_description
     references:
     - url: sae:J2012
       kind: reference
@@ -1671,32 +1712,30 @@ entries:
       relevant; components: accelerator_pedal_position_sensor, engine_control_module, sensor_wiring'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
     - text_en: 'With P060D the module''s own cross-check of the pedal value fails: two processors (GM:
         main and ''motor'' processor) calculate pedal position independently and must agree, and an active
         test briefly pulls one track to ground – the other must not follow, otherwise the tracks are shorted
         together.'
-      source: obdex description
-      review_status: source_reported
+      category: monitoring_description
     - text_en: 'Thresholds: GM 2005 difference over 0.142 V or track 2 over 2.05 V during the test;'
-      source: obdex description
-      review_status: source_reported
+      category: non_procedure
     - text_en: Ford diesel compares track 1 against twice track 2 (half slope), fault above 547 or 1055
         mV for 5 s.
-      source: obdex description
-      review_status: source_reported
+      category: non_procedure
     - text_en: GM sets it in the first trip, Ford since 2020 with the check engine and wrench lamps (2012
         only the wrench lamp).
-      source: obdex description
-      review_status: source_reported
+      category: non_procedure
     - text_en: Unlike P2138, where the two pedal tracks disagree outside the module, P060D is the internal
         plausibility check.
-      source: obdex description
-      review_status: source_reported
+      category: monitoring_description
+    quote_categories:
+    - monitoring_description
+    - non_procedure
     references:
     - url: sae:J2012
       kind: reference
@@ -1724,12 +1763,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 13
   code: P060E
@@ -1846,21 +1885,21 @@ entries:
       relevant; components: engine_control_module, sensor_wiring, throttle_body'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
     - text_en: 'The throttle body also has two position sensor tracks, and the module checks whether it
         can still detect a short between them: during an active test one track is influenced briefly,
         and the second processor (GM ''motor processor'') confirms that the test actually ran.'
-      source: obdex description
-      review_status: source_reported
+      category: monitoring_description
     - text_en: GM 2005 sets the code when track 2 exceeds 1.75 V during the test or no test activity is
         seen for 500 ms, GM 2006 at 2.05 V or 498 ms, each after two counts of about 155 ms, with the
         lamp in the first trip;
-      source: obdex description
-      review_status: source_reported
+      category: monitoring_description
+    quote_categories:
+    - monitoring_description
     references:
     - url: sae:J2012
       kind: reference
@@ -1879,12 +1918,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 14
   code: P061F
@@ -2004,18 +2043,22 @@ entries:
       relevant; components: engine_control_module, throttle_actuator_motor, throttle_body'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
+    - text_en: P061F monitors the throttle position controller inside the engine module and its communication
+        with the main processor.
+      category: monitoring_description
     - text_en: the monitoring checks that the target is implemented and reported back correctly.
-      source: obdex description
-      review_status: source_reported
+      category: non_procedure
     - text_en: Ford 2012 sets it within 1 s – with the check engine light on generation 2 (2003–2007,
         separate controller chip), without it on generations 3/4 where the controller is integrated.
-      source: obdex description
-      review_status: source_reported
+      category: non_procedure
+    quote_categories:
+    - monitoring_description
+    - non_procedure
     references:
     - url: sae:J2012
       kind: reference
@@ -2031,12 +2074,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 15
   code: P0638
@@ -2156,9 +2199,11 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes: []
+    quote_categories: []
     references:
     - url: sae:J2012
       kind: reference
@@ -2297,18 +2342,19 @@ entries:
       relevant; components: engine_control_module, throttle_actuator_motor, throttle_body'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
     - text_en: The module compares target and actual angle and the duty cycle the motor needs;
-      source: obdex description
-      review_status: source_reported
+      category: monitoring_description
     - text_en: 'No manufacturer document available to us uses P0639 – this follows P0638 (Subaru: more
         than 3.5° deviation for 250 ms) and CARB''s function check of output components.'
-      source: obdex description
-      review_status: source_reported
+      category: technical_explanation
+    quote_categories:
+    - monitoring_description
+    - technical_explanation
     references:
     - url: sae:J2012
       kind: reference
@@ -2324,12 +2370,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 17
   code: P063E
@@ -2435,18 +2481,19 @@ entries:
       relevant; components: engine_control_module, throttle_body, throttle_position_sensor'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
     - text_en: No manufacturer document or patent available to us describes this check;
-      source: obdex description
-      review_status: source_reported
+      category: non_procedure
     - text_en: CARB requires input components to be checked for circuit continuity and plausibility, and
         modules with several variants to detect a wrong one.
-      source: obdex description
-      review_status: source_reported
+      category: monitoring_description
+    quote_categories:
+    - monitoring_description
+    - non_procedure
     references:
     - url: sae:J2012
       kind: reference
@@ -2459,12 +2506,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 18
   code: P2102
@@ -2561,9 +2608,11 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes: []
+    quote_categories: []
     references:
     - url: sae:J2012
       kind: reference
@@ -2678,9 +2727,11 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes: []
+    quote_categories: []
     references:
     - url: sae:J2012
       kind: reference
@@ -2792,9 +2843,11 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes: []
+    quote_categories: []
     references:
     - url: sae:J2012
       kind: reference
@@ -2906,9 +2959,15 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes:
+    - text_en: The TAC monitor commanded an engine shutdown because throttle authority can no longer be
+        guaranteed safely.
+      category: monitoring_description
+    quote_categories:
+    - monitoring_description
     references:
     - url: sae:J2012
       kind: reference
@@ -3019,9 +3078,14 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes:
+    - text_en: The TAC monitor restricts maximum throttle opening as a safety response to a TAC fault.
+      category: monitoring_description
+    quote_categories:
+    - monitoring_description
     references:
     - url: sae:J2012
       kind: reference
@@ -3132,9 +3196,15 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes:
+    - text_en: The TAC monitor caps engine speed at a fixed limp-home rpm because it can no longer trust
+        the throttle response.
+      category: monitoring_description
+    quote_categories:
+    - monitoring_description
     references:
     - url: sae:J2012
       kind: reference
@@ -3262,18 +3332,21 @@ entries:
       relevant; components: ecm, throttle_body, throttle_position_sensor_b'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
     - text_en: The engine computer checks whether position signal B reports a plausible value when the
         throttle or pedal rests against its lower mechanical stop.
-      source: obdex description
-      review_status: source_reported
+      category: monitoring_description
     - text_en: At key-on many systems learn this minimum and compare it with a tolerance window;
-      source: obdex description
-      review_status: source_reported
+      category: non_procedure
+    - text_en: a reading outside that window sets the code.
+      category: monitoring_description
+    quote_categories:
+    - monitoring_description
+    - non_procedure
     references:
     - url: sae:J2012
       kind: reference
@@ -3292,12 +3365,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 25
   code: P2114
@@ -3405,15 +3478,20 @@ entries:
       relevant; components: ecm, throttle_body, throttle_position_sensor_c'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
+    - text_en: The controller learns or expects a minimum reading within a tolerance band and flags a
+        fault when the learned value falls outside it.
+      category: non_procedure
     - text_en: P2113 and P2115-P2117 are the same test for other letters, P2136/P2137 compare C against
         A or B.
-      source: obdex description
-      review_status: source_reported
+      category: technical_explanation
+    quote_categories:
+    - non_procedure
+    - technical_explanation
     references:
     - url: sae:J2012
       kind: reference
@@ -3429,12 +3507,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 26
   code: P2115
@@ -3541,9 +3619,16 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes:
+    - text_en: On Ford and GM drive-by-wire systems D is the first accelerator pedal sensor, so the code
+        means the pedal's idle reading is outside the expected window, for example because the pedal does
+        not return fully or its sensor track has shifted.
+      category: technical_explanation
+    quote_categories:
+    - technical_explanation
     references:
     - url: sae:J2012
       kind: reference
@@ -3673,14 +3758,18 @@ entries:
       relevant; components: accelerator_pedal, accelerator_pedal_position_sensor, ecm'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
     - text_en: The code covers the rest-position check of signal E.
-      source: obdex description
-      review_status: source_reported
+      category: non_procedure
+    - text_en: If the reading with the pedal released lies outside the learned or calibrated window, P2116
+        can be stored.
+      category: non_procedure
+    quote_categories:
+    - non_procedure
     references:
     - url: sae:J2012
       kind: reference
@@ -3699,12 +3788,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 28
   code: P2117
@@ -3804,17 +3893,20 @@ entries:
       relevant; components: accelerator_pedal, accelerator_pedal_position_sensor, ecm'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
     - text_en: P2117 is the minimum-stop check for signal F.
-      source: obdex description
-      review_status: source_reported
+      category: non_procedure
+    - text_en: The ECU flags it when the F reading at the released position lies outside the expected
+        band.
+      category: non_procedure
     - text_en: P2139 and P2140 compare F with D or E.
-      source: obdex description
-      review_status: source_reported
+      category: non_procedure
+    quote_categories:
+    - non_procedure
     references:
     - url: sae:J2012
       kind: reference
@@ -3830,12 +3922,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 29
   code: P2119
@@ -3955,14 +4047,15 @@ entries:
       relevant; components: ecm, electronic_throttle_body, throttle_actuator_motor, throttle_position_sensor'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
     - text_en: This is a mechanical performance check of the electronic throttle body.
-      source: obdex description
-      review_status: source_reported
+      category: technical_explanation
+    quote_categories:
+    - technical_explanation
     references:
     - url: sae:J2012
       kind: reference
@@ -3990,12 +4083,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 30
   code: P2125
@@ -4107,9 +4200,11 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes: []
+    quote_categories: []
     references:
     - url: sae:J2012
       kind: reference
@@ -4238,13 +4333,27 @@ entries:
     review_status: source_reported
   procedure:
     status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
+    note: 'Verbatim diagnostic-check sentences from the source. They are not a procedure: no tool list,
+      no nominal value and no limit may be added until a qualified technician approves a written procedure.'
     quoted_checks:
     - text_en: Check for loose pins and harness chafing with the pedal moved slowly.
+      category: diagnostic_check
+      classification:
+        rule: imperative/obligation test form + hardware, instrument or measurement
+        matched:
+        - Check
+        - harness
+        status: rule_based_unreviewed
+      verbatim: true
+      measurement_mentions: []
       source: obdex description
-      review_status: source_reported
+      review_status: quoted_unreviewed
+    other_quotes:
+    - text_en: CARB requires circuit monitoring of input sensors;
+      category: non_procedure
+    quote_categories:
+    - diagnostic_check
+    - non_procedure
     references:
     - url: sae:J2012
       kind: reference
@@ -4358,9 +4467,11 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes: []
+    quote_categories: []
     references:
     - url: sae:J2012
       kind: reference
@@ -4470,9 +4581,11 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes: []
+    quote_categories: []
     references:
     - url: sae:J2012
       kind: reference
@@ -4570,9 +4683,14 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes:
+    - text_en: Reading cannot be used reliably for control.
+      category: non_procedure
+    quote_categories:
+    - non_procedure
     references:
     - url: sae:J2012
       kind: reference
@@ -4674,9 +4792,14 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes:
+    - text_en: Reading cannot be used reliably for control.
+      category: non_procedure
+    quote_categories:
+    - non_procedure
     references:
     - url: sae:J2012
       kind: reference
@@ -4779,9 +4902,14 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes:
+    - text_en: Reading cannot be used reliably for control.
+      category: non_procedure
+    quote_categories:
+    - non_procedure
     references:
     - url: sae:J2012
       kind: reference
@@ -4884,9 +5012,14 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes:
+    - text_en: Reading cannot be used reliably for control.
+      category: non_procedure
+    quote_categories:
+    - non_procedure
     references:
     - url: sae:J2012
       kind: reference
@@ -5002,9 +5135,11 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes: []
+    quote_categories: []
     references:
     - url: sae:J2012
       kind: reference
@@ -5120,9 +5255,11 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes: []
+    quote_categories: []
     references:
     - url: sae:J2012
       kind: reference
@@ -5247,9 +5384,14 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes:
+    - text_en: Throttle control affects emissions, so CARB demands monitoring and a MIL is likely.
+      category: non_procedure
+    quote_categories:
+    - non_procedure
     references:
     - url: sae:J2012
       kind: reference
@@ -5381,16 +5523,17 @@ entries:
       relevant; components: can_bus_wiring, engine_control_module, throttle_actuator_control_module'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
     - text_en: 'U0408 points to messages from the throttle actuator control module that the receiver,
         usually the ECM/PCM, judges invalid: implausible content, a failed checksum or counter, or a value
         outside its range.'
-      source: obdex description
-      review_status: source_reported
+      category: non_procedure
+    quote_categories:
+    - non_procedure
     references:
     - url: sae:J2012
       kind: reference
@@ -5406,12 +5549,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 42
   code: P2101
@@ -5508,9 +5651,11 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes: []
+    quote_categories: []
     references:
     - url: sae:J2012
       kind: reference
@@ -5624,9 +5769,11 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes: []
+    quote_categories: []
     references:
     - url: sae:J2012
       kind: reference
@@ -5738,9 +5885,15 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes:
+    - text_en: Distinct from P2138 which monitors the pedal pair — P2135 monitors the throttle-body pair
+        on drive-by-wire systems.
+      category: monitoring_description
+    quote_categories:
+    - monitoring_description
     references:
     - url: sae:J2012
       kind: reference
@@ -5851,9 +6004,11 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes: []
+    quote_categories: []
     references:
     - url: sae:J2012
       kind: reference
@@ -5958,9 +6113,11 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes: []
+    quote_categories: []
     references:
     - url: sae:J2012
       kind: reference
@@ -6064,9 +6221,11 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes: []
+    quote_categories: []
     references:
     - url: sae:J2012
       kind: reference
@@ -6193,22 +6352,26 @@ entries:
       throttle_body, throttle_position_sensor'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
     - text_en: The engine control module compares the air quantity measured by the manifold pressure and/or
         mass air flow sensor with the quantity the throttle position leads it to expect.
-      source: obdex description
-      review_status: source_reported
+      category: non_procedure
+    - text_en: an air leak behind the throttle, or because the throttle body is dirty or a sensor reads
+        wrong.
+      category: technical_explanation
     - text_en: On engines with electronic throttle this check protects throttle control, so the engine
         often goes into reduced power.
-      source: obdex description
-      review_status: source_reported
+      category: non_procedure
     - text_en: regulations require such plausibility checks for input sensors with a code of their own.
-      source: obdex description
-      review_status: source_reported
+      category: monitoring_description
+    quote_categories:
+    - monitoring_description
+    - non_procedure
+    - technical_explanation
     references:
     - url: sae:J2012
       kind: reference
@@ -6233,12 +6396,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 49
   code: P00BC
@@ -6339,19 +6502,19 @@ entries:
       relevant; components: intake_ducts, manifold_absolute_pressure_sensor, mass_air_flow_sensor_a'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
     - text_en: The control module compares the air mass measured by the air flow meter with the air mass
         it expects from a model, for example from manifold pressure, boost pressure and throttle position.
-      source: obdex description
-      review_status: source_reported
+      category: technical_explanation
     - text_en: 'These codes report the deviation with its direction: "too low" means the meter measures
         less air than expected, "too high" more.'
-      source: obdex description
-      review_status: source_reported
+      category: technical_explanation
+    quote_categories:
+    - technical_explanation
     references:
     - url: sae:J2012
       kind: reference
@@ -6367,12 +6530,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 50
   code: P00BD
@@ -6469,19 +6632,19 @@ entries:
       relevant; components: intake_ducts, manifold_absolute_pressure_sensor, mass_air_flow_sensor_a'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
     - text_en: The control module compares the air mass measured by the air flow meter with the air mass
         it expects from a model, for example from manifold pressure, boost pressure and throttle position.
-      source: obdex description
-      review_status: source_reported
+      category: technical_explanation
     - text_en: 'These codes report the deviation with its direction: "too low" means the meter measures
         less air than expected, "too high" more.'
-      source: obdex description
-      review_status: source_reported
+      category: technical_explanation
+    quote_categories:
+    - technical_explanation
     references:
     - url: sae:J2012
       kind: reference
@@ -6497,12 +6660,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 51
   code: P00BE
@@ -6603,19 +6766,19 @@ entries:
       relevant; components: intake_ducts, manifold_absolute_pressure_sensor, mass_air_flow_sensor_b'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
     - text_en: The control module compares the air mass measured by the air flow meter with the air mass
         it expects from a model, for example from manifold pressure, boost pressure and throttle position.
-      source: obdex description
-      review_status: source_reported
+      category: technical_explanation
     - text_en: 'These codes report the deviation with its direction: "too low" means the meter measures
         less air than expected, "too high" more.'
-      source: obdex description
-      review_status: source_reported
+      category: technical_explanation
+    quote_categories:
+    - technical_explanation
     references:
     - url: sae:J2012
       kind: reference
@@ -6631,12 +6794,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 52
   code: P00BF
@@ -6734,19 +6897,19 @@ entries:
       relevant; components: intake_ducts, manifold_absolute_pressure_sensor, mass_air_flow_sensor_b'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
     - text_en: The control module compares the air mass measured by the air flow meter with the air mass
         it expects from a model, for example from manifold pressure, boost pressure and throttle position.
-      source: obdex description
-      review_status: source_reported
+      category: technical_explanation
     - text_en: 'These codes report the deviation with its direction: "too low" means the meter measures
         less air than expected, "too high" more.'
-      source: obdex description
-      review_status: source_reported
+      category: technical_explanation
+    quote_categories:
+    - technical_explanation
     references:
     - url: sae:J2012
       kind: reference
@@ -6762,12 +6925,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 53
   code: P00C7
@@ -6867,18 +7030,25 @@ entries:
       sensor_reference_voltage'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
+    - text_en: With the engine stopped, all pressure sensors in the intake system (manifold pressure,
+        boost pressure, barometric pressure) should read ambient pressure;
+      category: non_procedure
     - text_en: some diesels also compare them at idle.
-      source: obdex description
-      review_status: source_reported
+      category: non_procedure
     - text_en: 'The control module compares them: if one sensor stands out, it sets that sensor''s own
         code.'
-      source: obdex description
-      review_status: source_reported
+      category: non_procedure
+    - text_en: P00C7 is set when the readings disagree but no single sensor can be identified as faulty,
+        which points to a fault affecting several sensors, such as a shared reference voltage or ground.
+      category: monitoring_description
+    quote_categories:
+    - monitoring_description
+    - non_procedure
     references:
     - url: sae:J2012
       kind: reference
@@ -6894,12 +7064,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 54
   code: P00E6
@@ -6997,15 +7167,24 @@ entries:
       sensor_reference_voltage'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
     - text_en: This is the bank 2 counterpart of the multiple pressure sensor check for engines with separate
         pressure measurement per bank, such as twin-turbo V engines.
-      source: obdex description
-      review_status: source_reported
+      category: non_procedure
+    - text_en: With the engine stopped, all intake pressure sensors should read ambient pressure.
+      category: non_procedure
+    - text_en: this code is set when the readings disagree but no single sensor can be identified, which
+        points to a fault affecting several sensors such as a shared reference voltage or ground.
+      category: monitoring_description
+    - text_en: the explanation follows regulations and comparable manufacturer monitors.
+      category: monitoring_description
+    quote_categories:
+    - monitoring_description
+    - non_procedure
     references:
     - url: sae:J2012
       kind: reference
@@ -7021,12 +7200,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 55
   code: P0105
@@ -7144,14 +7323,18 @@ entries:
       relevant; components: manifold_absolute_pressure_sensor, sensor_reference_voltage, sensor_wiring'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
     - text_en: The manifold absolute pressure (MAP) sensor measures the pressure behind the throttle;
-      source: obdex description
-      review_status: source_reported
+      category: non_procedure
+    - text_en: on vehicles without a separate barometric sensor it also supplies the ambient pressure,
+        read at key-on or wide-open throttle – hence 'MAP/BARO'.
+      category: non_procedure
+    quote_categories:
+    - non_procedure
     references:
     - url: sae:J2012
       kind: reference
@@ -7170,12 +7353,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 56
   code: P0106
@@ -7289,18 +7472,21 @@ entries:
       sensor_wiring'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
     - text_en: The manifold absolute pressure (MAP) sensor measures the pressure behind the throttle;
-      source: obdex description
-      review_status: source_reported
+      category: non_procedure
+    - text_en: on vehicles without a separate barometric sensor it also supplies the ambient pressure,
+        read at key-on or wide-open throttle – hence 'MAP/BARO'.
+      category: non_procedure
     - text_en: While running, MAP is compared with a value modelled from air mass, throttle and speed
         – GM blames the MAP sensor above about 23–30 kPa error, with two trips on petrol and one on diesel.
-      source: obdex description
-      review_status: source_reported
+      category: non_procedure
+    quote_categories:
+    - non_procedure
     references:
     - url: sae:J2012
       kind: reference
@@ -7325,12 +7511,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 57
   code: P0107
@@ -7452,14 +7638,20 @@ entries:
       relevant; components: manifold_absolute_pressure_sensor, sensor_reference_voltage, sensor_wiring'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
     - text_en: The manifold absolute pressure (MAP) sensor measures the pressure behind the throttle;
-      source: obdex description
-      review_status: source_reported
+      category: non_procedure
+    - text_en: on vehicles without a separate barometric sensor it also supplies the ambient pressure,
+        read at key-on or wide-open throttle – hence 'MAP/BARO'.
+      category: non_procedure
+    - text_en: A modelled value replaces the reading.
+      category: non_procedure
+    quote_categories:
+    - non_procedure
     references:
     - url: sae:J2012
       kind: reference
@@ -7481,12 +7673,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 58
   code: P0108
@@ -7598,14 +7790,18 @@ entries:
       relevant; components: manifold_absolute_pressure_sensor, sensor_reference_voltage, sensor_wiring'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
     - text_en: The manifold absolute pressure (MAP) sensor measures the pressure behind the throttle;
-      source: obdex description
-      review_status: source_reported
+      category: non_procedure
+    - text_en: on vehicles without a separate barometric sensor it also supplies the ambient pressure,
+        read at key-on or wide-open throttle – hence 'MAP/BARO'.
+      category: non_procedure
+    quote_categories:
+    - non_procedure
     references:
     - url: sae:J2012
       kind: reference
@@ -7627,12 +7823,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 59
   code: P0120
@@ -7749,9 +7945,11 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes: []
+    quote_categories: []
     references:
     - url: sae:J2012
       kind: reference
@@ -7902,21 +8100,20 @@ entries:
       relevant; components: sensor_reference_voltage, sensor_wiring, throttle_body, throttle_position_sensor'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
     - text_en: Manufacturers check this very differently.
-      source: obdex description
-      review_status: source_reported
+      category: non_procedure
     - text_en: GM compares throttle position against air mass and pressures modelled from the other intake
         sensors and needs two trips;
-      source: obdex description
-      review_status: source_reported
+      category: non_procedure
     - text_en: Cable throttles (Saab 1997) check that idle voltage stays between 0.24 and 1 V.
-      source: obdex description
-      review_status: source_reported
+      category: non_procedure
+    quote_categories:
+    - non_procedure
     references:
     - url: sae:J2012
       kind: reference
@@ -7938,12 +8135,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 61
   code: P0122
@@ -8072,9 +8269,11 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes: []
+    quote_categories: []
     references:
     - url: sae:J2012
       kind: reference
@@ -8227,9 +8426,11 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes: []
+    quote_categories: []
     references:
     - url: sae:J2012
       kind: reference
@@ -8378,15 +8579,16 @@ entries:
       relevant; components: sensor_reference_voltage, sensor_wiring, throttle_body, throttle_position_sensor'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
     - text_en: GM does not use P0124 in the tables checked – its low/high monitors already catch intermittent
         shorts.
-      source: obdex description
-      review_status: source_reported
+      category: monitoring_description
+    quote_categories:
+    - monitoring_description
     references:
     - url: sae:J2012
       kind: reference
@@ -8402,12 +8604,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 64
   code: P0220
@@ -8522,16 +8724,20 @@ entries:
       relevant; components: electronic_throttle_body, sensor_wiring, throttle_position_sensor_b'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
     - text_en: With electronic throttle control the throttle body carries two position sensors, A and
         B, usually with opposite or offset signals, and the engine module compares them (correlation code
         P2135).
-      source: obdex description
-      review_status: source_reported
+      category: non_procedure
+    - text_en: 'GM uses it in a special sense on 2015–2016 V8 engines: the signal lies outside 0.25–4.59
+        V only in the monitoring processor while the main processor sees it as valid;'
+      category: non_procedure
+    quote_categories:
+    - non_procedure
     references:
     - url: sae:J2012
       kind: reference
@@ -8547,12 +8753,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 65
   code: P0221
@@ -8661,16 +8867,17 @@ entries:
       relevant; components: electronic_throttle_body, sensor_wiring, throttle_position_sensor_b'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
     - text_en: With electronic throttle control the throttle body carries two position sensors, A and
         B, usually with opposite or offset signals, and the engine module compares them (correlation code
         P2135).
-      source: obdex description
-      review_status: source_reported
+      category: non_procedure
+    quote_categories:
+    - non_procedure
     references:
     - url: sae:J2012
       kind: reference
@@ -8689,12 +8896,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 66
   code: P0222
@@ -8810,16 +9017,17 @@ entries:
       relevant; components: electronic_throttle_body, sensor_wiring, throttle_position_sensor_b'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
     - text_en: With electronic throttle control the throttle body carries two position sensors, A and
         B, usually with opposite or offset signals, and the engine module compares them (correlation code
         P2135).
-      source: obdex description
-      review_status: source_reported
+      category: non_procedure
+    quote_categories:
+    - non_procedure
     references:
     - url: sae:J2012
       kind: reference
@@ -8838,12 +9046,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 67
   code: P0223
@@ -8955,16 +9163,17 @@ entries:
       relevant; components: electronic_throttle_body, sensor_wiring, throttle_position_sensor_b'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
     - text_en: With electronic throttle control the throttle body carries two position sensors, A and
         B, usually with opposite or offset signals, and the engine module compares them (correlation code
         P2135).
-      source: obdex description
-      review_status: source_reported
+      category: non_procedure
+    quote_categories:
+    - non_procedure
     references:
     - url: sae:J2012
       kind: reference
@@ -8980,12 +9189,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 68
   code: P0224
@@ -9091,16 +9300,17 @@ entries:
       relevant; components: electronic_throttle_body, sensor_wiring, throttle_position_sensor_b'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
     - text_en: With electronic throttle control the throttle body carries two position sensors, A and
         B, usually with opposite or offset signals, and the engine module compares them (correlation code
         P2135).
-      source: obdex description
-      review_status: source_reported
+      category: non_procedure
+    quote_categories:
+    - non_procedure
     references:
     - url: sae:J2012
       kind: reference
@@ -9116,12 +9326,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 69
   code: P0225
@@ -9226,9 +9436,11 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes: []
+    quote_categories: []
     references:
     - url: sae:J2012
       kind: reference
@@ -9349,15 +9561,16 @@ entries:
       relevant; components: electronic_throttle_body, sensor_wiring, throttle_position_sensor_c'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
     - text_en: 'The logic follows the sibling checks on sensors A and B (Bosch: more than 9 % deviation,
         Ford: more than 7 degrees).'
-      source: obdex description
-      review_status: source_reported
+      category: technical_explanation
+    quote_categories:
+    - technical_explanation
     references:
     - url: sae:J2012
       kind: reference
@@ -9373,12 +9586,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 71
   code: P0227
@@ -9492,9 +9705,14 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes:
+    - text_en: the description follows CARB's input monitoring requirement and the sensor A/B siblings.
+      category: technical_explanation
+    quote_categories:
+    - technical_explanation
     references:
     - url: sae:J2012
       kind: reference
@@ -9629,9 +9847,14 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes:
+    - text_en: the description follows CARB's input monitoring requirement and the sensor A/B siblings.
+      category: technical_explanation
+    quote_categories:
+    - technical_explanation
     references:
     - url: sae:J2012
       kind: reference
@@ -9758,9 +9981,11 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes: []
+    quote_categories: []
     references:
     - url: sae:J2012
       kind: reference
@@ -9889,23 +10114,35 @@ entries:
     review_status: source_reported
   procedure:
     status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
+    note: 'Verbatim diagnostic-check sentences from the source. They are not a procedure: no tool list,
+      no nominal value and no limit may be added until a qualified technician approves a written procedure.'
     quoted_checks:
     - text_en: 'P023D compares the manifold pressure sensor (after the throttle) with boost sensor A (before
         the throttle): with the engine stopped both must read the same ambient pressure.'
+      category: diagnostic_check
+      classification:
+        rule: imperative/obligation test form + hardware, instrument or measurement
+        matched:
+        - read the
+        - sensor
+        - pressure
+        status: rule_based_unreviewed
+      verbatim: true
+      measurement_mentions: []
       source: obdex description
-      review_status: source_reported
+      review_status: quoted_unreviewed
+    other_quotes:
     - text_en: Saab's 2.8 V6 checks this once per trip with the ignition on before starting and sets the
         code at a difference of more than 12 kPa, with the warning light and limp mode limited to 170
         Nm.
-      source: obdex description
-      review_status: source_reported
+      category: monitoring_description
     - text_en: Electrical faults of either sensor (P0107/P0108, P0237/P0238) block the test and must be
         fixed first.
-      source: obdex description
-      review_status: source_reported
+      category: non_procedure
+    quote_categories:
+    - diagnostic_check
+    - monitoring_description
+    - non_procedure
     references:
     - url: sae:J2012
       kind: reference
@@ -10031,15 +10268,16 @@ entries:
       relevant; components: boost_pressure_sensor_b, manifold_absolute_pressure_sensor, sensor_wiring'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
     - text_en: 'P023E is the counterpart of P023D: manifold pressure is compared with boost sensor B,
         and with the engine stopped both must read ambient pressure.'
-      source: obdex description
-      review_status: source_reported
+      category: non_procedure
+    quote_categories:
+    - non_procedure
     references:
     - url: sae:J2012
       kind: reference
@@ -10055,12 +10293,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 76
   code: P02E0
@@ -10170,9 +10408,11 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes: []
+    quote_categories: []
     references:
     - url: sae:J2012
       kind: reference
@@ -10305,9 +10545,11 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes: []
+    quote_categories: []
     references:
     - url: sae:J2012
       kind: reference
@@ -10439,9 +10681,11 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes: []
+    quote_categories: []
     references:
     - url: sae:J2012
       kind: reference
@@ -10576,9 +10820,11 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes: []
+    quote_categories: []
     references:
     - url: sae:J2012
       kind: reference
@@ -10711,9 +10957,11 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes: []
+    quote_categories: []
     references:
     - url: sae:J2012
       kind: reference
@@ -10843,9 +11091,11 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes: []
+    quote_categories: []
     references:
     - url: sae:J2012
       kind: reference
@@ -10972,9 +11222,15 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes:
+    - text_en: no manufacturer using P02E6 was found, so the description follows CARB's input monitoring
+        requirement and the documented siblings (GM 0.40/4.72 V, Ford 0.08/4.92 V).
+      category: technical_explanation
+    quote_categories:
+    - technical_explanation
     references:
     - url: sae:J2012
       kind: reference
@@ -11098,9 +11354,11 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes: []
+    quote_categories: []
     references:
     - url: sae:J2012
       kind: reference
@@ -11233,9 +11491,11 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes: []
+    quote_categories: []
     references:
     - url: sae:J2012
       kind: reference
@@ -11370,9 +11630,11 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes: []
+    quote_categories: []
     references:
     - url: sae:J2012
       kind: reference
@@ -11504,9 +11766,15 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes:
+    - text_en: No manufacturer using P02EA was found – GM reports such faults under its own codes, Ford
+        does not use it – so the description follows CARB's input monitoring requirement.
+      category: technical_explanation
+    quote_categories:
+    - technical_explanation
     references:
     - url: sae:J2012
       kind: reference
@@ -11633,9 +11901,11 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes: []
+    quote_categories: []
     references:
     - url: sae:J2012
       kind: reference
@@ -11763,15 +12033,16 @@ entries:
       relevant; components: air_filter, diesel_intake_throttle_valve, egr_valve, mass_air_flow_sensor'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
     - text_en: P02ED means the measured air mass stays below target with the control at its limit – too
         much EGR, a throttle stuck closed or a clogged intake – for 10 s (6.7) or 5 s (3.0).
-      source: obdex description
-      review_status: source_reported
+      category: technical_explanation
+    quote_categories:
+    - technical_explanation
     references:
     - url: sae:J2012
       kind: reference
@@ -11787,12 +12058,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 89
   code: P02FA
@@ -11901,16 +12172,17 @@ entries:
       relevant; components: diesel_intake_throttle_position_sensor, diesel_intake_throttle_valve'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
     - text_en: Ford's 6.7 and 3.0 diesels check it once after each learning run and set the code when
         the learned minimum offset is outside ±10 (6.7) or ±6.7 (3.0) – Ford only evaluates the minimum
         stop.
-      source: obdex description
-      review_status: source_reported
+      category: monitoring_description
+    quote_categories:
+    - monitoring_description
     references:
     - url: sae:J2012
       kind: reference
@@ -11923,12 +12195,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 90
   code: P057A
@@ -12038,9 +12310,15 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes:
+    - text_en: GM (from about 2012) and Stellantis read it in the engine module, Saab's 9-4X and 9-5 in
+        the body module;
+      category: non_procedure
+    quote_categories:
+    - non_procedure
     references:
     - url: sae:J2012
       kind: reference
@@ -12172,9 +12450,15 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes:
+    - text_en: GM (from about 2012) and Stellantis read it in the engine module, Saab's 9-4X and 9-5 in
+        the body module;
+      category: non_procedure
+    quote_categories:
+    - non_procedure
     references:
     - url: sae:J2012
       kind: reference
@@ -12312,9 +12596,14 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes:
+    - text_en: CARB requires inputs used by other diagnoses to be monitored.
+      category: monitoring_description
+    quote_categories:
+    - monitoring_description
     references:
     - url: sae:J2012
       kind: reference
@@ -12437,9 +12726,14 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes:
+    - text_en: CARB requires inputs used by other diagnoses to be monitored.
+      category: monitoring_description
+    quote_categories:
+    - monitoring_description
     references:
     - url: sae:J2012
       kind: reference
@@ -12569,15 +12863,19 @@ entries:
       relevant; components: brake_control_module, brake_pedal_position_sensor_b, sensor_wiring'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
+    - text_en: CARB requires inputs used by other diagnoses to be monitored.
+      category: monitoring_description
     - text_en: Mitsubishi's 2022 Outlander PHEV sets it with the regeneration warning light and the check
         engine light;
-      source: obdex description
-      review_status: source_reported
+      category: non_procedure
+    quote_categories:
+    - monitoring_description
+    - non_procedure
     references:
     - url: sae:J2012
       kind: reference
@@ -12593,12 +12891,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 95
   code: P05DE
@@ -12706,15 +13004,19 @@ entries:
       relevant; components: brake_control_module, brake_pedal_position_sensor_b, sensor_wiring'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
+    - text_en: CARB requires inputs used by other diagnoses to be monitored.
+      category: monitoring_description
     - text_en: Mitsubishi's 2022 Outlander PHEV sets it with the regeneration warning light and the check
         engine light.
-      source: obdex description
-      review_status: source_reported
+      category: non_procedure
+    quote_categories:
+    - monitoring_description
+    - non_procedure
     references:
     - url: sae:J2012
       kind: reference
@@ -12727,12 +13029,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 96
   code: P05DF
@@ -12837,14 +13139,18 @@ entries:
       relevant; components: brake_control_module, brake_pedal_position_sensor_b, sensor_wiring'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
+    - text_en: CARB requires inputs used by other diagnoses to be monitored.
+      category: monitoring_description
     - text_en: Toyota lists it as a channel B code that blocks the correlation check;
-      source: obdex description
-      review_status: source_reported
+      category: non_procedure
+    quote_categories:
+    - monitoring_description
+    - non_procedure
     references:
     - url: sae:J2012
       kind: reference
@@ -12857,12 +13163,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 97
   code: P2100
@@ -12958,9 +13264,11 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes: []
+    quote_categories: []
     references:
     - url: sae:J2012
       kind: reference
@@ -13075,9 +13383,11 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes: []
+    quote_categories: []
     references:
     - url: sae:J2012
       kind: reference
@@ -13187,15 +13497,16 @@ entries:
       relevant; components: accelerator_pedal_position_sensor, throttle_position_sensor'
     review_status: source_reported
   procedure:
-    status: draft_unreviewed
-    note: 'Verbatim sentences from the source description that describe a check. They are not a procedure:
-      no tool list, no nominal value and no limit may be added until a qualified technician approves a
-      written procedure.'
-    quoted_checks:
+    status: needs_written_procedure
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
+    quoted_checks: []
+    other_quotes:
     - text_en: Drive-by-wire systems compare two or three independent channels to detect a faulty potentiometer
         track.
-      source: obdex description
-      review_status: source_reported
+      category: monitoring_description
+    quote_categories:
+    - monitoring_description
     references:
     - url: sae:J2012
       kind: reference
@@ -13208,12 +13519,12 @@ entries:
       label: null
     tools: []
     nominal_values: []
-    review_status: unreviewed_draft
+    review_status: not_started
   conflicts: []
   review_checklist:
     english_text: pending
     arabic_text: pending
-    procedure: draft_ready
+    procedure: pending
     conflicts: clear
 - priority_position: 100
   code: P210F
@@ -13302,9 +13613,11 @@ entries:
     review_status: source_reported
   procedure:
     status: needs_written_procedure
-    note: The source cites references but contains no step list. A technician must write the procedure
-      against these references; nothing is generated here.
+    note: The source cites references but contains no diagnostic-check sentence. A technician must write
+      the procedure against these references; nothing is generated here.
     quoted_checks: []
+    other_quotes: []
+    quote_categories: []
     references:
     - url: sae:J2012
       kind: reference

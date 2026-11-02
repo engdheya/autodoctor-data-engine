@@ -96,6 +96,39 @@ def _scope(conn: sqlite3.Connection, dtc_id: int, context_type: str, description
     }
 
 
+
+def classify_sentences(description: str | None, min_length: int = 25) -> list[dict[str, Any]]:
+    """Every candidate sentence of one description, classified.
+
+    This is the single source of truth for both the tier-wide export and the per-code
+    review packs: a candidate is a sentence long enough to carry a statement that uses a
+    check-style word. Each candidate is then classified into one of the four categories, so
+    a sentence that merely describes monitoring never reaches a ``quoted_checks`` list.
+    """
+    quotes: list[dict[str, Any]] = []
+    for sentence in _sentences(description or ""):
+        if len(sentence) <= min_length or not CHECK_WORDS.search(sentence):
+            continue
+        verdict = classify_quote(sentence)
+        quotes.append(
+            {
+                "text_en": sentence,
+                "category": verdict["category"],
+                "classification": {
+                    "rule": verdict["rule"],
+                    "matched": verdict["matched"],
+                    "status": "rule_based_unreviewed",
+                },
+                "verbatim": sentence in (description or ""),
+                "measurement_mentions": [
+                    {"text": m.group(0)} for m in MEASUREMENT.finditer(sentence)
+                ],
+                "status": "quoted_unreviewed",
+            }
+        )
+    return quotes
+
+
 def build_entries(
     conn: sqlite3.Connection, index: list[dict[str, Any]], tiers: tuple[int, ...]
 ) -> dict[str, Any]:
@@ -112,26 +145,7 @@ def build_entries(
             (entry["dtc_code_id"],),
         ).fetchone()
         description = (row["description"] if row else "") or ""
-        quotes = []
-        for sentence in _sentences(description):
-            if len(sentence) > 25 and CHECK_WORDS.search(sentence):
-                verdict = classify_quote(sentence)
-                quotes.append(
-                    {
-                        "text_en": sentence,
-                        "category": verdict["category"],
-                        "classification": {
-                            "rule": verdict["rule"],
-                            "matched": verdict["matched"],
-                            "status": "rule_based_unreviewed",
-                        },
-                        "verbatim": sentence in description,
-                        "measurement_mentions": [
-                            {"text": m.group(0)} for m in MEASUREMENT.finditer(sentence)
-                        ],
-                        "status": "quoted_unreviewed",
-                    }
-                )
+        quotes = classify_sentences(description)
         references = [
             {"url": r[0], "kind": r[1], "label": r[2]}
             for r in conn.execute(
