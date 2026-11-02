@@ -24,6 +24,8 @@ from typing import Any
 
 import yaml
 
+from .quote_classify import CATEGORIES, classify_quote
+
 CHECK_WORDS = re.compile(
     r"\b(test|check|measure|swap|inspect|verify|probe|compare|monitor|read)\w*\b", re.IGNORECASE
 )
@@ -65,7 +67,10 @@ def _scope(conn: sqlite3.Connection, dtc_id: int, context_type: str, description
             unique.append(mention)
 
     if context_type == "generic":
-        base = "SAE J2012 / ISO 15031-6 generic code: applies to every vehicle that reports it"
+        base = (
+            "generic DTC definition (SAE J2012 / ISO 15031-6). This says what the code means, "
+            "not where the quoted check is valid."
+        )
     else:
         manufacturer = conn.execute(
             "SELECT m.name FROM dtc_codes c JOIN manufacturers m ON m.id = c.manufacturer_id "
@@ -78,13 +83,16 @@ def _scope(conn: sqlite3.Connection, dtc_id: int, context_type: str, description
             else "manufacturer-specific definition"
         )
     return {
-        "identity_scope": base,
+        "dtc_definition_scope": base,
+        "procedure_applicability": "unverified",
+        "applicability_note": (
+            "A generic DTC definition does not make the quoted check valid for every vehicle "
+            "that reports the code. Applicability to a make, model, engine and year has to be "
+            "established by a technician from the references; the mentions below are only what "
+            "the source printed."
+        ),
         "source_mentions": unique,
         "status": "source_text_mention" if unique else "not_stated",
-        "note": (
-            "Mentions are what the source printed, not a verified applicability list. A "
-            "technician must confirm the procedure applies to the exact vehicle and engine."
-        ),
     }
 
 
@@ -107,9 +115,16 @@ def build_entries(
         quotes = []
         for sentence in _sentences(description):
             if len(sentence) > 25 and CHECK_WORDS.search(sentence):
+                verdict = classify_quote(sentence)
                 quotes.append(
                     {
                         "text_en": sentence,
+                        "category": verdict["category"],
+                        "classification": {
+                            "rule": verdict["rule"],
+                            "matched": verdict["matched"],
+                            "status": "rule_based_unreviewed",
+                        },
                         "verbatim": sentence in description,
                         "measurement_mentions": [
                             {"text": m.group(0)} for m in MEASUREMENT.finditer(sentence)
@@ -168,6 +183,13 @@ def build_entries(
 
     with_quotes = len(entries)
     measurements = sum(1 for e in entries if any(q["measurement_mentions"] for q in e["quotes"]))
+    category_counts: dict[str, int] = {category: 0 for category in CATEGORIES}
+    codes_with_check = 0
+    for entry in entries:
+        if any(q["category"] == "diagnostic_check" for q in entry["quotes"]):
+            codes_with_check += 1
+        for quote in entry["quotes"]:
+            category_counts[quote["category"]] = category_counts.get(quote["category"], 0) + 1
     return {
         "generated_at": datetime.now(UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
         "tiers": list(tiers),
@@ -177,6 +199,8 @@ def build_entries(
         ),
         "summary": {
             "codes_with_quotes": with_quotes,
+            "codes_with_diagnostic_check": codes_with_check,
+            "quotes_by_category": category_counts,
             "codes_without_source_text": len(without),
             "quotes_total": sum(len(e["quotes"]) for e in entries),
             "quotes_with_measurement": measurements,
@@ -209,6 +233,10 @@ def write_procedures(payload: dict[str, Any], out_dir: Path) -> tuple[Path, Path
                 "tier",
                 "title_en",
                 "quotes",
+                "diagnostic_checks",
+                "monitoring_descriptions",
+                "technical_explanations",
+                "non_procedures",
                 "has_measurement",
                 "scope_identity",
                 "scope_mentions",
@@ -224,8 +252,12 @@ def write_procedures(payload: dict[str, Any], out_dir: Path) -> tuple[Path, Path
                     entry["tier"],
                     entry["title_en"],
                     len(entry["quotes"]),
+                    sum(1 for q in entry["quotes"] if q["category"] == "diagnostic_check"),
+                    sum(1 for q in entry["quotes"] if q["category"] == "monitoring_description"),
+                    sum(1 for q in entry["quotes"] if q["category"] == "technical_explanation"),
+                    sum(1 for q in entry["quotes"] if q["category"] == "non_procedure"),
                     any(q["measurement_mentions"] for q in entry["quotes"]),
-                    entry["scope"]["identity_scope"],
+                    entry["scope"]["dtc_definition_scope"],
                     "; ".join(m["term"] for m in entry["scope"]["source_mentions"]),
                     "; ".join(r["url"] for r in entry["references"]),
                     entry["authoring_status"],
@@ -244,9 +276,16 @@ def write_procedures(payload: dict[str, Any], out_dir: Path) -> tuple[Path, Path
         f"| Codes with quoted check text | {s['codes_with_quotes']:,} |",
         f"| Codes without any check text in the sources | {s['codes_without_source_text']:,} |",
         f"| Verbatim quotes | {s['quotes_total']:,} |",
+        f"| Codes with at least one diagnostic check | {s['codes_with_diagnostic_check']:,} |",
         f"| Quotes that mention a measurement | {s['quotes_with_measurement']:,} |",
         f"| Codes where the source names a vehicle/engine term | {s['codes_with_scope_mentions']:,} |",
         f"| Approved procedures | {s['approved_procedures']} |",
+        "",
+        "## Quotes by category",
+        "",
+        "| Category | Quotes |",
+        "| --- | --- |",
+        *[f"| {name} | {count:,} |" for name, count in s["quotes_by_category"].items()],
         "",
         "Every quote is a verbatim substring of the stored English description; numbers appear "
         "only inside those quotes and are not validated by the engine.",

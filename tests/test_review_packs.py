@@ -127,3 +127,37 @@ def test_quote_that_is_not_verbatim_is_reported(built) -> None:
     ]
     descriptions = {tampered["entries"][0]["context_key"]: "something else entirely"}
     assert verify_no_invention(tampered, descriptions), "a non-verbatim quote must be reported"
+
+
+def test_arabic_review_flags_dropped_context(built, tmp_path: Path) -> None:
+    """A draft that drops the manufacturer context must be flagged, not shipped quietly."""
+    import yaml as _yaml
+
+    arabic_path = tmp_path / "ar.yaml"
+    arabic_path.write_text(
+        _yaml.safe_dump(
+            [
+                {
+                    "code": "P0301",
+                    "title": "عنوان بلا سياق",
+                    "description": "وصف بلا سياق",
+                    "translator": "",
+                    "reviewer": "",
+                    "reviewed": False,
+                }
+            ],
+            allow_unicode=True,
+        ),
+        encoding="utf-8",
+    )
+    conn = sqlite3.connect(f"file:{built.database_path}?mode=ro", uri=True)
+    try:
+        pack = build_pack(conn, priority_index(conn), load_arabic(arabic_path), tier=1, limit=5)
+    finally:
+        conn.close()
+
+    reviews = [e["arabic_draft"]["review"] for e in pack["entries"] if e["arabic_draft"]["review"]]
+    assert reviews, "every drafted entry must carry a machine review block"
+    for review in reviews:
+        assert review["status"] in {"machine_checked_pending_human", "needs_fix"}
+        assert set(review["checks"]) >= {"manufacturer_context", "measurements_preserved"}
